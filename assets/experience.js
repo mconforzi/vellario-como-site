@@ -84,9 +84,9 @@ document.addEventListener('keydown',e=>{
  }
 });
 const updateSelectorUI=(m,i)=>{
- modelCount.textContent=m.num+' / 05';modelName.textContent=m.name;modelIntro.textContent=m.intro;modelCopy.textContent=m.copy;
+ modelCount.textContent=m.num+' / 05';$('#selectorWheelNumber').textContent=m.num;modelName.textContent=m.name;modelIntro.textContent=m.intro;modelCopy.textContent=m.copy;
  modelProgress.style.setProperty('--wheel-progress',String((i+1)/5));
- modelLink.href='#collection';modelLink.textContent='VIEW THE DESIGN ARCHIVE ↗';
+ modelLink.href=m.detail||'#editorial';modelLink.target=m.detail?'_blank':'_self';modelLink.rel=m.detail?'noopener':'';modelLink.textContent=m.detail?'VIEW THE DESIGN IMAGE ↗':'DESIGN PHILOSOPHY ↗';
  const legacy=$('#modelArchive');
  legacy.href=m.detail||'#collection';legacy.textContent=m.detail?'DISCOVER THE ORIGINAL IMAGE ↗':'MEDIA IN CURATION';
  legacy.hidden=!m.detail;
@@ -125,8 +125,8 @@ function filmRoute(i){
  scrollTo({top:y,behavior:reduce?'instant':'smooth'});
 }
 filmButtons.forEach((b,i)=>b.addEventListener('click',()=>filmRoute(i)));
-function setFilm(i){
- if(i===activeFilm)return;activeFilm=i;i=clamp(0,3,i);
+function setFilm(i,force=false){
+ if(i===activeFilm&&!force)return;activeFilm=i;i=clamp(0,3,i);
  const m=motionData[i],token=++filmToken;
  filmPoster.src=m.still;filmTitle.textContent=m.name;filmSubtitle.textContent=m.line;filmKicker.textContent=m.kicker;filmFile.textContent=m.file;filmNumber.textContent='0'+(i+1)+' / 04';
  filmButtons.forEach((b,j)=>{b.classList.toggle('is-active',j===i);b.setAttribute('aria-current',j===i?'step':'false')});
@@ -172,13 +172,16 @@ function update(){
  selectorVisible=c.bottom>vh*.15&&c.top<vh*.8;
  setModel(Math.min(4,Math.floor(cp*5)),activeModel<0);
  if(!selectorVisible||reduce){modelFilm.pause();motionWindow.classList.remove('is-ready')}
- else if(activeModel>=0&&modelData[activeModel].film && modelFilm.src && modelFilm.paused){
-   modelFilm.play().then(()=>motionWindow.classList.add('is-ready')).catch(()=>{});
+ else if(activeModel>=0&&modelData[activeModel].film){
+   const desired=modelData[activeModel].film;
+   if(modelFilm.getAttribute('src')!==desired){modelFilm.src=desired;modelFilm.load();}
+   if(modelFilm.paused)modelFilm.play().then(()=>motionWindow.classList.add('is-ready')).catch(()=>{});
  }
  const f=filmScroll.getBoundingClientRect(),fp=clamp(0,1,-f.top/Math.max(1,filmScroll.offsetHeight-vh));
  filmScroll.style.setProperty('--film-progress',String(fp));
  filmVisible=f.bottom>vh*.2&&f.top<vh*.8;
- setFilm(Math.min(3,Math.floor(fp*4)));
+ const filmDesired=Math.min(3,Math.floor(fp*4));
+ setFilm(filmDesired,filmVisible&&!layerA.getAttribute('src')&&!layerB.getAttribute('src'));
  if(!filmVisible||reduce){layerA.pause();layerB.pause()}
  else {const active=showA?layerA:layerB;if(active.src&&active.paused)active.play().catch(()=>{})}
  if(gallery){const g=gallery.getBoundingClientRect();gallery.style.setProperty('--revealProgress',String(clamp(0,1,1-g.top/vh)))}
