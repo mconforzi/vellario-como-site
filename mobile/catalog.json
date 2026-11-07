@@ -1,0 +1,93 @@
+{
+  "schemaVersion": 1,
+  "release": "mobile-root-0.1.0",
+  "status": "functional-proof",
+  "title": "VELLARIO · COMO",
+  "source": "Original design archive: Dropbox /[BOATS]/AI - MEDIA, assets already hosted on this GitHub Pages repository",
+  "assetBase": "../assets/vario/",
+  "opening": {
+    "name": "MAS 46 FULL",
+    "poster": "mas46-poster.webp",
+    "segments": [
+      "mas46-full.mp4",
+      "mas46-part-02.mp4",
+      "mas46-part-03.mp4",
+      "mas46-part-04.mp4",
+      "mas46-part-05.mp4",
+      "mas46-part-06.mp4"
+    ],
+    "sourceResolution": "848×480",
+    "note": "Entire original film, six optimized consecutive web segments."
+  },
+  "models": [
+    {
+      "id": "quantum-999",
+      "name": "Quantum 999",
+      "poster": "quantum.webp",
+      "video": "quantum-hd.mp4",
+      "videoResolution": "720×1280",
+      "images": [
+        "quantum.webp",
+        "quantum-detail.webp"
+      ],
+      "kind": "design-study"
+    },
+    {
+      "id": "mas-36",
+      "name": "MAS 36",
+      "poster": "mas36.webp",
+      "video": null,
+      "videoResolution": null,
+      "images": [
+        "mas36.webp"
+      ],
+      "kind": "design-study"
+    },
+    {
+      "id": "mas-56",
+      "name": "MAS 56",
+      "poster": "mas56-wide.webp",
+      "video": "mas56-film-wide.mp4",
+      "videoResolution": "1280×720",
+      "images": [
+        "mas56-wide.webp",
+        "mas56-cover.webp",
+        "mas56-detail-1.webp",
+        "mas56-detail-2.webp",
+        "mas56-detail-3.webp"
+      ],
+      "kind": "design-study"
+    },
+    {
+      "id": "grantender-72",
+      "name": "GranTender 72",
+      "poster": "grantender.webp",
+      "video": "grantender-hd.mp4",
+      "videoResolution": "720×1280",
+      "images": [
+        "grantender.webp",
+        "grantender-2.webp",
+        "grantender-3.webp",
+        "grantender-4.webp"
+      ],
+      "kind": "design-study"
+    },
+    {
+      "id": "gran-marlin",
+      "name": "Gran Marlin",
+      "poster": "gran-marlin.webp",
+      "video": "gran-marlin.mp4",
+      "videoResolution": "1280×720",
+      "images": [
+        "gran-marlin.webp",
+        "gran-marlin-2.webp"
+      ],
+      "kind": "design-study"
+    }
+  ],
+  "disclaimers": [
+    "This is an original yacht design archive concept, not a catalogue of manufactured VELLARIO products.",
+    "Media resolution reflects available masters; no 4K claims.",
+    "Naming and public commercial rights not yet verified."
+  ]
+}
