@@ -35,7 +35,10 @@ function start(video,successLabel,statusEl,userPaused){
  if(result&&typeof result.then==="function")result.then(()=>{
   setPlaying(video,true);setStatus(statusEl,successLabel);
  }).catch(()=>{
-  setPlaying(video,false);setStatus(statusEl,"Tap Play to start (browser policy)");
+  setPlaying(video,false);
+  // Genuine media failure takes precedence over autoplay-policy messaging.
+  if(video===nodes.video&&!nodes.fallback.hidden)return;
+  setStatus(statusEl,"Tap Play to start (browser policy)");
  });
 }
 function stop(video){video.pause();setPlaying(video,false)}
