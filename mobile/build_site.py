@@ -23,49 +23,67 @@ def site_path(slug, depth):
 def root_file(filename, depth):
     return ('../' * depth or './') + filename
 
-def section_media(media, depth, model_lookup, lakes, caption=''):
+def section_media(media, depth, model_lookup, lakes, caption='', hero=False):
     if not media:
         return ''
+    eager = 'eager' if hero else 'lazy'
+    priority = ' fetchpriority="high"' if hero else ''
     if media.startswith('model:'):
-        mid = media.split(':',1)[1]
+        mid = media.split(':', 1)[1]
         m = model_lookup[mid]
         poster = asset(m['poster'], depth)
         video = asset(m['video'], depth) if m.get('video') else ''
-        text = 'Original design-archive material for ' + m['name'] + '. Not evidence of production.'
-        film = (f'<video data-film data-src="{esc(video)}" muted playsinline loop preload="none" poster="{esc(poster)}" aria-label="Original design-study film for {esc(m["name"])}"></video>' if video else '')
+        portrait = ' film-frame--portrait' if m.get('videoResolution') and m['videoResolution'].startswith('720×1280') else ''
+        film = (f'<video data-film data-src="{esc(video)}" muted playsinline loop preload="none" '
+                f'poster="{esc(poster)}" aria-label="Original study film for {esc(m["name"])}"></video>') if video else ''
         return (
-            f'<figure class="film-frame" data-media-frame><img class="media-poster" src="{esc(poster)}" '
-            f'alt="{esc(m["name"])} original design rendering" loading="lazy">{film}'
-            + ('<button type="button" class="play-film" aria-label="Play or pause film">Play film</button>' if film else '')
-            + f'<figcaption>{esc(text)}</figcaption></figure>'
+            f'<figure class="film-frame film-frame--yacht{portrait}" data-media-frame>'
+            f'<img class="media-poster" src="{esc(poster)}" alt="{esc(m["name"])} original yacht design rendering" '
+            f'loading="{eager}" decoding="async"{priority}>'
+            + film +
+            ('<button type="button" class="play-film" aria-label="Avvia o ferma il filmato"><span class="play-icon">▶</span><span class="play-label">PLAY FILM</span></button>' if film else '')
+            + f'<figcaption><span class="source-label">ARCHIVIO PROGETTUALE</span><span>{esc(m["name"])} · Original design study</span></figcaption></figure>'
         )
-    item=lakes[media]
-    poster=asset(item['poster'],depth,'lake-placeholders')
-    video=asset(item['video'],depth,'lake-placeholders')
+    item = lakes[media]
+    poster = asset(item['poster'], depth, 'lake-placeholders')
+    video = asset(item['video'], depth, 'lake-placeholders')
     return (
-        f'<figure class="film-frame" data-media-frame><img class="media-poster" src="{esc(poster)}" '
-        f'alt="{esc(item["place"])} visual footage placeholder" loading="lazy">'
+        f'<figure class="film-frame film-frame--lake" data-media-frame>'
+        f'<img class="media-poster" src="{esc(poster)}" alt="{esc(item["place"])} landscape footage placeholder" loading="{eager}" decoding="async"{priority}>'
         f'<video data-film data-src="{esc(video)}" muted playsinline loop preload="none" poster="{esc(poster)}" '
-        f'aria-label="Temporary lake landscape video: {esc(item["place"])}"></video>'
-        f'<button type="button" class="play-film" aria-label="Play or pause lake video">Play film</button>'
-        f'<figcaption><span class="chip">Temporary footage / not product media</span> {esc(item["place"])} · '
-        f'<a href="{esc(item["source"])}" target="_blank" rel="noopener noreferrer">{esc(item["author"])}</a> · '
-        f'<a href="{esc(item["licenseUrl"])}" target="_blank" rel="noopener noreferrer">{esc(item["license"])}</a>. '
-        f'Original {esc(item["originalPixels"])}. Preview optimised for mobile.</figcaption></figure>'
+        f'aria-label="{esc(item["place"])} lake footage"></video>'
+        '<button type="button" class="play-film" aria-label="Avvia o ferma il filmato"><span class="play-icon">▶</span><span class="play-label">PLAY FILM</span></button>'
+        f'<figcaption><span class="source-label">PAESAGGIO · PLACEHOLDER</span><span>{esc(item["place"])} · '
+        f'<a href="{esc(item["source"])}" target="_blank" rel="noopener noreferrer">{esc(item["author"])}</a> / '
+        f'<a href="{esc(item["licenseUrl"])}" target="_blank" rel="noopener noreferrer">{esc(item["license"])}</a>'
+        '</span></figcaption></figure>'
     )
 
 def header(current_id, depth, data):
-    links=[]
-    for nav in data['nav']:
-        href=site_path(nav['slug'],depth)
-        flag=' aria-current="page"' if nav['id']==current_id else ''
-        links.append(f'<a href="{esc(href)}"{flag}>{esc(nav["label"])}</a>')
+    menu_items = []
+    for i, item in enumerate(data['nav'], 1):
+        is_current = ' aria-current="page"' if current_id == item['id'] else ''
+        menu_items.append(
+            f'<a class="menu-link" href="{esc(site_path(item["slug"], depth))}"{is_current}>'
+            f'<span class="menu-number">{i:02d}</span>'
+            f'<span class="menu-name">{esc(item["label"])}</span>'
+            '<span class="menu-arrow" aria-hidden="true">↗</span></a>'
+        )
     return (
-        '<header class="site-header"><a class="wordmark" href="'+esc(site_path('',depth))+'">'
+        '<header class="site-header">'
+        '<details class="site-menu">'
+        '<summary class="menu-toggle" aria-label="Apri il menu principale">'
+        '<span class="menu-lines" aria-hidden="true"><i></i><i></i></span><span class="menu-toggle-word">MENU</span></summary>'
+        '<div class="menu-panel"><div class="menu-panel-inner">'
+        '<div class="menu-title">L’ARTE DI VIVERE</div>'
+        '<nav class="menu-items" aria-label="Navigazione principale">'
+        + ''.join(menu_items) +
+        '</nav><div class="menu-footer"><span>VELLARIO · COMO</span><span>ITALIAN NAUTICAL ELEGANCE</span></div>'
+        '</div></div></details>'
+        '<a class="wordmark" href="' + esc(site_path('', depth)) + '" aria-label="VELLARIO COMO, homepage">'
         '<strong>VELLARIO</strong><small>COMO</small></a>'
-        '<a class="header-como" href="'+esc(site_path('como',depth))+'">Como</a>'
-        '<details class="menu"><summary aria-label="Apri il menu del sito">Menu</summary>'
-        '<nav class="menu-items" aria-label="Navigazione principale">'+''.join(links)+'</nav></details></header>'
+        '<a class="header-side" href="' + esc(site_path('collezione', depth)) + '">LA COLLEZIONE <span aria-hidden="true">↗</span></a>'
+        '</header>'
     )
 
 def footer(depth, data):
@@ -82,98 +100,162 @@ def footer(depth, data):
     )
 
 def hero(page, depth, model_lookup, lakes, opening, content_model=None):
-    key=page.get('hero')
-    eng = ('<p class="english-strapline">'+esc(page['englishTagline'])+'</p>') if page.get('englishTagline') else ''
-    if not key:
-        return ('<div class="hero-text-only"><p class="eyebrow">'+esc(page['kicker'])+'</p>'
-            '<h1>'+esc(page['title'])+'</h1>'+eng+'<p class="lede">'+esc(page['lead'])+'</p></div>')
-    if key=='opening':
-        poster=asset(opening['poster'],depth)
-        segments='|'.join(asset(segment,depth) for segment in opening['segments'])
-        media=(
-            '<div class="hero-visual film-frame" data-media-frame>'
-            f'<img class="media-poster" src="{esc(poster)}" alt="MAS 46 original yacht design study" fetchpriority="high">'
-            f'<video data-film data-opening data-segments="{esc(segments)}" data-src="{esc(asset(opening["segments"][0],depth))}" muted playsinline preload="none" poster="{esc(poster)}" aria-label="MAS 46 FULL original opening film"></video>'
-            '<button type="button" class="play-film" aria-label="Play or pause MAS 46 film">Play film</button>'
-            '<span class="media-identifier">MAS 46 FULL · archivio progettuale</span></div>'
+    key = page.get('hero')
+    home = page['id'] == 'home'
+    if key == 'opening':
+        poster = asset(opening['poster'], depth)
+        parts = '|'.join(asset(segment, depth) for segment in opening['segments'])
+        media = (
+            '<figure class="film-frame film-frame--opening" data-media-frame>'
+            f'<img class="media-poster" src="{esc(poster)}" alt="MAS 46 original nautical design film" loading="eager" decoding="async" fetchpriority="high">'
+            f'<video data-film data-opening data-segments="{esc(parts)}" data-src="{esc(asset(opening["segments"][0],depth))}" '
+            f'muted playsinline preload="none" poster="{esc(poster)}" aria-label="MAS 46 FULL cinematic original design archive film"></video>'
+            '<button type="button" class="play-film" aria-label="Avvia o ferma il filmato">'
+            '<span class="play-icon">▶</span><span class="play-label">PLAY FILM</span></button>'
+            '<figcaption><span class="source-label">ORIGINAL DESIGN ARCHIVE</span>'
+            '<span>MAS 46 FULL · Opening film</span></figcaption></figure>'
         )
+    elif key:
+        media = section_media(key, depth, model_lookup, lakes, hero=True)
     else:
-        media=section_media(key,depth,model_lookup,lakes)
+        media = '<div class="hero-artwork"><span class="hero-artwork-ring"></span></div>'
+    title = 'VELLARIO' if home else page['title']
+    italy = ('<p class="hero-signature">La Dolce Vita, sull’Acqua.</p>' if home else '')
+    lead = page['lead']
+    if home and lead.startswith("La Dolce Vita, sull'Acqua. "):
+        lead = lead.split("La Dolce Vita, sull'Acqua. ", 1)[1]
+    next_id = page['sections'][0]['id'] if page['sections'] else ''
+    hint = ('<a class="hero-scroll" href="#' + esc(next_id) +
+            '"><span>SCOPRI IL MONDO VELLARIO</span><span class="scroll-line" aria-hidden="true"></span><span aria-hidden="true">↓</span></a>') if next_id else ''
     return (
-        '<div class="hero-intro"><p class="eyebrow">'+esc(page['kicker'])+'</p>'
-        '<h1>'+esc(page['title'])+'</h1>'+eng+'<p class="lede">'+esc(page['lead'])+'</p></div>'
-        +'<div class="hero-block">'+media+'</div>'
+        '<section class="cinema-hero' + (' cinema-hero--home' if home else '') + (' cinema-hero--text' if not key else '') + '">'
+        '<div class="cinema-backdrop">' + media + '</div><div class="cinema-shade"></div>'
+        '<div class="cinema-copy"><p class="cinema-overline">' + esc(page['kicker']) + '</p>'
+        '<h1>' + esc(title) + '</h1>' + italy +
+        ('<p class="cinema-english">' + esc(page['englishTagline']) + '</p>' if page.get('englishTagline') else '') +
+        '<p class="cinema-lead">' + esc(lead) + '</p></div>'
+        + hint + '<div class="hero-counter">VELLARIO / COMO <span>✳</span> ITALIA</div></section>'
     )
 
-def model_cards(depth,models,copy_lookup):
-    items=[]
-    for m in models:
-        href=site_path('collezione/'+m['id'],depth)
-        poster=asset(m['poster'],depth)
-        items.append(
-            '<a class="model-card" href="'+esc(href)+'">'
-            '<img src="'+esc(poster)+'" alt="'+esc(m['name'])+' original yacht design rendering" loading="lazy">'
-            '<span class="model-card-copy"><strong>'+esc(m['name'])+'</strong>'
-            '<small>'+esc(copy_lookup[m['id']]['tagline'])+' <span aria-hidden="true">→</span></small></span></a>'
+def model_cards(depth, models, copy_lookup):
+    cards = []
+    for i, m in enumerate(models, 1):
+        href = site_path('collezione/' + m['id'], depth)
+        image = asset(m['poster'], depth)
+        tag = copy_lookup[m['id']]['tagline']
+        cards.append(
+            '<a class="model-card' + (' model-card--featured' if i == 1 else '') + '" href="' + esc(href) + '">'
+            '<img src="' + esc(image) + '" alt="' + esc(m['name']) + ' original design rendering" loading="lazy" decoding="async">'
+            '<span class="model-card-overlay"></span>'
+            '<span class="model-card-index">LA COLLEZIONE <b>' + str(i).zfill(2) + ' / 05</b></span>'
+            '<span class="model-card-copy"><span><strong>' + esc(m['name']) + '</strong>'
+            '<small>' + esc(tag) + '</small></span>'
+            '<span class="card-explore" aria-label="Scopri il modello">↗</span></span>'
+            '</a>'
         )
-    return '<div class="model-card-grid">'+''.join(items)+'</div>'
+    return '<div class="model-card-grid">' + ''.join(cards) + '</div>'
 
 def editorial_page(page, depth, data, model_lookup, models):
-    out=[hero(page,depth,model_lookup,data['lakeSources'],data_opening(data,models))]
-    for i,s in enumerate(page['sections'],1):
-        out.append('<section class="editorial-section" id="'+esc(s['id'])+'">'
-                   '<div class="section-index">'+str(i).zfill(2)+'</div>'
-                   '<div class="section-copy"><h2>'+esc(s['title'])+'</h2>'
-                   +('<p class="english-subtitle">'+esc(s['englishLine'])+'</p>' if s.get('englishLine') else '')
-                   +'<p>'+esc(s['body'])+'</p>')
-        if s.get('source'):
-            src=s['source']
-            out.append('<p class="verified-source">Source: <a href="'+esc(src['url'])+
-                       '" target="_blank" rel="noopener noreferrer">'+esc(src['label'])+'</a></p>')
-        if s.get('link'):
-            n=next(x for x in data['nav'] if x['id']==s['link'])
-            out.append('<a class="section-link" href="'+esc(site_path(n['slug'],depth))+
-                       '">Explore '+esc(n['label'])+' <span aria-hidden="true">→</span></a>')
-        out.append('</div>')
-        if s.get('media'):
-            out.append('<div class="section-visual">'+section_media(s['media'],depth,model_lookup,data['lakeSources'])+'</div>')
-        if s.get('kind')=='collection':
-            out.append('<div class="section-collection">'+model_cards(depth,models,data['modelCopy'])+'</div>')
+    out = [hero(page, depth, model_lookup, data['lakeSources'], data_opening(data, models))]
+    for i, section in enumerate(page['sections'], 1):
+        has_media = bool(section.get('media'))
+        is_collection = section.get('kind') == 'collection'
+        classes = ['editorial-section', 'chapter', 'chapter--' + str(i % 3)]
+        if has_media:
+            classes.append('chapter--visual')
+        if is_collection:
+            classes.append('chapter--collection')
+        out.append(
+            '<section class="' + ' '.join(classes) + '" id="' + esc(section['id']) + '">'
+            '<div class="chapter-shell"><div class="chapter-number"><span>' + str(i).zfill(2) +
+            '</span><i></i><span>' + str(len(page['sections'])).zfill(2) + '</span></div>'
+            '<div class="chapter-content"><p class="chapter-eyebrow">' + esc(page['title']) + ' / ' +
+            esc(str(i).zfill(2)) + '</p><h2>' + esc(section['title']) + '</h2>' +
+            ('<p class="english-subtitle">' + esc(section['englishLine']) + '</p>' if section.get('englishLine') else '') +
+            '<p class="chapter-description">' + esc(section['body']) + '</p>'
+        )
+        if section.get('source'):
+            src = section['source']
+            out.append('<a class="source-link" href="' + esc(src['url']) +
+                       '" target="_blank" rel="noopener noreferrer">FONTE STORICA <span>↗</span> ' +
+                       esc(src['label']) + '</a>')
+        if section.get('link'):
+            destination = next(n for n in data['nav'] if n['id'] == section['link'])
+            out.append('<a class="text-link" href="' + esc(site_path(destination['slug'], depth)) +
+                       '">ESPLORA ' + esc(destination['label']) + '<span aria-hidden="true">↗</span></a>')
+        out.append('</div></div>')
+        if has_media:
+            out.append('<div class="chapter-media">' +
+                       section_media(section['media'], depth, model_lookup, data['lakeSources']) + '</div>')
+        if is_collection:
+            out.append('<div class="chapter-collection">' + model_cards(depth, models, data['modelCopy']) + '</div>')
         out.append('</section>')
+    if page['id'] not in ('home','contact'):
+        nav = data['nav']
+        pos = next(i for i, n in enumerate(nav) if n['id'] == page['id'])
+        nex = nav[(pos + 1) % len(nav)]
+        out.append('<div class="next-chapter"><span>CONTINUA IL VIAGGIO</span>'
+                   '<a href="' + esc(site_path(nex['slug'], depth)) + '">' + esc(nex['label']) +
+                   ' <span aria-hidden="true">↗</span></a></div>')
     return ''.join(out)
 
 def data_opening(data,models):
     return data.get('_opening',{})
 
 def model_page(model, copy, depth, data, models):
-    medium=section_media('model:'+model['id'],depth,{x['id']:x for x in models},data['lakeSources'])
-    out=['<div class="hero-intro"><p class="eyebrow">'+esc(copy['kicker'])+
-         ' / Archivio Progettuale</p><h1>'+esc(model['name'])+
-         '</h1><p class="lede">'+esc(copy['tagline'])+'</p>'
-         +('<p class="english-strapline">'+esc(copy['englishTagline'])+'</p>' if copy.get('englishTagline') else '')
-         +'<p class="working-note">'+
-         esc(copy['lead'])+'</p></div><div class="hero-block">'+medium+'</div>']
-    parts=[
-       ('Il Concept',copy['concept']),
-       ('Le Linee',copy['exterior']),
-       ('La Vita a Bordo',copy['aboard']),
-       ('Dettagli & Materiali',copy['details']),
-       ('Dati Tecnici',copy.get('specifications','Final technical specification under review.')),
+    key = 'model:' + model['id']
+    media = section_media(key, depth, {m['id']:m for m in models}, data['lakeSources'], hero=True)
+    out = [
+        '<section class="cinema-hero cinema-hero--model"><div class="cinema-backdrop">' + media +
+        '</div><div class="cinema-shade"></div><div class="cinema-copy">'
+        '<p class="cinema-overline">' + esc(copy['kicker']) + '</p>'
+        '<h1>' + esc(model['name']) + '</h1>'
+        '<p class="hero-signature">' + esc(copy['tagline']) + '</p>'
+        + ('<p class="cinema-english">' + esc(copy['englishTagline']) + '</p>' if copy.get('englishTagline') else '') +
+        '<p class="cinema-lead">' + esc(copy['lead']) + '</p></div>'
+        '<a class="hero-scroll" href="#concept"><span>SCOPRI IL PROGETTO</span><span class="scroll-line" aria-hidden="true"></span><span aria-hidden="true">↓</span></a>'
+        '<div class="hero-counter">VELLARIO / LA COLLEZIONE <span>✳</span> ITALIA</div></section>'
     ]
-    for i,(heading,text) in enumerate(parts,1):
-        out.append('<section class="editorial-section"><div class="section-index">'+str(i).zfill(2)+'</div>'
-                   '<div class="section-copy"><h2>'+esc(heading)+'</h2><p>'+esc(text)+'</p></div></section>')
-    photos=[]
-    for i,name in enumerate(model['images']):
-        photos.append('<figure><img src="'+esc(asset(name,depth))+'" alt="'+esc(model['name'])+
-                     ' archive rendering '+str(i+1)+'" loading="lazy"><figcaption>Archivio Progettuale · '+esc(model['name'])+'</figcaption></figure>')
-    out.append('<section class="editorial-section image-section"><div class="section-index">06</div>'
-               '<div class="section-copy"><h2>Galleria</h2><p>'+esc(copy.get('gallery','Original project imagery.'))+'</p></div>'
-               '<div class="image-gallery">'+''.join(photos)+'</div></section>')
-    out.append('<section class="editorial-section"><div class="section-index">07</div>'
-               '<div class="section-copy"><h2>Contatti</h2><p>'+esc(copy.get('enquiries','Dedicated enquiry channel forthcoming.'))+'</p>'
-               '<a class="section-link" href="'+esc(site_path('contatti',depth))+'">Contatti →</a></div></section>')
-    out.append('<nav class="model-next" aria-label="Altri modelli">'+model_cards(depth,models,data['modelCopy'])+'</nav>')
+    parts = [
+        ('concept','Il Concept',copy['concept']),
+        ('linee','Le Linee',copy['exterior']),
+        ('bordo','La Vita a Bordo',copy['aboard']),
+        ('dettagli','Dettagli & Materiali',copy['details']),
+        ('specifiche','Dati Tecnici',copy.get('specifications','Final technical specification under review.')),
+    ]
+    for i, (slug, label, paragraph) in enumerate(parts, 1):
+        out.append(
+            '<section class="editorial-section chapter chapter--' + str(i % 3) + '" id="' + slug + '">'
+            '<div class="chapter-shell"><div class="chapter-number"><span>' + str(i).zfill(2) + '</span><i></i><span>07</span></div>'
+            '<div class="chapter-content"><p class="chapter-eyebrow">LA COLLEZIONE / ' + esc(model['name']) +
+            '</p><h2>' + esc(label) + '</h2><p class="chapter-description">' + esc(paragraph) +
+            '</p></div></div></section>'
+        )
+    photos = []
+    for i, name in enumerate(model['images']):
+        photos.append(
+            '<figure class="gallery-image gallery-image--' + str(i%3) + '"><img src="' +
+            esc(asset(name, depth)) + '" alt="' + esc(model['name']) + ' archival rendering ' + str(i+1) +
+            '" loading="lazy" decoding="async"><figcaption>' + esc(model['name']) +
+            ' / ARCHIVIO PROGETTUALE <span>' + str(i+1).zfill(2) + '</span></figcaption></figure>'
+        )
+    out.append(
+        '<section class="gallery-chapter" id="galleria"><div class="gallery-title"><span>06 / 07 · LA COLLEZIONE</span>'
+        '<h2>Galleria</h2><p>' + esc(copy.get('gallery','Original project imagery.')) +
+        '</p></div><div class="image-gallery">' + ''.join(photos) + '</div></section>'
+    )
+    out.append(
+        '<section class="editorial-section chapter chapter--closing" id="contatti">'
+        '<div class="chapter-shell"><div class="chapter-number"><span>07</span><i></i><span>07</span></div>'
+        '<div class="chapter-content"><p class="chapter-eyebrow">UN INVITO PERSONALE</p><h2>Contatti</h2>'
+        '<p class="chapter-description">' + esc(copy.get('enquiries','Contact channel forthcoming.')) +
+        '</p><a class="text-link" href="' + esc(site_path('contatti',depth)) +
+        '">CONTATTI <span aria-hidden="true">↗</span></a></div></div></section>'
+    )
+    out.append(
+        '<section class="collection-after"><div class="collection-after-title"><span>LA COLLEZIONE</span>'
+        '<h2>Discover the Collection.</h2></div>' + model_cards(depth, models, data['modelCopy']) + '</section>'
+    )
     return ''.join(out)
 
 def generate(data,catalog,where):
@@ -205,9 +287,12 @@ def generate(data,catalog,where):
         html_doc=(
           '<!doctype html>\n<html lang="en"><head><meta charset="utf-8">'
           '<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">'
-          '<meta name="theme-color" content="#102018"><meta name="robots" content="noindex,nofollow,noarchive">'
+          '<meta name="theme-color" content="#0b1712"><meta name="robots" content="noindex,nofollow,noarchive">'
           '<meta name="description" content="'+esc(desc)+'">'
           '<title>'+esc(title)+' | VELLARIO · COMO</title>'
+          '<link rel="preconnect" href="https://fonts.googleapis.com">'
+          '<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>'
+          '<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">'
           '<link rel="stylesheet" href="'+esc(source_css)+'"><script src="'+esc(source_js)+'" defer></script>'
           '</head><body data-page="'+esc(pid)+'">'
           +header(pid,depth,data)+'<main id="main-content">'+body+'</main>'
