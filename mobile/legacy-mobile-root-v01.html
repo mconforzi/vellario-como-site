@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#111714">
+<meta name="robots" content="noindex,nofollow,noarchive">
+<meta name="description" content="VELLARIO COMO — mobile functional root. Media, navigation and model selection before UI styling.">
+<title>VELLARIO · COMO | Mobile Root</title>
+<link rel="preload" as="image" href="../assets/vario/mas46-poster.webp">
+<link rel="stylesheet" href="./core.css?v=1">
+<script src="./core.js?v=1" defer></script>
+</head>
+<body>
+<header class="bar">
+ <div class="brand"><b>VELLARIO · COMO</b><small>MOBILE FOUNDATION / 0.1</small></div>
+ <a href="#models" class="text-link">MODELS ↓</a>
+</header>
+<main>
+ <section id="opening" class="opening" aria-label="Opening MAS 46 FULL film">
+  <div class="media-area hero-media">
+   <img id="openingPoster" class="poster" src="../assets/vario/mas46-poster.webp" alt="Original MAS 46 yacht render" fetchpriority="high">
+   <video id="openingVideo" muted playsinline preload="metadata" poster="../assets/vario/mas46-poster.webp" aria-label="MAS 46 FULL original yacht design film"></video>
+   <div class="media-caption"><span>OPENING FILM</span><strong>MAS 46 FULL</strong><span id="openingSegment">01 / 06</span></div>
+  </div>
+  <div class="film-controls">
+   <button id="openingToggle" type="button" aria-label="Play or pause opening film">Play film</button>
+   <span id="openingStatus" role="status" aria-live="polite">Loading source…</span>
+  </div>
+ </section>
+ <aside class="lake-preview-jump"><a href="./lakes/" aria-label="Apri filmati segnaposto 4K dei laghi">COMO FIRST · Anteprima video laghi 4K <span aria-hidden="true">→</span></a><small>Placeholder Creative Commons · filmati dei modelli originali invariati</small></aside>
+<section id="models" class="models" aria-label="Choose a yacht model">
+  <div class="section-head"><span>01 / COLLECTION</span><h1>Choose a model.</h1><p>One verified design study at a time.</p></div>
+  <nav id="modelTabs" class="model-tabs" role="tablist" aria-label="Models">
+   <span class="muted">Loading the model catalogue…</span>
+  </nav>
+  <article class="model-view" aria-live="polite">
+    <div class="model-info">
+      <p class="label">ARCHIVE / <span id="modelCounter">01 / 05</span></p>
+      <h2 id="modelTitle">Loading…</h2>
+      <p id="modelSource">Original media verification pending</p>
+    </div>
+    <div class="media-area model-media" id="modelMedia">
+       <img id="modelPoster" class="poster" alt="Selected yacht design study" src="../assets/vario/quantum.webp">
+       <video id="modelVideo" muted playsinline loop preload="none" aria-label="Selected yacht footage"></video>
+       <div id="mediaFallback" class="fallback-tag" hidden>Original photograph</div>
+    </div>
+    <div class="film-controls">
+       <button id="modelToggle" type="button" aria-label="Play or pause model footage">Play model film</button>
+       <span id="modelStatus" role="status" aria-live="polite">Waiting for the catalogue…</span>
+    </div>
+    <div class="model-controls">
+       <button id="previousModel" type="button" aria-label="Previous yacht">← Previous</button>
+       <span id="modelStep" aria-label="Model number">1 of 5</span>
+       <button id="nextModel" type="button" aria-label="Next yacht">Next →</button>
+    </div>
+  </article>
+  <div id="gallery" class="gallery" aria-label="Original model photographs"></div>
+ </section>
+ <section class="diagnostics" aria-label="Root functional diagnostics">
+  <details id="diagnostics">
+    <summary>Functional diagnostics</summary>
+    <button id="runDiagnostics" type="button">Check core media</button>
+    <pre id="diagnosticResults" aria-live="polite">Core checks available after loading.</pre>
+  </details>
+ </section>
+</main>
+<footer class="footer"><strong>VELLARIO · COMO</strong><span>PRIVATE FUNCTIONAL CONCEPT · NO ORDERS / NO PUBLIC LAUNCH</span></footer>
+<div id="bootError" role="alert" class="boot-error" hidden>Media catalogue unavailable. <button id="retryLoad" type="button">Try again</button></div>
+</body>
+</html>
