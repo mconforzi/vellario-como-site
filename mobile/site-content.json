@@ -1,0 +1,469 @@
+{
+  "schemaVersion": 1,
+  "release": "mobile-foundation-content-v1",
+  "status": "working-copy-not-approved",
+  "locale": "en",
+  "date": "2026-11-08",
+  "brand": "VELLARIO · COMO",
+  "base": "/mobile/",
+  "nav": [
+    {
+      "id": "como",
+      "label": "Como",
+      "slug": "como"
+    },
+    {
+      "id": "dolce-vita",
+      "label": "Italian Dolce Vita",
+      "slug": "dolce-vita"
+    },
+    {
+      "id": "collection",
+      "label": "The Collection",
+      "slug": "collection"
+    },
+    {
+      "id": "history-legacy",
+      "label": "History & Legacy",
+      "slug": "history-legacy"
+    },
+    {
+      "id": "design-craftsmanship",
+      "label": "Design & Craftsmanship",
+      "slug": "design-craftsmanship"
+    },
+    {
+      "id": "maison",
+      "label": "The Maison",
+      "slug": "maison"
+    },
+    {
+      "id": "contact",
+      "label": "Contact",
+      "slug": "contact"
+    }
+  ],
+  "editorialRule": "All descriptions are working editorial copy; original images and footage document archived yacht design studies, not delivered VELLARIO boats. VELLARIO naming, commercial rights, production partnerships and final specifications remain unverified.",
+  "lakeSources": {
+    "como": {
+      "place": "Lake Como, Italy",
+      "video": "como-mobile.mp4",
+      "poster": "como-poster.jpg",
+      "source": "https://commons.wikimedia.org/wiki/File:Lake_Como_Drone_Views_-_DJI_Inspire_2_%26_Zenmuse_X5S.webm",
+      "author": "Electric Life",
+      "license": "CC BY 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/3.0/",
+      "originalPixels": "3840×2160",
+      "previewPixels": "1920×1080"
+    },
+    "bled": {
+      "place": "Lake Bled, Slovenia — not Lake Como",
+      "video": "bled-mobile.mp4",
+      "poster": "bled-poster.jpg",
+      "source": "https://commons.wikimedia.org/wiki/File:Slovenia_-_Lake_Bled_-_4K_drone_video.webm",
+      "author": "Danny Rest",
+      "license": "CC BY 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/3.0/",
+      "originalPixels": "3840×2026",
+      "previewPixels": "2046×1080"
+    },
+    "geneva": {
+      "place": "Lake Geneva, Switzerland — not Lake Como",
+      "video": "geneva-mobile.mp4",
+      "poster": "geneva-poster.jpg",
+      "source": "https://commons.wikimedia.org/wiki/File:Above_Geneva_Lake_083656.webm",
+      "author": "Quahadi",
+      "license": "CC BY-SA 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/",
+      "originalPixels": "3840×2160",
+      "previewPixels": "1920×1080"
+    },
+    "chillon": {
+      "place": "Chillon, Lake Geneva — not Lake Como",
+      "video": "chillon-mobile.mp4",
+      "poster": "chillon-poster.jpg",
+      "source": "https://commons.wikimedia.org/wiki/File:Chillon_Castle.webm",
+      "author": "SimonWaldherr",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "originalPixels": "3840×2160",
+      "previewPixels": "1920×1080"
+    }
+  },
+  "pages": [
+    {
+      "id": "home",
+      "slug": "",
+      "title": "VELLARIO · COMO",
+      "kicker": "Italian Nautical Maison · In Development",
+      "lead": "An idea born from the elegance of Lake Como, expressed through a new collection of Italian nautical design studies.",
+      "hero": "opening",
+      "sections": [
+        {
+          "id": "origin",
+          "title": "A lake. A point of view.",
+          "body": "Como is more than a location. Its landscape, architecture and relationship with the water form the cultural reference for VELLARIO.",
+          "link": "como",
+          "media": "como"
+        },
+        {
+          "id": "life",
+          "title": "The Italian Dolce Vita",
+          "body": "The pleasure of time spent well: unhurried journeys, beautiful places and the simple privilege of being on the water.",
+          "link": "dolce-vita",
+          "media": "bled"
+        },
+        {
+          "id": "models",
+          "title": "Five distinct directions",
+          "body": "The collection begins with Quantum 999, MAS 36, MAS 56, GranTender 72 and Gran Marlin. Each is presented as a design study, not an already manufactured VELLARIO yacht.",
+          "link": "collection",
+          "kind": "collection"
+        },
+        {
+          "id": "history",
+          "title": "History & Legacy",
+          "body": "The Larian boating tradition provides a cultural starting point, not an invented company history. Its stories belong to generations of craftspeople, designers and boatbuilders.",
+          "link": "history-legacy"
+        },
+        {
+          "id": "craft",
+          "title": "Design & Craftsmanship",
+          "body": "A contemporary interpretation of proportion, detailing and personal expression, to be developed with rigorous design and carefully selected future production partners.",
+          "link": "design-craftsmanship",
+          "media": "model:mas-56"
+        },
+        {
+          "id": "vision",
+          "title": "The Maison",
+          "body": "VELLARIO is conceived as an independent, design-led luxury nautical brand: distinctive identity, meticulous direction and an individual relationship with each future client.",
+          "link": "maison"
+        },
+        {
+          "id": "dialogue",
+          "title": "A conversation begins",
+          "body": "The commercial introduction and dedicated contact channel will be published after verification. Explore the collection and the story in the meantime.",
+          "link": "contact"
+        }
+      ]
+    },
+    {
+      "id": "como",
+      "slug": "como",
+      "title": "Como",
+      "kicker": "01 / The Place",
+      "lead": "The landscape behind the vision. Water, stone, light and a culture shaped by the lake.",
+      "hero": "como",
+      "sections": [
+        {
+          "id": "lake",
+          "title": "The Lake",
+          "body": "The Lario is not a decorative background to the brand. Its relationship between mountains, shorelines and water is the geographic starting point for VELLARIO.",
+          "source": {
+            "label": "Regione Lombardia · Lake Como",
+            "url": "https://www.in-lombardia.it/en/tourism-in-lombardy/lake-como"
+          }
+        },
+        {
+          "id": "architecture",
+          "title": "Villas & Architecture",
+          "body": "The lake's villas are part of an enduring architectural culture. Villa del Balbianello, on the promontory of Lavedo in Lenno, is a documented example of its layered history.",
+          "source": {
+            "label": "FAI · Villa del Balbianello",
+            "url": "https://fondoambiente.it/luoghi/villa-del-balbianello?lang=eng"
+          }
+        },
+        {
+          "id": "water",
+          "title": "Living With Water",
+          "body": "At Como, moving across the water changes the perspective of place. The shore is experienced through approach, distance, arrival and return. This is a creative direction, not a historical claim."
+        },
+        {
+          "id": "nautical",
+          "title": "Nautical Culture",
+          "body": "The Museo Barca Lariana at Pianello del Lario preserves historic boats, motors and nautical records, providing a documented foundation for understanding the lake's boating culture.",
+          "source": {
+            "label": "Museo Barca Lariana",
+            "url": "https://www.museobarcalariana.it/il-museo/"
+          }
+        },
+        {
+          "id": "inspiration",
+          "title": "The Inspiration",
+          "body": "VELLARIO draws creative inspiration from this context. The intention is to develop a contemporary nautical identity connected to the Lario without claiming the achievements of historical boatyards as its own."
+        }
+      ]
+    },
+    {
+      "id": "dolce-vita",
+      "slug": "dolce-vita",
+      "title": "Italian Dolce Vita",
+      "kicker": "02 / The Way of Life",
+      "lead": "Not the pursuit of more. The art of making a moment memorable.",
+      "hero": "bled",
+      "sections": [
+        {
+          "id": "time",
+          "title": "The Luxury of Time",
+          "body": "A quiet morning, a long arrival, a table shared without hurry. Our proposed lifestyle language values time and experience before spectacle."
+        },
+        {
+          "id": "water",
+          "title": "On the Water",
+          "body": "The water is a destination and a perspective. The nautical object matters because of the life it makes possible—not as a backdrop to a generic luxury campaign."
+        },
+        {
+          "id": "elegance",
+          "title": "Italian Elegance",
+          "body": "Restraint, proportion, hospitality and attention to detail form the intended VELLARIO sensibility. The definitive lifestyle photography and styling are still to be produced."
+        },
+        {
+          "id": "aboard",
+          "title": "Life Aboard",
+          "body": "The on-board narrative will follow verified yacht layouts and photography. No cabin, furniture, amenity or finished interior is attributed to a model until its source is approved."
+        },
+        {
+          "id": "discover",
+          "title": "Explore the Collection",
+          "body": "The five design studies are the product expression of this vision.",
+          "link": "collection"
+        }
+      ]
+    },
+    {
+      "id": "collection",
+      "slug": "collection",
+      "title": "The Collection",
+      "kicker": "03 / Five Design Studies",
+      "lead": "Five different expressions of nautical design, gathered into one developing VELLARIO collection.",
+      "hero": "model:mas-56",
+      "sections": [
+        {
+          "id": "models",
+          "title": "Discover the Five",
+          "body": "Quantum 999 · MAS 36 · MAS 56 · GranTender 72 · Gran Marlin. Select a design study to explore its original visual material.",
+          "kind": "collection"
+        },
+        {
+          "id": "source",
+          "title": "Original Design Archive",
+          "body": "The imagery in these pages is drawn from the existing project archive. It is not evidence of manufacture, deliveries, specifications or a verified VELLARIO production partner."
+        },
+        {
+          "id": "tailoring",
+          "title": "Personalisation · Vision",
+          "body": "The commercial ambition is one-to-one design direction and carefully considered individual expression. An operating customisation service has not yet been announced."
+        },
+        {
+          "id": "enquiries",
+          "title": "Private Enquiries",
+          "body": "A verified direct contact channel is still being prepared. This preview does not collect enquiries or personal data.",
+          "link": "contact"
+        }
+      ]
+    },
+    {
+      "id": "history-legacy",
+      "slug": "history-legacy",
+      "title": "History & Legacy",
+      "kicker": "04 / The Larian Tradition",
+      "lead": "The history belongs to the lake. Our task is to understand it before proposing a new chapter.",
+      "hero": "como",
+      "sections": [
+        {
+          "id": "water",
+          "title": "A Culture of Water",
+          "body": "Boats on Lake Como have served work, transport, sport and leisure. The Museo Barca Lariana documents these traditions through historic vessels and objects.",
+          "source": {
+            "label": "Museo Barca Lariana · Collection",
+            "url": "https://www.museobarcalariana.it/"
+          }
+        },
+        {
+          "id": "boats",
+          "title": "From Workboats to Runabouts",
+          "body": "The museum's collections include rowing and working boats, sailing craft, leisure motorboats and racing hulls—a history wider than the familiar polished runabout.",
+          "source": {
+            "label": "Museo Barca Lariana · Museum",
+            "url": "https://www.museobarcalariana.it/il-museo/"
+          }
+        },
+        {
+          "id": "craft",
+          "title": "Craft & Competition",
+          "body": "Historic makers and performance craft form part of the Larian tradition. Source material must distinguish the work of established builders from the future VELLARIO brand.",
+          "source": {
+            "label": "Museo Barca Lariana · Heritage",
+            "url": "https://www.museobarcalariana.it/"
+          }
+        },
+        {
+          "id": "memory",
+          "title": "Preserving the Memory",
+          "body": "The museum at Pianello del Lario occupies a former nineteenth-century silk mill and preserves the material culture of boating on the lake. No relationship with VELLARIO is claimed.",
+          "source": {
+            "label": "Regione Lombardia · Museo Barca Lariana",
+            "url": "https://musei.regione.lombardia.it/wps/portal/site/musei-riconosciuti-in-lombardia/ricerca-musei/dettagliostruttura/CO/fondazione-museo-barca-lariana-pianello-del-lario/fondazione-museo-barca-lariana-pianello-del-lario"
+          }
+        },
+        {
+          "id": "continuity",
+          "title": "A Contemporary Interpretation",
+          "body": "VELLARIO proposes a design-led interpretation of these cultural references. This is inspiration, not a claim of inherited shipyard history. Riva was founded at Sarnico on Lake Iseo, not on Lake Como.",
+          "source": {
+            "label": "Riva · Official History",
+            "url": "https://www.riva-yacht.com/it-it/History"
+          }
+        }
+      ]
+    },
+    {
+      "id": "design-craftsmanship",
+      "slug": "design-craftsmanship",
+      "title": "Design & Craftsmanship",
+      "kicker": "05 / Our Design Intent",
+      "lead": "A boat should have a recognisable identity before it carries a signature.",
+      "hero": "model:quantum-999",
+      "sections": [
+        {
+          "id": "proportion",
+          "title": "Proportion First",
+          "body": "Length, line, surface and balance are the first questions of nautical design. The portfolio presents visual studies; a unified VELLARIO design language remains to be formalised."
+        },
+        {
+          "id": "exterior",
+          "title": "Exterior Design",
+          "body": "The original archive contains model-specific renders and project imagery. The final exterior design narrative will be built around approved sources, not around generic claims of performance.",
+          "media": "model:mas-56"
+        },
+        {
+          "id": "details",
+          "title": "Materials & Details",
+          "body": "The intended material language favours considered finish, durable elegance and tactile precision. Specific suppliers, finishes and certified materials are not yet confirmed."
+        },
+        {
+          "id": "engineering",
+          "title": "Engineering Discipline",
+          "body": "Performance, dimensions, propulsion and compliance will be documented only when project documentation and construction plans have been authorised and verified."
+        },
+        {
+          "id": "personalisation",
+          "title": "Personalisation",
+          "body": "Individual colour, finish and layout direction is part of the proposed luxury brand architecture. Formal offerings and production capability remain future decisions."
+        }
+      ]
+    },
+    {
+      "id": "maison",
+      "slug": "maison",
+      "title": "The Maison",
+      "kicker": "06 / Why VELLARIO",
+      "lead": "A new Italian nautical maison conceived to bring extraordinary attention to the relationship between design, water and the individual.",
+      "hero": "geneva",
+      "sections": [
+        {
+          "id": "why",
+          "title": "The Beginning",
+          "body": "VELLARIO begins with an entrepreneurial ambition: to make a nautical object as singular and desirable as the finest collector's objects, with a distinctly Italian sensibility."
+        },
+        {
+          "id": "italian",
+          "title": "Italian Identity",
+          "body": "The cultural reference is Lake Como—its landscape, architectural restraint and boating tradition—interpreted with a contemporary design perspective."
+        },
+        {
+          "id": "structure",
+          "title": "A Design-Led Maison",
+          "body": "The intended business is asset-light: the brand will direct design, product specification, quality standards and client experience, while production is envisaged through future selected external shipyards. No yard agreement is claimed."
+        },
+        {
+          "id": "relationship",
+          "title": "The Relationship",
+          "body": "The intended client experience is direct, discreet and individual. A confirmed commercial process, showroom and post-sale service network have not yet been announced."
+        },
+        {
+          "id": "future",
+          "title": "What Comes Next",
+          "body": "Brand foundations, verified media, project strategy and a coherent collection come before production and launch. The next chapter will be communicated only when supported by real milestones."
+        }
+      ]
+    },
+    {
+      "id": "contact",
+      "slug": "contact",
+      "title": "Contact",
+      "kicker": "07 / Introduction",
+      "lead": "A direct relationship deserves a real point of contact.",
+      "hero": null,
+      "sections": [
+        {
+          "id": "conversation",
+          "title": "A Personal Introduction",
+          "body": "VELLARIO is being developed as a selective, design-led nautical maison. The dedicated client communications channel is not yet active."
+        },
+        {
+          "id": "channel",
+          "title": "Contact Details",
+          "body": "A verified public email address, enquiry workflow and response process will appear here once approved. No form is displayed because it would not yet have a genuine recipient."
+        },
+        {
+          "id": "privacy",
+          "title": "Privacy & Enquiries",
+          "body": "Before personal information is collected, the appropriate privacy information and a verified receiving system will be implemented. This preview collects no personal details."
+        }
+      ]
+    }
+  ],
+  "modelCopy": {
+    "quantum-999": {
+      "kicker": "Collection / 01",
+      "tagline": "A contemporary study of nautical form.",
+      "lead": "Quantum 999 is an original design-archive project selected for the developing VELLARIO collection.",
+      "concept": "The original Quantum 999 visual archive is the only source used on this page. A final design manifesto and technical brief have not been approved.",
+      "exterior": "The renderings introduce the project's exterior study. No dimension, material or performance claim is inferred from the images.",
+      "aboard": "The approved arrangement and on-board experience are still being reviewed. We will publish layout material only when it matches the project documentation.",
+      "details": "Finish studies and detailing will be sourced from original project files before they are described in the VELLARIO language."
+    },
+    "mas-36": {
+      "kicker": "Collection / 02",
+      "tagline": "An original study, shown through its renderings.",
+      "lead": "MAS 36 is presented with original images from its design portfolio. A historical press kit and TIFF master files are available for editorial review.",
+      "concept": "The design reference is an existing MAS 36 project, not a VELLARIO vessel already built. Product positioning is still being defined.",
+      "exterior": "Sharp original renderings take priority over footage that does not meet the visual standard. The model's silhouette will be curated from the verified archive.",
+      "aboard": "Original layouts and visual material must be reviewed before descriptions of interiors or deck arrangements are published.",
+      "details": "Material finishes shown in the archive cannot be treated as confirmed VELLARIO build specifications."
+    },
+    "mas-56": {
+      "kicker": "Collection / 03",
+      "tagline": "The MAS 56 design direction.",
+      "lead": "MAS 56 is the confirmed name of the third VELLARIO collection study, with its own rendering and film archive.",
+      "concept": "The MAS 56 imagery is assigned exclusively to this model. MAS 52 is no longer the name of this collection entry.",
+      "exterior": "The model's widescreen renderings and moving-image material are a basis for future editorial work, not a declaration of production readiness.",
+      "aboard": "The on-board arrangement and amenity descriptions will be developed from approved project plans, not invented from imagery.",
+      "details": "Detailed materials, build standards and personalisation options remain to be technically validated."
+    },
+    "grantender-72": {
+      "kicker": "Collection / 04",
+      "tagline": "A tender study in the original design archive.",
+      "lead": "GranTender 72 is a distinct project with renderings, source design models and presentation materials in the archive.",
+      "concept": "GranTender is the collection name. The original MAXITENDER-named assets are archival sources, not a second boat in the range.",
+      "exterior": "The existing materials allow a visual presentation of the original design study, while any final VELLARIO design specification awaits approval.",
+      "aboard": "Deck layouts and arrangements require review of the available project drawings before publication.",
+      "details": "The existence of CAD and render source files does not demonstrate that a VELLARIO-built GranTender exists."
+    },
+    "gran-marlin": {
+      "kicker": "Collection / 05",
+      "tagline": "An original design archive, thoughtfully presented.",
+      "lead": "Gran Marlin brings a distinct source project into the VELLARIO collection study, supported by original imagery and bilingual press material.",
+      "concept": "Historic sources use the designation Gran Marlin 46. The working VELLARIO label is Gran Marlin; legacy technical data are not automatically transferred.",
+      "exterior": "Only the project's own renderings and film are used. Exterior characteristics will be described after the original documentation has been reviewed.",
+      "aboard": "On-board descriptions, accommodation and dimensions remain to be verified against the real project files.",
+      "details": "The available press imagery is a candidate for editorial selection, subject to attribution and usage-rights review."
+    }
+  },
+  "sourceDocs": [
+    "docs/SITEMAP_CANONICA_V1_2026-11-08.md",
+    "docs/EDITORIAL_MATRIX_V1_2026-11-08.csv",
+    "docs/CONTENT_SOURCE_INDEX_2026-11-08.md"
+  ]
+}
