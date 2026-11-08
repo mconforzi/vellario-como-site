@@ -1,0 +1,34 @@
+# VELLARIO Mobile Foundation — generation contract
+
+This folder uses **content first, progressive enhancement second**.
+
+## Architecture
+- \`site-content.json\`: one canonically versioned source for page copy, navigation, links, editorial status, sources, lake-placeholder attribution.
+- \`catalog.json\`: one canonically versioned source for five yacht model names and exact model media; deliberately **not duplicated** into the editorial JSON.
+- \`build_site.py\`: dependency-free Python script. Produces **13 static HTML pages** with source text already present. No JS-dependent blank state.
+- \`site.css\`: restrained minimal layout only; production UI and motion are out of scope.
+- \`site.js\`: optional enhancement for muted/lazy video playback, MAS46 multipart opening, pause offscreen and image fallback.
+- \`route-manifest.json\`: generated route list and acceptance metadata.
+
+Build from repo root:
+\`\`\`bash
+python3 mobile/build_site.py --out /tmp/vellario-build
+  --site-data mobile/site-content.json --catalog mobile/catalog.json
+\`\`\`
+Then copy the generated output into \`mobile/\`, retaining existing \`mobile/lakes/\`, \`core.js\`, \`core.css\` and old diagnostic root at \`legacy-mobile-root-v01.html\`.
+
+## Formal acceptance
+- Exactly 13 routes: home, 7 editorial pillars and 5 yacht detail pages.
+- Como first in the mobile menu; The Maison autonomous; MAS56 not MAS52.
+- Page content is *static HTML* (nonempty when JS disabled), nav resolves to real pages, no dead CTA/form.
+- Only matching media in model detail pages, photo fallback when video fails.
+- Stock scenery is properly labelled and credited (not confused with Como).
+- All pages noindexed during content-only drafting.
+- Real browser QA at iPhone 390x844 and desktop 1440x900, zero horizontal overflow and uncaught JS errors.
+- Preserve public homepage \`/index.html\` and previous site preview \`/v5.html\` while /mobile is under editorial review.
+- Before saying done: public Pages build built, source readback, Gmail and AI.HQ sink verification. If unavailable, NOT VERIFIED.
+
+## Still open
+Final copy and image selection owner approval, stock rights/attribution, project commercial image rights, actual contacts, specifications, naming checks, Safari iPhone physical device, AI.HQ entanglement receipts.
+
+No paid services, recurring assets, third-party API keys, or external JS frameworks introduced.
