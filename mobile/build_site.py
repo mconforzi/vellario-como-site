@@ -73,11 +73,11 @@ def footer(depth, data):
     return (
         '<footer class="site-footer">'
         '<div class="footer-mark">VELLARIO · COMO</div>'
-        '<p>'+esc(foot.get('statement','A new Italian nautical maison.'))+'</p>'
+        '<p>'+esc(foot.get('statement','Una nuova casa italiana della nautica.'))+'</p>'
         '<p>'+esc(foot.get('disclosure','Design concept preview.'))+'</p>'
-        '<p><a href="'+esc(site_path('contact',depth))+'">Contact</a> · '
-        '<a href="'+esc(site_path('collection',depth))+'">The Collection</a> · '
-        '<a href="'+esc(site_path('',depth))+'">Home</a></p>'
+        '<p><a href="'+esc(site_path('contatti',depth))+'">Contatti</a> · '
+        '<a href="'+esc(site_path('collezione',depth))+'">La Collezione</a> · '
+        '<a href="'+esc(site_path('',depth))+'">Inizio</a></p>'
         '</footer>'
     )
 
@@ -94,7 +94,7 @@ def hero(page, depth, model_lookup, lakes, opening, content_model=None):
             f'<img class="media-poster" src="{esc(poster)}" alt="MAS 46 original yacht design study" fetchpriority="high">'
             f'<video data-film data-opening data-segments="{esc(segments)}" data-src="{esc(asset(opening["segments"][0],depth))}" muted playsinline preload="none" poster="{esc(poster)}" aria-label="MAS 46 FULL original opening film"></video>'
             '<button type="button" class="play-film" aria-label="Play or pause MAS 46 film">Play film</button>'
-            '<span class="media-identifier">MAS 46 FULL · design archive opening film</span></div>'
+            '<span class="media-identifier">MAS 46 FULL · archivio progettuale</span></div>'
         )
     else:
         media=section_media(key,depth,model_lookup,lakes)
@@ -107,7 +107,7 @@ def hero(page, depth, model_lookup, lakes, opening, content_model=None):
 def model_cards(depth,models,copy_lookup):
     items=[]
     for m in models:
-        href=site_path('collection/'+m['id'],depth)
+        href=site_path('collezione/'+m['id'],depth)
         poster=asset(m['poster'],depth)
         items.append(
             '<a class="model-card" href="'+esc(href)+'">'
@@ -145,15 +145,15 @@ def data_opening(data,models):
 def model_page(model, copy, depth, data, models):
     medium=section_media('model:'+model['id'],depth,{x['id']:x for x in models},data['lakeSources'])
     out=['<div class="hero-intro"><p class="eyebrow">'+esc(copy['kicker'])+
-         ' / original design archive</p><h1>'+esc(model['name'])+
+         ' / Archivio Progettuale</p><h1>'+esc(model['name'])+
          '</h1><p class="lede">'+esc(copy['tagline'])+'</p><p class="working-note">'+
          esc(copy['lead'])+'</p></div><div class="hero-block">'+medium+'</div>']
     parts=[
-       ('The Concept',copy['concept']),
-       ('Exterior Design',copy['exterior']),
-       ('Life on Board',copy['aboard']),
-       ('Details & Materials',copy['details']),
-       ('Specifications',copy.get('specifications','Final technical specification under review.')),
+       ('Il Concept',copy['concept']),
+       ('Le Linee',copy['exterior']),
+       ('La Vita a Bordo',copy['aboard']),
+       ('Dettagli & Materiali',copy['details']),
+       ('Dati Tecnici',copy.get('specifications','Final technical specification under review.')),
     ]
     for i,(heading,text) in enumerate(parts,1):
         out.append('<section class="editorial-section"><div class="section-index">'+str(i).zfill(2)+'</div>'
@@ -161,13 +161,13 @@ def model_page(model, copy, depth, data, models):
     photos=[]
     for i,name in enumerate(model['images']):
         photos.append('<figure><img src="'+esc(asset(name,depth))+'" alt="'+esc(model['name'])+
-                     ' archive rendering '+str(i+1)+'" loading="lazy"><figcaption>Original design archive · '+esc(model['name'])+'</figcaption></figure>')
+                     ' archive rendering '+str(i+1)+'" loading="lazy"><figcaption>Archivio Progettuale · '+esc(model['name'])+'</figcaption></figure>')
     out.append('<section class="editorial-section image-section"><div class="section-index">06</div>'
-               '<div class="section-copy"><h2>Gallery</h2><p>'+esc(copy.get('gallery','Original project imagery.'))+'</p></div>'
+               '<div class="section-copy"><h2>Galleria</h2><p>'+esc(copy.get('gallery','Original project imagery.'))+'</p></div>'
                '<div class="image-gallery">'+''.join(photos)+'</div></section>')
     out.append('<section class="editorial-section"><div class="section-index">07</div>'
-               '<div class="section-copy"><h2>Enquiries</h2><p>'+esc(copy.get('enquiries','Dedicated enquiry channel forthcoming.'))+'</p>'
-               '<a class="section-link" href="'+esc(site_path('contact',depth))+'">Contact information →</a></div></section>')
+               '<div class="section-copy"><h2>Contatti</h2><p>'+esc(copy.get('enquiries','Dedicated enquiry channel forthcoming.'))+'</p>'
+               '<a class="section-link" href="'+esc(site_path('contatti',depth))+'">Contatti →</a></div></section>')
     out.append('<nav class="model-next" aria-label="Altri modelli">'+model_cards(depth,models,data['modelCopy'])+'</nav>')
     return ''.join(out)
 
@@ -184,7 +184,7 @@ def generate(data,catalog,where):
     model_lookup={m['id']:m for m in models}
     paths=[]
     entries=[(p['slug'],p,None) for p in data['pages']]
-    entries += [('collection/'+m['id'],None,m) for m in models]
+    entries += [('collezione/'+m['id'],None,m) for m in models]
     root=Path(where)
     for slug,page,model in entries:
         depth=slug.count('/')+1 if slug else 0
@@ -213,8 +213,36 @@ def generate(data,catalog,where):
         if '<h1>' not in html_doc or '<main' not in html_doc:
             raise ValueError('Generated route missing static core content: '+slug)
         paths.append({'slug':slug,'path':str(dest.relative_to(root)),'name':title,'bytes':len(html_doc.encode('utf-8'))})
+    # Preserve old English/French URLs so previously shared site links keep working.
+    legacy_redirects = {
+        'collection': 'collezione',
+        'history-legacy': 'storia-tradizione',
+        'design-craftsmanship': 'design-saper-fare',
+        'maison': 'casa-vellario',
+        'contact': 'contatti',
+    }
+    legacy_redirects.update({
+        'collection/' + m['id']: 'collezione/' + m['id'] for m in models
+    })
+    legacy=[]
+    for old_slug,new_slug in legacy_redirects.items():
+        old_depth=old_slug.count('/')+1
+        new_url=site_path(new_slug,old_depth)
+        old_dir=root/old_slug
+        old_dir.mkdir(parents=True,exist_ok=True)
+        redirect_html=(
+            '<!doctype html><html lang="en"><head><meta charset="utf-8">'
+            '<meta name="robots" content="noindex,nofollow">'
+            '<meta http-equiv="refresh" content="0; url='+esc(new_url)+'">'
+            '<title>VELLARIO · COMO — Nuovo Indirizzo</title></head>'
+            '<body><p>La pagina è stata aggiornata: <a href="'+esc(new_url)+'">'
+            'Apri la nuova pagina</a>.</p></body></html>\n'
+        )
+        old_file=old_dir/'index.html'
+        old_file.write_text(redirect_html,encoding='utf-8')
+        legacy.append({'old':old_slug,'new':new_slug,'path':str(old_file.relative_to(root))})
     (root/'route-manifest.json').write_text(json.dumps({
-        'schemaVersion':1,'routes':paths,'count':len(paths),
+        'schemaVersion':2,'routes':paths,'count':len(paths),'redirects':legacy,'redirectCount':len(legacy),
         'note':'All HTML is server-readable with no JS dependency. Media are progressive enhancements.'
     },indent=2)+'\n',encoding='utf-8')
     if len(paths)!=13 or len({x['slug'] for x in paths})!=13:

@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "release": "editorial-copy-v2.2-2026-11-08",
-  "status": "complete-editorial-working-draft-not-final-approved",
+  "release": "italian-language-v3-2026-11-08",
+  "status": "italian-brand-language-working-draft",
   "locale": "en",
   "date": "2026-11-08",
   "brand": "VELLARIO · COMO",
@@ -14,33 +14,33 @@
     },
     {
       "id": "dolce-vita",
-      "label": "Italian Dolce Vita",
+      "label": "La Dolce Vita",
       "slug": "dolce-vita"
     },
     {
       "id": "collection",
-      "label": "The Collection",
-      "slug": "collection"
+      "label": "La Collezione",
+      "slug": "collezione"
     },
     {
       "id": "history-legacy",
-      "label": "History & Legacy",
-      "slug": "history-legacy"
+      "label": "Storia & Tradizione",
+      "slug": "storia-tradizione"
     },
     {
       "id": "design-craftsmanship",
-      "label": "Design & Craftsmanship",
-      "slug": "design-craftsmanship"
+      "label": "Design & Saper Fare",
+      "slug": "design-saper-fare"
     },
     {
       "id": "maison",
-      "label": "The Maison",
-      "slug": "maison"
+      "label": "La Casa VELLARIO",
+      "slug": "casa-vellario"
     },
     {
       "id": "contact",
-      "label": "Contact",
-      "slug": "contact"
+      "label": "Contatti",
+      "slug": "contatti"
     }
   ],
   "editorialRule": "Original English working copy: facts documented where applicable, brand intents described as intents, media sourced from original archives. Not a launch, a shipyard history, or an offer of manufactured yachts.",
@@ -95,54 +95,54 @@
       "id": "home",
       "slug": "",
       "title": "VELLARIO · COMO",
-      "kicker": "A New Italian Nautical Maison",
-      "lead": "Inspired by Lake Como. Defined by a singular approach to design, elegance and life on the water.",
+      "kicker": "VELLARIO · COMO / Stile Italiano",
+      "lead": "La Dolce Vita, sull'Acqua. A distinctly Italian expression of design, elegance and the pleasure of life on the water.",
       "hero": "opening",
       "sections": [
         {
           "id": "origin",
-          "title": "Everything Begins with Como",
+          "title": "Dove Tutto Comincia",
           "body": "There are places whose character is inseparable from the way they are lived. Lake Como is one of them: architecture set against the mountains, gardens descending towards the water, and a distinctive tradition of arriving by boat. For VELLARIO, Como is not merely a location or a backdrop. It is the cultural inspiration for a new nautical point of view.",
           "link": "como",
           "media": "como"
         },
         {
           "id": "life",
-          "title": "La Dolce Vita, on the Water",
-          "body": "The most memorable moments rarely ask for attention. A quiet departure, the changing light across the lake, an afternoon that takes its own time. VELLARIO approaches luxury through the freedom to enjoy such moments beautifully, with discretion, confidence and a distinctly Italian appreciation of life.",
+          "title": "La Dolce Vita sull'Acqua",
+          "body": "An aperitivo at the water's edge. The golden light of late afternoon. A short passage across the lake, with no need to hurry. La Dolce Vita is not a style borrowed for a photograph; it is the pleasure of living beautifully, simply and without ostentation. This is the spirit we want VELLARIO to express.",
           "link": "dolce-vita",
           "media": "bled"
         },
         {
           "id": "models",
-          "title": "Five Studies. Five Personalities.",
+          "title": "La Collezione",
           "body": "A collection should never feel like a row of interchangeable objects. Quantum 999, MAS 36, MAS 56, GranTender 72 and Gran Marlin explore different expressions of life on the water, from the spirit of the Italian sporting boat to the architectural ambition of a larger yacht. Each begins with its own design character.",
           "link": "collection",
           "kind": "collection"
         },
         {
           "id": "history",
-          "title": "A Legacy That Belongs to the Lake",
+          "title": "Storia & Tradizione",
           "body": "Long before the idea of VELLARIO, generations of boatbuilders, racers and craftsmen shaped the nautical culture of Lake Como. Their world was one of working boats and elegant runabouts, ingenuity and competition, skilled hands and bold ideas. It remains a source of inspiration for a new expression of Italian nautical elegance.",
           "link": "history-legacy"
         },
         {
           "id": "craft",
-          "title": "Design Is the First Commitment",
-          "body": "A distinctive silhouette may capture the eye; the discipline behind it is what gives it meaning. Proportion, the flow between spaces, the meeting of materials and the way a boat moves through its environment all belong to one design conversation. Our ambition is to carry that attention through every future VELLARIO project.",
+          "title": "L'Arte del Dettaglio",
+          "body": "The Italian idea of saper fare is more than craftsmanship alone. It is the discipline of knowing why a detail matters. Proportion, materials, the line of a hull and the feeling of a surface should belong to one coherent whole. For VELLARIO, beauty starts with these decisions.",
           "link": "design-craftsmanship",
           "media": "model:mas-56"
         },
         {
           "id": "vision",
-          "title": "A New Maison. A Deliberate Vision.",
-          "body": "VELLARIO is conceived as a new Italian nautical maison with a distinctive point of view. Design, product character and individual expression belong together, guided by the same commitment to proportion, beauty and attention to detail. Our ambition is to create fewer, more considered objects that invite a lasting relationship rather than an ordinary purchase.",
+          "title": "La Casa VELLARIO",
+          "body": "La Casa VELLARIO is conceived as a new Italian nautical design house: distinctive in character, discreet in expression, personal in its approach. The ambition is to direct the design, identity and future client experience of a carefully considered collection—not to pursue volume or spectacle.",
           "link": "maison"
         },
         {
           "id": "dialogue",
-          "title": "An Individual Conversation",
-          "body": "The most meaningful luxury is personal. A boat becomes extraordinary when the character of its design meets the character of the person who chooses it. VELLARIO is developing an approach to the future ownership experience built around conversation, understanding and the freedom to make considered choices.",
+          "title": "Un Invito Personale",
+          "body": "A boat becomes personal through thoughtful choices, not endless options. Su Misura is the Italian expression of this attention to the individual. The future VELLARIO relationship with its owners is envisaged as a conversation guided by taste, design and a shared appreciation of beauty.",
           "link": "contact"
         }
       ]
@@ -151,14 +151,14 @@
       "id": "como",
       "slug": "como",
       "title": "Como",
-      "kicker": "01 / Como · The Origin of the Vision",
-      "lead": "A singular meeting of water, architecture and landscape. The inspiration behind VELLARIO.",
+      "kicker": "01 / Como · Il Lario",
+      "lead": "Il Lario. An enduring meeting of water, architecture and Italian elegance.",
       "hero": "como",
       "sections": [
         {
           "id": "lake",
-          "title": "The Character of the Lario",
-          "body": "At Lake Como, the mountains do not frame the water from a distance; they rise directly around it. Towns follow the shoreline, stone steps reach small landing stages, and the view changes with every bend of the lake. Here, the journey matters as much as the destination. It is this dialogue between movement and place that informs the atmosphere we want VELLARIO to express.",
+          "title": "Il Lario",
+          "body": "Il Lario has its own rhythm. Mountains fall steeply towards the water, villages gather around little harbours, and the changing light transforms the landscape throughout the day. This is a place best understood slowly, sometimes from the shore and sometimes from the deck of a boat.",
           "source": {
             "label": "Regione Lombardia · Lake Como",
             "url": "https://www.in-lombardia.it/en/tourism-in-lombardy/lake-como"
@@ -166,7 +166,7 @@
         },
         {
           "id": "architecture",
-          "title": "Architecture in Conversation with Water",
+          "title": "Le Ville",
           "body": "The great villas of Como were designed to be experienced within their setting, not separated from it. At Villa del Balbianello, on the wooded Lavedo peninsula, architecture, terraces and gardens form an extraordinary composition above the lake. Its history belongs to those who created and preserved it; its sense of proportion offers a lasting lesson in elegance.",
           "source": {
             "label": "FAI · Villa del Balbianello",
@@ -175,12 +175,12 @@
         },
         {
           "id": "water",
-          "title": "The Art of Arriving",
-          "body": "On the lake, the perspective is reversed: a villa reveals itself from the water, a village appears beyond a headland, and an ordinary crossing becomes a moment of anticipation. This is the kind of experience at the heart of the VELLARIO vision: unhurried, intimate and inseparable from its surroundings. Not luxury added to a journey, but beauty found within it."
+          "title": "L'Arte dell'Approdo",
+          "body": "There is a particular pleasure in the approach: a distant villa becomes a recognisable silhouette, a stone pontile appears, and a familiar shore reveals itself differently from the water. L'arte dell'approdo—the art of arriving—is part of the life and character of Como."
         },
         {
           "id": "nautical",
-          "title": "A Living Nautical Culture",
+          "title": "Tradizione Nautica",
           "body": "Como's relationship with boats reaches far beyond leisure. Workboats, sailing craft, passenger vessels, racing machines and classic motorboats have all left their mark on its shores. The Museo Barca Lariana at Pianello del Lario preserves a remarkable record of this culture, making the lake's boating history tangible through vessels, engines, documents and stories.",
           "source": {
             "label": "Museo Barca Lariana",
@@ -189,7 +189,7 @@
         },
         {
           "id": "inspiration",
-          "title": "A New Interpretation",
+          "title": "La Nostra Ispirazione",
           "body": "The past is not a template to reproduce. It is a standard to understand. Inspired by Como's landscape, architecture and boating culture, VELLARIO aims to develop a contemporary design identity that feels at ease beside what has endured: unmistakably new, yet sensitive to the spirit of the place."
         }
       ]
@@ -197,34 +197,34 @@
     {
       "id": "dolce-vita",
       "slug": "dolce-vita",
-      "title": "Italian Dolce Vita",
-      "kicker": "02 / Italian Dolce Vita · A Way of Living",
-      "lead": "The elegance of an unhurried day. The freedom to make the water your own.",
+      "title": "La Dolce Vita",
+      "kicker": "02 / La Dolce Vita · L'Arte di Vivere",
+      "lead": "Il piacere di vivere. Unhurried days, extraordinary places and life on the water.",
       "hero": "bled",
       "sections": [
         {
           "id": "time",
-          "title": "Time, Beautifully Spent",
-          "body": "Real privilege is often the freedom to decide how a day unfolds. To leave when the light is right. To stay for another conversation. To enjoy the journey without needing it to lead anywhere in particular. The VELLARIO interpretation of the Italian Dolce Vita begins with this idea: time made richer by attention rather than crowded with spectacle."
+          "title": "Il Tempo",
+          "body": "Il tempo is perhaps the greatest luxury. The freedom to follow the light, stay for one more conversation or choose the longer route home. In the Italian understanding of la dolce vita, time is not simply spent: it is enjoyed, generously and beautifully."
         },
         {
           "id": "water",
-          "title": "A Different Perspective",
-          "body": "A boat changes our relationship with the places we love. Familiar shores become new silhouettes; the noise of the day gives way to wind and water; even a short passage acquires its own rhythm. We imagine VELLARIO as an invitation to rediscover that perspective, with a sense of ease as carefully considered as the design itself."
+          "title": "Il Piacere di Navigare",
+          "body": "The pleasure of a passeggiata on the water has little to do with distance. It is the changing view, the sound of the lake and the quiet sense of being exactly where one wants to be. Il piacere di navigare belongs to the experience, not to a number on a specification sheet."
         },
         {
           "id": "elegance",
-          "title": "Elegance Without Display",
-          "body": "Italian style is not a matter of accumulating signs of luxury. At its best, it is a precise balance of gesture, material, hospitality and restraint. A beautiful object should never compete with the moment it is part of. This belief guides the atmosphere of VELLARIO, from the visual identity of the maison to the choices that will shape its future boats."
+          "title": "Eleganza Senza Ostentazione",
+          "body": "Eleganza senza ostentazione. True Italian elegance does not need to announce itself. It lives in proportion, hospitality, a confident gesture and the art of choosing just enough. A beautiful boat should share that same natural sprezzatura: a sense of ease made possible by careful thought."
         },
         {
           "id": "aboard",
-          "title": "The Pleasure of Being Aboard",
-          "body": "Conversation, a quiet place in the sun, a natural flow between company and privacy: life aboard has its own choreography. The design of a yacht should make these moments feel effortless. For VELLARIO, the experience of being aboard is not an accessory to the form; it is one of the reasons for designing the boat in the first place."
+          "title": "La Vita a Bordo",
+          "body": "La vita a bordo begins with the people who share it. A quiet corner in the sun, the pleasure of an aperitivo, space for conversation and the freedom to be alone when desired. These moments give direction to a design long before its final arrangements are defined."
         },
         {
           "id": "discover",
-          "title": "A Collection of Possibilities",
+          "title": "La Collezione",
           "body": "A collection is an expression of character, not simply of size or category. The five VELLARIO design studies are different invitations to experience the water. Discover the distinct intentions behind Quantum 999, MAS 36, MAS 56, GranTender 72 and Gran Marlin.",
           "link": "collection"
         }
@@ -232,47 +232,47 @@
     },
     {
       "id": "collection",
-      "slug": "collection",
-      "title": "The Collection",
-      "kicker": "03 / The Collection",
-      "lead": "Five original design studies. One ambition: to bring a distinctive Italian point of view to the water.",
+      "slug": "collezione",
+      "title": "La Collezione",
+      "kicker": "03 / La Collezione · Cinque Caratteri",
+      "lead": "Cinque barche. Cinque personalità. Five original nautical design studies.",
       "hero": "model:mas-56",
       "sections": [
         {
           "id": "models",
-          "title": "Distinct by Nature",
+          "title": "Ogni Barca, un Carattere",
           "body": "Some boats express their character through pure lines, others through movement, versatility or presence. The VELLARIO collection brings together five different projects from the original design archive. They are presented individually because each deserves a voice of its own. Explore the concepts through their original imagery and the design ideas that shaped them.",
           "kind": "collection"
         },
         {
           "id": "source",
-          "title": "Design Before Declaration",
-          "body": "Every VELLARIO design begins with an idea of character. These five studies come from an original nautical design archive, where each silhouette and arrangement was developed around its own intentions. The images offer a first encounter with these ideas; the maison's next chapter is to refine their distinct personalities into a coherent collection."
+          "title": "La Forma del Desiderio",
+          "body": "Every VELLARIO design begins with an idea of character. These five studies come from an original nautical design archive, where each silhouette and arrangement was developed around its own intentions. The images offer a first encounter with these ideas; the design house's next chapter is to refine their distinct personalities into a coherent collection."
         },
         {
           "id": "tailoring",
-          "title": "An Individual Expression",
-          "body": "A remarkable boat begins with a recognisable identity, but its most personal details should respond to the person who will enjoy it. The intended VELLARIO approach places colours, finishes, textures and considered individual choices within a coherent overall design. The scope of future personalisation will be defined alongside each project's technical development and production planning."
+          "title": "Su Misura",
+          "body": "Su Misura is not the promise of unlimited choice. It is the ability to understand an individual taste and translate it into thoughtful details without losing the character of the design. The scope of VELLARIO personalisation will be established through future product development."
         },
         {
           "id": "enquiries",
-          "title": "The Beginning of a Relationship",
-          "body": "A memorable experience begins long before a boat enters the water. The VELLARIO approach to the future owner relationship is intended to be personal, discreet and informed by design. Discover the collection, understand the characters and follow the maison as that relationship takes shape.",
+          "title": "Un Invito Personale",
+          "body": "A memorable experience begins long before a boat enters the water. The VELLARIO approach to the future owner relationship is intended to be personal, discreet and informed by design. Discover the collection, understand the characters and follow the design house as that relationship takes shape.",
           "link": "contact"
         }
       ]
     },
     {
       "id": "history-legacy",
-      "slug": "history-legacy",
-      "title": "History & Legacy",
-      "kicker": "04 / History & Legacy · The Lake Before Us",
-      "lead": "A remarkable culture of boats, people and ingenuity. An inspiration to understand, not a history to borrow.",
+      "slug": "storia-tradizione",
+      "title": "Storia & Tradizione",
+      "kicker": "04 / Storia & Tradizione · Il Lario",
+      "lead": "La tradizione del lago. A genuine culture of Italian boating and innovation.",
       "hero": "como",
       "sections": [
         {
           "id": "water",
-          "title": "Made by a Life on Water",
+          "title": "La Vita sul Lago",
           "body": "Lake Como has long depended on boats for more than pleasure. Fishing, trade, transport and daily work shaped the vessels of its shores. Over time, sailing, motoring and competition added new forms of ingenuity. This layered relationship with the water—practical, social and inventive—is an essential part of the Larian nautical story.",
           "source": {
             "label": "Museo Barca Lariana · Collection",
@@ -281,7 +281,7 @@
         },
         {
           "id": "boats",
-          "title": "From Working Craft to Sporting Icons",
+          "title": "Le Barche del Lario",
           "body": "The boats preserved on the Lario reveal a rich range of purposes and characters: traditional rowing boats, sailing vessels, working craft and the increasingly sophisticated motorboats of the twentieth century. At the Museo Barca Lariana, vessels such as the Serie Laghi and Colombo Super Rockett 007 connect visitors to different moments in the evolution of design and performance.",
           "source": {
             "label": "Museo Barca Lariana · Museum",
@@ -290,7 +290,7 @@
         },
         {
           "id": "craft",
-          "title": "Design, Courage and Competition",
+          "title": "Maestria e Coraggio",
           "body": "Speed on water has always demanded more than an attractive hull. It calls for skill in materials, geometry, mechanics and judgement. The boatbuilding culture of the lake includes the work of designers, craftsmen and racing pioneers whose ideas were tested on the water itself. Their achievements belong to their own people and companies; they help us understand the standards a new nautical project should aspire to.",
           "source": {
             "label": "Museo Barca Lariana · Heritage",
@@ -299,7 +299,7 @@
         },
         {
           "id": "memory",
-          "title": "A History Preserved",
+          "title": "Custodire la Memoria",
           "body": "In 1978, enthusiasts began collecting and safeguarding the boating heritage of the Lario. The Museo Barca Lariana opened at Pianello del Lario in 1982, within a former nineteenth-century silk mill, and reopened in 2018 after a long closure. Its continuing research and restoration work reminds us that real heritage is made of objects, knowledge and evidence—not simply an evocative word in a brand story.",
           "source": {
             "label": "Regione Lombardia · Museo Barca Lariana",
@@ -308,8 +308,8 @@
         },
         {
           "id": "continuity",
-          "title": "Respect for What Came Before",
-          "body": "A new chapter in nautical design can respect the past without imitating it. The craft and ingenuity of the Lario offer a cultural foundation; the responsibility of a contemporary maison is to contribute a point of view of its own. For VELLARIO, continuity lies in the pursuit of thoughtful design, not in borrowed names or legends.",
+          "title": "Il Futuro della Tradizione",
+          "body": "La tradizione is not a story to borrow. The boatbuilders, craftsmen and racing pioneers of Lake Como created their own history. VELLARIO looks to their pursuit of beauty and technical ingenuity as an inspiration for something new, without claiming their achievements as its own.",
           "source": {
             "label": "Riva · Official History",
             "url": "https://www.riva-yacht.com/it-it/History"
@@ -319,96 +319,96 @@
     },
     {
       "id": "design-craftsmanship",
-      "slug": "design-craftsmanship",
-      "title": "Design & Craftsmanship",
-      "kicker": "05 / Design & Craftsmanship · The Discipline of Beauty",
-      "lead": "A distinctive object is never the result of appearance alone. Every line must have a reason.",
+      "slug": "design-saper-fare",
+      "title": "Design & Saper Fare",
+      "kicker": "05 / Design & Saper Fare · La Bellezza",
+      "lead": "L'Arte del Dettaglio. Character, proportion and the discipline behind beauty.",
       "hero": "model:quantum-999",
       "sections": [
         {
           "id": "proportion",
-          "title": "Proportion Before Ornament",
+          "title": "Le Proporzioni",
           "body": "The character of a boat begins in its proportions: the relationship between length and height, the tension of a surface, the position of a cockpit, the moment a sheerline meets the stern. These decisions shape how a design is recognised long before its details are noticed. The ambition for VELLARIO is to develop an original language that is expressive without being fashionable."
         },
         {
           "id": "exterior",
-          "title": "A Silhouette with Character",
+          "title": "Il Segno",
           "body": "A memorable exterior should be unmistakable from a distance and rewarding up close. The model studies explore different characters rather than a single formula applied at different sizes. As the range develops, our task is to identify the proportions, graphic signatures and architectural principles that can connect them as a family without compromising what makes each one distinctive.",
           "media": "model:mas-56"
         },
         {
           "id": "details",
-          "title": "Materials That Deserve Attention",
-          "body": "The meeting of a handrail and a surface, the finish surrounding a control, the material under one's hand: these are not secondary questions. They define the quality of an encounter with an object. Our intended material philosophy values authenticity, tactile character and restraint. Specific woods, metals, leathers, colours and suppliers will be named only when selected and technically validated for the relevant model."
+          "title": "La Materia",
+          "body": "La materia tells part of the story of every important object. The feeling of a handrail, the meeting of two surfaces, the finish around a control: small gestures of design that deserve the greatest care. VELLARIO's intended material language is rooted in authenticity, restraint and the Italian idea of saper fare."
         },
         {
           "id": "engineering",
-          "title": "Beauty Must Work",
+          "title": "Bellezza e Ingegneria",
           "body": "A boat is architecture in motion. The beauty of its proportions must coexist with the demands of balance, structure, ergonomics and the sea. For this reason, design and naval engineering cannot be separate conversations. As the collection develops, technical expertise must strengthen the character of every project rather than dilute it."
         },
         {
           "id": "personalisation",
-          "title": "Made Personal, Without Losing Identity",
-          "body": "The highest expression of a brand is not unlimited choice; it is the ability to make something unmistakably individual while preserving its design integrity. We envisage a thoughtful process of selecting finishes, colours and details in relation to each owner's preferences. Every proposed variation will need to be considered for technical feasibility and coherence with the character of the boat."
+          "title": "Su Misura",
+          "body": "Su Misura means making a design personal without making it lose itself. We envisage a considered approach to colours, finishes and details that respects the character of each boat. Every future choice must be as technically credible as it is aesthetically distinctive."
         }
       ]
     },
     {
       "id": "maison",
-      "slug": "maison",
-      "title": "The Maison",
-      "kicker": "06 / The Maison · An Italian Point of View",
-      "lead": "A new name with a clear ambition: to make nautical design a deeply personal expression of Italian elegance.",
+      "slug": "casa-vellario",
+      "title": "La Casa VELLARIO",
+      "kicker": "06 / La Casa VELLARIO · La Visione",
+      "lead": "La Casa VELLARIO. An Italian design house built around elegance, identity and individuality.",
       "hero": "geneva",
       "sections": [
         {
           "id": "why",
-          "title": "A Maison Begins with a Conviction",
-          "body": "VELLARIO begins with a conviction: a boat can belong among the most distinctive design objects, admired for its identity, precision and individuality as much as for the experience it offers. The ambition is not a catalogue without limits. It is a maison with a recognisable point of view, a considered collection and the discipline to protect both."
+          "title": "La Visione",
+          "body": "La Casa VELLARIO begins with one conviction: a boat can be valued as a work of design, admired for its identity, precision and individuality as much as for the moments it makes possible. The ambition is a considered collection, not a catalogue without limits."
         },
         {
           "id": "italian",
-          "title": "Como as Inspiration. Italy as Culture.",
-          "body": "The Lario gives VELLARIO its emotional and visual starting point. The wider culture is Italian: an appreciation of design that balances beauty with use, craft with invention and individuality with restraint. The intention is to carry these values into a contemporary nautical language without imitating the boats—or claiming the accomplishments—of those who came before."
+          "title": "L'Anima Italiana",
+          "body": "Italianità is more than a place of origin. It is a way of seeing: an understanding of beauty, the pleasure of good design, hospitality and the confidence of simplicity. The Lago di Como provides our inspiration; the wider Italian culture of saper fare gives meaning to the direction we intend to follow."
         },
         {
           "id": "structure",
-          "title": "The Brand at the Centre",
-          "body": "The proposed VELLARIO model places design and identity at the centre. The maison intends to guide styling, product development, the selection of materials, quality expectations and the relationship with each future client. Specialised construction is envisaged through carefully selected partner shipyards. This structure allows the brand to concentrate its attention where it matters most: on the character of each boat and the experience around it."
+          "title": "Il Nostro Metodo",
+          "body": "The proposed VELLARIO model places design and identity at the centre. The design house intends to guide styling, product development, the selection of materials, quality expectations and the relationship with each future client. Specialised construction is envisaged through carefully selected partner shipyards. This structure allows the brand to concentrate its attention where it matters most: on the character of each boat and the experience around it."
         },
         {
           "id": "relationship",
-          "title": "A More Personal Way to Begin",
-          "body": "An important choice deserves time, understanding and a direct exchange. We envisage a journey in which design is introduced personally, preferences are explored with discretion and every decision belongs to a coherent vision. Rather than presenting an endless array of options, the aim is to offer thoughtful individual expression within a distinctive VELLARIO identity."
+          "title": "La Relazione",
+          "body": "Il piacere di conoscersi: the pleasure of getting to know one another. A meaningful luxury relationship should begin with a conversation, not a checkout. We envisage a discreet, direct exchange in which individual preferences meet a clear and recognisable VELLARIO design identity."
         },
         {
           "id": "future",
-          "title": "A Future Built Deliberately",
-          "body": "A new maison takes shape one decision at a time: defining its identity, refining a collection, bringing design and technical disciplines together, and choosing the people able to realise its ambition. VELLARIO's future will be measured less by the number of boats it introduces than by the distinctiveness and integrity of each one."
+          "title": "Il Futuro",
+          "body": "A new design house takes shape one decision at a time: defining its identity, refining a collection, bringing design and technical disciplines together, and choosing the people able to realise its ambition. VELLARIO's future will be measured less by the number of boats it introduces than by the distinctiveness and integrity of each one."
         }
       ]
     },
     {
       "id": "contact",
-      "slug": "contact",
-      "title": "Contact",
-      "kicker": "07 / Contact · A Personal Introduction",
-      "lead": "Every extraordinary object begins with an idea. Every lasting relationship begins with a conversation.",
+      "slug": "contatti",
+      "title": "Contatti",
+      "kicker": "07 / Contatti · Un Invito Personale",
+      "lead": "Il piacere di conoscersi. Every lasting relationship begins with a conversation.",
       "hero": null,
       "sections": [
         {
           "id": "conversation",
-          "title": "The Right Conversation",
-          "body": "A relationship with VELLARIO is intended to begin with an appreciation of design and a shared understanding of what makes a boat personal. The maison is taking shape around a carefully selected collection and an individual approach to future clients. Its public story begins here, with the vision and the work behind it."
+          "title": "Il Piacere di Conoscersi",
+          "body": "A relationship with VELLARIO is intended to begin with an appreciation of design and a shared understanding of what makes a boat personal. The design house is taking shape around a carefully selected collection and an individual approach to future clients. Its public story begins here, with the vision and the work behind it."
         },
         {
           "id": "channel",
-          "title": "Introductions Will Open Here",
-          "body": "A dedicated channel for personal introductions will be announced as the maison develops. Until then, the collection and the story of VELLARIO can be explored here without registration or the sharing of personal information."
+          "title": "Un Contatto Personale",
+          "body": "A dedicated channel for personal introductions will be announced as the design house develops. Until then, the collection and the story of VELLARIO can be explored here without registration or the sharing of personal information."
         },
         {
           "id": "privacy",
-          "title": "Considered from the First Contact",
+          "title": "Riservatezza",
           "body": "A relationship built on discretion deserves a correspondingly careful approach to information. Before enquiries are accepted, VELLARIO intends to establish a clear process for contact requests, personal data and responses. No contact information is collected on this preview site."
         }
       ]
@@ -416,8 +416,8 @@
   ],
   "modelCopy": {
     "quantum-999": {
-      "kicker": "Collection / 01 · Quantum 999",
-      "tagline": "A clear idea, drawn with conviction.",
+      "kicker": "La Collezione / 01 · Quantum 999",
+      "tagline": "Una Linea. Un Carattere.",
       "lead": "Quantum 999 introduces a contemporary design study focused on visual clarity, movement and a recognisable personality. Its original yacht renderings provide the starting point for a future VELLARIO interpretation.",
       "concept": "Quantum 999 is an exercise in making a boat feel purposeful without relying on decoration or historical quotation. The original archive offers a distinctive visual direction from which to explore the relationship between an exterior identity and the experience of time on the water. Its future place in the range will follow a closer review of the source project.",
       "exterior": "A compelling design is understood first through its overall composition: how the volumes relate, the rhythm of its lines and the presence it creates on the water. The Quantum 999 imagery allows these questions to be explored without inventing a technical specification. The task ahead is to preserve the character of the original study while developing a coherent VELLARIO family language.",
@@ -428,8 +428,8 @@
       "enquiries": "A personal introduction channel is being prepared. Contact details will be published when a verified recipient and response process are available."
     },
     "mas-36": {
-      "kicker": "Collection / 02 · MAS 36",
-      "tagline": "The spirit of an Italian Gran Turismo.",
+      "kicker": "La Collezione / 02 · MAS 36",
+      "tagline": "Lo Spirito del Gran Turismo.",
       "lead": "MAS 36 brings together the elegance of a classic sporting motorboat and an unmistakably automotive influence. The original design archive explores the pleasure of a long weekend on the water through a distinctive exterior and an intelligently adaptable interior.",
       "concept": "The historic MAS 36 project was conceived as a modern interpretation of an established sporting boat language, drawing on the shapes and confidence of mid-twentieth-century automotive design. Rather than reproduce a period boat, the study seeks a balance between cultivated leisure and a more energetic character. Its original design provenance is retained in this presentation.",
       "exterior": "The archival design proposed a folding bimini concealed within the backrest of the aft seating, integrating protection without disrupting the cockpit's clean appearance. A sunbathing area and the relationship between open space and shelter formed part of the original proposal. These are features described in the historic design documentation, not confirmed VELLARIO production equipment.",
@@ -440,8 +440,8 @@
       "enquiries": "A dedicated direct channel will be introduced when the future customer relationship is ready to operate."
     },
     "mas-56": {
-      "kicker": "Collection / 03 · MAS 56",
-      "tagline": "A more expressive interpretation of the sporting yacht.",
+      "kicker": "La Collezione / 03 · MAS 56",
+      "tagline": "Eleganza in Movimento.",
       "lead": "MAS 56 introduces a different scale of presence within the collection. Its original visual archive suggests a yacht conceived to be confident in profile yet composed in character, with the life aboard considered alongside its exterior identity.",
       "concept": "The MAS 56 study offers an opportunity to explore a broader expression of the Italian sporting motor yacht. Its identity should stand independently, not simply enlarge the proportions of a smaller design. Original imagery and moving-image studies form the visual basis of this direction, while the definitive product brief remains to be established.",
       "exterior": "The exterior story will draw on the balance of major surfaces, the continuity of the profile and the rhythm of the deck arrangement visible in the source renderings. The object should remain the centre of the presentation, without unrelated footage or invented performance statements. The objective is a presence that feels both assured and restrained.",
@@ -452,8 +452,8 @@
       "enquiries": "Details of the future personal introduction process will be published when the service is operational."
     },
     "grantender-72": {
-      "kicker": "Collection / 04 · GranTender 72",
-      "tagline": "A tender concept with the presence of a destination.",
+      "kicker": "La Collezione / 04 · GranTender 72",
+      "tagline": "Presenza. Movimento. Libertà.",
       "lead": "GranTender 72 began as an ambitious preliminary styling study, presented in its original archive as a 72-foot PowerMachine. It imagines a tender with the confidence and presence of a substantial sporting yacht.",
       "concept": "The original GranTender proposal was conceived to give the idea of a tender greater visual authority and a stronger sense of occasion. The archived presentation includes exterior perspectives, preliminary layout work and studies of cockpit and saloon. These provide a genuine foundation for a distinctive new interpretation without implying the concept has entered VELLARIO production.",
       "exterior": "The original preliminary styling concentrates on a sporting stance and a strongly recognisable silhouette. Its visual intention is to communicate energy even at rest, holding the composition together instead of fragmenting it with ornament. The archival title is an indication of original design intent, not a verified specification for a future vessel.",
@@ -461,11 +461,11 @@
       "details": "GranTender calls for details that feel purposeful: the meeting of seating and surrounding surfaces, the integration of controls and fittings, and the touchpoints people remember from a day on the water. CAD and rendering files are available in the archive, but they are not proof of approved production materials or finished equipment.",
       "specifications": "The 72-foot description belongs to the original preliminary PowerMachine study, not a certified production specification for VELLARIO. No propulsion or performance claims are made.",
       "gallery": "GranTender 72 renderings and preliminary design imagery, kept distinct from every other yacht in the collection.",
-      "enquiries": "The maison will publish a verified personal contact channel when it is ready to receive enquiries."
+      "enquiries": "The design house will publish a verified personal contact channel when it is ready to receive enquiries."
     },
     "gran-marlin": {
-      "kicker": "Collection / 05 · Gran Marlin",
-      "tagline": "The language of the offshore yacht, reconsidered.",
+      "kicker": "La Collezione / 05 · Gran Marlin",
+      "tagline": "L'Anima del Mare Aperto.",
       "lead": "Gran Marlin originates in a large motor-yacht study that translated the character of the classic sportfisherman into a more architectural, contemporary form. It introduces a distinct open-water perspective to the developing VELLARIO collection.",
       "concept": "The original Gran Marlin 46 concept began with an intriguing question: what happens when the sporting identity of a fisherman yacht is translated into the proportions and spaces of a much larger motor yacht? Its answer combined recognisable references with a cleaner architectural expression. Gran Marlin remains the working VELLARIO collection name, not a transfer of historic technical certifications.",
       "exterior": "The archival design preserved references such as an elongated bow pulpit while shifting major volumes towards the stern. That decision was intended to free generous space forward and offer a new relationship between the yacht's sporting lineage and its social life. This dialogue between recognisable nautical character and contemporary architecture is central to the study.",
@@ -483,7 +483,7 @@
   ],
   "copyPolicy": {
     "positioning": "Como first · Italian Dolce Vita · collection · genuine heritage · design-led maison",
-    "voice": "understated, informed, precise, evocative without empty slogans",
+    "voice": "Italian signature words and headlines, polished international-English body copy, product-specific claims.",
     "nonNegotiables": [
       "MAS 56 only",
       "The Maison autonomous",
@@ -493,10 +493,33 @@
       "No false specifications",
       "No fake enquiry form",
       "Avoid Private Yacht Commissions label"
-    ]
+    ],
+    "ownerCorrection": "La Casa VELLARIO replaces French-labelled The Maison, retaining the standalone page. The navigation remains Como-first."
   },
   "footer": {
-    "statement": "A new Italian nautical maison, inspired by the culture of Lake Como and the art of life on the water.",
-    "disclosure": "Private concept preview. The collection contains original design studies; no VELLARIO boat is offered for sale through this website."
+    "statement": "VELLARIO · COMO. La Dolce Vita, sull'Acqua. An Italian design house inspired by Lake Como.",
+    "disclosure": "Private concept preview. The collection contains original design studies; no yacht is presented as a VELLARIO vessel already built or offered for sale."
+  },
+  "brandLexicon": {
+    "identity": "La Casa VELLARIO",
+    "heroSignature": "La Dolce Vita, sull'Acqua.",
+    "terms": [
+      "Il Lario",
+      "La Dolce Vita",
+      "L'Arte di Vivere",
+      "Il Piacere di Navigare",
+      "Il Tempo",
+      "Sprezzatura",
+      "Italianità",
+      "La Collezione",
+      "Tradizione Nautica",
+      "Saper Fare",
+      "L'Arte del Dettaglio",
+      "Su Misura",
+      "La Casa VELLARIO",
+      "La Vita a Bordo",
+      "Un Invito Personale"
+    ],
+    "policy": "Italian navigation and memorable poetic headlines; clear supporting copy in international English; natural Italian phrases only. No French brand positioning vocabulary."
   }
 }
