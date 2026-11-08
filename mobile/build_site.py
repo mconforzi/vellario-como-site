@@ -83,9 +83,10 @@ def footer(depth, data):
 
 def hero(page, depth, model_lookup, lakes, opening, content_model=None):
     key=page.get('hero')
+    eng = ('<p class="english-strapline">'+esc(page['englishTagline'])+'</p>') if page.get('englishTagline') else ''
     if not key:
         return ('<div class="hero-text-only"><p class="eyebrow">'+esc(page['kicker'])+'</p>'
-            '<h1>'+esc(page['title'])+'</h1><p class="lede">'+esc(page['lead'])+'</p></div>')
+            '<h1>'+esc(page['title'])+'</h1>'+eng+'<p class="lede">'+esc(page['lead'])+'</p></div>')
     if key=='opening':
         poster=asset(opening['poster'],depth)
         segments='|'.join(asset(segment,depth) for segment in opening['segments'])
@@ -100,7 +101,7 @@ def hero(page, depth, model_lookup, lakes, opening, content_model=None):
         media=section_media(key,depth,model_lookup,lakes)
     return (
         '<div class="hero-intro"><p class="eyebrow">'+esc(page['kicker'])+'</p>'
-        '<h1>'+esc(page['title'])+'</h1><p class="lede">'+esc(page['lead'])+'</p></div>'
+        '<h1>'+esc(page['title'])+'</h1>'+eng+'<p class="lede">'+esc(page['lead'])+'</p></div>'
         +'<div class="hero-block">'+media+'</div>'
     )
 
@@ -122,7 +123,9 @@ def editorial_page(page, depth, data, model_lookup, models):
     for i,s in enumerate(page['sections'],1):
         out.append('<section class="editorial-section" id="'+esc(s['id'])+'">'
                    '<div class="section-index">'+str(i).zfill(2)+'</div>'
-                   '<div class="section-copy"><h2>'+esc(s['title'])+'</h2><p>'+esc(s['body'])+'</p>')
+                   '<div class="section-copy"><h2>'+esc(s['title'])+'</h2>'
+                   +('<p class="english-subtitle">'+esc(s['englishLine'])+'</p>' if s.get('englishLine') else '')
+                   +'<p>'+esc(s['body'])+'</p>')
         if s.get('source'):
             src=s['source']
             out.append('<p class="verified-source">Source: <a href="'+esc(src['url'])+
@@ -146,7 +149,9 @@ def model_page(model, copy, depth, data, models):
     medium=section_media('model:'+model['id'],depth,{x['id']:x for x in models},data['lakeSources'])
     out=['<div class="hero-intro"><p class="eyebrow">'+esc(copy['kicker'])+
          ' / Archivio Progettuale</p><h1>'+esc(model['name'])+
-         '</h1><p class="lede">'+esc(copy['tagline'])+'</p><p class="working-note">'+
+         '</h1><p class="lede">'+esc(copy['tagline'])+'</p>'
+         +('<p class="english-strapline">'+esc(copy['englishTagline'])+'</p>' if copy.get('englishTagline') else '')
+         +'<p class="working-note">'+
          esc(copy['lead'])+'</p></div><div class="hero-block">'+medium+'</div>']
     parts=[
        ('Il Concept',copy['concept']),

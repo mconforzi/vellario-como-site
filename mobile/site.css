@@ -11,3 +11,9 @@
 @media(min-width:1100px){.editorial-section{grid-template-columns:90px minmax(0,1fr)}.hero-block>.film-frame{height:88svh;max-height:1000px}}
 @media(max-width:620px){.site-header{padding:9px 20px}.wordmark strong{font-size:22px}.header-como{font-size:10px}.hero-intro,.hero-text-only{padding:68px 25px 34px}.hero-intro h1,.hero-text-only h1{font-size:clamp(57px,15vw,100px)}.lede{font-size:23px}.hero-block>.film-frame{height:clamp(390px,72svh,730px)}.editorial-section{padding:65px 23px;grid-template-columns:28px minmax(0,1fr);column-gap:9px}.section-copy h2{font-size:clamp(49px,12vw,76px)}.section-copy>p{font-size:21px}.section-visual,.section-collection,.image-gallery{grid-column:1/-1}.section-visual .film-frame{aspect-ratio:4/5}.model-card-grid{grid-template-columns:1fr;gap:14px}.model-card img{aspect-ratio:16/10}.model-card strong{font-size:31px}.image-gallery{grid-template-columns:1fr}.menu-items{right:-4px}.site-footer{padding:70px 25px}.film-frame figcaption{font-size:9px;padding-bottom:0}.film-frame:has(figcaption) .play-film{bottom:73px}}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;transition:none!important}}
+
+/* VELLARIO editorial hierarchy V4: Italian headlines, restrained English emotional line. */
+.english-strapline{margin:0 0 24px;color:var(--gold);font:italic 400 clamp(20px,2.65vw,33px)/1.18 var(--serif);letter-spacing:.012em}
+.english-subtitle{margin:0 0 22px!important;font:italic 400 clamp(20px,2.2vw,29px)/1.18 var(--serif)!important;color:var(--gold)!important;max-width:720px}
+.hero-intro .english-strapline+.lede,.hero-text-only .english-strapline+.lede{margin-top:14px}
+@media(max-width:620px){.english-strapline{font-size:24px;margin-bottom:17px}.english-subtitle{font-size:22px!important;margin-bottom:18px!important}}
