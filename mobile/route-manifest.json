@@ -1,85 +1,138 @@
 {
-  "schemaVersion": 1,
+  "schemaVersion": 2,
   "routes": [
     {
       "slug": "",
       "path": "index.html",
       "name": "VELLARIO \u00b7 COMO",
-      "bytes": 11232
+      "bytes": 11025
     },
     {
       "slug": "como",
       "path": "como/index.html",
       "name": "Como",
-      "bytes": 6015
+      "bytes": 5781
     },
     {
       "slug": "dolce-vita",
       "path": "dolce-vita/index.html",
-      "name": "Italian Dolce Vita",
-      "bytes": 5477
+      "name": "La Dolce Vita",
+      "bytes": 5184
     },
     {
-      "slug": "collection",
-      "path": "collection/index.html",
-      "name": "The Collection",
-      "bytes": 6372
+      "slug": "collezione",
+      "path": "collezione/index.html",
+      "name": "La Collezione",
+      "bytes": 6137
     },
     {
-      "slug": "history-legacy",
-      "path": "history-legacy/index.html",
-      "name": "History & Legacy",
-      "bytes": 6672
+      "slug": "storia-tradizione",
+      "path": "storia-tradizione/index.html",
+      "name": "Storia & Tradizione",
+      "bytes": 6545
     },
     {
-      "slug": "design-craftsmanship",
-      "path": "design-craftsmanship/index.html",
-      "name": "Design & Craftsmanship",
-      "bytes": 5954
+      "slug": "design-saper-fare",
+      "path": "design-saper-fare/index.html",
+      "name": "Design & Saper Fare",
+      "bytes": 5618
     },
     {
-      "slug": "maison",
-      "path": "maison/index.html",
-      "name": "The Maison",
-      "bytes": 5716
+      "slug": "casa-vellario",
+      "path": "casa-vellario/index.html",
+      "name": "La Casa VELLARIO",
+      "bytes": 5399
     },
     {
-      "slug": "contact",
-      "path": "contact/index.html",
-      "name": "Contact",
-      "bytes": 3240
+      "slug": "contatti",
+      "path": "contatti/index.html",
+      "name": "Contatti",
+      "bytes": 3207
     },
     {
-      "slug": "collection/quantum-999",
-      "path": "collection/quantum-999/index.html",
+      "slug": "collezione/quantum-999",
+      "path": "collezione/quantum-999/index.html",
       "name": "Quantum 999",
-      "bytes": 7926
+      "bytes": 7820
     },
     {
-      "slug": "collection/mas-36",
-      "path": "collection/mas-36/index.html",
+      "slug": "collezione/mas-36",
+      "path": "collezione/mas-36/index.html",
       "name": "MAS 36",
-      "bytes": 7579
+      "bytes": 7478
     },
     {
-      "slug": "collection/mas-56",
-      "path": "collection/mas-56/index.html",
+      "slug": "collezione/mas-56",
+      "path": "collezione/mas-56/index.html",
       "name": "MAS 56",
-      "bytes": 8386
+      "bytes": 8250
     },
     {
-      "slug": "collection/grantender-72",
-      "path": "collection/grantender-72/index.html",
+      "slug": "collezione/grantender-72",
+      "path": "collezione/grantender-72/index.html",
       "name": "GranTender 72",
-      "bytes": 8309
+      "bytes": 8193
     },
     {
-      "slug": "collection/gran-marlin",
-      "path": "collection/gran-marlin/index.html",
+      "slug": "collezione/gran-marlin",
+      "path": "collezione/gran-marlin/index.html",
       "name": "Gran Marlin",
-      "bytes": 7967
+      "bytes": 7853
     }
   ],
   "count": 13,
+  "redirects": [
+    {
+      "old": "collection",
+      "new": "collezione",
+      "path": "collection/index.html"
+    },
+    {
+      "old": "history-legacy",
+      "new": "storia-tradizione",
+      "path": "history-legacy/index.html"
+    },
+    {
+      "old": "design-craftsmanship",
+      "new": "design-saper-fare",
+      "path": "design-craftsmanship/index.html"
+    },
+    {
+      "old": "maison",
+      "new": "casa-vellario",
+      "path": "maison/index.html"
+    },
+    {
+      "old": "contact",
+      "new": "contatti",
+      "path": "contact/index.html"
+    },
+    {
+      "old": "collection/quantum-999",
+      "new": "collezione/quantum-999",
+      "path": "collection/quantum-999/index.html"
+    },
+    {
+      "old": "collection/mas-36",
+      "new": "collezione/mas-36",
+      "path": "collection/mas-36/index.html"
+    },
+    {
+      "old": "collection/mas-56",
+      "new": "collezione/mas-56",
+      "path": "collection/mas-56/index.html"
+    },
+    {
+      "old": "collection/grantender-72",
+      "new": "collezione/grantender-72",
+      "path": "collection/grantender-72/index.html"
+    },
+    {
+      "old": "collection/gran-marlin",
+      "new": "collezione/gran-marlin",
+      "path": "collection/gran-marlin/index.html"
+    }
+  ],
+  "redirectCount": 10,
   "note": "All HTML is server-readable with no JS dependency. Media are progressive enhancements."
 }
