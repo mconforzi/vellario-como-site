@@ -68,12 +68,13 @@ def header(current_id, depth, data):
         '<nav class="menu-items" aria-label="Navigazione principale">'+''.join(links)+'</nav></details></header>'
     )
 
-def footer(depth):
+def footer(depth, data):
+    foot = data.get('footer', {})
     return (
         '<footer class="site-footer">'
         '<div class="footer-mark">VELLARIO · COMO</div>'
-        '<p>Working content foundation. The brand identity, model names, original media and editorial direction are under development. '
-        'No craft is represented as a manufactured or delivered VELLARIO vessel.</p>'
+        '<p>'+esc(foot.get('statement','A new Italian nautical maison.'))+'</p>'
+        '<p>'+esc(foot.get('disclosure','Design concept preview.'))+'</p>'
         '<p><a href="'+esc(site_path('contact',depth))+'">Contact</a> · '
         '<a href="'+esc(site_path('collection',depth))+'">The Collection</a> · '
         '<a href="'+esc(site_path('',depth))+'">Home</a></p>'
@@ -103,7 +104,7 @@ def hero(page, depth, model_lookup, lakes, opening, content_model=None):
         +'<div class="hero-block">'+media+'</div>'
     )
 
-def model_cards(depth,models):
+def model_cards(depth,models,copy_lookup):
     items=[]
     for m in models:
         href=site_path('collection/'+m['id'],depth)
@@ -112,7 +113,7 @@ def model_cards(depth,models):
             '<a class="model-card" href="'+esc(href)+'">'
             '<img src="'+esc(poster)+'" alt="'+esc(m['name'])+' original yacht design rendering" loading="lazy">'
             '<span class="model-card-copy"><strong>'+esc(m['name'])+'</strong>'
-            '<small>Design study · Explore <span aria-hidden="true">→</span></small></span></a>'
+            '<small>'+esc(copy_lookup[m['id']]['tagline'])+' <span aria-hidden="true">→</span></small></span></a>'
         )
     return '<div class="model-card-grid">'+''.join(items)+'</div>'
 
@@ -134,7 +135,7 @@ def editorial_page(page, depth, data, model_lookup, models):
         if s.get('media'):
             out.append('<div class="section-visual">'+section_media(s['media'],depth,model_lookup,data['lakeSources'])+'</div>')
         if s.get('kind')=='collection':
-            out.append('<div class="section-collection">'+model_cards(depth,models)+'</div>')
+            out.append('<div class="section-collection">'+model_cards(depth,models,data['modelCopy'])+'</div>')
         out.append('</section>')
     return ''.join(out)
 
@@ -152,7 +153,7 @@ def model_page(model, copy, depth, data, models):
        ('Exterior Design',copy['exterior']),
        ('Life on Board',copy['aboard']),
        ('Details & Materials',copy['details']),
-       ('Specifications','Only validated specifications may be published. Dimensions, speed, propulsion, materials and build status are pending documentary review.'),
+       ('Specifications',copy.get('specifications','Final technical specification under review.')),
     ]
     for i,(heading,text) in enumerate(parts,1):
         out.append('<section class="editorial-section"><div class="section-index">'+str(i).zfill(2)+'</div>'
@@ -162,13 +163,12 @@ def model_page(model, copy, depth, data, models):
         photos.append('<figure><img src="'+esc(asset(name,depth))+'" alt="'+esc(model['name'])+
                      ' archive rendering '+str(i+1)+'" loading="lazy"><figcaption>Original design archive · '+esc(model['name'])+'</figcaption></figure>')
     out.append('<section class="editorial-section image-section"><div class="section-index">06</div>'
-               '<div class="section-copy"><h2>Gallery</h2><p>Original project visuals, subject to final editorial selection and publication-rights clearance.</p></div>'
+               '<div class="section-copy"><h2>Gallery</h2><p>'+esc(copy.get('gallery','Original project imagery.'))+'</p></div>'
                '<div class="image-gallery">'+''.join(photos)+'</div></section>')
     out.append('<section class="editorial-section"><div class="section-index">07</div>'
-               '<div class="section-copy"><h2>Enquiries</h2><p>The official contact channel is not yet active. '
-               'No form will appear until an authorised recipient and privacy workflow are verified.</p>'
+               '<div class="section-copy"><h2>Enquiries</h2><p>'+esc(copy.get('enquiries','Dedicated enquiry channel forthcoming.'))+'</p>'
                '<a class="section-link" href="'+esc(site_path('contact',depth))+'">Contact information →</a></div></section>')
-    out.append('<nav class="model-next" aria-label="Altri modelli">'+model_cards(depth,models)+'</nav>')
+    out.append('<nav class="model-next" aria-label="Altri modelli">'+model_cards(depth,models,data['modelCopy'])+'</nav>')
     return ''.join(out)
 
 def generate(data,catalog,where):
@@ -206,7 +206,7 @@ def generate(data,catalog,where):
           '<link rel="stylesheet" href="'+esc(source_css)+'"><script src="'+esc(source_js)+'" defer></script>'
           '</head><body data-page="'+esc(pid)+'">'
           +header(pid,depth,data)+'<main id="main-content">'+body+'</main>'
-          +footer(depth)+'</body></html>\n'
+          +footer(depth,data)+'</body></html>\n'
         )
         dest=outdir/'index.html'
         dest.write_text(html_doc,encoding='utf-8')
