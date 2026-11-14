@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "release": "mobile-root-0.1.0",
-  "status": "functional-proof",
+  "release": "mobile-video-first-v7",
+  "status": "video-first-preview",
   "title": "VELLARIO · COMO",
   "source": "Original design archive: Dropbox /[BOATS]/AI - MEDIA, assets already hosted on this GitHub Pages repository",
   "assetBase": "../assets/vario/",
@@ -36,7 +36,7 @@
       "id": "mas-36",
       "name": "MAS 36",
       "poster": "mas36.webp",
-      "video": null,
+      "video": "mas36.mp4",
       "videoResolution": null,
       "images": [
         "mas36.webp"

@@ -142,10 +142,16 @@ def model_cards(depth, models, copy_lookup):
     for i, m in enumerate(models, 1):
         href = site_path('collezione/' + m['id'], depth)
         image = asset(m['poster'], depth)
+        film_markup = (
+            '<video class="model-card-film" data-model-film data-src="' + esc(asset(m['video'], depth)) +
+            '" muted playsinline autoplay loop preload="none" poster="' + esc(image) +
+            '" aria-label="Video del modello ' + esc(m['name']) + '"></video>'
+        ) if m.get('video') else ''
         tag = copy_lookup[m['id']]['tagline']
         cards.append(
             '<a class="model-card' + (' model-card--featured' if i == 1 else '') + '" href="' + esc(href) + '">'
             '<img src="' + esc(image) + '" alt="' + esc(m['name']) + ' original design rendering" loading="lazy" decoding="async">'
+            + film_markup +
             '<span class="model-card-overlay"></span>'
             '<span class="model-card-index">LA COLLEZIONE <b>' + str(i).zfill(2) + ' / 05</b></span>'
             '<span class="model-card-copy"><span><strong>' + esc(m['name']) + '</strong>'
@@ -267,6 +273,8 @@ def generate(data,catalog,where):
         raise ValueError('Original model registry differs from approved collection')
     if len(data['pages'])!=8 or len(data['modelCopy'])!=5:
         raise ValueError('Expected home + seven pillars + five model pages')
+    if any(not x.get('video') for x in models):
+        raise ValueError('Video-first collection: all five models need a matching film')
     data['_opening']=catalog['opening']
     model_lookup={m['id']:m for m in models}
     paths=[]

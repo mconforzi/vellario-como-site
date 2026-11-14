@@ -4,8 +4,8 @@
     {
       "slug": "",
       "path": "index.html",
-      "name": "VELLARIO \u00b7 COMO",
-      "bytes": 15940
+      "name": "VELLARIO · COMO",
+      "bytes": 17069
     },
     {
       "slug": "como",
@@ -23,7 +23,7 @@
       "slug": "collezione",
       "path": "collezione/index.html",
       "name": "La Collezione",
-      "bytes": 10172
+      "bytes": 11331
     },
     {
       "slug": "storia-tradizione",
@@ -53,31 +53,31 @@
       "slug": "collezione/quantum-999",
       "path": "collezione/quantum-999/index.html",
       "name": "Quantum 999",
-      "bytes": 12316
+      "bytes": 13505
     },
     {
       "slug": "collezione/mas-36",
       "path": "collezione/mas-36/index.html",
       "name": "MAS 36",
-      "bytes": 11796
+      "bytes": 13339
     },
     {
       "slug": "collezione/mas-56",
       "path": "collezione/mas-56/index.html",
       "name": "MAS 56",
-      "bytes": 12921
+      "bytes": 14110
     },
     {
       "slug": "collezione/grantender-72",
       "path": "collezione/grantender-72/index.html",
       "name": "GranTender 72",
-      "bytes": 12845
+      "bytes": 14034
     },
     {
       "slug": "collezione/gran-marlin",
       "path": "collezione/gran-marlin/index.html",
       "name": "Gran Marlin",
-      "bytes": 12329
+      "bytes": 13518
     }
   ],
   "count": 13,

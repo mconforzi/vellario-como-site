@@ -116,3 +116,45 @@ w.addEventListener('pageshow',e=>{if(e.persisted)playIntro()});
 w.addEventListener('pagehide',()=>w.clearTimeout(finishTimer));
 playIntro();
 })();
+
+
+/* VELLARIO V7 — lazy playback for video-first collection cards, five matched original yacht films. */
+(()=>{'use strict';
+const w=window,d=document;
+const videos=[...d.querySelectorAll('video[data-model-film]')];
+if(!videos.length)return;
+const reduced=w.matchMedia&&w.matchMedia('(prefers-reduced-motion: reduce)').matches;
+const save=!!navigator.connection?.saveData;
+const menu=d.querySelector('.site-menu');
+function blocked(){return !!(reduced||save||d.hidden||menu?.open)}
+function stop(v){if(!v.paused)v.pause();v.classList.remove('is-playing')}
+function start(v){
+ if(blocked()||v.hidden)return;
+ if(!v.getAttribute('src')){v.src=v.dataset.src||'';if(!v.src)return;v.load()}
+ const p=v.play();if(p?.catch)p.catch(()=>v.classList.remove('is-playing'));
+}
+function refresh(){
+ if(blocked()){videos.forEach(stop);return}
+ for(const v of videos){
+  const r=v.getBoundingClientRect();
+  if(r.bottom>50&&r.top<w.innerHeight-50)start(v);else stop(v);
+ }
+}
+for(const v of videos){
+ v.muted=true;v.playsInline=true;
+ v.addEventListener('playing',()=>v.classList.add('is-playing'));
+ v.addEventListener('pause',()=>v.classList.remove('is-playing'));
+ v.addEventListener('error',()=>{stop(v);v.hidden=true});
+}
+if('IntersectionObserver' in w){
+ const io=new IntersectionObserver(entries=>{
+  for(const e of entries){if(e.isIntersecting&&e.intersectionRatio>.12)start(e.target);else stop(e.target)}
+ },{threshold:[0,.12,.32,.65]});
+ videos.forEach(v=>io.observe(v));
+}else{w.addEventListener('scroll',refresh,{passive:true})}
+d.addEventListener('visibilitychange',refresh);
+w.addEventListener('pageshow',refresh);
+w.addEventListener('pagehide',()=>videos.forEach(stop));
+menu?.addEventListener('toggle',refresh);
+refresh();
+})();
