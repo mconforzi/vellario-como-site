@@ -376,3 +376,65 @@ body[data-page="home"] .chapter-depth-panel p{
   body[data-page="home"] main > #models { height:100dvh }
   body[data-page="home"] main > .chapter:not(.chapter--collection):not(.chapter--visual){min-height:100dvh}
 }
+
+
+/* VELLARIO V15 · Media-first chapters: only section title above the maximum-height media.
+   Scope: home visual categories (Como, Dolce Vita, Collezione, Arte del Dettaglio).
+   Previous editorial content stays preserved in source/HTML and linked detail pages. */
+body[data-page="home"] main > .chapter--visual .chapter-eyebrow,
+body[data-page="home"] main > .chapter--visual .english-subtitle,
+body[data-page="home"] main > .chapter--visual .chapter-description,
+body[data-page="home"] main > .chapter--visual .text-link,
+body[data-page="home"] main > .chapter--visual .chapter-depth,
+body[data-page="home"] main > .chapter--visual .chapter-number,
+body[data-page="home"] main > #models .chapter-eyebrow,
+body[data-page="home"] main > #models .english-subtitle,
+body[data-page="home"] main > #models .chapter-description,
+body[data-page="home"] main > #models .text-link,
+body[data-page="home"] main > #models .chapter-depth,
+body[data-page="home"] main > #models .chapter-number {
+  display:none!important;
+}
+body[data-page="home"] main > .chapter--visual > .chapter-shell,
+body[data-page="home"] main > #models > .chapter-shell {
+  flex:0 0 auto;
+  padding:clamp(82px,10.3svh,108px) clamp(20px,5vw,90px) clamp(7px,1.2svh,12px)!important;
+  grid-template-columns:minmax(0,1fr)!important;
+  gap:0!important;
+  align-items:start!important;
+}
+body[data-page="home"] main > .chapter--visual h2,
+body[data-page="home"] main > #models h2 {
+  margin:0!important;
+  padding:0!important;
+  font-size:clamp(48px,6.6vw,88px);
+  line-height:.86;
+  text-wrap:balance;
+}
+body[data-page="home"] main > .chapter--visual > .chapter-media {
+  align-self:stretch;
+  margin:0!important;
+}
+body[data-page="home"] #models > .chapter-collection {
+  align-self:stretch;
+  margin:0!important;
+}
+@media(max-width:750px) {
+  body[data-page="home"] main > .chapter--visual > .chapter-shell,
+  body[data-page="home"] main > #models > .chapter-shell {
+    padding:calc(77px + env(safe-area-inset-top,0px)) 19px 8px!important;
+  }
+  body[data-page="home"] main > .chapter--visual h2,
+  body[data-page="home"] main > #models h2 {
+    font-size:clamp(42px,10.7vw,65px);
+  }
+}
+@media(max-height:680px) {
+  body[data-page="home"] main > .chapter--visual > .chapter-shell,
+  body[data-page="home"] main > #models > .chapter-shell {
+    padding-top:calc(67px + env(safe-area-inset-top,0px))!important;
+    padding-bottom:5px!important;
+  }
+  body[data-page="home"] main > .chapter--visual h2,
+  body[data-page="home"] main > #models h2 {font-size:clamp(38px,7vw,60px)}
+}
