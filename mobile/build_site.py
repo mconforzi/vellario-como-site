@@ -31,14 +31,14 @@ def section_media(media, depth, model_lookup, lakes, caption='', hero=False):
     if media.startswith('model:'):
         mid = media.split(':', 1)[1]
         m = model_lookup[mid]
-        poster = asset(m['poster'], depth)
+        poster = asset(m.get('videoPoster') or m['poster'], depth)
         video = asset(m['video'], depth) if m.get('video') else ''
         portrait = ' film-frame--portrait' if m.get('videoResolution') and m['videoResolution'].startswith('720×1280') else ''
         film = (f'<video data-film data-src="{esc(video)}" muted playsinline loop preload="none" '
                 f'poster="{esc(poster)}" aria-label="Original study film for {esc(m["name"])}"></video>') if video else ''
         return (
             f'<figure class="film-frame film-frame--yacht{portrait}" data-media-frame>'
-            f'<img class="media-poster" src="{esc(poster)}" alt="{esc(m["name"])} original yacht design rendering" '
+            f'<img class="media-poster" src="{esc(poster)}" alt="{esc(m["name"])} first frame of original video" '
             f'loading="{eager}" decoding="async"{priority}>'
             + film +
             ('<button type="button" class="play-film" aria-label="Avvia o ferma il filmato"><span class="play-icon">▶</span><span class="play-label">PLAY FILM</span></button>' if film else '')
@@ -152,7 +152,7 @@ def model_cards(depth, models, copy_lookup):
     cards = []
     for i, m in enumerate(models, 1):
         href = site_path('collezione/' + m['id'], depth)
-        image = asset(m['poster'], depth)
+        image = asset(m.get('videoPoster') or m['poster'], depth)
         film_markup = (
             '<video class="model-card-film" data-model-film data-src="' + esc(asset(m['video'], depth)) +
             '" muted playsinline autoplay loop preload="none" poster="' + esc(image) +
@@ -161,7 +161,7 @@ def model_cards(depth, models, copy_lookup):
         tag = copy_lookup[m['id']]['tagline']
         cards.append(
             '<a class="model-card' + (' model-card--featured' if i == 1 else '') + (' model-card--portrait' if (m.get('videoResolution') or '').startswith('720×1280') else '') + '" href="' + esc(href) + '">'
-            '<img src="' + esc(image) + '" alt="' + esc(m['name']) + ' original design rendering" loading="lazy" decoding="async">'
+            '<img src="' + esc(image) + '" alt="' + esc(m['name']) + ' first frame of matching yacht video" loading="lazy" decoding="async">'
             + film_markup +
             '<span class="model-card-overlay"></span>'
             '<span class="model-card-index">LA COLLEZIONE <b>' + str(i).zfill(2) + ' / 05</b></span>'

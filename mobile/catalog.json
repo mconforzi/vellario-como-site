@@ -30,7 +30,8 @@
         "quantum.webp",
         "quantum-detail.webp"
       ],
-      "kind": "design-study"
+      "kind": "design-study",
+      "videoPoster": "quantum-hd-first-frame.jpg"
     },
     {
       "id": "mas-36",
@@ -41,7 +42,8 @@
       "images": [
         "mas36.webp"
       ],
-      "kind": "design-study"
+      "kind": "design-study",
+      "videoPoster": "mas36-first-frame.jpg"
     },
     {
       "id": "mas-56",
@@ -56,7 +58,8 @@
         "mas56-detail-2.webp",
         "mas56-detail-3.webp"
       ],
-      "kind": "design-study"
+      "kind": "design-study",
+      "videoPoster": "mas56-film-wide-first-frame.jpg"
     },
     {
       "id": "grantender-72",
@@ -70,7 +73,8 @@
         "grantender-3.webp",
         "grantender-4.webp"
       ],
-      "kind": "design-study"
+      "kind": "design-study",
+      "videoPoster": "grantender-hd-first-frame.jpg"
     },
     {
       "id": "gran-marlin",
@@ -82,7 +86,8 @@
         "gran-marlin.webp",
         "gran-marlin-2.webp"
       ],
-      "kind": "design-study"
+      "kind": "design-study",
+      "videoPoster": "gran-marlin-first-frame.jpg"
     }
   ],
   "disclaimers": [
