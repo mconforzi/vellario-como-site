@@ -75,9 +75,9 @@ body.menu-open{overflow:hidden}
 .chapter-collection{padding-left:0!important;padding-right:0!important}
 .collection-after{padding-left:0!important;padding-right:0!important}
 .collection-after-title{padding-left:clamp(28px,7vw,135px);padding-right:clamp(28px,7vw,135px)}
-.yacht-rail-track.model-card-grid{display:flex!important;flex-wrap:nowrap!important;grid-template-columns:none!important;gap:0!important;overflow-x:auto;overflow-y:hidden;scroll-snap-type:x mandatory;scroll-padding:0;scrollbar-width:none;-ms-overflow-style:none;overscroll-behavior-inline:contain;-webkit-overflow-scrolling:touch;touch-action:pan-x pan-y}
+.yacht-rail-track.model-card-grid{--rail-card-width:min(72vw,1100px);--rail-edge-gap:max(20px,calc((100% - var(--rail-card-width))/2));--rail-card-gap:clamp(12px,1.8vw,28px);display:flex!important;flex-wrap:nowrap!important;grid-template-columns:none!important;gap:var(--rail-card-gap)!important;padding-inline:var(--rail-edge-gap);overflow-x:auto;overflow-y:hidden;scroll-snap-type:x mandatory;scroll-padding-inline:var(--rail-edge-gap);scrollbar-width:none;-ms-overflow-style:none;overscroll-behavior-inline:contain;-webkit-overflow-scrolling:touch;touch-action:pan-x pan-y}
 .yacht-rail-track::-webkit-scrollbar{display:none}
-.yacht-rail-track .model-card,.yacht-rail-track .model-card--featured{flex:0 0 100%;width:100%;min-width:0;max-width:100%;height:clamp(510px,77svh,940px);min-height:0!important;aspect-ratio:auto!important;grid-column:auto!important;scroll-snap-align:start;scroll-snap-stop:always;overflow:hidden}
+.yacht-rail-track .model-card,.yacht-rail-track .model-card--featured{flex:0 0 var(--rail-card-width);width:var(--rail-card-width);min-width:0;max-width:var(--rail-card-width);height:clamp(480px,72svh,850px);min-height:0!important;aspect-ratio:auto!important;grid-column:auto!important;scroll-snap-align:center;scroll-snap-stop:always;overflow:hidden}
 .yacht-rail-track .model-card:focus-visible{outline:2px solid var(--brass);outline-offset:-5px}
 .yacht-rail-track .model-card > .model-card-film{object-fit:cover}
 .yacht-rail-track .model-card--portrait > .model-card-film{object-fit:contain;background:transparent}
@@ -99,7 +99,8 @@ body.menu-open{overflow:hidden}
 .yacht-rail-btn:not(:disabled):hover{background:rgba(207,184,139,.17);border-color:var(--brass)}
 .yacht-rail-btn:disabled{opacity:.32;cursor:default}
 @media(max-width:750px){
-.yacht-rail-track .model-card,.yacht-rail-track .model-card--featured{height:75svh;min-height:440px;max-height:830px;aspect-ratio:auto!important}
+.yacht-rail-track.model-card-grid{--rail-card-width:82vw;--rail-edge-gap:max(12px,calc((100% - var(--rail-card-width))/2));--rail-card-gap:12px}
+.yacht-rail-track .model-card,.yacht-rail-track .model-card--featured{height:68svh;min-height:440px;max-height:700px;aspect-ratio:auto!important}
 .yacht-rail-track .model-card-copy{left:23px;right:23px;bottom:37px;align-items:end}
 .yacht-rail-track .model-card-index{left:23px;top:24px}
 .yacht-rail-track .model-card strong{font-size:clamp(56px,13.3vw,95px);line-height:.85;overflow-wrap:anywhere}
