@@ -205,11 +205,14 @@ playIntro();
 })();
 
 
-/* VELLARIO V7 — lazy playback for video-first collection cards, five matched original yacht films. */
+/* VELLARIO V22 — home collection: eagerly prepare and autoplay all five films before scroll.
+   Other routes keep visibility-based playback. Safari may suspend offscreen video;
+   loading is still primed and visibility re-attempts play. */
 (()=>{'use strict';
 const w=window,d=document;
 const videos=[...d.querySelectorAll('video[data-model-film]')];
 if(!videos.length)return;
+const eagerHome=d.body?.dataset.page==='home';
 const reduced=w.matchMedia&&w.matchMedia('(prefers-reduced-motion: reduce)').matches;
 const save=!!navigator.connection?.saveData;
 const menu=d.querySelector('.site-menu');
@@ -217,11 +220,18 @@ function blocked(){return !!(reduced||save||d.hidden||menu?.open)}
 function stop(v){if(!v.paused)v.pause();v.classList.remove('is-playing')}
 function start(v){
  if(blocked()||v.hidden)return;
- if(!v.getAttribute('src')){v.src=v.dataset.src||'';if(!v.src)return;v.load()}
+ if(!v.getAttribute('src')){
+  const source=v.dataset.src;
+  if(!source)return;
+  if(eagerHome)v.preload='auto';
+  v.src=source;v.load();
+ }
+ if(!v.paused)return;
  const p=v.play();if(p?.catch)p.catch(()=>v.classList.remove('is-playing'));
 }
 function refresh(){
  if(blocked()){videos.forEach(stop);return}
+ if(eagerHome){videos.forEach(start);return}
  for(const v of videos){
   const r=v.getBoundingClientRect();
   if(r.bottom>50&&r.top<w.innerHeight-50)start(v);else stop(v);
@@ -235,7 +245,10 @@ for(const v of videos){
 }
 if('IntersectionObserver' in w){
  const io=new IntersectionObserver(entries=>{
-  for(const e of entries){if(e.isIntersecting&&e.intersectionRatio>.12)start(e.target);else stop(e.target)}
+  for(const e of entries){
+   if(e.isIntersecting&&e.intersectionRatio>.12)start(e.target);
+   else if(!eagerHome)stop(e.target);
+  }
  },{threshold:[0,.12,.32,.65]});
  videos.forEach(v=>io.observe(v));
 }else{w.addEventListener('scroll',refresh,{passive:true})}
