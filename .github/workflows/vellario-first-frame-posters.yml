@@ -1,0 +1,60 @@
+name: VELLARIO first-frame JPEG posters
+on:
+  push:
+    branches: [main]
+    paths:
+      - .github/workflows/vellario-first-frame-posters.yml
+      - assets/vario/quantum-hd.mp4
+      - assets/vario/mas36.mp4
+      - assets/vario/mas56-film-wide.mp4
+      - assets/vario/grantender-hd.mp4
+      - assets/vario/gran-marlin.mp4
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  extract-first-frames:
+    name: Extract exact first encoded frame from five original MP4 films
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+          fetch-depth: 1
+      - name: Extract five JPEGs, no seek, first decoded frame
+        shell: bash
+        run: |
+          set -euo pipefail
+          command -v ffmpeg >/dev/null
+          command -v ffprobe >/dev/null
+          while IFS='|' read -r source output; do
+            test -s "$source"
+            ffmpeg -hide_banner -loglevel error -nostdin -y -i "$source" -map 0:v:0 -an -frames:v 1 -q:v 3 -update 1 "$output"
+            test -s "$output"
+            file --mime-type "$output" | grep -q 'image/jpeg'
+            printf '%s => %s (%s bytes)\n' "$source" "$output" "$(wc -c < "$output")"
+            sha256sum "$source" "$output"
+          done <<'YACHTS'
+          assets/vario/quantum-hd.mp4|assets/vario/quantum-hd-first-frame.jpg
+          assets/vario/mas36.mp4|assets/vario/mas36-first-frame.jpg
+          assets/vario/mas56-film-wide.mp4|assets/vario/mas56-film-wide-first-frame.jpg
+          assets/vario/grantender-hd.mp4|assets/vario/grantender-hd-first-frame.jpg
+          assets/vario/gran-marlin.mp4|assets/vario/gran-marlin-first-frame.jpg
+          YACHTS
+      - name: Commit verified poster files to public site
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "VELLARIO image automation"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add assets/vario/*-first-frame.jpg
+          if git diff --cached --quiet; then
+            echo 'Posters already synchronized.'
+            exit 0
+          fi
+          git commit -m "assets(vellario): extract real first frame from each yacht model video [skip ci]"
+          git pull --rebase origin main
+          git push origin HEAD:main
