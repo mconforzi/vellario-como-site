@@ -302,3 +302,48 @@ d.addEventListener('keydown',e=>{
  e.preventDefault();step(dir);
 },{capture:true});
 })();
+
+/* VELLARIO V19 — contextual first-frame film loading; never fake percentages or stall navigation. */
+(()=>{'use strict';
+const d=document,w=window;
+if(w.matchMedia&&w.matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+if(navigator.connection&&navigator.connection.saveData)return;
+const videos=[...d.querySelectorAll('.model-card > video[data-model-film],.film-frame--yacht > video[data-film]')];
+for(const video of videos){
+ const host=video.closest('.model-card,.film-frame--yacht');
+ if(!host)continue;
+ const loader=d.createElement('span');
+ loader.className='vellario-film-loader';
+ loader.setAttribute('aria-hidden','true');
+ loader.innerHTML='<span class="vellario-film-loader-glyph"></span><span class="vellario-film-loader-label">PREPARAZIONE DEL FILM</span><span class="vellario-film-loader-track"><i></i></span>';
+ host.appendChild(loader);
+ let delayed=0,failSafe=0,timedOut=false;
+ function clear(){
+  if(delayed)w.clearTimeout(delayed);
+  if(failSafe)w.clearTimeout(failSafe);
+  delayed=0;failSafe=0;host.classList.remove('is-buffering');
+ }
+ function begin(){
+  if(video.hidden||d.hidden||timedOut||!video.getAttribute('src'))return;
+  if(video.readyState>=3||video.classList.contains('is-playing')){clear();return}
+  if(delayed||host.classList.contains('is-buffering'))return;
+  delayed=w.setTimeout(()=>{
+   delayed=0;
+   if(video.hidden||d.hidden||timedOut||video.readyState>=3||video.classList.contains('is-playing'))return;
+   host.classList.add('is-buffering');
+   failSafe=w.setTimeout(()=>{timedOut=true;clear()},9000);
+  },220);
+ }
+ video.addEventListener('loadstart',()=>{timedOut=false;begin()});
+ video.addEventListener('waiting',begin);
+ video.addEventListener('stalled',begin);
+ video.addEventListener('playing',()=>{timedOut=false;clear()});
+ video.addEventListener('canplay',clear);
+ video.addEventListener('pause',clear);
+ video.addEventListener('error',clear);
+ video.addEventListener('abort',clear);
+ video.addEventListener('emptied',clear);
+ if(video.networkState===2&&video.readyState<3)begin();
+ d.addEventListener('visibilitychange',()=>{if(d.hidden)clear()});
+}
+})();

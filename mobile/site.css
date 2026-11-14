@@ -511,3 +511,57 @@ body[data-page="home"] #models > .chapter-collection {
  .site-header{padding-inline:13px}
  .site-header .brand-lockup{--brand-font-size:19px}
 }
+
+/* VELLARIO V19 | Cinematic actual-buffering display; original first-frame JPEG stays visible. */
+.model-card,.film-frame--yacht{isolation:isolate}
+.vellario-film-loader{
+ position:absolute;inset:50% auto auto 50%;z-index:3;pointer-events:none;
+ display:flex;flex-direction:column;align-items:center;justify-content:center;
+ gap:11px;width:min(82%,250px);opacity:0;visibility:hidden;
+ color:#f5eddd;text-align:center;text-shadow:0 2px 18px rgba(0,0,0,.55);
+ transform:translate(-50%,-45%) scale(.985);
+ transition:opacity .45s ease,transform .55s cubic-bezier(.2,.6,.2,1),visibility .45s;
+}
+.model-card.is-buffering > .vellario-film-loader,
+.film-frame--yacht.is-buffering > .vellario-film-loader{
+ visibility:visible;opacity:1;transform:translate(-50%,-50%) scale(1);
+}
+.vellario-film-loader-glyph{
+ position:relative;display:block;width:13px;height:13px;
+ border:1px solid rgba(220,198,155,.95);transform:rotate(45deg);
+ box-shadow:0 0 17px rgba(207,184,139,.2);
+}
+.vellario-film-loader-glyph:after{
+ content:"";position:absolute;inset:3px;background:var(--brass);opacity:.66;
+ animation:vellario-film-pulse 1.75s ease-in-out infinite alternate;
+}
+.vellario-film-loader-label{
+ font:500 8px/1.35 var(--sans);letter-spacing:.23em;
+ white-space:nowrap;text-transform:uppercase;
+}
+.vellario-film-loader-track{
+ width:clamp(86px,12vw,132px);height:1px;display:block;
+ overflow:hidden;background:rgba(223,201,164,.36);
+}
+.vellario-film-loader-track i{
+ display:block;width:43%;height:100%;background:var(--brass);
+ transform:translateX(-120%);
+ animation:vellario-film-sweep 1.65s cubic-bezier(.5,0,.35,1) infinite;
+ box-shadow:0 0 12px rgba(207,184,139,.52);
+}
+.model-card.is-buffering:after,.film-frame--yacht.is-buffering:after{
+ content:"";position:absolute;inset:0;z-index:1;pointer-events:none;
+ background:linear-gradient(105deg,transparent 30%,rgba(207,184,139,.065) 50%,transparent 70%);
+ animation:vellario-film-glint 3s ease-in-out infinite;
+}
+@keyframes vellario-film-pulse{from{opacity:.32}to{opacity:.95}}
+@keyframes vellario-film-sweep{0%{transform:translateX(-125%)}100%{transform:translateX(345%)}}
+@keyframes vellario-film-glint{from{transform:translateX(-120%)}to{transform:translateX(120%)}}
+@media(max-width:750px){
+ .vellario-film-loader{gap:9px}
+ .vellario-film-loader-label{font-size:7px;letter-spacing:.19em}
+ .vellario-film-loader-track{width:90px}
+}
+@media(prefers-reduced-motion:reduce){
+ .vellario-film-loader,.model-card.is-buffering:after,.film-frame--yacht.is-buffering:after{display:none!important}
+}
