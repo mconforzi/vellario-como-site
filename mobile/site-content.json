@@ -105,7 +105,8 @@
           "body": "There are places whose character is inseparable from the way they are lived. Lake Como is one of them: architecture set against the mountains, gardens descending towards the water, and a distinctive tradition of arriving by boat. For VELLARIO, Como is not merely a location or a backdrop. It is the cultural inspiration for a new nautical point of view.",
           "link": "como",
           "media": "como",
-          "englishLine": "Where It All Begins"
+          "englishLine": "Where It All Begins",
+          "shortIntro": "Como è il nostro punto di partenza: paesaggio, architettura e una tradizione di eleganza sull’acqua."
         },
         {
           "id": "life",
@@ -113,7 +114,8 @@
           "body": "An aperitivo at the water's edge. The golden light of late afternoon. A short passage across the lake, with no need to hurry. La Dolce Vita is not a style borrowed for a photograph; it is the pleasure of living beautifully, simply and without ostentation. This is the spirit we want VELLARIO to express.",
           "link": "dolce-vita",
           "media": "bled",
-          "englishLine": "The Good Life, the Italian Way"
+          "englishLine": "The Good Life, the Italian Way",
+          "shortIntro": "Un aperitivo sul lago, la luce del tramonto, il piacere di navigare senza fretta. Questa è la Dolce Vita."
         },
         {
           "id": "models",
@@ -121,7 +123,8 @@
           "body": "A collection should never feel like a row of interchangeable objects. Quantum 999, MAS 36, MAS 56, GranTender 72 and Gran Marlin explore different expressions of life on the water, from the spirit of the Italian sporting boat to the architectural ambition of a larger yacht. Each begins with its own design character.",
           "link": "collection",
           "kind": "collection",
-          "englishLine": "Distinctive by Design"
+          "englishLine": "Distinctive by Design",
+          "shortIntro": "Cinque barche, cinque caratteri. Un'unica interpretazione della Dolce Vita sull’acqua."
         },
         {
           "id": "history",
@@ -135,7 +138,8 @@
           "body": "The Italian idea of saper fare is more than craftsmanship alone. It is the discipline of knowing why a detail matters. Proportion, materials, the line of a hull and the feeling of a surface should belong to one coherent whole. For VELLARIO, beauty starts with these decisions.",
           "link": "design-craftsmanship",
           "media": "model:mas-56",
-          "englishLine": "The Beauty of Every Detail"
+          "englishLine": "The Beauty of Every Detail",
+          "shortIntro": "Proporzioni, materiali, linee e superfici: il saper fare italiano si riconosce nei dettagli."
         },
         {
           "id": "vision",

@@ -155,3 +155,216 @@ body > .site-footer{
 @media(prefers-reduced-motion:reduce){
  html{scroll-snap-type:y mandatory!important;scroll-behavior:auto!important}
 }
+
+
+/* VELLARIO V14 — full-height editorial frames, exact top title/bottom visual layout. */
+body[data-page="home"] main > .chapter--visual,
+body[data-page="home"] main > #models {
+  box-sizing:border-box;
+  height:100svh;
+  min-height:0!important;
+  overflow:hidden;
+}
+body[data-page="home"] main > .chapter--visual {
+  display:grid!important;
+  grid-template-columns:minmax(0,1fr)!important;
+  grid-template-rows:auto minmax(0,1fr);
+  align-items:stretch;
+}
+body[data-page="home"] main > #models {
+  display:flex;
+  flex-direction:column;
+}
+body[data-page="home"] main > .chapter--visual > .chapter-shell,
+body[data-page="home"] main > #models > .chapter-shell {
+  box-sizing:border-box;
+  flex:0 0 auto;
+  position:relative;
+  z-index:6;
+  width:100%;
+  max-width:none;
+  margin:0;
+  min-height:0!important;
+  padding:clamp(84px,10svh,116px) clamp(24px,5.5vw,100px) clamp(12px,1.7svh,22px);
+  grid-template-columns:26px minmax(0,1fr)!important;
+  gap:clamp(12px,2.7vw,38px);
+  align-items:start!important;
+  order:0!important;
+}
+body[data-page="home"] main > .chapter--visual .chapter-content,
+body[data-page="home"] main > #models .chapter-content {
+  min-width:0;
+  max-width:1250px;
+  position:relative;
+  z-index:7;
+}
+body[data-page="home"] main > .chapter--visual .chapter-eyebrow,
+body[data-page="home"] main > #models .chapter-eyebrow {
+  margin:0 0 clamp(6px,1svh,12px);
+  font-size:9px;
+}
+body[data-page="home"] main > .chapter--visual h2,
+body[data-page="home"] main > #models h2 {
+  font-size:clamp(48px,6.8vw,94px);
+  line-height:.86;
+  margin:0 0 clamp(5px,1svh,12px);
+  letter-spacing:-.05em;
+}
+body[data-page="home"] main > .chapter--visual .english-subtitle,
+body[data-page="home"] main > #models .english-subtitle {
+  font-size:clamp(20px,2.2vw,33px);
+  line-height:1.08;
+  margin:0 0 clamp(5px,.9svh,10px);
+}
+body[data-page="home"] main > .chapter--visual .chapter-description,
+body[data-page="home"] main > #models .chapter-description {
+  font:400 clamp(13px,1.2vw,17px)/1.3 var(--sans);
+  max-width:66ch;
+  margin:0;
+}
+body[data-page="home"] main > .chapter--visual .text-link,
+body[data-page="home"] main > #models .text-link {
+  margin-top:clamp(7px,1svh,12px);
+  padding-bottom:3px;
+  font-size:9px;
+}
+body[data-page="home"] main > .chapter--visual > .chapter-media {
+  order:1!important;
+  position:relative;
+  width:100%;
+  height:100%!important;
+  min-height:0!important;
+  max-height:none!important;
+  overflow:hidden;
+}
+body[data-page="home"] main > .chapter--visual > .chapter-media > .film-frame {
+  position:absolute!important;
+  inset:0;
+  width:100%;
+  height:100%!important;
+  min-height:0!important;
+  max-height:none!important;
+  aspect-ratio:auto!important;
+  margin:0;
+}
+body[data-page="home"] #models > .chapter-collection {
+  flex:1 1 0;
+  min-height:0;
+  width:100%;
+  padding:0!important;
+  overflow:hidden;
+}
+body[data-page="home"] #models .yacht-rail {
+  height:100%;
+  min-height:0;
+  overflow:hidden;
+}
+body[data-page="home"] #models .yacht-rail-track.model-card-grid {
+  height:100%;
+  min-height:0;
+}
+body[data-page="home"] #models .yacht-rail-track .model-card,
+body[data-page="home"] #models .yacht-rail-track .model-card--featured {
+  height:100%!important;
+  min-height:0!important;
+  max-height:none!important;
+}
+body[data-page="home"] #models .yacht-rail-controls {
+  position:absolute;
+  z-index:8;
+  inset:auto 0 0;
+  min-height:64px;
+  padding:10px clamp(18px,5.5vw,100px);
+  background:linear-gradient(to top,rgba(5,17,12,.96),rgba(5,17,12,.58) 75%,transparent);
+  border-top:0;
+  pointer-events:none;
+}
+body[data-page="home"] #models .yacht-rail-buttons .yacht-rail-btn {
+  pointer-events:auto;
+}
+body[data-page="home"] #models .yacht-rail-track .model-card-copy {
+  bottom:clamp(82px,10svh,132px);
+}
+body[data-page="home"] main > .chapter:not(.chapter--collection):not(.chapter--visual){
+  min-height:100svh;
+}
+body[data-page="home"] main > .chapter:not(.chapter--collection):not(.chapter--visual) > .chapter-shell{
+  padding-top:clamp(108px,17svh,180px);
+}
+/* Complete editorial copy is preserved behind a compact native disclosure. */
+body[data-page="home"] .chapter-depth {
+  display:inline-block;
+  vertical-align:middle;
+  margin:clamp(7px,1svh,12px) 0 0 clamp(12px,2vw,26px);
+  position:static;
+}
+body[data-page="home"] .chapter-depth summary {
+  display:inline-flex;
+  gap:8px;
+  align-items:center;
+  color:var(--brass);
+  font:500 9px/1.5 var(--sans);
+  letter-spacing:.14em;
+  cursor:pointer;
+  list-style:none;
+  text-transform:uppercase;
+}
+body[data-page="home"] .chapter-depth summary::-webkit-details-marker{display:none}
+body[data-page="home"] .chapter-depth summary span{font-size:14px}
+body[data-page="home"] .chapter-depth-panel {
+  position:absolute;
+  z-index:60;
+  top:calc(100% + 10px);
+  left:0;
+  width:min(100%,620px);
+  max-height:min(43svh,335px);
+  padding:clamp(18px,3vw,30px);
+  box-sizing:border-box;
+  overflow-y:auto;
+  overscroll-behavior:contain;
+  touch-action:pan-y;
+  color:#efe9dd;
+  border:1px solid rgba(210,188,144,.42);
+  background:rgba(8,26,19,.97);
+  box-shadow:0 20px 60px rgba(0,0,0,.25);
+}
+body[data-page="home"] .chapter-depth-panel p{
+  margin:0;
+  font:400 clamp(14px,1.2vw,17px)/1.55 var(--sans);
+}
+@media(max-width:750px){
+  body[data-page="home"] main > .chapter--visual > .chapter-shell,
+  body[data-page="home"] main > #models > .chapter-shell{
+    padding:calc(77px + env(safe-area-inset-top,0px)) 20px 11px;
+    grid-template-columns:minmax(0,1fr)!important;
+    gap:0;
+  }
+  body[data-page="home"] main > .chapter--visual .chapter-number,
+  body[data-page="home"] main > #models .chapter-number{display:none}
+  body[data-page="home"] main > .chapter--visual h2,
+  body[data-page="home"] main > #models h2{font-size:clamp(43px,10.5vw,67px);line-height:.86}
+  body[data-page="home"] main > .chapter--visual .english-subtitle,
+  body[data-page="home"] main > #models .english-subtitle{font-size:clamp(18px,4.4vw,24px)}
+  body[data-page="home"] main > .chapter--visual .chapter-description,
+  body[data-page="home"] main > #models .chapter-description{font-size:13px;line-height:1.27}
+  body[data-page="home"] main > .chapter--visual .text-link,
+  body[data-page="home"] main > #models .text-link{font-size:8px}
+  body[data-page="home"] #models .yacht-rail-controls{padding:8px 17px;min-height:58px}
+  body[data-page="home"] #models .yacht-rail-track .model-card-copy{bottom:88px}
+  body[data-page="home"] .chapter-depth{margin-left:13px}
+  body[data-page="home"] .chapter-depth-panel{max-height:46svh}
+}
+@media(max-height:680px){
+  body[data-page="home"] main > .chapter--visual > .chapter-shell,
+  body[data-page="home"] main > #models > .chapter-shell{
+    padding-top:calc(66px + env(safe-area-inset-top,0px));
+    padding-bottom:7px;
+  }
+  body[data-page="home"] main > .chapter--visual h2,
+  body[data-page="home"] main > #models h2{font-size:clamp(37px,8vw,64px)}
+  body[data-page="home"] main > .chapter--visual .chapter-eyebrow,
+  body[data-page="home"] main > #models .chapter-eyebrow{margin-bottom:4px}
+  body[data-page="home"] main > .chapter--visual .english-subtitle,
+  body[data-page="home"] main > #models .english-subtitle{margin-bottom:4px}
+  body[data-page="home"] #models .yacht-rail-track .model-card-copy{bottom:75px}
+}

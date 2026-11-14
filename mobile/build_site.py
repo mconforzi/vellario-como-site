@@ -190,7 +190,7 @@ def editorial_page(page, depth, data, model_lookup, models):
             '<div class="chapter-content"><p class="chapter-eyebrow">' + esc(page['title']) + ' / ' +
             esc(str(i).zfill(2)) + '</p><h2>' + esc(section['title']) + '</h2>' +
             ('<p class="english-subtitle">' + esc(section['englishLine']) + '</p>' if section.get('englishLine') else '') +
-            '<p class="chapter-description">' + esc(section['body']) + '</p>'
+            '<p class="chapter-description">' + esc(section.get('shortIntro') or section['body']) + '</p>'
         )
         if section.get('source'):
             src = section['source']
@@ -201,6 +201,11 @@ def editorial_page(page, depth, data, model_lookup, models):
             destination = next(n for n in data['nav'] if n['id'] == section['link'])
             out.append('<a class="text-link" href="' + esc(site_path(destination['slug'], depth)) +
                        '">ESPLORA ' + esc(destination['label']) + '<span aria-hidden="true">↗</span></a>')
+        if section.get('shortIntro'):
+            out.append(
+                '<details class="chapter-depth"><summary>LEGGI TUTTO <span aria-hidden="true">＋</span></summary>'
+                '<div class="chapter-depth-panel"><p>' + esc(section['body']) + '</p></div></details>'
+            )
         out.append('</div></div>')
         if has_media:
             out.append('<div class="chapter-media">' +
@@ -313,7 +318,7 @@ def generate(data,catalog,where):
           '<link rel="preconnect" href="https://fonts.googleapis.com">'
           '<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>'
           '<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">'
-          '<link rel="stylesheet" href="'+esc(source_css)+'?v=v13-snap"><script src="'+esc(source_js)+'?v=v13-snap" defer></script>'
+          '<link rel="stylesheet" href="'+esc(source_css)+'?v=v14-viewport"><script src="'+esc(source_js)+'?v=v14-viewport" defer></script>'
           '</head><body data-page="'+esc(pid)+'">'
           +header(pid,depth,data)+'<main id="main-content">'+body+'</main>'
           +footer(depth,data)+'</body></html>\n'

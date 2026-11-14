@@ -235,7 +235,7 @@ if(points.length<2)return;
 const reduced=w.matchMedia&&w.matchMedia('(prefers-reduced-motion: reduce)').matches;
 let wheelLast=0,touch=null;
 const menu=()=>!!(d.body.classList.contains('menu-open')||d.querySelector('.site-menu[open]'));
-const isControl=node=>!!(node instanceof Element && node.closest('button,input,select,textarea,summary,[contenteditable="true"],.site-menu,.menu-panel,[role="dialog"]'));
+const isControl=node=>!!(node instanceof Element && node.closest('button,input,select,textarea,summary,[contenteditable="true"],.site-menu,.menu-panel,[role="dialog"],.chapter-depth[open]'));
 const pageTop=node=>node.getBoundingClientRect().top+w.scrollY;
 function current(){
  const y=w.scrollY+Math.min(130,w.innerHeight*.18);
