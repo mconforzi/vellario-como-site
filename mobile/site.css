@@ -1,5 +1,5 @@
 /* VELLARIO CINEMATIC DESIGN SYSTEM V5 · Italian Grande Eleganza */
-:root{--ink:#0b1712;--pine:#10251b;--pine2:#1b3026;--linen:#f2ede3;--cream:#e8dfd2;--brass:#cfb88b;--grey:#98a39b;--white:#fcf9f2;--line:rgba(213,211,190,.24);--serif:'Cormorant Garamond',Georgia,serif;--sans:'DM Sans',Arial,sans-serif}
+:root{color-scheme:dark;--ink:#050E0B;--pine:#0B1A15;--pine2:#14241E;--linen:#F2EFE6;--cream:#E6E0D5;--brass:#B9A176;--grey:#A6B3AA;--white:#F7F4EB;--line:rgba(185,161,118,.24);--night-blue:#101F32;--serif:'Cormorant Garamond',Georgia,serif;--sans:'DM Sans',Arial,sans-serif}
 *{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:0}body{margin:0;background:var(--ink);color:var(--white);font:400 14px/1.6 var(--sans);-webkit-font-smoothing:antialiased;overflow-x:hidden}a{color:inherit;text-decoration:none}button{font:inherit;cursor:pointer}a:focus-visible,button:focus-visible,summary:focus-visible{outline:2px solid var(--brass);outline-offset:5px}figure{margin:0}::selection{background:var(--brass);color:var(--ink)}
 .site-header{position:fixed;z-index:99;inset:0 0 auto;height:80px;display:grid;grid-template-columns:1fr 1fr 1fr;align-items:center;padding:0 clamp(22px,4vw,78px);background:linear-gradient(to bottom,rgba(7,16,11,.72),rgba(7,16,11,0));color:var(--white);pointer-events:none}.site-header>*{pointer-events:auto}.wordmark{justify-self:center;text-align:center;line-height:1}.wordmark strong{font:400 32px/.86 var(--serif);letter-spacing:.16em}.wordmark small{display:block;color:var(--brass);margin-top:8px;letter-spacing:.53em;font:500 8px var(--sans);padding-left:.55em}.header-side{justify-self:end;white-space:nowrap;font-size:9px;font-weight:500;letter-spacing:.2em}.header-side span{font-size:14px;margin-left:10px;color:var(--brass)}
 .menu-toggle{list-style:none;display:flex;align-items:center;gap:13px;font-size:10px;font-weight:500;letter-spacing:.18em;cursor:pointer;width:max-content;padding:14px 0}.menu-toggle::-webkit-details-marker{display:none}.menu-lines{width:24px;height:15px;display:flex;flex-direction:column;justify-content:space-around}.menu-lines i{display:block;height:1px;background:currentColor;transition:transform .35s}.site-menu[open] .menu-lines i:first-child{transform:translateY(4px) rotate(45deg)}.site-menu[open] .menu-lines i:last-child{transform:translateY(-4px) rotate(-45deg)}.site-menu[open] .menu-toggle{z-index:102;position:relative}.menu-panel{position:fixed;inset:0;z-index:100;background:var(--ink);overflow-y:auto;min-height:100svh}.menu-panel-inner{max-width:1500px;margin:0 auto;padding:115px clamp(26px,8vw,155px) 42px}.menu-title{color:var(--brass);font-size:10px;letter-spacing:.3em;margin:0 0 35px}.menu-items{display:grid}.menu-link{display:grid;grid-template-columns:48px 1fr 50px;align-items:center;gap:16px;border-bottom:1px solid var(--line);padding:8px 0;color:var(--linen);transition:color .2s,padding .2s}.menu-link:hover,.menu-link[aria-current=page]{color:var(--brass);padding-left:9px}.menu-number,.menu-arrow{font-size:11px;letter-spacing:.08em;font-family:var(--sans)}.menu-name{font:300 clamp(42px,6.3vw,90px)/1 var(--serif)}.menu-arrow{justify-self:end;font-size:23px}.menu-footer{display:flex;justify-content:space-between;gap:12px;font-size:10px;letter-spacing:.15em;color:var(--grey);padding-top:40px}
@@ -859,3 +859,28 @@ body[data-page="home"] #models > .chapter-collection {
 @media(prefers-reduced-motion:reduce){
  .vellario-intro--loading{display:none!important}
 }
+
+/* FOREST NOIR — Owner-approved VELLARIO · COMO palette, 14 November 2026.
+   Typographic lockup, V22 films, layouts and animation rules remain unchanged. */
+html,body{background-color:var(--ink)}
+.site-header{background:linear-gradient(to bottom,rgba(5,14,11,.87),rgba(5,14,11,0))}
+.menu-panel{background:var(--ink)}
+.chapter,.chapter--0,.chapter--2,.chapter--collection{background:var(--ink);color:var(--white);border-top-color:var(--line)}
+.chapter--0{background:#081611}
+.chapter--2{background:linear-gradient(135deg,#091913 0%,#0B1A16 72%,#101F32 170%)}
+.chapter .chapter-description,.chapter--collection .chapter-description{color:#D6DBD1}
+.chapter .chapter-number{color:#A8B3A8}
+.chapter .chapter-eyebrow,.chapter .english-subtitle,.chapter .text-link,.chapter .source-link{color:var(--brass)}
+.next-chapter{background:#081611;color:var(--white);border-top:1px solid var(--line)}
+.next-chapter>span,.next-chapter a span{color:var(--brass)}
+.gallery-chapter,.collection-after,.chapter-collection{background:var(--ink)}
+.site-footer{background:#030A08;color:#CBD4CC;border-top:1px solid var(--line)}
+.site-footer a{color:var(--brass)}
+.film-frame,.model-card,.gallery-image{background:var(--pine)}
+.yacht-rail,.yacht-rail-controls{background:var(--ink)}
+.yacht-rail-controls{border-top-color:var(--line)}
+.chapter-depth-panel,body[data-page="home"] .chapter-depth-panel{background:rgba(5,14,11,.97);color:var(--white);border-color:var(--line)}
+.vellario-intro,.vellario-intro.vellario-intro--cinematic{background:var(--ink);color:var(--white)}
+.vellario-intro-scene{background-color:var(--pine)}
+.play-film:hover,.yacht-rail-btn:not(:disabled):hover{background:var(--night-blue);border-color:var(--brass)}
+::selection{background:var(--brass);color:var(--ink)}
