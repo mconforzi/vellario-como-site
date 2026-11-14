@@ -114,27 +114,22 @@ body.menu-open{overflow:hidden}
 @media(prefers-reduced-motion:reduce){.yacht-rail-track{scroll-behavior:auto!important}.yacht-rail-progress i{transition:none!important}}
 
 
-/* VELLARIO V10 — show whole MAS36 / MAS56 / Gran Marlin films, preserve owner-approved portrait yachts. */
+/* VELLARIO V11 — latest owner directive: portrait-height yacht footage, crop sides.
+   Preserve the approved Quantum / GranTender portrait treatment. */
 .yacht-rail-track .model-card:not(.model-card--portrait) > .model-card-film{
- object-fit:contain;
- object-position:50% 42%;
- background:transparent;
- transform:none;
+  display:block;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  object-position:center center;
+  transform:none;
 }
 .yacht-rail-track .model-card:not(.model-card--portrait) > .model-card-film.is-playing{
- transform:none;
+  transform:none;
 }
-.yacht-rail-track .model-card:not(.model-card--portrait):has(> .model-card-film.is-playing) > img{
- filter:brightness(.36) blur(22px);
- transform:scale(1.13);
- transition:filter .65s ease,transform .65s ease;
-}
-.yacht-rail-track .model-card:not(.model-card--portrait):has(> .model-card-film.is-playing):hover > img{
- transform:scale(1.13);
-}
-@media(max-width:750px){
- .yacht-rail-track .model-card:not(.model-card--portrait) > .model-card-film{object-position:50% 32%}
+.yacht-rail-track .model-card:not(.model-card--portrait):hover > .model-card-film.is-playing{
+  transform:none;
 }
 @media(prefers-reduced-motion:reduce){
- .yacht-rail-track .model-card:not(.model-card--portrait) > img{filter:none!important;transform:none!important}
+  .yacht-rail-track .model-card:not(.model-card--portrait) > .model-card-film{display:none!important}
 }
