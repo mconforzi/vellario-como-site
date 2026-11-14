@@ -767,3 +767,95 @@ body[data-page="home"] #models > .chapter-collection {
 @media(prefers-reduced-motion:reduce){
  .vellario-intro--cinematic,.vellario-intro-skip{display:none!important}
 }
+
+
+/* VELLARIO V21 — refined wordmark only, credible film-loading indicator.
+   Never imply numeric byte progress: sweep is indeterminate until video can play. */
+.vellario-intro--loading .vellario-intro-emblem,
+.vellario-intro--loading .vellario-intro-progress{display:none!important}
+.vellario-intro--loading .vellario-intro-center{
+ gap:clamp(15px,2.7svh,28px);
+}
+.vellario-intro--loading.is-active .vellario-intro-mark{
+ animation:none;transform:none;filter:none;opacity:1;
+}
+.vellario-intro--loading .vellario-intro-mark .brand-lockup-name{
+ opacity:0;
+ transform:translateY(5px);
+ text-shadow:0 0 0 rgba(255,240,209,0);
+}
+.vellario-intro--loading.is-active .vellario-intro-mark .brand-lockup-name{
+ animation:vellario-v21-logo-appear 1.35s cubic-bezier(.2,.62,.22,1) .35s both;
+}
+@keyframes vellario-v21-logo-appear{
+ 0%{opacity:.12;letter-spacing:.105em;filter:blur(1.2px);transform:translateY(5px);text-shadow:0 0 18px rgba(255,240,209,.1)}
+ 65%{opacity:.94;filter:blur(0);text-shadow:0 0 10px rgba(255,240,209,.1)}
+ 100%{opacity:1;letter-spacing:.077em;filter:blur(0);transform:translateY(0);text-shadow:0 0 0 rgba(255,240,209,0)}
+}
+.vellario-intro--loading .vellario-intro-bottom{
+ align-items:flex-end;gap:clamp(19px,3.4vw,60px);
+}
+.vellario-intro-loading-status{
+ display:flex;flex-direction:column;gap:11px;
+ width:clamp(174px,35vw,350px);
+ max-width:calc(100% - 115px);
+ min-width:0;
+ text-align:left;
+}
+.vellario-intro-loading-labels{
+ display:flex;align-items:center;justify-content:space-between;
+ gap:12px;
+ white-space:nowrap;
+ font:500 clamp(8px,.8vw,10px)/1.4 var(--sans);
+ letter-spacing:.15em;
+ text-shadow:0 2px 14px rgba(0,0,0,.35);
+}
+.vellario-intro-loading-copy{color:#f3e9d9}
+.vellario-intro-loading-state{
+ font-weight:400;font-size:clamp(7px,.72vw,9px);
+ letter-spacing:.14em;color:#d3ba84;
+}
+.vellario-intro-loading-track{
+ position:relative;display:block;
+ width:100%;height:2px;
+ overflow:hidden;
+ background:rgba(211,188,148,.3);
+ box-shadow:0 1px 12px rgba(0,0,0,.2);
+}
+.vellario-intro-loading-track i{
+ display:block;position:absolute;top:0;left:0;
+ width:36%;height:100%;
+ background:linear-gradient(90deg,transparent 0%,#a8834a 22%,#ead4a2 85%,#f9e7bb 100%);
+ box-shadow:0 0 11px rgba(219,188,127,.5);
+ transform:translateX(-120%);
+ animation:vellario-v21-loading-sweep 1.55s cubic-bezier(.48,.01,.35,.98) infinite;
+}
+.vellario-intro--loading.is-ready .vellario-intro-loading-track i{
+ animation:none;
+ width:100%;transform:translateX(0);
+ background:linear-gradient(90deg,#a98550,#f7dfaa);
+ transition:width .5s ease,transform .5s ease;
+}
+.vellario-intro--loading.is-ready .vellario-intro-loading-state{color:#f1ddac}
+.vellario-intro--loading.is-fallback .vellario-intro-loading-track i{
+ animation:none;width:100%;transform:none;
+ opacity:.65;
+}
+@keyframes vellario-v21-loading-sweep{
+ 0%{transform:translateX(-120%)}
+ 100%{transform:translateX(285%)}
+}
+@media(max-width:750px){
+ .vellario-intro--loading .vellario-intro-bottom{align-items:end;gap:15px}
+ .vellario-intro-loading-status{width:min(52vw,275px);max-width:calc(100% - 100px)}
+ .vellario-intro-loading-labels{flex-direction:column;align-items:flex-start;gap:4px;font-size:7px;letter-spacing:.09em}
+ .vellario-intro-loading-state{font-size:7px}
+ .vellario-intro-loading-track{height:2px}
+}
+@media(max-width:360px){
+ .vellario-intro--loading .vellario-intro-mark .brand-lockup{--brand-font-size:41px}
+ .vellario-intro-loading-status{width:53vw}
+}
+@media(prefers-reduced-motion:reduce){
+ .vellario-intro--loading{display:none!important}
+}

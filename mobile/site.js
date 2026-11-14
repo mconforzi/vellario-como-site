@@ -91,25 +91,28 @@ if(!reduced&&w.matchMedia&&w.matchMedia('(hover:hover) and (pointer:fine)').matc
  });
 }
 if(b.dataset.page!=='home'||reduced)return;
-/* VELLARIO V20 — cinematic Lago di Como ouverture, never a blocking spinner.
-   Light and motion over the SAME hero poster; no new asset or browser dependency. */
+/* VELLARIO V21 — elegant loading-first Como ouverture.
+   Original film poster immediately visible, tiny animated wordmark and real media-ready state.
+   Progress is intentionally indeterminate (never an invented byte percentage). */
 const curtain=d.createElement('div');
-curtain.className='vellario-intro vellario-intro--cinematic';
+curtain.className='vellario-intro vellario-intro--cinematic vellario-intro--loading';
 curtain.setAttribute('role','region');
-curtain.setAttribute('aria-label','Apertura cinematografica VELLARIO');
+curtain.setAttribute('aria-label','Apertura VELLARIO — caricamento del film');
 curtain.innerHTML=
  '<div class="vellario-intro-scene" aria-hidden="true"></div>'+
  '<div class="vellario-intro-wash" aria-hidden="true"></div>'+
  '<div class="vellario-intro-grain" aria-hidden="true"></div>'+
  '<div class="vellario-intro-top" aria-hidden="true"><span>COMO · ITALIA</span><span>DESIGN ITALIANO</span></div>'+
  '<div class="vellario-intro-center">'+
- '<span class="vellario-intro-emblem" aria-hidden="true"></span>'+
  '<div class="vellario-intro-mark"><span class="brand-lockup brand-lockup--intro" role="img" aria-label="VELLARIO COMO — THE ART OF DOLCE VITA"><span class="brand-lockup-name" aria-hidden="true">VELLARIO</span><svg class="brand-lockup-tagline" viewBox="0 0 1000 54" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false"><text x="0" y="43" textLength="1000" lengthAdjust="spacing">THE ART OF DOLCE VITA</text></svg><span class="brand-lockup-como" aria-hidden="true">COMO</span></span></div>'+
  '<span class="vellario-intro-accent" aria-hidden="true"></span></div>'+
  '<div class="vellario-intro-bottom">'+
- '<span class="vellario-intro-bottom-note" aria-hidden="true">DESIGN · ELEGANZA · ACQUA</span>'+
+ '<div class="vellario-intro-loading-status" role="status" aria-live="polite" aria-atomic="true">'+
+ '<div class="vellario-intro-loading-labels"><span class="vellario-intro-loading-copy">CARICAMENTO DEL FILM</span>'+
+ '<span class="vellario-intro-loading-state">IN PREPARAZIONE</span></div>'+
+ '<span class="vellario-intro-loading-track" aria-hidden="true"><i></i></span></div>'+
  '<button class="vellario-intro-skip" type="button" aria-label="Salta introduzione e mostra VELLARIO">SALTA INTRO <b aria-hidden="true">↗</b></button>'+
- '</div><span class="vellario-intro-progress" aria-hidden="true"></span>';
+ '</div>';
 const homePoster=hero?.querySelector('.cinema-backdrop .media-poster');
 if(homePoster){
  const src=homePoster.currentSrc||homePoster.src;
@@ -123,38 +126,78 @@ replay.setAttribute('aria-label','Rivedi introduzione VELLARIO');
 replay.textContent='↺ RIVEDI INTRO';
 b.appendChild(replay);
 const skip=curtain.querySelector('.vellario-intro-skip');
-let fadeTimer=0,removeTimer=0,isExiting=false;
-function clearIntroTimers(){
- w.clearTimeout(fadeTimer);w.clearTimeout(removeTimer);
- fadeTimer=0;removeTimer=0;
+const label=curtain.querySelector('.vellario-intro-loading-copy');
+const state=curtain.querySelector('.vellario-intro-loading-state');
+const openingVideo=hero?.querySelector('video[data-opening]');
+let revealTimer=0,exitTimer=0,maxTimer=0,readyTimer=0,minimumElapsed=false,mediaReady=false,exiting=false;
+function cancelIntroTimers(){
+ for(const t of [revealTimer,exitTimer,maxTimer,readyTimer])if(t)w.clearTimeout(t);
+ revealTimer=exitTimer=maxTimer=readyTimer=0;
 }
 function endIntro(immediate=false){
- if(isExiting||curtain.classList.contains('is-complete'))return;
- isExiting=true;clearIntroTimers();
+ if(exiting||curtain.classList.contains('is-complete'))return;
+ exiting=true;cancelIntroTimers();
  curtain.classList.add('is-revealing');
- removeTimer=w.setTimeout(()=>{
+ exitTimer=w.setTimeout(()=>{
   curtain.classList.add('is-complete');
   curtain.classList.remove('is-active','is-revealing');
-  isExiting=false;
- },immediate?630:950);
+  exiting=false;
+ },immediate?650:940);
+}
+function readyToEnter(){
+ if(!minimumElapsed||!mediaReady||exiting)return;
+ if(readyTimer)return;
+ readyTimer=w.setTimeout(()=>endIntro(),570);
+}
+function filmReady(){
+ if(!curtain.classList.contains('is-active')||mediaReady||exiting)return;
+ mediaReady=true;
+ curtain.classList.remove('is-fallback');
+ curtain.classList.add('is-ready');
+ label.textContent='CARICAMENTO COMPLETATO';
+ state.textContent='PRONTO';
+ readyToEnter();
+}
+function fallback(){
+ if(!curtain.classList.contains('is-active')||exiting||mediaReady)return;
+ curtain.classList.remove('is-ready');
+ curtain.classList.add('is-fallback');
+ label.textContent='ENTRA NEL MONDO VELLARIO';
+ state.textContent='CONTINUA';
+ readyTimer=w.setTimeout(()=>endIntro(),450);
+}
+function checkFilmReady(){
+ if(!openingVideo||openingVideo.error){fallback();return}
+ if(openingVideo.readyState>=3||(!openingVideo.paused&&openingVideo.readyState>=2))filmReady();
 }
 function playIntro(){
- clearIntroTimers();
- isExiting=false;
- curtain.classList.remove('is-active','is-revealing','is-complete');
+ cancelIntroTimers();exiting=false;mediaReady=false;minimumElapsed=false;
+ curtain.classList.remove('is-active','is-revealing','is-complete','is-ready','is-fallback');
+ label.textContent='CARICAMENTO DEL FILM';state.textContent='IN PREPARAZIONE';
  void curtain.offsetWidth;
  curtain.classList.add('is-active');
- fadeTimer=w.setTimeout(()=>endIntro(),3180);
+ // The existing hero playback controller owns play(). Only prime src when it has not loaded yet.
+ if(openingVideo&&!openingVideo.getAttribute('src')&&openingVideo.dataset.src){
+  openingVideo.src=openingVideo.dataset.src;openingVideo.load();
+ }
+ checkFilmReady();
+ revealTimer=w.setTimeout(()=>{minimumElapsed=true;readyToEnter()},2150);
+ // Hard fail-open: a slow, blocked or offline film cannot trap navigation.
+ maxTimer=w.setTimeout(()=>{if(!mediaReady)fallback();else endIntro()},5300);
 }
 skip.addEventListener('click',()=>endIntro(true));
 replay.addEventListener('click',()=>{w.scrollTo({top:0,behavior:'instant'});playIntro()});
+if(openingVideo){
+ for(const event of ['canplay','playing','loadeddata'])openingVideo.addEventListener(event,checkFilmReady);
+ openingVideo.addEventListener('error',fallback);
+}
 w.addEventListener('pageshow',e=>{if(e.persisted)playIntro()});
-w.addEventListener('pagehide',()=>{clearIntroTimers();curtain.classList.add('is-complete')});
-w.addEventListener('scroll',()=>{
- if(w.scrollY>35&&curtain.classList.contains('is-active'))endIntro(true);
-},{passive:true});
+w.addEventListener('pagehide',()=>{cancelIntroTimers();curtain.classList.add('is-complete')});
+w.addEventListener('scroll',()=>{if(w.scrollY>35&&curtain.classList.contains('is-active'))endIntro(true)},{passive:true});
 w.addEventListener('wheel',()=>{if(curtain.classList.contains('is-active'))endIntro(true)},{passive:true});
-w.addEventListener('touchstart',()=>{if(curtain.classList.contains('is-active'))endIntro(true)},{passive:true});
+w.addEventListener('touchstart',e=>{
+ if(curtain.classList.contains('is-active')&&!e.target.closest('.vellario-intro-skip'))endIntro(true);
+},{passive:true});
 d.addEventListener('keydown',e=>{
  if(['Escape','ArrowDown','ArrowUp','PageDown','PageUp',' '].includes(e.key)&&curtain.classList.contains('is-active'))endIntro(true);
 });
