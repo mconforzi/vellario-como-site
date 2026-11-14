@@ -112,3 +112,29 @@ body.menu-open{overflow:hidden}
 .yacht-rail-btn{width:39px;height:39px;font-size:21px}
 }
 @media(prefers-reduced-motion:reduce){.yacht-rail-track{scroll-behavior:auto!important}.yacht-rail-progress i{transition:none!important}}
+
+
+/* VELLARIO V10 — show whole MAS36 / MAS56 / Gran Marlin films, preserve owner-approved portrait yachts. */
+.yacht-rail-track .model-card:not(.model-card--portrait) > .model-card-film{
+ object-fit:contain;
+ object-position:50% 42%;
+ background:transparent;
+ transform:none;
+}
+.yacht-rail-track .model-card:not(.model-card--portrait) > .model-card-film.is-playing{
+ transform:none;
+}
+.yacht-rail-track .model-card:not(.model-card--portrait):has(> .model-card-film.is-playing) > img{
+ filter:brightness(.36) blur(22px);
+ transform:scale(1.13);
+ transition:filter .65s ease,transform .65s ease;
+}
+.yacht-rail-track .model-card:not(.model-card--portrait):has(> .model-card-film.is-playing):hover > img{
+ transform:scale(1.13);
+}
+@media(max-width:750px){
+ .yacht-rail-track .model-card:not(.model-card--portrait) > .model-card-film{object-position:50% 32%}
+}
+@media(prefers-reduced-motion:reduce){
+ .yacht-rail-track .model-card:not(.model-card--portrait) > img{filter:none!important;transform:none!important}
+}
