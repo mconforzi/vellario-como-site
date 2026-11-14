@@ -565,3 +565,205 @@ body[data-page="home"] #models > .chapter-collection {
 @media(prefers-reduced-motion:reduce){
  .vellario-film-loader,.model-card.is-buffering:after,.film-frame--yacht.is-buffering:after{display:none!important}
 }
+
+
+/* VELLARIO V20 — COMO CINEMATIC OUVERTURE.
+   Authentic existing home film poster, original Cormorant wordmark, progressive
+   glints, a single timed reveal and a working Skip control. No new media. */
+.vellario-intro.vellario-intro--cinematic{
+ position:fixed;inset:0;z-index:1001;box-sizing:border-box;
+ display:flex;flex-direction:column;justify-content:space-between;align-items:stretch;
+ width:100%;height:100svh;max-width:none;min-width:0;
+ padding:calc(26px + env(safe-area-inset-top,0px)) clamp(25px,5.8vw,100px)
+         calc(25px + env(safe-area-inset-bottom,0px));
+ overflow:hidden;contain:layout paint;isolation:isolate;
+ background:#06140f;color:#efe9dc;pointer-events:none;
+ opacity:0;visibility:hidden;transform:none;text-align:center;
+}
+@supports(height:100dvh){
+ .vellario-intro.vellario-intro--cinematic{height:100dvh}
+}
+.vellario-intro--cinematic.is-active{
+ visibility:visible;opacity:1;animation:none;transform:none;
+}
+.vellario-intro--cinematic.is-revealing{
+ visibility:visible;opacity:1;
+ animation:vellario-v20-curtain .92s cubic-bezier(.7,0,.18,1) forwards;
+}
+.vellario-intro--cinematic.is-complete{display:none!important}
+.vellario-intro-scene,.vellario-intro-wash,.vellario-intro-grain{
+ position:absolute;inset:0;pointer-events:none;
+}
+.vellario-intro-scene{
+ z-index:-3;background-color:#0d251b;background-size:cover;background-position:center 52%;
+ filter:saturate(.72) contrast(1.1) brightness(.69);
+ transform:scale(1.16);animation:vellario-v20-camera 4.5s cubic-bezier(.15,.5,.15,1) both;
+}
+.vellario-intro-wash{
+ z-index:-2;
+ background:
+   radial-gradient(ellipse 70% 55% at 50% 50%,rgba(3,19,12,.23),rgba(2,13,9,.73) 90%),
+   linear-gradient(90deg,rgba(4,18,12,.64),transparent 44%,transparent 58%,rgba(4,18,12,.56)),
+   linear-gradient(0deg,rgba(4,15,11,.85),transparent 32%,transparent 72%,rgba(4,15,11,.73));
+}
+.vellario-intro-grain{
+ z-index:-1;opacity:.16;
+ background-image:repeating-linear-gradient(45deg,rgba(243,219,172,.11) 0 1px,transparent 1px 8px);
+ background-size:17px 17px;
+ mask-image:radial-gradient(ellipse,transparent 13%,#000 96%);
+}
+.vellario-intro-top,.vellario-intro-bottom{
+ position:relative;z-index:2;width:100%;
+ display:flex;align-items:center;justify-content:space-between;
+ gap:18px;
+ font:500 clamp(8px,.82vw,11px)/1.4 var(--sans);
+ text-align:left;letter-spacing:.24em;color:rgba(241,229,200,.79);
+}
+.vellario-intro-top{
+ opacity:0;animation:vellario-v20-copy .72s ease .18s both;
+}
+.vellario-intro-top:after{
+ content:"";position:absolute;left:0;right:0;bottom:-16px;
+ height:1px;background:linear-gradient(90deg,rgba(205,176,116,.65),rgba(205,176,116,.08));
+ transform-origin:left;animation:vellario-v20-rule 1.65s ease-out .2s both;
+}
+.vellario-intro-top span:last-child{color:rgba(248,238,220,.61)}
+.vellario-intro-center{
+ position:relative;z-index:2;
+ flex:1;display:flex;flex-direction:column;justify-content:center;align-items:center;
+ gap:clamp(17px,3.6svh,38px);
+ min-height:0;padding:clamp(20px,5svh,55px) 0;
+}
+.vellario-intro-emblem{
+ width:clamp(24px,4vw,34px);height:clamp(24px,4vw,34px);
+ display:grid;place-items:center;color:#d5be88;
+ opacity:0;animation:vellario-v20-emblem 1.05s cubic-bezier(.2,.7,.2,1) .23s both;
+}
+.vellario-intro-emblem:before{
+ content:"";width:16px;height:16px;display:block;
+ border:1px solid currentColor;transform:rotate(45deg);
+ box-shadow:0 0 26px rgba(207,184,139,.22);
+}
+.vellario-intro-emblem:after{
+ content:"";position:absolute;width:3px;height:3px;
+ background:#d5be88;transform:rotate(45deg);
+}
+.vellario-intro--cinematic.is-active .vellario-intro-mark{
+ width:auto;max-width:100%;opacity:1;letter-spacing:normal;
+ transform-origin:center;animation:vellario-v20-wordmark 1.45s cubic-bezier(.16,.7,.18,1) .55s both;
+}
+.vellario-intro--cinematic .vellario-intro-mark .brand-lockup{
+ --brand-font-size:clamp(65px,12vw,169px);
+ color:#f1e8d8;
+ filter:drop-shadow(0 6px 22px rgba(0,0,0,.32));
+}
+.vellario-intro--cinematic .vellario-intro-mark .brand-lockup-tagline{
+ color:#e9ddc6;
+ opacity:0;animation:vellario-v20-signature 1.15s ease 1.23s both;
+}
+.vellario-intro--cinematic .vellario-intro-mark .brand-lockup-como{
+ margin-top:clamp(9px,1.35vw,17px);
+ font-size:clamp(8px,.9vw,13px);color:#dbc18a;
+ opacity:0;animation:vellario-v20-signature 1.12s ease 1.5s both;
+}
+.vellario-intro-accent{
+ position:relative;display:block;width:clamp(110px,17vw,245px);height:1px;
+ margin-top:clamp(4px,.7svh,8px);
+ background:rgba(225,207,163,.18);overflow:hidden;
+ opacity:0;animation:vellario-v20-copy 1s ease 1.55s both;
+}
+.vellario-intro-accent:after{
+ content:"";position:absolute;inset:0;
+ background:linear-gradient(90deg,transparent,#dfc48b,transparent);
+ transform:translateX(-110%);animation:vellario-v20-accent 1.5s ease-in-out 1.6s both;
+}
+.vellario-intro-bottom{
+ opacity:0;animation:vellario-v20-copy .95s ease 1.65s both;
+}
+.vellario-intro-bottom-note{color:rgba(245,229,198,.72)}
+.vellario-intro-skip{
+ position:relative;z-index:10;pointer-events:auto;cursor:pointer;
+ display:inline-flex;align-items:center;gap:12px;
+ padding:12px 0 12px 14px;margin:-12px 0;
+ color:#f1e5ce;background:none;border:0;
+ font:500 clamp(9px,.9vw,11px)/1.3 var(--sans);
+ letter-spacing:.21em;text-transform:uppercase;
+ text-shadow:0 2px 14px rgba(0,0,0,.45);
+ transition:color .24s ease;
+}
+.vellario-intro-skip:hover,.vellario-intro-skip:focus-visible{color:#d0ac69}
+.vellario-intro-skip:focus-visible{outline:1px solid #dcc595;outline-offset:4px}
+.vellario-intro-skip b{font:300 22px/1 var(--serif);color:var(--brass);transition:transform .25s ease}
+.vellario-intro-skip:hover b{transform:translateX(5px)}
+.vellario-intro-progress{
+ position:absolute;z-index:3;left:0;right:0;bottom:0;height:2px;
+ background:rgba(208,183,139,.22);
+}
+.vellario-intro-progress:before{
+ content:"";display:block;width:100%;height:100%;
+ background:linear-gradient(90deg,#907144,#f1d398 75%,#fff1cd);
+ transform:scaleX(0);transform-origin:left;
+ animation:vellario-v20-progress 3.13s linear both;
+}
+@keyframes vellario-v20-camera{
+ from{transform:scale(1.18) translateY(2%)}to{transform:scale(1.045) translateY(0)}
+}
+@keyframes vellario-v20-copy{
+ from{opacity:0;transform:translateY(9px)}to{opacity:1;transform:translateY(0)}
+}
+@keyframes vellario-v20-rule{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+@keyframes vellario-v20-emblem{
+ from{opacity:0;transform:translateY(11px) scale(.75)}to{opacity:1;transform:none}
+}
+@keyframes vellario-v20-wordmark{
+ from{opacity:0;filter:blur(10px);transform:translateY(40px) scale(1.045)}
+ to{opacity:1;filter:blur(0);transform:translateY(0) scale(1)}
+}
+@keyframes vellario-v20-signature{
+ from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}
+}
+@keyframes vellario-v20-accent{
+ from{transform:translateX(-110%)}to{transform:translateX(110%)}
+}
+@keyframes vellario-v20-progress{
+ from{transform:scaleX(0)}to{transform:scaleX(1)}
+}
+@keyframes vellario-v20-curtain{
+ 0%{opacity:1;clip-path:inset(0 0 0 0)}
+ 100%{opacity:1;clip-path:inset(0 0 100% 0)}
+}
+.vellario-replay{
+ right:clamp(14px,2.2vw,32px);bottom:clamp(15px,2vw,28px);
+ border-color:rgba(207,184,139,.37);
+ border-radius:0;
+ background:rgba(5,19,13,.6);
+ box-shadow:0 4px 24px rgba(0,0,0,.14);
+}
+@media(max-width:750px){
+ .vellario-intro.vellario-intro--cinematic{
+  padding:calc(24px + env(safe-area-inset-top,0px)) 23px calc(22px + env(safe-area-inset-bottom,0px));
+ }
+ .vellario-intro-scene{background-position:center}
+ .vellario-intro-top,.vellario-intro-bottom{font-size:8px;letter-spacing:.14em}
+ .vellario-intro-top:after{bottom:-13px}
+ .vellario-intro-center{gap:clamp(18px,3svh,28px)}
+ .vellario-intro--cinematic .vellario-intro-mark .brand-lockup{
+  --brand-font-size:clamp(44px,13vw,84px);
+ }
+ .vellario-intro--cinematic .vellario-intro-mark .brand-lockup-como{
+  margin-top:8px;font-size:9px;
+ }
+ .vellario-intro-bottom-note{max-width:50%;line-height:1.8}
+ .vellario-intro-skip{font-size:8px;gap:7px}
+}
+@media(max-height:600px){
+ .vellario-intro-center{gap:8px;padding:6px 0}
+ .vellario-intro-emblem{width:18px;height:18px}
+ .vellario-intro--cinematic .vellario-intro-mark .brand-lockup{
+  --brand-font-size:clamp(40px,9vh,90px);
+ }
+ .vellario-intro-accent{margin-top:0}
+}
+@media(prefers-reduced-motion:reduce){
+ .vellario-intro--cinematic,.vellario-intro-skip{display:none!important}
+}

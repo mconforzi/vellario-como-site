@@ -91,11 +91,30 @@ if(!reduced&&w.matchMedia&&w.matchMedia('(hover:hover) and (pointer:fine)').matc
  });
 }
 if(b.dataset.page!=='home'||reduced)return;
-/* Fail open: intro exists only after JS boots; CSS dismisses it even if timers are suspended. */
+/* VELLARIO V20 — cinematic Lago di Como ouverture, never a blocking spinner.
+   Light and motion over the SAME hero poster; no new asset or browser dependency. */
 const curtain=d.createElement('div');
-curtain.className='vellario-intro';
-curtain.setAttribute('aria-hidden','true');
-curtain.innerHTML='<div class="vellario-intro-mark"><span class="brand-lockup brand-lockup--intro" role="img" aria-label="VELLARIO COMO — THE ART OF DOLCE VITA"><span class="brand-lockup-name" aria-hidden="true">VELLARIO</span><svg class="brand-lockup-tagline" viewBox="0 0 1000 54" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false"><text x="0" y="43" textLength="1000" lengthAdjust="spacing">THE ART OF DOLCE VITA</text></svg><span class="brand-lockup-como" aria-hidden="true">COMO</span></span></div>';
+curtain.className='vellario-intro vellario-intro--cinematic';
+curtain.setAttribute('role','region');
+curtain.setAttribute('aria-label','Apertura cinematografica VELLARIO');
+curtain.innerHTML=
+ '<div class="vellario-intro-scene" aria-hidden="true"></div>'+
+ '<div class="vellario-intro-wash" aria-hidden="true"></div>'+
+ '<div class="vellario-intro-grain" aria-hidden="true"></div>'+
+ '<div class="vellario-intro-top" aria-hidden="true"><span>COMO · ITALIA</span><span>DESIGN ITALIANO</span></div>'+
+ '<div class="vellario-intro-center">'+
+ '<span class="vellario-intro-emblem" aria-hidden="true"></span>'+
+ '<div class="vellario-intro-mark"><span class="brand-lockup brand-lockup--intro" role="img" aria-label="VELLARIO COMO — THE ART OF DOLCE VITA"><span class="brand-lockup-name" aria-hidden="true">VELLARIO</span><svg class="brand-lockup-tagline" viewBox="0 0 1000 54" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false"><text x="0" y="43" textLength="1000" lengthAdjust="spacing">THE ART OF DOLCE VITA</text></svg><span class="brand-lockup-como" aria-hidden="true">COMO</span></span></div>'+
+ '<span class="vellario-intro-accent" aria-hidden="true"></span></div>'+
+ '<div class="vellario-intro-bottom">'+
+ '<span class="vellario-intro-bottom-note" aria-hidden="true">DESIGN · ELEGANZA · ACQUA</span>'+
+ '<button class="vellario-intro-skip" type="button" aria-label="Salta introduzione e mostra VELLARIO">SALTA INTRO <b aria-hidden="true">↗</b></button>'+
+ '</div><span class="vellario-intro-progress" aria-hidden="true"></span>';
+const homePoster=hero?.querySelector('.cinema-backdrop .media-poster');
+if(homePoster){
+ const src=homePoster.currentSrc||homePoster.src;
+ if(src)curtain.querySelector('.vellario-intro-scene').style.backgroundImage='url('+JSON.stringify(src)+')';
+}
 b.insertBefore(curtain,b.firstChild);
 const replay=d.createElement('button');
 replay.className='vellario-replay';
@@ -103,17 +122,42 @@ replay.type='button';
 replay.setAttribute('aria-label','Rivedi introduzione VELLARIO');
 replay.textContent='↺ RIVEDI INTRO';
 b.appendChild(replay);
-let finishTimer=0;
-function playIntro(){
- w.clearTimeout(finishTimer);
- curtain.classList.remove('is-active','is-complete');
- void curtain.offsetHeight;
- curtain.classList.add('is-active');
- finishTimer=w.setTimeout(()=>{curtain.classList.add('is-complete');curtain.classList.remove('is-active')},2850);
+const skip=curtain.querySelector('.vellario-intro-skip');
+let fadeTimer=0,removeTimer=0,isExiting=false;
+function clearIntroTimers(){
+ w.clearTimeout(fadeTimer);w.clearTimeout(removeTimer);
+ fadeTimer=0;removeTimer=0;
 }
-replay.addEventListener('click',()=>{w.scrollTo(0,0);playIntro()});
+function endIntro(immediate=false){
+ if(isExiting||curtain.classList.contains('is-complete'))return;
+ isExiting=true;clearIntroTimers();
+ curtain.classList.add('is-revealing');
+ removeTimer=w.setTimeout(()=>{
+  curtain.classList.add('is-complete');
+  curtain.classList.remove('is-active','is-revealing');
+  isExiting=false;
+ },immediate?630:950);
+}
+function playIntro(){
+ clearIntroTimers();
+ isExiting=false;
+ curtain.classList.remove('is-active','is-revealing','is-complete');
+ void curtain.offsetWidth;
+ curtain.classList.add('is-active');
+ fadeTimer=w.setTimeout(()=>endIntro(),3180);
+}
+skip.addEventListener('click',()=>endIntro(true));
+replay.addEventListener('click',()=>{w.scrollTo({top:0,behavior:'instant'});playIntro()});
 w.addEventListener('pageshow',e=>{if(e.persisted)playIntro()});
-w.addEventListener('pagehide',()=>w.clearTimeout(finishTimer));
+w.addEventListener('pagehide',()=>{clearIntroTimers();curtain.classList.add('is-complete')});
+w.addEventListener('scroll',()=>{
+ if(w.scrollY>35&&curtain.classList.contains('is-active'))endIntro(true);
+},{passive:true});
+w.addEventListener('wheel',()=>{if(curtain.classList.contains('is-active'))endIntro(true)},{passive:true});
+w.addEventListener('touchstart',()=>{if(curtain.classList.contains('is-active'))endIntro(true)},{passive:true});
+d.addEventListener('keydown',e=>{
+ if(['Escape','ArrowDown','ArrowUp','PageDown','PageUp',' '].includes(e.key)&&curtain.classList.contains('is-active'))endIntro(true);
+});
 playIntro();
 })();
 
