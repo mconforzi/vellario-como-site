@@ -368,3 +368,11 @@ body[data-page="home"] .chapter-depth-panel p{
   body[data-page="home"] main > #models .english-subtitle{margin-bottom:4px}
   body[data-page="home"] #models .yacht-rail-track .model-card-copy{bottom:75px}
 }
+
+
+/* V14 mobile Safari: match the visible viewport as browser chrome expands/collapses. */
+@supports(height:100dvh){
+  body[data-page="home"] main > .chapter--visual,
+  body[data-page="home"] main > #models { height:100dvh }
+  body[data-page="home"] main > .chapter:not(.chapter--collection):not(.chapter--visual){min-height:100dvh}
+}
