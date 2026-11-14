@@ -222,3 +222,83 @@ for(const rail of rails){
  update();
 }
 })();
+
+
+/* VELLARIO V13 — hard chapter navigation: each deliberate vertical gesture advances exactly one section.
+   Native horizontal yacht swipes/wheel remain independent and unchanged. */
+(()=>{'use strict';
+const w=window,d=document;
+const main=d.querySelector('main');
+if(!main)return;
+const points=[...d.querySelectorAll('main > .cinema-hero,main > .editorial-section,main > .gallery-chapter,main > .collection-after,main > .next-chapter,body > .site-footer')];
+if(points.length<2)return;
+const reduced=w.matchMedia&&w.matchMedia('(prefers-reduced-motion: reduce)').matches;
+let wheelLast=0,touch=null;
+const menu=()=>!!(d.body.classList.contains('menu-open')||d.querySelector('.site-menu[open]'));
+const isControl=node=>!!(node instanceof Element && node.closest('button,input,select,textarea,summary,[contenteditable="true"],.site-menu,.menu-panel,[role="dialog"]'));
+const pageTop=node=>node.getBoundingClientRect().top+w.scrollY;
+function current(){
+ const y=w.scrollY+Math.min(130,w.innerHeight*.18);
+ let idx=0;
+ for(let i=0;i<points.length;i++)if(pageTop(points[i])<=y)idx=i;
+ return idx;
+}
+function step(dir){
+ if(!dir||menu())return;
+ const idx=current();
+ const next=Math.max(0,Math.min(points.length-1,idx+dir));
+ const goal=pageTop(points[next]);
+ if(Math.abs(w.scrollY-goal)<2)return;
+ w.scrollTo({top:goal,behavior:reduced?'instant':'smooth'});
+}
+/* Preserve the original horizontal wheel journey until the first/last yacht. */
+d.addEventListener('wheel',e=>{
+ if(menu()||e.ctrlKey||isControl(e.target)||!e.cancelable)return;
+ if(Math.abs(e.deltaX)>Math.abs(e.deltaY)*1.15)return;
+ const dir=Math.sign(e.deltaY);
+ if(!dir)return;
+ const rail=e.target instanceof Element?e.target.closest('[data-yacht-track]'):null;
+ if(rail){
+   const max=Math.max(0,rail.scrollWidth-rail.clientWidth);
+   const available=dir>0?rail.scrollLeft<max-3:rail.scrollLeft>3;
+   if(available)return;
+ }
+ e.preventDefault();
+ const now=Date.now();
+ if(now-wheelLast<480){wheelLast=now;return}
+ wheelLast=now;
+ step(dir);
+},{capture:true,passive:false});
+/* iOS Safari: cancel free vertical pan once the gesture direction is clear.
+   Do not cancel horizontal gestures, including yacht-card swipes. */
+d.addEventListener('touchstart',e=>{
+ touch=null;
+ if(menu()||e.touches.length!==1||isControl(e.target))return;
+ const f=e.touches[0];
+ touch={x:f.clientX,y:f.clientY,axis:'',endX:f.clientX,endY:f.clientY};
+},{capture:true,passive:true});
+d.addEventListener('touchmove',e=>{
+ if(!touch||e.touches.length!==1)return;
+ const f=e.touches[0];touch.endX=f.clientX;touch.endY=f.clientY;
+ const dx=f.clientX-touch.x,dy=f.clientY-touch.y;
+ if(!touch.axis&&Math.max(Math.abs(dx),Math.abs(dy))>9)
+   touch.axis=Math.abs(dy)>Math.abs(dx)*1.12?'vertical':'horizontal';
+ if(touch.axis==='vertical'&&e.cancelable)e.preventDefault();
+},{capture:true,passive:false});
+d.addEventListener('touchend',e=>{
+ if(!touch)return;
+ const g=touch;touch=null;
+ if(g.axis!=='vertical'||menu())return;
+ const dx=g.endX-g.x,dy=g.endY-g.y;
+ if(Math.abs(dy)>38&&Math.abs(dy)>Math.abs(dx)*1.1)step(dy<0?1:-1);
+},{capture:true,passive:true});
+d.addEventListener('touchcancel',()=>{touch=null},{capture:true,passive:true});
+d.addEventListener('keydown',e=>{
+ if(menu()||e.altKey||e.ctrlKey||e.metaKey||isControl(e.target))return;
+ let dir=0;
+ if(e.key==='ArrowDown'||e.key==='PageDown')dir=1;
+ if(e.key==='ArrowUp'||e.key==='PageUp')dir=-1;
+ if(!dir)return;
+ e.preventDefault();step(dir);
+},{capture:true});
+})();

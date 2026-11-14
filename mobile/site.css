@@ -135,13 +135,12 @@ body.menu-open{overflow:hidden}
 }
 
 
-/* VELLARIO V12 · Editorial section snap.
-   Snap only main chapter boundaries; never turn the inner yacht rail into a page snap target.
-   Mobile uses proximity so long chapters remain naturally scrollable.
-   Wide desktop uses mandatory snapping for a cinematic chapter-to-chapter experience. */
+/* VELLARIO V13 — strict section-by-section vertical scroll, desktop and iOS.
+   JavaScript enforces one section per gesture; CSS remains the accessible fallback. */
 html{
-  scroll-snap-type:y proximity;
-  scroll-padding-block-start:0;
+ scroll-snap-type:y mandatory!important;
+ scroll-padding-top:0;
+ overscroll-behavior-y:contain;
 }
 main > .cinema-hero,
 main > .editorial-section,
@@ -149,12 +148,10 @@ main > .gallery-chapter,
 main > .collection-after,
 main > .next-chapter,
 body > .site-footer{
-  scroll-snap-align:start;
-  scroll-snap-stop:normal;
-}
-@media(min-width:1100px) and (hover:hover) and (pointer:fine){
-  html{scroll-snap-type:y mandatory}
+ scroll-snap-align:start;
+ scroll-snap-stop:always;
+ scroll-margin-top:0;
 }
 @media(prefers-reduced-motion:reduce){
-  html{scroll-snap-type:none!important}
+ html{scroll-snap-type:y mandatory!important;scroll-behavior:auto!important}
 }
