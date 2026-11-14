@@ -48,3 +48,13 @@ Zero incremental paid spend. Technical Gmail scan showed no new VELLARIO-specifi
 ## Next phase
 
 After owner reviews functional root, rebuild only presentation CSS / optional motion while preserving validated state machine, media registry and photo fallback.
+
+## 2026-11-14 · Owner override — video-first (supersedes image-only MAS36 rule)
+
+The owner now explicitly requires moving video in the yacht model presentations, **not still-only covers**. Supersedes the historical 'MAS36 image-only' choice above; the historical 7 November browser observation remains a dated record, not current behaviour.
+
+- All five catalog entries must have a matching original film: Quantum 999 / quantum-hd.mp4, MAS 36 / mas36.mp4, MAS 56 / mas56-film-wide.mp4, GranTender 72 / grantender-hd.mp4, Gran Marlin / gran-marlin.mp4.
+- Homepage, collection and all five model-detail collection tiles present muted autoplay looping video when in view. Static original photographs appear only before playback / as same-yacht error, user reduced-motion or data-saving fallback.
+- Each of five model pages must show its matching film in the full-bleed hero, including MAS36.
+- Single source of truth remains catalog.json + build_site.py. The V6 canonical /mobile/ site is now the root landing destination. The old functional diagnostic contract above applies to its historical route only.
+- This update has **GitHub source/static QA and Pages deployment evidence**, but not physical iOS Safari autoplay or desktop browser acceptance. Resolution of MAS36 video is unverified; do not claim 4K.
