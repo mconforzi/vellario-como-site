@@ -438,3 +438,76 @@ body[data-page="home"] #models > .chapter-collection {
   body[data-page="home"] main > .chapter--visual h2,
   body[data-page="home"] main > #models h2 {font-size:clamp(38px,7vw,60px)}
 }
+
+
+/* VELLARIO V16 — approved inseparable brand lockup: VELLARIO / THE ART OF DOLCE VITA / COMO.
+   Micro-tagline tracks across 6%–92% of the wordmark, from the V tip to middle of the O. */
+:root{--vellario-mark-serif:'Didot','Bodoni 72','Bodoni MT','Times New Roman',var(--serif)}
+.brand-lockup{
+ --brand-font-size:clamp(22px,2.5vw,34px);
+ display:inline-flex;flex-direction:column;align-items:stretch;
+ width:max-content;max-width:100%;vertical-align:middle;
+ white-space:nowrap;text-align:center;line-height:1;font-style:normal;
+ color:inherit;isolation:isolate;
+}
+.brand-lockup-name{
+ display:block;padding:0;margin:0;
+ font:400 var(--brand-font-size)/.9 var(--vellario-mark-serif);
+ letter-spacing:.077em;white-space:nowrap;text-shadow:none;font-variant:normal;
+}
+.brand-lockup-tagline{
+ display:block;flex:none;width:86%;height:auto;margin:0 0 0 6%;
+ overflow:visible;color:inherit;
+}
+.brand-lockup-tagline text{
+ font:400 39px var(--vellario-mark-serif);
+ letter-spacing:4px;fill:currentColor;stroke:none;
+}
+.brand-lockup-como{
+ display:block;text-align:center;color:var(--brass);
+ font:500 8px/1.2 var(--sans);letter-spacing:.56em;
+ margin:8px 0 0;padding-left:.56em;
+}
+.site-header .wordmark{
+ display:inline-flex;justify-self:center;justify-content:center;align-items:center;
+ line-height:1;padding:2px 0;min-width:0;
+}
+.site-header .brand-lockup{--brand-font-size:clamp(21px,2.25vw,31px)}
+.site-header .brand-lockup-como{font-size:7px;margin-top:3px}
+.menu-footer{align-items:center}
+.menu-footer .brand-lockup{--brand-font-size:clamp(31px,5vw,62px)}
+.menu-footer .brand-lockup-como{font-size:10px;margin-top:6px}
+.footer-mark{font:inherit;letter-spacing:normal;margin-bottom:38px}
+.footer-mark .brand-lockup{--brand-font-size:clamp(48px,9vw,132px)}
+.footer-mark .brand-lockup-como{font-size:clamp(8px,1vw,15px);margin-top:10px}
+.cinema-hero--home .cinema-copy h1.cinema-home-brand{
+ display:block;width:100%;max-width:none;margin:0 0 clamp(10px,2vw,25px);
+ font:inherit;letter-spacing:normal;line-height:1;overflow:visible;text-wrap:nowrap;
+}
+.cinema-hero--home .brand-lockup{
+ --brand-font-size:clamp(86px,12.7vw,198px);max-width:min(100%,1300px);
+ text-shadow:0 4px 38px rgba(0,0,0,.35);
+}
+.cinema-hero--home .brand-lockup-como{
+ font-size:clamp(10px,1.1vw,16px);margin-top:clamp(8px,1vw,14px)
+}
+.vellario-intro-mark{font:inherit;letter-spacing:normal;white-space:normal;max-width:100%}
+.vellario-intro-mark .brand-lockup{--brand-font-size:clamp(62px,11vw,160px)}
+.vellario-intro-mark .brand-lockup-como{font-size:clamp(8px,1vw,14px);margin-top:10px}
+@keyframes vellario-mark-rise{
+ from{opacity:0;transform:translateY(32px)}
+ to{opacity:1;transform:translateY(0)}
+}
+@media(max-width:750px){
+ .site-header .brand-lockup{--brand-font-size:clamp(19px,5.5vw,25px)}
+ .site-header .brand-lockup-como{font-size:6px;margin-top:2px}
+ .menu-footer .brand-lockup{--brand-font-size:clamp(28px,8vw,48px)}
+ .cinema-hero--home .brand-lockup{--brand-font-size:clamp(45px,14vw,85px)}
+ .cinema-hero--home .brand-lockup-como{font-size:9px;margin-top:7px}
+ .vellario-intro-mark .brand-lockup{--brand-font-size:clamp(47px,13vw,82px)}
+ .vellario-intro-mark .brand-lockup-como{font-size:8px;margin-top:6px}
+}
+@media(max-width:360px){
+ .site-header{padding-inline:13px}
+ .site-header .brand-lockup{--brand-font-size:19px}
+}

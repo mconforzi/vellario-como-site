@@ -95,7 +95,7 @@ if(b.dataset.page!=='home'||reduced)return;
 const curtain=d.createElement('div');
 curtain.className='vellario-intro';
 curtain.setAttribute('aria-hidden','true');
-curtain.innerHTML='<div class="vellario-intro-mark">VELLARIO<small>COMO</small></div><i class="vellario-intro-rule"></i><p class="vellario-intro-caption">THE ITALIAN ART OF LIVING</p>';
+curtain.innerHTML='<div class="vellario-intro-mark"><span class="brand-lockup brand-lockup--intro" role="img" aria-label="VELLARIO COMO — THE ART OF DOLCE VITA"><span class="brand-lockup-name" aria-hidden="true">VELLARIO</span><svg class="brand-lockup-tagline" viewBox="0 0 1000 54" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false"><text x="0" y="43" textLength="1000" lengthAdjust="spacing">THE ART OF DOLCE VITA</text></svg><span class="brand-lockup-como" aria-hidden="true">COMO</span></span></div>';
 b.insertBefore(curtain,b.firstChild);
 const replay=d.createElement('button');
 replay.className='vellario-replay';

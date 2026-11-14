@@ -539,7 +539,7 @@
     "ownerCorrection": "User explicitly wants both Italian identity words and English language celebrating la bella vita italiana; avoid French maison; do not replace the existing Italian menu or approved 5-yacht names."
   },
   "footer": {
-    "statement": "VELLARIO · COMO. La Dolce Vita, sull'Acqua. An Italian design house inspired by Lake Como.",
+    "statement": "VELLARIO · COMO — THE ART OF DOLCE VITA. An Italian design house inspired by Lake Como.",
     "disclosure": "Private concept preview. The collection contains original design studies; no yacht is presented as a VELLARIO vessel already built or offered for sale."
   },
   "brandLexicon": {
@@ -580,5 +580,14 @@
       "The Personal Touch"
     ],
     "voiceRule": "Italian remains the primary brand identity and navigation. English builds the second emotional layer with selective cinema straplines and editorial underscoring. Use evocative but concrete English that celebrates Italian good living. Do not imply production, heritage, showroom or personalised services already exist."
+  },
+  "brandLockup": {
+    "wordmark": "VELLARIO",
+    "signature": "THE ART OF DOLCE VITA",
+    "location": "COMO",
+    "signatureStartRatio": 0.06,
+    "signatureEndRatio": 0.92,
+    "approvedVisual": "2026-11-14",
+    "legalRegistration": "NOT VERIFIED"
   }
 }
