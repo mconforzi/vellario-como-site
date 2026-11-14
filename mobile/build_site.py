@@ -149,7 +149,7 @@ def model_cards(depth, models, copy_lookup):
         ) if m.get('video') else ''
         tag = copy_lookup[m['id']]['tagline']
         cards.append(
-            '<a class="model-card' + (' model-card--featured' if i == 1 else '') + '" href="' + esc(href) + '">'
+            '<a class="model-card' + (' model-card--featured' if i == 1 else '') + (' model-card--portrait' if (m.get('videoResolution') or '').startswith('720×1280') else '') + '" href="' + esc(href) + '">'
             '<img src="' + esc(image) + '" alt="' + esc(m['name']) + ' original design rendering" loading="lazy" decoding="async">'
             + film_markup +
             '<span class="model-card-overlay"></span>'
@@ -159,7 +159,19 @@ def model_cards(depth, models, copy_lookup):
             '<span class="card-explore" aria-label="Scopri il modello">↗</span></span>'
             '</a>'
         )
-    return '<div class="model-card-grid">' + ''.join(cards) + '</div>'
+    return (
+        '<section class="yacht-rail" data-yacht-rail aria-label="La collezione VELLARIO: cinque barche da esplorare in orizzontale">'
+        '<div class="model-card-grid yacht-rail-track" data-yacht-track tabindex="0" aria-label="Scorri orizzontalmente fra i cinque modelli">'
+        + ''.join(cards) +
+        '</div><div class="yacht-rail-controls">'
+        '<div class="yacht-rail-legend"><span>LA COLLEZIONE</span><small>SCORRI PER ESPLORARE</small></div>'
+        '<span class="yacht-rail-progress" aria-hidden="true"><i data-yacht-progress></i></span>'
+        '<span class="yacht-rail-count" aria-live="off"><strong data-yacht-current>01</strong><span> / 05</span></span>'
+        '<div class="yacht-rail-buttons">'
+        '<button class="yacht-rail-btn" type="button" data-yacht-prev aria-label="Modello precedente" disabled>←</button>'
+        '<button class="yacht-rail-btn" type="button" data-yacht-next aria-label="Modello successivo">→</button>'
+        '</div></div></section>'
+    )
 
 def editorial_page(page, depth, data, model_lookup, models):
     out = [hero(page, depth, model_lookup, data['lakeSources'], data_opening(data, models))]

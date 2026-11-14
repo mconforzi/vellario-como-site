@@ -68,3 +68,46 @@ body.menu-open{overflow:hidden}
 .model-card > .model-card-overlay{pointer-events:none}
 .model-card .model-card-copy,.model-card .model-card-index{pointer-events:none}
 @media(prefers-reduced-motion:reduce){.model-card > .model-card-film{display:none!important}.model-card > img{transform:none!important}}
+
+
+/* VELLARIO V8 — one yacht per horizontal snap panel, cinematic model films. */
+.yacht-rail{position:relative;width:100%;min-width:0;isolation:isolate;background:#071710;color:var(--white)}
+.chapter-collection{padding-left:0!important;padding-right:0!important}
+.collection-after{padding-left:0!important;padding-right:0!important}
+.collection-after-title{padding-left:clamp(28px,7vw,135px);padding-right:clamp(28px,7vw,135px)}
+.yacht-rail-track.model-card-grid{display:flex!important;flex-wrap:nowrap!important;grid-template-columns:none!important;gap:0!important;overflow-x:auto;overflow-y:hidden;scroll-snap-type:x mandatory;scroll-padding:0;scrollbar-width:none;-ms-overflow-style:none;overscroll-behavior-inline:contain;-webkit-overflow-scrolling:touch;touch-action:pan-x pan-y}
+.yacht-rail-track::-webkit-scrollbar{display:none}
+.yacht-rail-track .model-card,.yacht-rail-track .model-card--featured{flex:0 0 100%;width:100%;min-width:0;max-width:100%;height:clamp(510px,77svh,940px);min-height:0!important;aspect-ratio:auto!important;grid-column:auto!important;scroll-snap-align:start;scroll-snap-stop:always;overflow:hidden}
+.yacht-rail-track .model-card:focus-visible{outline:2px solid var(--brass);outline-offset:-5px}
+.yacht-rail-track .model-card > .model-card-film{object-fit:cover}
+.yacht-rail-track .model-card--portrait > .model-card-film{object-fit:contain;background:transparent}
+.yacht-rail-track .model-card--portrait > img{filter:brightness(.52) blur(20px);transform:scale(1.11)}
+.yacht-rail-track .model-card-copy{bottom:clamp(28px,5vw,72px);left:clamp(27px,6vw,110px);right:clamp(27px,6vw,110px)}
+.yacht-rail-track .model-card-index{top:clamp(26px,4vw,56px);left:clamp(27px,6vw,110px)}
+.yacht-rail-track .model-card strong{font-size:clamp(76px,10.5vw,172px);letter-spacing:-.06em;text-shadow:0 4px 30px rgba(0,0,0,.28)}
+.yacht-rail-track .model-card small{font-size:clamp(25px,3vw,47px)}
+.yacht-rail-controls{display:grid;grid-template-columns:minmax(130px,1.3fr) minmax(70px,1fr) auto auto;align-items:center;gap:clamp(17px,3vw,48px);padding:clamp(18px,2.1vw,31px) clamp(27px,6vw,110px);border-top:1px solid rgba(207,184,139,.25);background:#071710;min-height:97px}
+.yacht-rail-legend{display:flex;flex-direction:column;gap:5px;letter-spacing:.2em;font-size:10px;color:var(--brass)}
+.yacht-rail-legend small{font-size:9px;color:#9daea1;letter-spacing:.17em}
+.yacht-rail-progress{display:block;height:1px;background:rgba(207,184,139,.35);overflow:hidden;min-width:55px}
+.yacht-rail-progress i{display:block;width:100%;height:100%;background:var(--brass);transform:scaleX(.2);transform-origin:left;transition:transform .5s ease}
+.yacht-rail-count{font:300 18px/1 var(--serif);letter-spacing:.14em;white-space:nowrap}
+.yacht-rail-count strong{font:400 23px/1 var(--serif);color:var(--brass)}
+.yacht-rail-count span{opacity:.65}
+.yacht-rail-buttons{display:flex;gap:8px}
+.yacht-rail-btn{display:grid;place-items:center;width:54px;height:54px;border:1px solid rgba(207,184,139,.6);background:transparent;color:var(--white);font:300 25px/1 var(--serif);cursor:pointer;transition:background .25s,border-color .25s,opacity .25s}
+.yacht-rail-btn:not(:disabled):hover{background:rgba(207,184,139,.17);border-color:var(--brass)}
+.yacht-rail-btn:disabled{opacity:.32;cursor:default}
+@media(max-width:750px){
+.yacht-rail-track .model-card,.yacht-rail-track .model-card--featured{height:75svh;min-height:440px;max-height:830px;aspect-ratio:auto!important}
+.yacht-rail-track .model-card-copy{left:23px;right:23px;bottom:37px;align-items:end}
+.yacht-rail-track .model-card-index{left:23px;top:24px}
+.yacht-rail-track .model-card strong{font-size:clamp(56px,13.3vw,95px);line-height:.85;overflow-wrap:anywhere}
+.yacht-rail-track .model-card small{font-size:clamp(23px,6vw,34px)}
+.yacht-rail-controls{grid-template-columns:minmax(0,1fr) auto auto;gap:13px;padding:17px 19px;min-height:75px}
+.yacht-rail-legend{font-size:9px}.yacht-rail-legend small{display:none}
+.yacht-rail-progress{grid-column:1/-1;grid-row:2}
+.yacht-rail-count{font-size:14px}.yacht-rail-count strong{font-size:19px}
+.yacht-rail-btn{width:39px;height:39px;font-size:21px}
+}
+@media(prefers-reduced-motion:reduce){.yacht-rail-track{scroll-behavior:auto!important}.yacht-rail-progress i{transition:none!important}}

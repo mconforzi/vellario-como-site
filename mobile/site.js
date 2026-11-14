@@ -158,3 +158,67 @@ w.addEventListener('pagehide',()=>videos.forEach(stop));
 menu?.addEventListener('toggle',refresh);
 refresh();
 })();
+
+
+/* VELLARIO V8 — horizontal yacht journey: touch swipe, desktop arrows/wheel, snap, no page traps. */
+(()=>{'use strict';
+const w=window,d=document;
+const reduce=w.matchMedia&&w.matchMedia('(prefers-reduced-motion: reduce)').matches;
+const rails=[...d.querySelectorAll('[data-yacht-rail]')];
+for(const rail of rails){
+ const track=rail.querySelector('[data-yacht-track]');
+ const cards=[...track.querySelectorAll('.model-card')];
+ const prev=rail.querySelector('[data-yacht-prev]');
+ const next=rail.querySelector('[data-yacht-next]');
+ const current=rail.querySelector('[data-yacht-current]');
+ const progress=rail.querySelector('[data-yacht-progress]');
+ if(cards.length<2||!prev||!next)return;
+ let active=0,frame=0,wheelAt=0;
+ const coordinate=i=>cards[i].offsetLeft-cards[0].offsetLeft;
+ const nearest=()=>{
+  let best=0,dist=Infinity;
+  for(let i=0;i<cards.length;i++){
+   const delta=Math.abs(track.scrollLeft-coordinate(i));
+   if(delta<dist){dist=delta;best=i}
+  }
+  return best;
+ };
+ function update(){
+  frame=0;
+  active=nearest();
+  current.textContent=String(active+1).padStart(2,'0');
+  progress.style.transform='scaleX('+((active+1)/cards.length)+')';
+  prev.disabled=active===0;
+  next.disabled=active===cards.length-1;
+ }
+ function move(index){
+  active=Math.max(0,Math.min(cards.length-1,index));
+  track.scrollTo({left:coordinate(active),behavior:reduce?'instant':'smooth'});
+  current.textContent=String(active+1).padStart(2,'0');
+  progress.style.transform='scaleX('+((active+1)/cards.length)+')';
+  prev.disabled=active===0;next.disabled=active===cards.length-1;
+ }
+ prev.addEventListener('click',()=>move(nearest()-1));
+ next.addEventListener('click',()=>move(nearest()+1));
+ track.addEventListener('scroll',()=>{if(!frame)frame=w.requestAnimationFrame(update)},{passive:true});
+ track.addEventListener('keydown',e=>{
+  if(e.key==='ArrowRight'||e.key==='ArrowLeft'){
+   e.preventDefault();
+   move(nearest()+(e.key==='ArrowRight'?1:-1));
+  }
+ });
+ track.addEventListener('wheel',e=>{
+  if(e.ctrlKey||e.shiftKey||Math.abs(e.deltaX)>Math.abs(e.deltaY))return;
+  const direction=e.deltaY>0?1:-1;
+  const edge=direction>0?track.scrollLeft>=track.scrollWidth-track.clientWidth-3:track.scrollLeft<=3;
+  if(edge)return; /* normal page scrolling resumes at the first and last yacht */
+  e.preventDefault();
+  const now=Date.now();
+  if(now-wheelAt<520)return;
+  wheelAt=now;
+  move(nearest()+direction);
+ },{passive:false});
+ w.addEventListener('resize',()=>{if(!frame)frame=w.requestAnimationFrame(update)},{passive:true});
+ update();
+}
+})();
