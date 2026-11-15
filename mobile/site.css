@@ -1022,3 +1022,9 @@ body[data-page="home"] .cinema-hero--home .cinema-lead{margin-top:clamp(4px,.75s
 
 /* V31: place COMO lower and closer to the English lead on small screens. */
 @media(max-width:750px){body[data-page="home"] .cinema-hero--home .cinema-lead{margin-top:5px}}
+
+/* V33 — prevent iOS emoji rendering of the up-right navigation affordance.
+   Reusable real vector stroke across the menu and all outgoing links. */
+.vellario-arrow{display:inline-block;vertical-align:middle;width:1em;height:1em;overflow:visible;flex-shrink:0}
+.site-menu .menu-arrow{color:var(--brass);display:inline-flex;align-items:center;justify-content:center;font-size:23px;line-height:1}
+.site-menu .menu-arrow .vellario-arrow{width:1em;height:1em}

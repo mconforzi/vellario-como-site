@@ -74,7 +74,7 @@ def header(current_id, depth, data):
             f'<a class="menu-link" href="{esc(site_path(item["slug"], depth))}"{is_current}>'
             f'<span class="menu-number">{i:02d}</span>'
             f'<span class="menu-name">{esc(item["label"])}</span>'
-            '<span class="menu-arrow" aria-hidden="true">↗</span></a>'
+            '<span class="menu-arrow" aria-hidden="true"><svg class="vellario-arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" focusable="false" aria-hidden="true"><path d="M5 19 19 5M9 5h10v10" fill="none" stroke="currentColor" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round"/></svg></span></a>'
         )
     return (
         '<header class="site-header">'
@@ -90,7 +90,7 @@ def header(current_id, depth, data):
         '<a class="wordmark" href="' + esc(site_path('', depth)) + '" aria-label="VELLARIO — Torna alla home">'
         + '<img class="brand-v-emblem" src="' + esc(asset('VELLARIO_V_cutout_TRANSPARENT.svg', depth, 'brand/approved-20261115')) +
         '" alt="" aria-hidden="true" decoding="async"></a>'
-                '<a class="header-side" href="' + esc(site_path('collezione', depth)) + '">LA COLLEZIONE <span aria-hidden="true">↗</span></a>'
+                '<a class="header-side" href="' + esc(site_path('collezione', depth)) + '">LA COLLEZIONE <span aria-hidden="true"><svg class="vellario-arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" focusable="false" aria-hidden="true"><path d="M5 19 19 5M9 5h10v10" fill="none" stroke="currentColor" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round"/></svg></span></a>'
         '</header>'
     )
 
@@ -168,7 +168,7 @@ def model_cards(depth, models, copy_lookup):
             '<span class="model-card-index">LA COLLEZIONE <b>' + str(i).zfill(2) + ' / ' + str(len(models)).zfill(2) + '</b></span>'
             '<span class="model-card-copy"><span><strong>' + esc(m['name']) + '</strong>'
             '<small>' + esc(tag) + '</small></span>'
-            '<span class="card-explore" aria-label="Scopri il modello">↗</span></span>'
+            '<span class="card-explore" aria-label="Scopri il modello"><svg class="vellario-arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" focusable="false" aria-hidden="true"><path d="M5 19 19 5M9 5h10v10" fill="none" stroke="currentColor" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round"/></svg></span></span>'
             '</a>'
         )
     return (
@@ -207,12 +207,12 @@ def editorial_page(page, depth, data, model_lookup, models):
         if section.get('source'):
             src = section['source']
             out.append('<a class="source-link" href="' + esc(src['url']) +
-                       '" target="_blank" rel="noopener noreferrer">FONTE STORICA <span>↗</span> ' +
+                       '" target="_blank" rel="noopener noreferrer">FONTE STORICA <span><svg class="vellario-arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" focusable="false" aria-hidden="true"><path d="M5 19 19 5M9 5h10v10" fill="none" stroke="currentColor" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round"/></svg></span> ' +
                        esc(src['label']) + '</a>')
         if section.get('link'):
             destination = next(n for n in data['nav'] if n['id'] == section['link'])
             out.append('<a class="text-link" href="' + esc(site_path(destination['slug'], depth)) +
-                       '">ESPLORA ' + esc(destination['label']) + '<span aria-hidden="true">↗</span></a>')
+                       '">ESPLORA ' + esc(destination['label']) + '<span aria-hidden="true"><svg class="vellario-arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" focusable="false" aria-hidden="true"><path d="M5 19 19 5M9 5h10v10" fill="none" stroke="currentColor" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round"/></svg></span></a>')
         if section.get('shortIntro'):
             out.append(
                 '<details class="chapter-depth"><summary>LEGGI TUTTO <span aria-hidden="true">＋</span></summary>'
@@ -231,7 +231,7 @@ def editorial_page(page, depth, data, model_lookup, models):
         nex = nav[(pos + 1) % len(nav)]
         out.append('<div class="next-chapter"><span>CONTINUA IL VIAGGIO</span>'
                    '<a href="' + esc(site_path(nex['slug'], depth)) + '">' + esc(nex['label']) +
-                   ' <span aria-hidden="true">↗</span></a></div>')
+                   ' <span aria-hidden="true"><svg class="vellario-arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" focusable="false" aria-hidden="true"><path d="M5 19 19 5M9 5h10v10" fill="none" stroke="currentColor" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round"/></svg></span></a></div>')
     return ''.join(out)
 
 def data_opening(data,models):
@@ -285,7 +285,7 @@ def model_page(model, copy, depth, data, models):
         '<div class="chapter-content"><p class="chapter-eyebrow">UN INVITO PERSONALE</p><h2>Contatti</h2>'
         '<p class="chapter-description">' + esc(copy.get('enquiries','Contact channel forthcoming.')) +
         '</p><a class="text-link" href="' + esc(site_path('contatti',depth)) +
-        '">CONTATTI <span aria-hidden="true">↗</span></a></div></div></section>'
+        '">CONTATTI <span aria-hidden="true"><svg class="vellario-arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" focusable="false" aria-hidden="true"><path d="M5 19 19 5M9 5h10v10" fill="none" stroke="currentColor" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round"/></svg></span></a></div></div></section>'
     )
     out.append(
         '<section class="collection-after"><div class="collection-after-title"><span>LA COLLEZIONE</span>'
@@ -330,7 +330,7 @@ def generate(data,catalog,where):
           '<link rel="preconnect" href="https://fonts.googleapis.com">'
           '<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>'
           '<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">'
-          '<link rel="stylesheet" href="'+esc(source_css)+'?v=v32-header-v-persistent"><script src="'+esc(source_js)+'?v=v32-header-v-persistent" defer></script>'
+          '<link rel="stylesheet" href="'+esc(source_css)+'?v=v33-vector-menu-arrows"><script src="'+esc(source_js)+'?v=v33-vector-menu-arrows" defer></script>'
           '</head><body data-page="'+esc(pid)+'">'
           +header(pid,depth,data)+'<main id="main-content">'+body+'</main>'
           +footer(depth,data)+'</body></html>\n'

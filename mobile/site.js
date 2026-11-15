@@ -120,7 +120,7 @@ curtain.innerHTML=
  '<div class="vellario-intro-loading-labels"><span class="vellario-intro-loading-copy">CARICAMENTO DEL FILM</span>'+
  '<span class="vellario-intro-loading-state">IN PREPARAZIONE</span></div>'+
  '<span class="vellario-intro-loading-track" aria-hidden="true"><i></i></span></div>'+
- '<button class="vellario-intro-skip" type="button" aria-label="Salta introduzione e mostra VELLARIO">SALTA INTRO <b aria-hidden="true">↗</b></button>'+
+ '<button class="vellario-intro-skip" type="button" aria-label="Salta introduzione e mostra VELLARIO">SALTA INTRO <b aria-hidden="true"><svg class="vellario-arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" focusable="false" aria-hidden="true"><path d="M5 19 19 5M9 5h10v10" fill="none" stroke="currentColor" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round"/></svg></b></button>'+
  '</div>';
 const homePoster=hero?.querySelector('.cinema-backdrop .media-poster');
 if(homePoster){
