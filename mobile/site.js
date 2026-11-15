@@ -111,7 +111,7 @@ curtain.innerHTML=
  '<div class="vellario-intro-mark"><div class="vellario-v25-lockup" role="img" aria-label="VELLARIO — THE ART OF DOLCEVITA — COMO">'+
  '<span class="vellario-v25-v" aria-hidden="true"><img src="../assets/brand/approved-20261115/VELLARIO_V_cutout_TRANSPARENT.svg" alt="" decoding="async"></span>'+
  introLetters('VELLARIO','name',.72,.088)+
- introLetters('THE ART OF DOLCEVITA','tagline',1.36,.029)+
+ '<span class="vellario-v25-tagline" aria-hidden="true">THE ART OF DOLCEVITA</span>'+
  introLetters('COMO','como',1.94,.085)+
  '</div></div>'+
  '<span class="vellario-intro-accent" aria-hidden="true"></span></div>'+
