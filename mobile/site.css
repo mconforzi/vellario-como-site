@@ -933,3 +933,50 @@ html,body{background-color:var(--ink)}
 @media(prefers-reduced-motion:reduce){
  .site-header .brand-v-emblem,.brand-logo{transition:none!important;animation:none!important}
 }
+
+/* VELLARIO V25 — independent V and real text, intro only.
+   The original wing V is an asset. Every letter is HTML with a distinct animation. */
+.vellario-intro--loading .vellario-intro-mark{display:flex;align-items:center;justify-content:center;width:100%;max-width:100%}
+.vellario-intro--loading .vellario-v25-lockup{display:flex;flex-direction:column;align-items:center;justify-content:center;width:min(93vw,900px);max-width:100%;min-width:0;text-align:center;line-height:1}
+.vellario-intro--loading .vellario-v25-v{display:block;position:relative;flex:none;width:min(68vw,600px);max-width:100%;aspect-ratio:925/222;margin:0 auto clamp(2px,.8svh,10px);transform-origin:center 65%}
+.vellario-intro--loading .vellario-v25-v img{display:block;width:100%;height:100%;object-fit:contain;filter:drop-shadow(0 5px 20px rgba(0,0,0,.3))}
+.vellario-intro--loading.is-active .vellario-v25-v{animation:vellario-v25-wing 1.5s cubic-bezier(.18,.65,.13,1) .12s both}
+.vellario-intro--loading .vellario-v25-name,.vellario-intro--loading .vellario-v25-tagline,.vellario-intro--loading .vellario-v25-como{display:flex;align-items:baseline;justify-content:center;white-space:nowrap;max-width:100%;margin-inline:0;padding:0;text-align:center}
+.vellario-intro--loading .vellario-v25-name{font:400 clamp(55px,10.4vw,150px)/.86 'Cormorant Garamond',Georgia,serif;letter-spacing:-.035em;color:#f4e6cb;text-shadow:0 3px 26px rgba(0,0,0,.35)}
+.vellario-intro--loading .vellario-v25-tagline{margin-top:clamp(8px,1.65svh,17px);font:400 clamp(10px,1.45vw,18px)/1.1 'Cormorant Garamond',Georgia,serif;letter-spacing:.14em;color:#edd8ad}
+.vellario-intro--loading .vellario-v25-como{margin-top:clamp(11px,2.3svh,27px);font:400 clamp(15px,2.1vw,27px)/1 'Cormorant Garamond',Georgia,serif;letter-spacing:.28em;color:#cbb183}
+.vellario-intro--loading .vellario-v25-glyph{display:inline-block;white-space:pre;opacity:0;transform:translateY(16px);filter:blur(4px);will-change:opacity,transform}
+.vellario-intro--loading.is-active .vellario-v25-name .vellario-v25-glyph{animation:vellario-v25-glyph .77s cubic-bezier(.16,.77,.19,1) both}
+.vellario-intro--loading.is-active .vellario-v25-tagline .vellario-v25-glyph{animation:vellario-v25-glyph .56s ease-out both}
+.vellario-intro--loading.is-active .vellario-v25-como .vellario-v25-glyph{animation:vellario-v25-glyph .6s cubic-bezier(.2,.75,.18,1) both}
+@keyframes vellario-v25-wing{
+ 0%{opacity:0;clip-path:inset(0 50% 0 50%);transform:translateY(-24px) scale(1.10);filter:blur(10px) brightness(1.5)}
+ 38%{opacity:.83;clip-path:inset(0 19% 0 19%);transform:translateY(-6px) scale(1.035);filter:blur(1.5px) brightness(1.45)}
+ 73%{opacity:1;clip-path:inset(0 0 0 0);transform:scale(.995);filter:blur(0) brightness(1.12)}
+ 100%{opacity:1;clip-path:inset(0 0 0 0);transform:none;filter:none}
+}
+@keyframes vellario-v25-glyph{
+ 0%{opacity:0;transform:translateY(15px);filter:blur(3.5px)}
+ 55%{opacity:.88;filter:blur(0)}
+ 100%{opacity:1;transform:translateY(0);filter:none}
+}
+@media(max-width:750px){
+ .vellario-intro--loading .vellario-v25-lockup{width:min(94vw,520px)}
+ .vellario-intro--loading .vellario-v25-v{width:min(82vw,370px)}
+ .vellario-intro--loading .vellario-v25-name{font-size:clamp(47px,12vw,76px);letter-spacing:-.043em}
+ .vellario-intro--loading .vellario-v25-tagline{font-size:clamp(10px,2.5vw,14px);letter-spacing:.105em}
+ .vellario-intro--loading .vellario-v25-como{font-size:clamp(16px,4.2vw,22px)}
+}
+@media(max-height:600px){
+ .vellario-intro--loading .vellario-v25-v{width:min(43vw,310px);margin-bottom:0}
+ .vellario-intro--loading .vellario-v25-name{font-size:clamp(43px,10svh,86px)}
+ .vellario-intro--loading .vellario-v25-tagline{margin-top:5px;font-size:clamp(9px,2.1vh,13px)}
+ .vellario-intro--loading .vellario-v25-como{margin-top:8px;font-size:clamp(13px,3.5vh,18px)}
+}
+@media(max-width:360px){
+ .vellario-intro--loading .vellario-v25-name{font-size:45px}
+ .vellario-intro--loading .vellario-v25-tagline{font-size:9px;letter-spacing:.06em}
+}
+@media(prefers-reduced-motion:reduce){
+ .vellario-intro--loading .vellario-v25-v,.vellario-intro--loading .vellario-v25-glyph{animation:none!important;opacity:1!important;transform:none!important;clip-path:none!important;filter:none!important}
+}

@@ -94,6 +94,10 @@ if(b.dataset.page!=='home'||reduced)return;
 /* VELLARIO V21 — elegant loading-first Como ouverture.
    Original film poster immediately visible, tiny animated wordmark and real media-ready state.
    Progress is intentionally indeterminate (never an invented byte percentage). */
+function introLetters(value, kind, start, stagger){
+ const glyphs=[...value].map((ch,i)=>'<span class="vellario-v25-glyph" style="animation-delay:'+(start+i*stagger).toFixed(3)+'s">'+(ch===' '?'&nbsp;':ch)+'</span>').join('');
+ return '<span class="vellario-v25-'+kind+'" aria-hidden="true">'+glyphs+'</span>';
+}
 const curtain=d.createElement('div');
 curtain.className='vellario-intro vellario-intro--cinematic vellario-intro--loading';
 curtain.setAttribute('role','region');
@@ -104,7 +108,12 @@ curtain.innerHTML=
  '<div class="vellario-intro-grain" aria-hidden="true"></div>'+
  '<div class="vellario-intro-top" aria-hidden="true"><span>COMO · ITALIA</span><span>DESIGN ITALIANO</span></div>'+
  '<div class="vellario-intro-center">'+
-  '<div class="vellario-intro-mark"><img class="brand-logo brand-logo--intro" src="../assets/brand/approved-20261115/VELLARIO_full_logo_EDITABLE.svg" alt="VELLARIO — THE ART OF DOLCEVITA — COMO" decoding="async"></div>'+
+ '<div class="vellario-intro-mark"><div class="vellario-v25-lockup" role="img" aria-label="VELLARIO — THE ART OF DOLCEVITA — COMO">'+
+ '<span class="vellario-v25-v" aria-hidden="true"><img src="../assets/brand/approved-20261115/VELLARIO_V_cutout_TRANSPARENT.svg" alt="" decoding="async"></span>'+
+ introLetters('VELLARIO','name',.72,.088)+
+ introLetters('THE ART OF DOLCEVITA','tagline',1.36,.029)+
+ introLetters('COMO','como',1.94,.085)+
+ '</div></div>'+
  '<span class="vellario-intro-accent" aria-hidden="true"></span></div>'+
  '<div class="vellario-intro-bottom">'+
  '<div class="vellario-intro-loading-status" role="status" aria-live="polite" aria-atomic="true">'+
