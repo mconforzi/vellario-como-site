@@ -371,7 +371,7 @@ def generate(data,catalog,where):
         'schemaVersion':2,'routes':paths,'count':len(paths),'redirects':legacy,'redirectCount':len(legacy),
         'note':'All HTML is server-readable with no JS dependency. Media are progressive enhancements.'
     },indent=2)+'\n',encoding='utf-8')
-    if len(paths)!=16 or len({x['slug'] for x in paths})!=13:
+    if len(paths)!=16 or len({x['slug'] for x in paths})!=16:
         raise ValueError('Must generate 16 unique sitemap routes')
     return paths
 
