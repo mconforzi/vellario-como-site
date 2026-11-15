@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "release": "mobile-video-first-v7",
-  "status": "video-first-preview",
+  "release": "v23-eight-yachts",
+  "status": "preview-with-original-media-gates",
   "title": "VELLARIO · COMO",
   "source": "Original design archive: Dropbox /[BOATS]/AI - MEDIA, assets already hosted on this GitHub Pages repository",
   "assetBase": "../assets/vario/",
@@ -46,8 +46,8 @@
       "videoPoster": "mas36-first-frame.jpg"
     },
     {
-      "id": "mas-56",
-      "name": "MAS 56",
+      "id": "mas-52",
+      "name": "MAS 52",
       "poster": "mas56-wide.webp",
       "video": "mas56-film-wide.mp4",
       "videoResolution": "1280×720",
@@ -59,7 +59,46 @@
         "mas56-detail-3.webp"
       ],
       "kind": "design-study",
-      "videoPoster": "mas56-film-wide-first-frame.jpg"
+      "videoPoster": "mas56-film-wide-first-frame.jpg",
+      "identityVerification": "Owner-corrected 2026-11-15: pre-existing MAS56 film/posters depict MAS52"
+    },
+    {
+      "id": "mas-56",
+      "name": "MAS 56",
+      "poster": "archive-curation.svg",
+      "video": null,
+      "videoResolution": null,
+      "images": [
+        "archive-curation.svg"
+      ],
+      "kind": "design-study",
+      "mediaStatus": "original media awaiting publication",
+      "mediaSource": "Dropbox /[CEYD-Portfolio]/[BOATS]/AI - MEDIA/MAS56"
+    },
+    {
+      "id": "lariocab",
+      "name": "Lariocab",
+      "poster": "archive-curation.svg",
+      "video": null,
+      "videoResolution": null,
+      "images": [
+        "archive-curation.svg"
+      ],
+      "kind": "design-study",
+      "mediaStatus": "original media awaiting publication",
+      "mediaSource": "Dropbox /[CEYD-Portfolio]/[BOATS]/10 - LARIOCAB; AI - MEDIA/LARIOCAB"
+    },
+    {
+      "id": "fy70",
+      "name": "FY70",
+      "poster": "fy70.webp",
+      "video": "fy70.mp4",
+      "videoResolution": null,
+      "images": [
+        "fy70.webp"
+      ],
+      "kind": "design-study",
+      "mediaSource": "Dropbox /[CEYD-Portfolio]/[BOATS]/AI - MEDIA/FY70"
     },
     {
       "id": "grantender-72",
@@ -93,6 +132,7 @@
   "disclaimers": [
     "This is an original yacht design archive concept, not a catalogue of manufactured VELLARIO products.",
     "Media resolution reflects available masters; no 4K claims.",
-    "Naming and public commercial rights not yet verified."
+    "Naming and public commercial rights not yet verified.",
+    "MAS 52 identity confirmed by owner; MAS 56 and Lariocab original film/poster are not yet publicly published."
   ]
 }

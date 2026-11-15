@@ -1,9 +1,9 @@
 {
   "schemaVersion": 1,
-  "release": "italian-english-lifestyle-v4-2026-11-08",
+  "release": "v23-eight-models",
   "status": "creative-working-copy-not-owner-approved",
   "locale": "en",
-  "date": "2026-11-08",
+  "date": "2026-11-15",
   "brand": "VELLARIO · COMO",
   "base": "/mobile/",
   "nav": [
@@ -120,11 +120,11 @@
         {
           "id": "models",
           "title": "La Collezione",
-          "body": "A collection should never feel like a row of interchangeable objects. Quantum 999, MAS 36, MAS 56, GranTender 72 and Gran Marlin explore different expressions of life on the water, from the spirit of the Italian sporting boat to the architectural ambition of a larger yacht. Each begins with its own design character.",
+          "body": "A collection should never feel like a row of interchangeable objects. Quantum 999, MAS 36, MAS 52, MAS 56, Lariocab, FY70, GranTender 72 and Gran Marlin explore different expressions of life on the water, from the spirit of the Italian sporting boat to the architectural ambition of a larger yacht. Each begins with its own design character.",
           "link": "collection",
           "kind": "collection",
           "englishLine": "Distinctive by Design",
-          "shortIntro": "Cinque barche, cinque caratteri. Un'unica interpretazione della Dolce Vita sull’acqua."
+          "shortIntro": "Otto barche, otto caratteri. Un'unica interpretazione della Dolce Vita sull’acqua."
         },
         {
           "id": "history",
@@ -137,7 +137,7 @@
           "title": "L'Arte del Dettaglio",
           "body": "The Italian idea of saper fare is more than craftsmanship alone. It is the discipline of knowing why a detail matters. Proportion, materials, the line of a hull and the feeling of a surface should belong to one coherent whole. For VELLARIO, beauty starts with these decisions.",
           "link": "design-craftsmanship",
-          "media": "model:mas-56",
+          "media": "model:mas-52",
           "englishLine": "The Beauty of Every Detail",
           "shortIntro": "Proporzioni, materiali, linee e superfici: il saper fare italiano si riconosce nei dettagli."
         },
@@ -243,7 +243,7 @@
         {
           "id": "discover",
           "title": "La Collezione",
-          "body": "A collection is an expression of character, not simply of size or category. The five VELLARIO design studies are different invitations to experience the water. Discover the distinct intentions behind Quantum 999, MAS 36, MAS 56, GranTender 72 and Gran Marlin.",
+          "body": "A collection is an expression of character, not simply of size or category. The eight VELLARIO design studies are different invitations to experience the water. Discover the distinct intentions behind Quantum 999, MAS 36, MAS 52, MAS 56, Lariocab, FY70, GranTender 72 and Gran Marlin.",
           "link": "collection",
           "englishLine": "The Pleasure of Discovery"
         }
@@ -254,21 +254,21 @@
       "id": "collection",
       "slug": "collezione",
       "title": "La Collezione",
-      "kicker": "03 / La Collezione · Cinque Caratteri",
-      "lead": "Cinque barche. Cinque personalità. Five original nautical design studies.",
-      "hero": "model:mas-56",
+      "kicker": "03 / La Collezione · Otto Caratteri",
+      "lead": "Otto barche. Otto personalità. Eight original nautical design studies.",
+      "hero": "model:mas-52",
       "sections": [
         {
           "id": "models",
           "title": "Ogni Barca, un Carattere",
-          "body": "Some boats express their character through pure lines, others through movement, versatility or presence. The VELLARIO collection brings together five different projects from the original design archive. They are presented individually because each deserves a voice of its own. Explore the concepts through their original imagery and the design ideas that shaped them.",
+          "body": "Some boats express their character through pure lines, others through movement, versatility or presence. The VELLARIO collection brings together eight different projects from the original design archive. They are presented individually because each deserves a voice of its own. Explore the concepts through their original imagery and the design ideas that shaped them.",
           "kind": "collection",
-          "englishLine": "Five Distinct Characters"
+          "englishLine": "Eight Distinct Characters"
         },
         {
           "id": "source",
           "title": "La Forma del Desiderio",
-          "body": "Every VELLARIO design begins with an idea of character. These five studies come from an original nautical design archive, where each silhouette and arrangement was developed around its own intentions. The images offer a first encounter with these ideas; the design house's next chapter is to refine their distinct personalities into a coherent collection."
+          "body": "Every VELLARIO design begins with an idea of character. These eight studies come from an original nautical design archive, where each silhouette and arrangement was developed around its own intentions. The images offer a first encounter with these ideas; the design house's next chapter is to refine their distinct personalities into a coherent collection."
         },
         {
           "id": "tailoring",
@@ -361,7 +361,7 @@
           "id": "exterior",
           "title": "Il Segno",
           "body": "A memorable exterior should be unmistakable from a distance and rewarding up close. The model studies explore different characters rather than a single formula applied at different sizes. As the range develops, our task is to identify the proportions, graphic signatures and architectural principles that can connect them as a family without compromising what makes each one distinctive.",
-          "media": "model:mas-56",
+          "media": "model:mas-52",
           "englishLine": "Distinctive at First Sight"
         },
         {
@@ -478,18 +478,57 @@
       "enquiries": "A dedicated direct channel will be introduced when the future customer relationship is ready to operate.",
       "englishTagline": "The Italian Gran Turismo Spirit"
     },
-    "mas-56": {
-      "kicker": "La Collezione / 03 · MAS 56",
+    "mas-52": {
+      "kicker": "La Collezione / 03 · MAS 52",
       "tagline": "Eleganza in Movimento.",
-      "lead": "MAS 56 introduces a different scale of presence within the collection. Its original visual archive suggests a yacht conceived to be confident in profile yet composed in character, with the life aboard considered alongside its exterior identity.",
-      "concept": "The MAS 56 study offers an opportunity to explore a broader expression of the Italian sporting motor yacht. Its identity should stand independently, not simply enlarge the proportions of a smaller design. Original imagery and moving-image studies form the visual basis of this direction, while the definitive product brief remains to be established.",
+      "lead": "MAS 52 is the original yacht design study previously shown online under the incorrect MAS 56 label. Its archival film and images are now identified as MAS 52.",
+      "concept": "The film and renderings already on this website represent MAS 52, as confirmed by the project owner. The future VELLARIO edition awaits technical development.",
       "exterior": "The exterior story will draw on the balance of major surfaces, the continuity of the profile and the rhythm of the deck arrangement visible in the source renderings. The object should remain the centre of the presentation, without unrelated footage or invented performance statements. The objective is a presence that feels both assured and restrained.",
       "aboard": "A greater presence on the water should correspond to an equally considered experience for the people aboard. Circulation, moments of privacy and opportunities to gather together are priorities for the next design phase. The final arrangements and amenities will be described only when supported by a reviewed project layout.",
       "details": "The intended interpretation calls for disciplined treatment of finishes, connections and exterior detailing. Every surface should support the overall character of the yacht rather than compete with it. Materials, equipment and engineering choices remain matters for technical validation, not decorative assumptions.",
-      "specifications": "MAS 56 is the confirmed collection name. The future VELLARIO edition, including dimensions, propulsion and arrangement, has not yet reached an approved technical definition.",
-      "gallery": "Original MAS 56 imagery only, including exterior perspectives and model-specific moving-image studies.",
+      "specifications": "MAS 52 is the corrected project identity. No VELLARIO production dimensions, performance or certification are currently verified.",
+      "gallery": "Original MAS 52 source imagery, previously incorrectly labelled as MAS 56 online.",
       "enquiries": "Details of the future personal introduction process will be published when the service is operational.",
       "englishTagline": "The Pleasure of Being in Motion"
+    },
+    "mas-56": {
+      "kicker": "La Collezione / 04 · MAS 56",
+      "tagline": "La Forza dell'Equilibrio.",
+      "englishTagline": "An Italian Design Study",
+      "lead": "MAS 56 is a separate study from MAS 52. Its own original imagery is being checked independently before publication.",
+      "concept": "MAS 56 joins the collection as its own design study, separate from MAS 52.",
+      "exterior": "The original exterior imagery will be presented with verified attribution; no film from another yacht will be substituted.",
+      "aboard": "Space planning and life aboard remain subjects for future review of the original project.",
+      "details": "Materials and technical details have not yet been established for a VELLARIO edition.",
+      "specifications": "Dimensions, propulsion and equipment are not approved production specifications.",
+      "gallery": "Original MAS 56 imagery identified in Dropbox, with public media selection still in progress. The placeholder is not a rendering of this yacht.",
+      "enquiries": "The personal introduction channel is being developed."
+    },
+    "lariocab": {
+      "kicker": "La Collezione / 05 · Lariocab",
+      "tagline": "L'Essenza del Lago.",
+      "englishTagline": "An Italian Design Study",
+      "lead": "Lariocab adds an authentic Lake Como-inspired design direction, with original project renderings identified in the CEYD archive.",
+      "concept": "Lariocab draws on the atmosphere, proportion and cultural identity of Lake Como.",
+      "exterior": "The original exterior imagery will be presented with verified attribution; no film from another yacht will be substituted.",
+      "aboard": "Space planning and life aboard remain subjects for future review of the original project.",
+      "details": "Materials and technical details have not yet been established for a VELLARIO edition.",
+      "specifications": "Dimensions, propulsion and equipment are not approved production specifications.",
+      "gallery": "Original Lariocab imagery identified in Dropbox, with public media selection still in progress. The placeholder is not a rendering of this yacht.",
+      "enquiries": "The personal introduction channel is being developed."
+    },
+    "fy70": {
+      "kicker": "La Collezione / 06 · FY70",
+      "tagline": "Lo Stile Senza Compromessi.",
+      "englishTagline": "An Italian Design Study",
+      "lead": "FY70 enters the collection with its own original image and yacht video already hosted on the VELLARIO preview.",
+      "concept": "FY70 is an original contemporary motor-yacht study in the Fashion Yachts archive.",
+      "exterior": "The original exterior imagery will be presented with verified attribution; no film from another yacht will be substituted.",
+      "aboard": "Space planning and life aboard remain subjects for future review of the original project.",
+      "details": "Materials and technical details have not yet been established for a VELLARIO edition.",
+      "specifications": "Dimensions, propulsion and equipment are not approved production specifications.",
+      "gallery": "Original FY70 visual archive and matching film.",
+      "enquiries": "The personal introduction channel is being developed."
     },
     "grantender-72": {
       "kicker": "La Collezione / 04 · GranTender 72",

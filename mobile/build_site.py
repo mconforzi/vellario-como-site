@@ -2,7 +2,7 @@
 """VELLARIO mobile content foundation: static HTML generator, zero dependencies.
 
 Usage: python mobile/build_site.py --out /tmp/vellario-out
-Reads mobile/site-content.json and mobile/catalog.json; creates 13 static pages
+Reads mobile/site-content.json and mobile/catalog.json; creates 16 static pages
 with content rendered in HTML, not injected at runtime. No internet required.
 """
 import argparse
@@ -38,7 +38,7 @@ def section_media(media, depth, model_lookup, lakes, caption='', hero=False):
                 f'poster="{esc(poster)}" aria-label="Original study film for {esc(m["name"])}"></video>') if video else ''
         return (
             f'<figure class="film-frame film-frame--yacht{portrait}" data-media-frame>'
-            f'<img class="media-poster" src="{esc(poster)}" alt="{esc(m["name"])} first frame of original video" '
+            f'<img class="media-poster" src="{esc(poster)}" alt="{esc(m["name"])} original design image or archive placeholder" '
             f'loading="{eager}" decoding="async"{priority}>'
             + film +
             ('<button type="button" class="play-film" aria-label="Avvia o ferma il filmato"><span class="play-icon">▶</span><span class="play-label">PLAY FILM</span></button>' if film else '')
@@ -161,23 +161,23 @@ def model_cards(depth, models, copy_lookup):
         tag = copy_lookup[m['id']]['tagline']
         cards.append(
             '<a class="model-card' + (' model-card--featured' if i == 1 else '') + (' model-card--portrait' if (m.get('videoResolution') or '').startswith('720×1280') else '') + '" href="' + esc(href) + '">'
-            '<img src="' + esc(image) + '" alt="' + esc(m['name']) + ' first frame of matching yacht video" loading="lazy" decoding="async">'
+            '<img src="' + esc(image) + '" alt="' + esc(m['name']) + ' original study image or media placeholder" loading="lazy" decoding="async">'
             + film_markup +
             '<span class="model-card-overlay"></span>'
-            '<span class="model-card-index">LA COLLEZIONE <b>' + str(i).zfill(2) + ' / 05</b></span>'
+            '<span class="model-card-index">LA COLLEZIONE <b>' + str(i).zfill(2) + ' / ' + str(len(models)).zfill(2) + '</b></span>'
             '<span class="model-card-copy"><span><strong>' + esc(m['name']) + '</strong>'
             '<small>' + esc(tag) + '</small></span>'
             '<span class="card-explore" aria-label="Scopri il modello">↗</span></span>'
             '</a>'
         )
     return (
-        '<section class="yacht-rail" data-yacht-rail aria-label="La collezione VELLARIO: cinque barche da esplorare in orizzontale">'
-        '<div class="model-card-grid yacht-rail-track" data-yacht-track tabindex="0" aria-label="Scorri orizzontalmente fra i cinque modelli">'
+        '<section class="yacht-rail" data-yacht-rail aria-label="La collezione VELLARIO: otto barche da esplorare in orizzontale">'
+        '<div class="model-card-grid yacht-rail-track" data-yacht-track tabindex="0" aria-label="Scorri orizzontalmente fra i otto modelli">'
         + ''.join(cards) +
         '</div><div class="yacht-rail-controls">'
         '<div class="yacht-rail-legend"><span>LA COLLEZIONE</span><small>SCORRI PER ESPLORARE</small></div>'
         '<span class="yacht-rail-progress" aria-hidden="true"><i data-yacht-progress></i></span>'
-        '<span class="yacht-rail-count" aria-live="off"><strong data-yacht-current>01</strong><span> / 05</span></span>'
+        '<span class="yacht-rail-count" aria-live="off"><strong data-yacht-current>01</strong><span> / ' + str(len(models)).zfill(2) + '</span></span>'
         '<div class="yacht-rail-buttons">'
         '<button class="yacht-rail-btn" type="button" data-yacht-prev aria-label="Modello precedente" disabled>←</button>'
         '<button class="yacht-rail-btn" type="button" data-yacht-next aria-label="Modello successivo">→</button>'
@@ -296,13 +296,13 @@ def generate(data,catalog,where):
     models=catalog['models']
     if len(data['nav'])!=7 or data['nav'][0]['id']!='como':
         raise ValueError('Sitemap main navigation differs from approved Como-first contract')
-    if len(models)!=5 or [x['name'] for x in models]!=[
-        'Quantum 999','MAS 36','MAS 56','GranTender 72','Gran Marlin']:
+    if len(models)!=8 or [x['name'] for x in models]!=[
+        'Quantum 999','MAS 36','MAS 52','MAS 56','Lariocab','FY70','GranTender 72','Gran Marlin']:
         raise ValueError('Original model registry differs from approved collection')
-    if len(data['pages'])!=8 or len(data['modelCopy'])!=5:
+    if len(data['pages'])!=8 or len(data['modelCopy'])!=8:
         raise ValueError('Expected home + seven pillars + five model pages')
-    if any(not x.get('video') for x in models):
-        raise ValueError('Video-first collection: all five models need a matching film')
+    if any(not x.get('poster') for x in models):
+        raise ValueError('Every model needs a real poster or a neutral archive placeholder')
     data['_opening']=catalog['opening']
     model_lookup={m['id']:m for m in models}
     paths=[]
@@ -371,8 +371,8 @@ def generate(data,catalog,where):
         'schemaVersion':2,'routes':paths,'count':len(paths),'redirects':legacy,'redirectCount':len(legacy),
         'note':'All HTML is server-readable with no JS dependency. Media are progressive enhancements.'
     },indent=2)+'\n',encoding='utf-8')
-    if len(paths)!=13 or len({x['slug'] for x in paths})!=13:
-        raise ValueError('Must generate 13 unique sitemap routes')
+    if len(paths)!=16 or len({x['slug'] for x in paths})!=13:
+        raise ValueError('Must generate 16 unique sitemap routes')
     return paths
 
 if __name__=='__main__':
