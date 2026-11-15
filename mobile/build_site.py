@@ -140,7 +140,7 @@ def hero(page, depth, model_lookup, lakes, opening, content_model=None):
         '<div class="cinema-backdrop">' + media + '</div><div class="cinema-shade"></div>'
         '<div class="cinema-copy"><p class="cinema-overline">' + esc(page['kicker']) + '</p>'
         + (('<h1 class="cinema-home-brand"><img class="vellario-home-official-wordmark" src="' +
-             esc(asset('VELLARIO_wordmark_REFERENCE_GOLD.svg', depth, 'brand/approved-20261115')) +
+             esc(asset('VELLARIO_wordmark_REFERENCE_WHITE.svg', depth, 'brand/approved-20261115')) +
              '" alt="VELLARIO" decoding="async"></h1>' +
              '<p class="vellario-home-tagline">THE ART OF DOLCEVITA</p>' +
              '<p class="vellario-home-como">COMO</p>') if home else '<h1>' + esc(title) + '</h1>') + italy +
