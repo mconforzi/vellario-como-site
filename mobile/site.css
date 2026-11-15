@@ -993,7 +993,7 @@ body[data-page="home"] .cinema-hero--home .cinema-copy h1.cinema-home-brand{
  line-height:1;overflow:visible;text-align:left;
 }
 body[data-page="home"] .cinema-hero--home .vellario-home-official-wordmark{
- display:block;width:min(100%,880px);height:auto;aspect-ratio:882/119;
+ display:block;width:min(70%,616px);height:auto;aspect-ratio:882/119;
  object-fit:contain;object-position:left center;filter:drop-shadow(0 5px 26px rgba(0,0,0,.52));
 }
 body[data-page="home"] .cinema-hero--home .vellario-home-tagline{
@@ -1014,7 +1014,7 @@ body[data-page="home"].v27-home-v-hidden .site-header .wordmark{
 }
 @media(max-width:750px){
  body[data-page="home"] .cinema-hero--home .cinema-copy h1.cinema-home-brand{width:100%}
- body[data-page="home"] .cinema-hero--home .vellario-home-official-wordmark{width:min(100%,520px)}
+ body[data-page="home"] .cinema-hero--home .vellario-home-official-wordmark{width:min(70%,364px)}
  body[data-page="home"] .cinema-hero--home .vellario-home-tagline{
   font-size:clamp(10px,2.65vw,14px);letter-spacing:.14em;margin-top:0
  }
