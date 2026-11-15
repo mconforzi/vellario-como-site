@@ -4,83 +4,101 @@
     {
       "slug": "",
       "path": "index.html",
-      "name": "VELLARIO · COMO",
-      "bytes": 20857
+      "name": "VELLARIO \u00b7 COMO",
+      "bytes": 22592
     },
     {
       "slug": "como",
       "path": "como/index.html",
       "name": "Como",
-      "bytes": 10352
+      "bytes": 10364
     },
     {
       "slug": "dolce-vita",
       "path": "dolce-vita/index.html",
       "name": "La Dolce Vita",
-      "bytes": 9927
+      "bytes": 9964
     },
     {
       "slug": "collezione",
       "path": "collezione/index.html",
       "name": "La Collezione",
-      "bytes": 13741
+      "bytes": 15469
     },
     {
       "slug": "storia-tradizione",
       "path": "storia-tradizione/index.html",
       "name": "Storia & Tradizione",
-      "bytes": 11271
+      "bytes": 11283
     },
     {
       "slug": "design-saper-fare",
       "path": "design-saper-fare/index.html",
       "name": "Design & Saper Fare",
-      "bytes": 10697
+      "bytes": 10739
     },
     {
       "slug": "casa-vellario",
       "path": "casa-vellario/index.html",
       "name": "La Casa VELLARIO",
-      "bytes": 10059
+      "bytes": 10071
     },
     {
       "slug": "contatti",
       "path": "contatti/index.html",
       "name": "Contatti",
-      "bytes": 7328
+      "bytes": 7340
     },
     {
       "slug": "collezione/quantum-999",
       "path": "collezione/quantum-999/index.html",
       "name": "Quantum 999",
-      "bytes": 15911
+      "bytes": 17668
     },
     {
       "slug": "collezione/mas-36",
       "path": "collezione/mas-36/index.html",
       "name": "MAS 36",
-      "bytes": 15739
+      "bytes": 17496
+    },
+    {
+      "slug": "collezione/mas-52",
+      "path": "collezione/mas-52/index.html",
+      "name": "MAS 52",
+      "bytes": 17849
     },
     {
       "slug": "collezione/mas-56",
       "path": "collezione/mas-56/index.html",
       "name": "MAS 56",
-      "bytes": 16520
+      "bytes": 15580
+    },
+    {
+      "slug": "collezione/lariocab",
+      "path": "collezione/lariocab/index.html",
+      "name": "Lariocab",
+      "bytes": 15632
+    },
+    {
+      "slug": "collezione/fy70",
+      "path": "collezione/fy70/index.html",
+      "name": "FY70",
+      "bytes": 15782
     },
     {
       "slug": "collezione/grantender-72",
       "path": "collezione/grantender-72/index.html",
       "name": "GranTender 72",
-      "bytes": 16440
+      "bytes": 18197
     },
     {
       "slug": "collezione/gran-marlin",
       "path": "collezione/gran-marlin/index.html",
       "name": "Gran Marlin",
-      "bytes": 15918
+      "bytes": 17675
     }
   ],
-  "count": 13,
+  "count": 16,
   "redirects": [
     {
       "old": "collection",
@@ -118,9 +136,24 @@
       "path": "collection/mas-36/index.html"
     },
     {
+      "old": "collection/mas-52",
+      "new": "collezione/mas-52",
+      "path": "collection/mas-52/index.html"
+    },
+    {
       "old": "collection/mas-56",
       "new": "collezione/mas-56",
       "path": "collection/mas-56/index.html"
+    },
+    {
+      "old": "collection/lariocab",
+      "new": "collezione/lariocab",
+      "path": "collection/lariocab/index.html"
+    },
+    {
+      "old": "collection/fy70",
+      "new": "collezione/fy70",
+      "path": "collection/fy70/index.html"
     },
     {
       "old": "collection/grantender-72",
@@ -133,6 +166,6 @@
       "path": "collection/gran-marlin/index.html"
     }
   ],
-  "redirectCount": 10,
+  "redirectCount": 13,
   "note": "All HTML is server-readable with no JS dependency. Media are progressive enhancements."
 }
