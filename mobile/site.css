@@ -984,7 +984,7 @@ html,body{background-color:var(--ink)}
 }
 
 /* VELLARIO V27 — home original wordmark sourced from the owner-approved graphic.
-   Left aligned with overline and lead. Header V fades 2s after actual home reveal. */
+   Left aligned with overline and lead. Header V remains visible on all routes. */
 body[data-page="home"] .cinema-hero--home .cinema-copy{
  display:flex;flex-direction:column;align-items:flex-start;text-align:left;
 }
@@ -1006,12 +1006,6 @@ body[data-page="home"] .cinema-hero--home .vellario-home-como{
  font:400 clamp(18px,2vw,29px)/1 var(--serif);letter-spacing:.38em;text-align:left;
 }
 body[data-page="home"] .cinema-hero--home .cinema-lead{margin-top:clamp(4px,.75svh,10px)}
-body[data-page="home"] .site-header .wordmark{
- opacity:1;visibility:visible;transition:opacity .55s ease,visibility 0s linear .55s;
-}
-body[data-page="home"].v27-home-v-hidden .site-header .wordmark{
- opacity:0;visibility:hidden;pointer-events:none;
-}
 @media(max-width:750px){
  body[data-page="home"] .cinema-hero--home .cinema-copy h1.cinema-home-brand{width:100%}
  body[data-page="home"] .cinema-hero--home .vellario-home-official-wordmark{width:min(70%,364px)}
@@ -1024,9 +1018,6 @@ body[data-page="home"].v27-home-v-hidden .site-header .wordmark{
 }
 @media(max-width:360px){
  body[data-page="home"] .cinema-hero--home .vellario-home-tagline{letter-spacing:.09em}
-}
-@media(prefers-reduced-motion:reduce){
- body[data-page="home"] .site-header .wordmark{transition:none!important}
 }
 
 /* V31: place COMO lower and closer to the English lead on small screens. */
