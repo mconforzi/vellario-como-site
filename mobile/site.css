@@ -997,7 +997,7 @@ body[data-page="home"] .cinema-hero--home .vellario-home-official-wordmark{
  object-fit:contain;object-position:left center;filter:drop-shadow(0 5px 26px rgba(0,0,0,.52));
 }
 body[data-page="home"] .cinema-hero--home .vellario-home-tagline{
- margin:2px 0 0 clamp(10px,1.5vw,20px);padding:0;text-align:left;color:#F7F4EB;
+ margin:2px 0 0 clamp(24px,3vw,40px);padding:0;text-align:left;color:#F7F4EB;
  font:400 clamp(12px,1.45vw,18px)/1.1 var(--serif);letter-spacing:.27em;
  text-shadow:0 2px 18px rgba(0,0,0,.38);
 }
