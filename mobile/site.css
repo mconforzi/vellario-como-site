@@ -884,3 +884,52 @@ html,body{background-color:var(--ink)}
 .vellario-intro-scene{background-color:var(--pine)}
 .play-film:hover,.yacht-rail-btn:not(:disabled):hover{background:var(--night-blue);border-color:var(--brass)}
 ::selection{background:var(--brass);color:var(--ink)}
+
+/* V24 - Original approved asset usage, 2026-11-15.
+   Only original transparent V in the fixed header. Complete logo throughout the site.
+   Source: assets/brand/approved-20261115; preserve V21 intro and V22 video playback. */
+.brand-logo{display:block;max-width:100%;height:auto;object-fit:contain;user-select:none;-webkit-user-drag:none}
+.site-header .wordmark{display:inline-flex;align-items:center;justify-content:center;justify-self:center;min-width:0;padding:7px 10px}
+.site-header .brand-v-emblem{
+ display:block;width:clamp(116px,12vw,176px);max-width:100%;height:auto;
+ filter:drop-shadow(0 2px 9px rgba(0,0,0,.32));
+ transition:transform .36s ease,opacity .36s ease;
+}
+.site-header .wordmark:hover .brand-v-emblem{transform:translateY(-2px);opacity:.94}
+.menu-footer .brand-logo--menu{width:clamp(240px,32vw,440px);margin-inline:auto;filter:drop-shadow(0 7px 18px rgba(0,0,0,.27))}
+.footer-mark .brand-logo--footer{width:min(85vw,590px);margin:0;filter:drop-shadow(0 3px 12px rgba(0,0,0,.28))}
+.cinema-hero--home .cinema-copy h1.cinema-home-brand{display:block;width:100%;max-width:none;line-height:1;overflow:visible}
+.cinema-hero--home .brand-logo--hero{
+ width:min(77vw,860px);max-width:100%;height:auto;
+ filter:drop-shadow(0 8px 36px rgba(0,0,0,.55));
+}
+.vellario-intro-mark{display:flex;align-items:center;justify-content:center;width:100%;max-width:100%;line-height:1}
+.vellario-intro-mark .brand-logo--intro{
+ display:block;width:min(76vw,650px);height:auto;margin:0 auto;
+ filter:drop-shadow(0 6px 21px rgba(0,0,0,.3));
+}
+.vellario-intro--loading.is-active .vellario-intro-mark .brand-logo--intro{
+ animation:vellario-v24-brand-reveal 1.35s cubic-bezier(.2,.62,.22,1) .3s both;
+}
+@keyframes vellario-v24-brand-reveal{
+ from{opacity:0;filter:blur(4px) brightness(.78);transform:translateY(7px) scale(1.018)}
+ to{opacity:1;filter:drop-shadow(0 6px 21px rgba(0,0,0,.3));transform:translateY(0) scale(1)}
+}
+@media(max-width:750px){
+ .site-header .brand-v-emblem{width:clamp(96px,27vw,126px)}
+ .menu-footer .brand-logo--menu{width:min(65vw,290px)}
+ .footer-mark .brand-logo--footer{width:min(90vw,450px)}
+ .cinema-hero--home .brand-logo--hero{width:min(87vw,650px)}
+ .vellario-intro-mark .brand-logo--intro{width:min(91vw,490px)}
+}
+@media(max-width:400px){
+ .site-header .brand-v-emblem{width:100px}
+ .cinema-hero--home .brand-logo--hero{width:min(88vw,440px)}
+}
+@media(max-height:600px){
+ .cinema-hero--home .brand-logo--hero{width:min(59vw,550px)}
+ .vellario-intro-mark .brand-logo--intro{width:min(55vw,320px)}
+}
+@media(prefers-reduced-motion:reduce){
+ .site-header .brand-v-emblem,.brand-logo{transition:none!important;animation:none!important}
+}

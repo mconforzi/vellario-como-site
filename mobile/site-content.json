@@ -622,11 +622,13 @@
   },
   "brandLockup": {
     "wordmark": "VELLARIO",
-    "signature": "THE ART OF DOLCE VITA",
+    "signature": "THE ART OF DOLCEVITA",
     "location": "COMO",
     "signatureStartRatio": 0.06,
     "signatureEndRatio": 0.92,
-    "approvedVisual": "2026-11-14",
-    "legalRegistration": "NOT VERIFIED"
+    "approvedVisual": "2026-11-15",
+    "legalRegistration": "NOT VERIFIED",
+    "fullLogoAsset": "assets/brand/approved-20261115/VELLARIO_full_logo_EDITABLE.svg",
+    "headerVAsset": "assets/brand/approved-20261115/VELLARIO_V_cutout_TRANSPARENT.svg"
   }
 }

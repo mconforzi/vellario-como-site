@@ -104,7 +104,7 @@ curtain.innerHTML=
  '<div class="vellario-intro-grain" aria-hidden="true"></div>'+
  '<div class="vellario-intro-top" aria-hidden="true"><span>COMO · ITALIA</span><span>DESIGN ITALIANO</span></div>'+
  '<div class="vellario-intro-center">'+
- '<div class="vellario-intro-mark"><span class="brand-lockup brand-lockup--intro" role="img" aria-label="VELLARIO COMO — THE ART OF DOLCE VITA"><span class="brand-lockup-name" aria-hidden="true">VELLARIO</span><svg class="brand-lockup-tagline" viewBox="0 0 1000 54" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false"><text x="0" y="43" textLength="1000" lengthAdjust="spacing">THE ART OF DOLCE VITA</text></svg><span class="brand-lockup-como" aria-hidden="true">COMO</span></span></div>'+
+  '<div class="vellario-intro-mark"><img class="brand-logo brand-logo--intro" src="../assets/brand/approved-20261115/VELLARIO_full_logo_EDITABLE.svg" alt="VELLARIO — THE ART OF DOLCEVITA — COMO" decoding="async"></div>'+
  '<span class="vellario-intro-accent" aria-hidden="true"></span></div>'+
  '<div class="vellario-intro-bottom">'+
  '<div class="vellario-intro-loading-status" role="status" aria-live="polite" aria-atomic="true">'+

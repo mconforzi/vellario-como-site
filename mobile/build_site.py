@@ -59,16 +59,12 @@ def section_media(media, depth, model_lookup, lakes, caption='', hero=False):
         '</span></figcaption></figure>'
     )
 
-def brand_lockup(variant=''):
-    """Approved unified VELLARIO / THE ART OF DOLCE VITA / COMO lockup."""
-    suffix = (' brand-lockup--' + variant) if variant else ''
-    return (
-        '<span class="brand-lockup' + suffix + '" role="img" aria-label="VELLARIO COMO — THE ART OF DOLCE VITA">'
-        '<span class="brand-lockup-name" aria-hidden="true">VELLARIO</span>'
-        '<svg class="brand-lockup-tagline" viewBox="0 0 1000 54" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">'
-        '<text x="0" y="43" textLength="1000" lengthAdjust="spacing">THE ART OF DOLCE VITA</text></svg>'
-        '<span class="brand-lockup-como" aria-hidden="true">COMO</span></span>'
-    )
+def brand_lockup(variant='', depth=0):
+    """Use the approved 15 Nov 2026 logo asset; exact extracted V, editable lettering."""
+    logo = asset('VELLARIO_full_logo_EDITABLE.svg', depth, 'brand/approved-20261115')
+    suffix = (' brand-logo--' + variant) if variant else ''
+    return ('<img class="brand-logo' + suffix + '" src="' + esc(logo) +
+            '" alt="VELLARIO — THE ART OF DOLCEVITA — COMO" decoding="async">')
 
 def header(current_id, depth, data):
     menu_items = []
@@ -89,11 +85,12 @@ def header(current_id, depth, data):
         '<div class="menu-title">L’ARTE DI VIVERE</div>'
         '<nav class="menu-items" aria-label="Navigazione principale">'
         + ''.join(menu_items) +
-        '</nav><div class="menu-footer">' + brand_lockup('menu') + '</div>'
+        '</nav><div class="menu-footer">' + brand_lockup('menu', depth) + '</div>'
         '</div></div></details>'
-        '<a class="wordmark" href="' + esc(site_path('', depth)) + '" aria-label="VELLARIO COMO, THE ART OF DOLCE VITA — Homepage">'
-        + brand_lockup('header') + '</a>'
-        '<a class="header-side" href="' + esc(site_path('collezione', depth)) + '">LA COLLEZIONE <span aria-hidden="true">↗</span></a>'
+        '<a class="wordmark" href="' + esc(site_path('', depth)) + '" aria-label="VELLARIO — Torna alla home">'
+        + '<img class="brand-v-emblem" src="' + esc(asset('VELLARIO_V_cutout_TRANSPARENT.svg', depth, 'brand/approved-20261115')) +
+        '" alt="" aria-hidden="true" decoding="async"></a>'
+                '<a class="header-side" href="' + esc(site_path('collezione', depth)) + '">LA COLLEZIONE <span aria-hidden="true">↗</span></a>'
         '</header>'
     )
 
@@ -101,7 +98,7 @@ def footer(depth, data):
     foot = data.get('footer', {})
     return (
         '<footer class="site-footer">'
-        '<div class="footer-mark">' + brand_lockup('footer') + '</div>'
+        '<div class="footer-mark">' + brand_lockup('footer', depth) + '</div>'
         '<p>'+esc(foot.get('statement','Una nuova casa italiana della nautica.'))+'</p>'
         '<p>'+esc(foot.get('disclosure','Design concept preview.'))+'</p>'
         '<p><a href="'+esc(site_path('contatti',depth))+'">Contatti</a> · '
@@ -142,7 +139,7 @@ def hero(page, depth, model_lookup, lakes, opening, content_model=None):
         '<section class="cinema-hero' + (' cinema-hero--home' if home else '') + (' cinema-hero--text' if not key else '') + '">'
         '<div class="cinema-backdrop">' + media + '</div><div class="cinema-shade"></div>'
         '<div class="cinema-copy"><p class="cinema-overline">' + esc(page['kicker']) + '</p>'
-        '<h1' + (' class="cinema-home-brand"' if home else '') + '>' + (brand_lockup('hero') if home else esc(title)) + '</h1>' + italy +
+        '<h1' + (' class="cinema-home-brand"' if home else '') + '>' + (brand_lockup('hero', depth) if home else esc(title)) + '</h1>' + italy +
         ('<p class="cinema-english">' + esc(page['englishTagline']) + '</p>' if page.get('englishTagline') and not home else '') +
         '<p class="cinema-lead">' + esc(lead) + '</p></div>'
         + hint + '<div class="hero-counter">VELLARIO / COMO <span>✳</span> ITALIA</div></section>'
@@ -325,11 +322,11 @@ def generate(data,catalog,where):
           '<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">'
           '<meta name="theme-color" content="#050E0B"><meta name="robots" content="noindex,nofollow,noarchive">'
           '<meta name="description" content="'+esc(desc)+'">'
-          '<title>'+esc(title)+' | VELLARIO · COMO — THE ART OF DOLCE VITA</title>'
+          '<title>'+esc(title)+' | VELLARIO · COMO — THE ART OF DOLCEVITA</title>'
           '<link rel="preconnect" href="https://fonts.googleapis.com">'
           '<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>'
           '<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">'
-          '<link rel="stylesheet" href="'+esc(source_css)+'?v=forest-noir-20261114"><script src="'+esc(source_js)+'?v=v22-eager-home-films" defer></script>'
+          '<link rel="stylesheet" href="'+esc(source_css)+'?v=v24-approved-brand"><script src="'+esc(source_js)+'?v=v24-approved-brand" defer></script>'
           '</head><body data-page="'+esc(pid)+'">'
           +header(pid,depth,data)+'<main id="main-content">'+body+'</main>'
           +footer(depth,data)+'</body></html>\n'
