@@ -336,7 +336,7 @@ def generate(data,catalog,where):
         )
         dest=outdir/'index.html'
         dest.write_text(html_doc,encoding='utf-8')
-        if '<h1>' not in html_doc or '<main' not in html_doc:
+        if '<h1' not in html_doc or '<main' not in html_doc:
             raise ValueError('Generated route missing static core content: '+slug)
         paths.append({'slug':slug,'path':str(dest.relative_to(root)),'name':title,'bytes':len(html_doc.encode('utf-8'))})
     # Preserve old English/French URLs so previously shared site links keep working.
