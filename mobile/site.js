@@ -51,6 +51,24 @@ if(!b)return;
 const reduced=!!w.matchMedia&&w.matchMedia('(prefers-reduced-motion: reduce)').matches;
 const hero=d.querySelector('.cinema-hero');
 const header=d.querySelector('.site-header');
+/* V27: header V stays in its original position until 2 seconds after home reveal. */
+const homeHeaderV=b.dataset.page==='home'?header?.querySelector('.wordmark'):null;
+let homeVTimer=0;
+function homeVReset(){
+ if(!homeHeaderV)return;
+ if(homeVTimer)w.clearTimeout(homeVTimer);
+ homeVTimer=0;b.classList.remove('v27-home-v-hidden');
+ homeHeaderV.removeAttribute('tabindex');homeHeaderV.removeAttribute('aria-hidden');
+}
+function homeVHideAfterReveal(){
+ if(!homeHeaderV)return;
+ if(homeVTimer)w.clearTimeout(homeVTimer);
+ homeVTimer=w.setTimeout(()=>{
+  b.classList.add('v27-home-v-hidden');
+  homeHeaderV.setAttribute('tabindex','-1');homeHeaderV.setAttribute('aria-hidden','true');
+ },2000);
+}
+if(homeHeaderV&&reduced)homeVHideAfterReveal();
 const meter=d.createElement('div');
 meter.className='vellario-scroll-meter';
 meter.setAttribute('aria-hidden','true');
@@ -151,6 +169,7 @@ function endIntro(immediate=false){
   curtain.classList.add('is-complete');
   curtain.classList.remove('is-active','is-revealing');
   exiting=false;
+  homeVHideAfterReveal();
  },immediate?650:940);
 }
 function readyToEnter(){
@@ -180,6 +199,7 @@ function checkFilmReady(){
  if(openingVideo.readyState>=3||(!openingVideo.paused&&openingVideo.readyState>=2))filmReady();
 }
 function playIntro(){
+ homeVReset();
  cancelIntroTimers();exiting=false;mediaReady=false;minimumElapsed=false;
  curtain.classList.remove('is-active','is-revealing','is-complete','is-ready','is-fallback');
  label.textContent='CARICAMENTO DEL FILM';state.textContent='IN PREPARAZIONE';
@@ -201,7 +221,7 @@ if(openingVideo){
  openingVideo.addEventListener('error',fallback);
 }
 w.addEventListener('pageshow',e=>{if(e.persisted)playIntro()});
-w.addEventListener('pagehide',()=>{cancelIntroTimers();curtain.classList.add('is-complete')});
+w.addEventListener('pagehide',()=>{cancelIntroTimers();if(homeVTimer)w.clearTimeout(homeVTimer);curtain.classList.add('is-complete')});
 w.addEventListener('scroll',()=>{if(w.scrollY>35&&curtain.classList.contains('is-active'))endIntro(true)},{passive:true});
 w.addEventListener('wheel',()=>{if(curtain.classList.contains('is-active'))endIntro(true)},{passive:true});
 w.addEventListener('touchstart',e=>{

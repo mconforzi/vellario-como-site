@@ -139,7 +139,11 @@ def hero(page, depth, model_lookup, lakes, opening, content_model=None):
         '<section class="cinema-hero' + (' cinema-hero--home' if home else '') + (' cinema-hero--text' if not key else '') + '">'
         '<div class="cinema-backdrop">' + media + '</div><div class="cinema-shade"></div>'
         '<div class="cinema-copy"><p class="cinema-overline">' + esc(page['kicker']) + '</p>'
-        '<h1' + (' class="cinema-home-brand"' if home else '') + '>' + (brand_lockup('hero', depth) if home else esc(title)) + '</h1>' + italy +
+        + (('<h1 class="cinema-home-brand"><img class="vellario-home-official-wordmark" src="' +
+             esc(asset('VELLARIO_wordmark_REFERENCE_GOLD.svg', depth, 'brand/approved-20261115')) +
+             '" alt="VELLARIO" decoding="async"></h1>' +
+             '<p class="vellario-home-tagline">THE ART OF DOLCEVITA</p>' +
+             '<p class="vellario-home-como">COMO</p>') if home else '<h1>' + esc(title) + '</h1>') + italy +
         ('<p class="cinema-english">' + esc(page['englishTagline']) + '</p>' if page.get('englishTagline') and not home else '') +
         '<p class="cinema-lead">' + esc(lead) + '</p></div>'
         + hint + '<div class="hero-counter">VELLARIO / COMO <span>✳</span> ITALIA</div></section>'
@@ -326,7 +330,7 @@ def generate(data,catalog,where):
           '<link rel="preconnect" href="https://fonts.googleapis.com">'
           '<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>'
           '<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">'
-          '<link rel="stylesheet" href="'+esc(source_css)+'?v=v26-fluid-v-simple-tagline"><script src="'+esc(source_js)+'?v=v26-fluid-v-simple-tagline" defer></script>'
+          '<link rel="stylesheet" href="'+esc(source_css)+'?v=v27-approved-left-home"><script src="'+esc(source_js)+'?v=v27-approved-left-home" defer></script>'
           '</head><body data-page="'+esc(pid)+'">'
           +header(pid,depth,data)+'<main id="main-content">'+body+'</main>'
           +footer(depth,data)+'</body></html>\n'
