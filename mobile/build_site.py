@@ -85,7 +85,12 @@ def header(current_id, depth, data):
         '<div class="menu-title">L’ARTE DI VIVERE</div>'
         '<nav class="menu-items" aria-label="Navigazione principale">'
         + ''.join(menu_items) +
-        '</nav><div class="menu-footer">' + brand_lockup('menu', depth) + '</div>'
+        '</nav><div class="menu-footer"><div class="vellario-menu-signature" role="img" aria-label="VELLARIO — THE ART OF DOLCEVITA — COMO">' +
+        '<img class="vellario-menu-emblem" src="' + esc(asset('VELLARIO_V_cutout_TRANSPARENT.svg', depth, 'brand/approved-20261115')) + '" alt="" decoding="async">' +
+        '<img class="vellario-menu-wordmark" src="' + esc(asset('VELLARIO_wordmark_REFERENCE_WHITE.svg', depth, 'brand/approved-20261115')) + '" alt="" decoding="async">' +
+        '<span class="vellario-menu-tagline" aria-hidden="true">THE ART OF DOLCEVITA</span>' +
+        '<span class="vellario-menu-como" aria-hidden="true">COMO</span>' +
+        '</div></div>'
         '</div></div></details>'
         '<a class="wordmark" href="' + esc(site_path('', depth)) + '" aria-label="VELLARIO — Torna alla home">'
         + '<img class="brand-v-emblem" src="' + esc(asset('VELLARIO_V_cutout_TRANSPARENT.svg', depth, 'brand/approved-20261115')) +
@@ -330,7 +335,7 @@ def generate(data,catalog,where):
           '<link rel="preconnect" href="https://fonts.googleapis.com">'
           '<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>'
           '<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">'
-          '<link rel="stylesheet" href="'+esc(source_css)+'?v=v33-vector-menu-arrows"><script src="'+esc(source_js)+'?v=v33-vector-menu-arrows" defer></script>'
+          '<link rel="stylesheet" href="'+esc(source_css)+'?v=v34-menu-brand-typography"><script src="'+esc(source_js)+'?v=v34-menu-brand-typography" defer></script>'
           '</head><body data-page="'+esc(pid)+'">'
           +header(pid,depth,data)+'<main id="main-content">'+body+'</main>'
           +footer(depth,data)+'</body></html>\n'
