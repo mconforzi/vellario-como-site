@@ -106,7 +106,8 @@
           "link": "collection",
           "kind": "collection",
           "englishLine": "Distinctive by Design",
-          "shortIntro": "Otto barche, otto caratteri. Un'unica interpretazione della Dolce Vita sull’acqua."
+          "shortIntro": "Otto barche, otto caratteri. Un'unica interpretazione della Dolce Vita sull’acqua.",
+          "displaySubtitle": "Eight boats, eight distinct characters. Different expressions of life on the water."
         },
         {
           "id": "origin",
@@ -115,7 +116,8 @@
           "link": "como",
           "media": "como",
           "englishLine": "Where It All Begins",
-          "shortIntro": "Como è il nostro punto di partenza: paesaggio, architettura e una tradizione di eleganza sull’acqua."
+          "shortIntro": "Como è il nostro punto di partenza: paesaggio, architettura e una tradizione di eleganza sull’acqua.",
+          "displaySubtitle": "Lake Como: architecture, landscape and a tradition of elegance on the water."
         },
         {
           "id": "life",
@@ -124,13 +126,15 @@
           "link": "dolce-vita",
           "media": "bled",
           "englishLine": "The Good Life, the Italian Way",
-          "shortIntro": "Un aperitivo sul lago, la luce del tramonto, il piacere di navigare senza fretta. Questa è la Dolce Vita."
+          "shortIntro": "Un aperitivo sul lago, la luce del tramonto, il piacere di navigare senza fretta. Questa è la Dolce Vita.",
+          "displaySubtitle": "An aperitivo by the lake, golden light at sunset, and the pleasure of travelling without hurry."
         },
         {
           "id": "history",
           "title": "Storia & Tradizione",
           "body": "Long before the idea of VELLARIO, generations of boatbuilders, racers and craftsmen shaped the nautical culture of Lake Como. Their world was one of working boats and elegant runabouts, ingenuity and competition, skilled hands and bold ideas. It remains a source of inspiration for a new expression of Italian nautical elegance.",
-          "link": "history-legacy"
+          "link": "history-legacy",
+          "displaySubtitle": "Generations of boatbuilders, racers and craftsmen shaped the nautical culture of Lake Como."
         },
         {
           "id": "craft",
@@ -139,21 +143,24 @@
           "link": "design-craftsmanship",
           "media": "model:mas-52",
           "englishLine": "The Beauty of Every Detail",
-          "shortIntro": "Proporzioni, materiali, linee e superfici: il saper fare italiano si riconosce nei dettagli."
+          "shortIntro": "Proporzioni, materiali, linee e superfici: il saper fare italiano si riconosce nei dettagli.",
+          "displaySubtitle": "Proportion, materials and the beauty of every detail. The Italian art of saper fare."
         },
         {
           "id": "vision",
           "title": "La Casa VELLARIO",
           "body": "La Casa VELLARIO is conceived as a new Italian nautical design house: distinctive in character, discreet in expression, personal in its approach. The ambition is to direct the design, identity and future client experience of a carefully considered collection—not to pursue volume or spectacle.",
           "link": "maison",
-          "englishLine": "A Distinctly Italian Point of View"
+          "englishLine": "A Distinctly Italian Point of View",
+          "displaySubtitle": "A new Italian nautical design house, distinctive in character and discreet in expression."
         },
         {
           "id": "dialogue",
           "title": "Un Invito Personale",
           "body": "A boat becomes personal through thoughtful choices, not endless options. Su Misura is the Italian expression of this attention to the individual. The future VELLARIO relationship with its owners is envisaged as a conversation guided by taste, design and a shared appreciation of beauty.",
           "link": "contact",
-          "englishLine": "The Personal Touch"
+          "englishLine": "The Personal Touch",
+          "displaySubtitle": "A personal relationship guided by taste, design and a shared appreciation of beauty."
         }
       ],
       "englishTagline": "The Italian Art of Living"
