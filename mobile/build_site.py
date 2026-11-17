@@ -206,6 +206,7 @@ def editorial_page(page, depth, data, model_lookup, models):
             '</span><i></i><span>' + str(len(page['sections'])).zfill(2) + '</span></div>'
             '<div class="chapter-content"><p class="chapter-eyebrow">' + esc(page['title']) + ' / ' +
             esc(str(i).zfill(2)) + '</p><h2>' + esc(section['title']) + '</h2>' +
+            ('<p class="chapter-display-subtitle">' + esc(section['displaySubtitle']) + '</p>' if page['id'] == 'home' and section.get('displaySubtitle') else '') +
             ('<p class="english-subtitle">' + esc(section['englishLine']) + '</p>' if section.get('englishLine') else '') +
             '<p class="chapter-description">' + esc(section.get('shortIntro') or section['body']) + '</p>'
         )
@@ -335,7 +336,7 @@ def generate(data,catalog,where):
           '<link rel="preconnect" href="https://fonts.googleapis.com">'
           '<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>'
           '<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">'
-          '<link rel="stylesheet" href="'+esc(source_css)+'?v=v35-como-section-headings"><script src="'+esc(source_js)+'?v=v35-como-section-headings" defer></script>'
+          '<link rel="stylesheet" href="'+esc(source_css)+'?v=v36-home-heading-and-subtitle"><script src="'+esc(source_js)+'?v=v36-home-heading-and-subtitle" defer></script>'
           '</head><body data-page="'+esc(pid)+'">'
           +header(pid,depth,data)+'<main id="main-content">'+body+'</main>'
           +footer(depth,data)+'</body></html>\n'
