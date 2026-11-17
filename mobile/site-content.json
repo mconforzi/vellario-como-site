@@ -100,6 +100,15 @@
       "hero": "opening",
       "sections": [
         {
+          "id": "models",
+          "title": "La Collezione",
+          "body": "A collection should never feel like a row of interchangeable objects. Quantum 999, MAS 36, MAS 52, MAS 56, Lariocab, FY70, GranTender 72 and Gran Marlin explore different expressions of life on the water, from the spirit of the Italian sporting boat to the architectural ambition of a larger yacht. Each begins with its own design character.",
+          "link": "collection",
+          "kind": "collection",
+          "englishLine": "Distinctive by Design",
+          "shortIntro": "Otto barche, otto caratteri. Un'unica interpretazione della Dolce Vita sull’acqua."
+        },
+        {
           "id": "origin",
           "title": "Dove Tutto Comincia",
           "body": "There are places whose character is inseparable from the way they are lived. Lake Como is one of them: architecture set against the mountains, gardens descending towards the water, and a distinctive tradition of arriving by boat. For VELLARIO, Como is not merely a location or a backdrop. It is the cultural inspiration for a new nautical point of view.",
@@ -116,15 +125,6 @@
           "media": "bled",
           "englishLine": "The Good Life, the Italian Way",
           "shortIntro": "Un aperitivo sul lago, la luce del tramonto, il piacere di navigare senza fretta. Questa è la Dolce Vita."
-        },
-        {
-          "id": "models",
-          "title": "La Collezione",
-          "body": "A collection should never feel like a row of interchangeable objects. Quantum 999, MAS 36, MAS 52, MAS 56, Lariocab, FY70, GranTender 72 and Gran Marlin explore different expressions of life on the water, from the spirit of the Italian sporting boat to the architectural ambition of a larger yacht. Each begins with its own design character.",
-          "link": "collection",
-          "kind": "collection",
-          "englishLine": "Distinctive by Design",
-          "shortIntro": "Otto barche, otto caratteri. Un'unica interpretazione della Dolce Vita sull’acqua."
         },
         {
           "id": "history",
