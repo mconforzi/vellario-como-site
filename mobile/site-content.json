@@ -134,7 +134,8 @@
           "title": "Storia & Tradizione",
           "body": "Long before the idea of VELLARIO, generations of boatbuilders, racers and craftsmen shaped the nautical culture of Lake Como. Their world was one of working boats and elegant runabouts, ingenuity and competition, skilled hands and bold ideas. It remains a source of inspiration for a new expression of Italian nautical elegance.",
           "link": "history-legacy",
-          "displaySubtitle": "Generations of boatbuilders, racers and craftsmen shaped the nautical culture of Lake Como."
+          "displaySubtitle": "Generations of boatbuilders, racers and craftsmen shaped the nautical culture of Lake Como.",
+          "media": "como"
         },
         {
           "id": "craft",
@@ -152,7 +153,8 @@
           "body": "La Casa VELLARIO is conceived as a new Italian nautical design house: distinctive in character, discreet in expression, personal in its approach. The ambition is to direct the design, identity and future client experience of a carefully considered collection—not to pursue volume or spectacle.",
           "link": "maison",
           "englishLine": "A Distinctly Italian Point of View",
-          "displaySubtitle": "A new Italian nautical design house, distinctive in character and discreet in expression."
+          "displaySubtitle": "A new Italian nautical design house, distinctive in character and discreet in expression.",
+          "media": "model:fy70"
         },
         {
           "id": "dialogue",
@@ -160,7 +162,8 @@
           "body": "A boat becomes personal through thoughtful choices, not endless options. Su Misura is the Italian expression of this attention to the individual. The future VELLARIO relationship with its owners is envisaged as a conversation guided by taste, design and a shared appreciation of beauty.",
           "link": "contact",
           "englishLine": "The Personal Touch",
-          "displaySubtitle": "A personal relationship guided by taste, design and a shared appreciation of beauty."
+          "displaySubtitle": "A personal relationship guided by taste, design and a shared appreciation of beauty.",
+          "media": "model:gran-marlin"
         }
       ],
       "englishTagline": "The Italian Art of Living"
@@ -636,6 +639,12 @@
     "approvedVisual": "2026-11-15",
     "legalRegistration": "NOT VERIFIED",
     "fullLogoAsset": "assets/brand/approved-20261115/VELLARIO_full_logo_EDITABLE.svg",
-    "headerVAsset": "assets/brand/approved-20261115/VELLARIO_V_cutout_TRANSPARENT.svg"
+    "headerVAsset": "assets/brand/approved-20261115/VELLARIO_V_cutout_TRANSPARENT.svg",
+    "footerComposition": {
+      "emblem": "assets/brand/approved-20261115/VELLARIO_V_cutout_TRANSPARENT.svg",
+      "wordmark": "assets/brand/approved-20261115/VELLARIO_wordmark_REFERENCE_WHITE.svg",
+      "tagline": "THE ART OF DOLCEVITA",
+      "location": "COMO"
+    }
   }
 }
