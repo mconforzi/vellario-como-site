@@ -60,11 +60,19 @@ def section_media(media, depth, model_lookup, lakes, caption='', hero=False):
     )
 
 def brand_lockup(variant='', depth=0):
-    """Use the approved 15 Nov 2026 logo asset; exact extracted V, editable lettering."""
-    logo = asset('VELLARIO_full_logo_EDITABLE.svg', depth, 'brand/approved-20261115')
-    suffix = (' brand-logo--' + variant) if variant else ''
-    return ('<img class="brand-logo' + suffix + '" src="' + esc(logo) +
-            '" alt="VELLARIO — THE ART OF DOLCEVITA — COMO" decoding="async">')
+    """Exact owner-approved V and white wordmark, composed with the approved tagline and COMO."""
+    if variant != 'footer':
+        raise ValueError('The approved composite is for the footer')
+    emblem = asset('VELLARIO_V_cutout_TRANSPARENT.svg', depth, 'brand/approved-20261115')
+    wordmark = asset('VELLARIO_wordmark_REFERENCE_WHITE.svg', depth, 'brand/approved-20261115')
+    return (
+        '<div class="vellario-footer-signature" role="img" aria-label="VELLARIO — THE ART OF DOLCEVITA — COMO">'
+        '<img class="vellario-footer-emblem" src="' + esc(emblem) + '" alt="" decoding="async">'
+        '<img class="vellario-footer-wordmark" src="' + esc(wordmark) + '" alt="" decoding="async">'
+        '<span class="vellario-footer-tagline" aria-hidden="true">THE ART OF DOLCEVITA</span>'
+        '<span class="vellario-footer-como" aria-hidden="true">COMO</span>'
+        '</div>'
+    )
 
 def header(current_id, depth, data):
     menu_items = []
@@ -198,6 +206,8 @@ def editorial_page(page, depth, data, model_lookup, models):
         classes = ['editorial-section', 'chapter', 'chapter--' + str(i % 3)]
         if has_media:
             classes.append('chapter--visual')
+        if has_media and page['id'] == 'home' and not is_collection:
+            classes.append('chapter--cinematic')
         if is_collection:
             classes.append('chapter--collection')
         out.append(
@@ -336,7 +346,7 @@ def generate(data,catalog,where):
           '<link rel="preconnect" href="https://fonts.googleapis.com">'
           '<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>'
           '<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">'
-          '<link rel="stylesheet" href="'+esc(source_css)+'?v=v36-home-heading-and-subtitle"><script src="'+esc(source_js)+'?v=v36-home-heading-and-subtitle" defer></script>'
+          '<link rel="stylesheet" href="'+esc(source_css)+'?v=v37-fullscreen-films-footer"><script src="'+esc(source_js)+'?v=v37-fullscreen-films-footer" defer></script>'
           '</head><body data-page="'+esc(pid)+'">'
           +header(pid,depth,data)+'<main id="main-content">'+body+'</main>'
           +footer(depth,data)+'</body></html>\n'
