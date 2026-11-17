@@ -1130,3 +1130,85 @@ body[data-page="home"] main > section.editorial-section.chapter:not(.chapter--vi
     line-height:1.45!important;
   }
 }
+
+
+/* V37 · Six cinematic full-bleed homepage scenes and an official assembled footer logo. */
+body[data-page="home"] main > section.editorial-section.chapter--cinematic{
+ position:relative!important;display:block!important;isolation:isolate;width:100%;
+ height:100svh!important;min-height:100svh!important;overflow:hidden!important;background:#050E0B;color:var(--white);
+}
+body[data-page="home"] main > section.editorial-section.chapter--cinematic > .chapter-media{
+ position:absolute!important;inset:0!important;z-index:0;display:block!important;order:0!important;
+ width:100%!important;height:100%!important;min-height:0!important;max-height:none!important;
+ margin:0!important;padding:0!important;overflow:hidden;
+}
+body[data-page="home"] main > section.editorial-section.chapter--cinematic > .chapter-media > .film-frame{
+ position:absolute!important;inset:0!important;display:block!important;width:100%!important;
+ height:100%!important;min-height:0!important;max-height:none!important;aspect-ratio:auto!important;border:0!important;
+}
+body[data-page="home"] main > section.editorial-section.chapter--cinematic .chapter-media .film-frame img,
+body[data-page="home"] main > section.editorial-section.chapter--cinematic .chapter-media .film-frame video{
+ position:absolute;inset:0;width:100%;height:100%;object-fit:cover!important;object-position:center center;
+}
+body[data-page="home"] main > section.editorial-section.chapter--cinematic > .chapter-media::after{
+ content:"";position:absolute;inset:0;z-index:3;pointer-events:none;
+ background:linear-gradient(90deg,rgba(3,13,9,.73),rgba(3,13,9,.39) 54%,rgba(3,13,9,.10) 100%),
+ linear-gradient(0deg,rgba(3,13,9,.40),transparent 48%);
+}
+body[data-page="home"] main > section.editorial-section.chapter--cinematic > .chapter-shell{
+ position:absolute!important;inset:0!important;z-index:7;
+ display:flex!important;flex-direction:column!important;justify-content:flex-end!important;align-items:flex-start!important;
+ width:100%!important;height:100%!important;max-width:none!important;min-height:0!important;
+ padding:0 clamp(28px,7vw,140px) clamp(117px,14svh,180px)!important;
+ margin:0!important;order:0!important;pointer-events:none;
+}
+body[data-page="home"] main > section.editorial-section.chapter--cinematic .chapter-content{width:100%;max-width:min(850px,100%);margin:0}
+body[data-page="home"] main > section.editorial-section.chapter--cinematic .chapter-content h2,
+body[data-page="home"] main > section.editorial-section.chapter--cinematic .chapter-display-subtitle{text-shadow:0 2px 26px rgba(0,0,0,.42)}
+body[data-page="home"] main > section.editorial-section.chapter--cinematic .film-frame figcaption{
+ left:auto;right:clamp(22px,4.5vw,90px);bottom:24px;max-width:42%;text-align:right;opacity:.75;z-index:4;
+}
+body[data-page="home"] main > section.editorial-section.chapter--cinematic .film-frame .play-film{
+ right:clamp(22px,4.5vw,90px);bottom:70px;z-index:5;
+}
+body[data-page="home"] main > #models{
+ position:relative!important;display:block!important;isolation:isolate;
+ height:100svh!important;min-height:100svh!important;overflow:hidden!important;
+}
+body[data-page="home"] main > #models > .chapter-collection{
+ position:absolute!important;inset:0!important;z-index:0;
+ width:100%!important;height:100%!important;max-height:none!important;padding:0!important;margin:0!important;
+}
+body[data-page="home"] main > #models > .chapter-collection::after{
+ content:"";position:absolute;inset:0;z-index:4;pointer-events:none;
+ background:linear-gradient(to bottom,rgba(3,13,9,.80),rgba(3,13,9,.30) 35%,transparent 55%);
+}
+body[data-page="home"] main > #models > .chapter-shell{
+ position:absolute!important;inset:0 0 auto!important;z-index:7;display:block!important;
+ height:auto!important;max-width:none!important;
+ padding:clamp(104px,13svh,146px) clamp(28px,7vw,140px) 0!important;margin:0!important;pointer-events:none;
+}
+body[data-page="home"] main > #models .chapter-content{width:100%;max-width:850px}
+.footer-mark .vellario-footer-signature{
+ display:flex;flex-direction:column;align-items:flex-start;gap:0;
+ width:min(100%,560px);max-width:100%;margin:0;line-height:1;
+}
+.footer-mark .vellario-footer-emblem{display:block;width:55%;height:auto;aspect-ratio:925/222;object-fit:contain;object-position:left;margin:0 0 5px}
+.footer-mark .vellario-footer-wordmark{display:block;width:100%;height:auto;aspect-ratio:882/119;object-fit:contain;object-position:left;margin:0}
+.footer-mark .vellario-footer-tagline{display:block;margin:4px 0 0 5%;color:#F7F4EB;font:400 clamp(11px,1.25vw,16px)/1.15 var(--serif);letter-spacing:.24em;white-space:nowrap}
+.footer-mark .vellario-footer-como{display:block;margin:12px 0 0;color:#D6B781;font:400 clamp(13px,1.45vw,19px)/1 var(--serif);letter-spacing:.33em}
+@media(max-width:750px){
+ body[data-page="home"] main > section.editorial-section.chapter--cinematic > .chapter-shell{padding:0 25px clamp(115px,17svh,145px)!important}
+ body[data-page="home"] main > section.editorial-section.chapter--cinematic .film-frame figcaption{right:18px;bottom:13px;max-width:52%;font-size:7px}
+ body[data-page="home"] main > section.editorial-section.chapter--cinematic .film-frame .play-film{right:17px;bottom:52px;padding:9px 12px;font-size:8px}
+ body[data-page="home"] main > #models > .chapter-shell{padding:calc(90px + env(safe-area-inset-top,0px)) 25px 0!important}
+ .footer-mark .vellario-footer-tagline{font-size:clamp(9px,2.3vw,12px);letter-spacing:.16em}
+ .footer-mark .vellario-footer-como{font-size:clamp(12px,3vw,17px)}
+}
+@media(max-height:520px){
+ body[data-page="home"] main > section.editorial-section.chapter--cinematic > .chapter-shell{padding-bottom:clamp(75px,15svh,105px)!important}
+ body[data-page="home"] main > #models > .chapter-shell{padding-top:calc(74px + env(safe-area-inset-top,0px))!important}
+}
+@media(prefers-reduced-motion:reduce){
+ body[data-page="home"] main > section.editorial-section.chapter--cinematic .film-frame video{opacity:0!important}
+}
