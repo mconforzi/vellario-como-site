@@ -1084,3 +1084,49 @@ body main .gallery-title h2 {
     letter-spacing:.28em!important;
   }
 }
+
+
+/* V36 — consistent home editorial pairing follows the COMO opening:
+   champagne uppercase Cormorant title + one white DM Sans lead line.
+   Keep original body copy in source and rendered HTML, out of the visual lockup. */
+body[data-page="home"] main > section.editorial-section.chapter .chapter-content > h2 {
+  text-transform:uppercase!important;
+  overflow-wrap:break-word;
+  margin:0!important;
+  padding:0!important;
+  max-width:100%;
+}
+body[data-page="home"] main > section.editorial-section.chapter .chapter-content > .chapter-display-subtitle {
+  display:block!important;
+  margin:clamp(8px,1.5svh,16px) 0 0!important;
+  padding:0!important;
+  max-width:min(590px,100%);
+  font:300 clamp(12px,1.2vw,16px)/1.7 var(--sans)!important;
+  color:#E2E5DB!important;
+  letter-spacing:normal!important;
+  text-align:left;
+  text-transform:none;
+  text-wrap:pretty;
+}
+body[data-page="home"] main > section.editorial-section.chapter .chapter-content > .chapter-description,
+body[data-page="home"] main > section.editorial-section.chapter .chapter-content > .english-subtitle {
+  display:none!important;
+}
+body[data-page="home"] main > section.editorial-section.chapter:not(.chapter--visual):not(.chapter--collection) {
+  background:var(--pine);
+  color:var(--white);
+}
+@media(max-width:750px){
+  body[data-page="home"] main > section.editorial-section.chapter .chapter-content > .chapter-display-subtitle {
+    margin-top:7px!important;
+    max-width:min(320px,100%);
+    font-size:12px!important;
+    line-height:1.55!important;
+  }
+}
+@media(max-height:520px){
+  body[data-page="home"] main > section.editorial-section.chapter .chapter-content > .chapter-display-subtitle {
+    margin-top:5px!important;
+    line-height:1.45!important;
+  }
+}
