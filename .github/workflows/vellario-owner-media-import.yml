@@ -106,7 +106,9 @@ jobs:
           catalog["status"]="preview-with-original-owner-media"
           catalog["source"]="Owner-supplied AI - MEDIA archive; selected local copies in assets/vario"
           catalog["disclaimers"]=[x for x in catalog.get("disclaimers",[]) if "MAS 56 and Lariocab original film/poster are not yet publicly published" not in x]
-          catalog["disclaimers"].append("Additional model-labelled Dropbox originals included as design studies; a folder label does not establish built-yacht status.")
+          note="Additional model-labelled Dropbox originals included as design studies; a folder label does not establish built-yacht status."
+          if note not in catalog["disclaimers"]:
+              catalog["disclaimers"].append(note)
           catalog_path.write_text(json.dumps(catalog,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
           bpath=pathlib.Path("mobile/build_site.py")
           builder=bpath.read_text(encoding="utf-8")
