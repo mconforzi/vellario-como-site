@@ -1,0 +1,139 @@
+<style id="vellario-selected-styles">
+/* VELLARIO · owner shortlist V1/02 V1/05 V1/08 V3/01 V4/01 V4/05.
+   Prototypes are isolated; do not affect original seven chapters or other site routes. */
+html.vsc-native-scroll{scroll-snap-type:none!important}
+body[data-page="home"] main > .v-selected{box-sizing:border-box;position:relative;display:block!important;width:100%;min-height:100svh;color:#F7F4EB;background:#05110d;isolation:isolate;overflow:clip;scroll-snap-align:start}
+body[data-page="home"] main > .v-selected *{box-sizing:border-box}
+.v-selected .vsc-sticky{position:sticky;top:0;min-height:100svh;height:100svh;overflow:hidden;isolation:isolate}
+.v-selected .vsc-media{position:relative;inset:0;overflow:hidden;background:linear-gradient(110deg,#17372a,#05100c)}
+.v-selected .vsc-media>img,.v-selected .vsc-media>video{display:block;position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;max-width:none}
+.v-selected .vsc-media>img{opacity:1;transition:opacity .5s ease}.v-selected .vsc-media>video{opacity:0;transition:opacity .7s ease}.v-selected .vsc-media>video.is-playing{opacity:1}
+.v-selected .vsc-topline{position:relative;z-index:10;display:flex;gap:20px;align-items:center;justify-content:space-between;width:100%;font:500 10px/1.5 'DM Sans',Arial,sans-serif;letter-spacing:.17em;text-transform:uppercase;white-space:normal}
+.v-selected .vsc-eyebrow{font:500 10px/1.5 'DM Sans',Arial,sans-serif;letter-spacing:.24em;color:#D6B781;text-transform:uppercase}
+.v-selected h2{font:300 clamp(52px,7vw,118px)/.89 'Cormorant Garamond',Georgia,serif!important;letter-spacing:-.025em!important;color:inherit!important;text-transform:none!important;margin:12px 0 26px!important;max-width:none!important}
+.v-selected h2 em{font-weight:300;font-style:italic}
+.v-selected p{font:300 clamp(14px,1.35vw,18px)/1.65 'DM Sans',Arial,sans-serif}
+.v-selected button{cursor:pointer;font-family:'DM Sans',Arial,sans-serif}
+.v-selected .vsc-tiny{position:absolute;bottom:clamp(23px,4vh,48px);left:clamp(25px,6vw,100px);z-index:9;font:500 9px/1.5 'DM Sans',Arial,sans-serif;letter-spacing:.2em;color:#d5c2a0}
+/* V1/02 · original editorial paper/video composition */
+.vsc-editorial{height:100svh}.vsc-editorial .vsc-split{display:grid;grid-template-columns:51% 49%}
+.vsc-editorial .vsc-paper{position:relative;z-index:1;background:#F0ECE2;color:#12251b;padding:clamp(105px,13vh,135px) 6.4vw 8vh;display:flex;flex-direction:column;justify-content:space-between}
+.vsc-editorial .vsc-topline{color:#78694f}.vsc-editorial .vsc-paper-copy{margin:auto 0}.vsc-editorial .vsc-paper-copy p:not(.vsc-eyebrow){max-width:460px;color:#3e4a3f}
+.vsc-editorial h2{font-size:clamp(66px,7.4vw,125px)!important;color:#12251b!important}
+.vsc-editorial .vsc-footnote{font-size:10px;letter-spacing:.2em;color:#8b7959}.vsc-editorial .vsc-footnote b{font-size:17px;margin-left:15px}
+.vsc-editorial .vsc-split-film{position:relative;background:#11291e;overflow:hidden}.vsc-editorial .vsc-media{width:100%;height:100%;transform:scale(calc(1.02 + var(--vsc-p,0)*.11));transition:transform .1s linear}
+.vsc-editorial .vsc-portrait-outline{position:absolute;inset:12% 15%;border:1px solid rgba(255,255,255,.55);pointer-events:none}
+.vsc-editorial .vsc-caption{position:absolute;bottom:30px;right:30px;writing-mode:vertical-rl;transform:rotate(180deg);font:500 9px 'DM Sans';letter-spacing:.15em;color:#f9f4e9}
+/* V1/05 · heritage and clickable chapters */
+.vsc-heritage{height:165svh}.vsc-heritage-wrap{display:grid;grid-template-columns:50% 50%;background:#081c14}
+.vsc-heritage .vsc-heritage-copy{padding:clamp(110px,14vh,160px) 6vw 9vh;display:flex;flex-direction:column;justify-content:space-between;position:relative;z-index:5}
+.vsc-heritage .vsc-heritage-copy h2{font-size:clamp(65px,8vw,135px)!important}.vsc-heritage .vsc-heritage-quote{max-width:440px;color:#a8b4a7;font:italic 300 clamp(19px,2vw,28px)/1.4 'Cormorant Garamond',serif}
+.vsc-heritage-right{position:relative;display:grid;grid-template-rows:50% 50%;background:#142a20}.vsc-heritage-right>.vsc-media{height:100%;width:100%;filter:saturate(.78)}
+.vsc-heritage-steps{display:grid;grid-template-rows:repeat(3,1fr);padding:16px 7%;gap:0}
+.vsc-heritage-beat{border:0;border-top:1px solid rgba(214,183,129,.27);background:none;text-align:left;color:#dedfd5;padding:10px 0;display:flex;gap:4px;flex-direction:column;justify-content:center;opacity:.48;transition:opacity .3s,transform .4s}
+.vsc-heritage-beat.is-current{opacity:1;transform:translateX(5px)}.vsc-heritage-beat small{font-size:9px;letter-spacing:.18em;color:#D6B781}.vsc-heritage-beat strong{font:300 clamp(22px,2vw,32px)/1.04 'Cormorant Garamond',serif}.vsc-heritage-beat span{font:300 11px/1.45 'DM Sans',sans-serif}
+/* V1/08 · asymmetric art gallery + full lightbox */
+.vsc-gallery{height:100svh;background:#101b16!important}.vsc-gallery-shell{padding:clamp(92px,11vh,145px) clamp(24px,6vw,94px) clamp(40px,6vh,80px)}
+.vsc-gallery .vsc-topline{color:#d0bc96}.vsc-gallery-head{display:flex;justify-content:space-between;align-items:end;gap:3vw;margin:clamp(22px,4vh,50px) 0 clamp(20px,3vh,35px)}.vsc-gallery-head>p{max-width:360px;color:#aebeb2}
+.vsc-gallery .vsc-gallery-grid{display:grid;grid-template-columns:1.25fr .88fr .9fr;gap:clamp(8px,1.2vw,22px);height:clamp(230px,46vh,520px)}
+.vsc-gallery .vsc-tile{position:relative;border:0;background:#193328;padding:0;color:white;overflow:hidden;min-width:0}.vsc-tile img{width:100%;height:100%;object-fit:cover;transition:transform .7s ease,filter .5s ease}.vsc-tile:hover img{transform:scale(1.06);filter:brightness(1.08)}.vsc-tile:focus-visible{outline:3px solid #D6B781;outline-offset:4px}.vsc-tile span{position:absolute;inset:auto 0 0;padding:32px 18px 16px;background:linear-gradient(transparent,rgba(2,10,7,.72));text-align:left;font-size:10px;letter-spacing:.15em;display:flex;justify-content:space-between}.vsc-tile b{font-size:15px}
+/* V3/01 · dual-film dissolve */
+.vsc-dissolve{height:220svh}.vsc-dissolve-wrap>.vsc-media{position:absolute;inset:0;width:100%;height:100%}.vsc-dissolve .vsc-blend-first{z-index:1}.vsc-dissolve .vsc-blend-second{z-index:2;opacity:var(--vsc-p,0)}
+.vsc-dissolve .vsc-shade,.vsc-legacy .vsc-shade{position:absolute;inset:0;z-index:4;pointer-events:none;background:linear-gradient(90deg,rgba(2,10,7,.78),rgba(2,10,7,.25) 90%),linear-gradient(0deg,rgba(2,10,7,.35),transparent 40%)}
+.vsc-dissolve-copy{position:absolute;z-index:6;top:clamp(115px,16vh,190px);left:clamp(25px,6vw,100px);width:min(660px,85vw)}.vsc-dissolve-copy .vsc-topline{color:#d8c5a2}.vsc-dissolve-copy h2{margin-top:clamp(85px,16vh,190px)!important}.vsc-dissolve-copy>p{max-width:520px}
+.vsc-progress-caption{display:flex;align-items:center;gap:15px;font-size:10px;letter-spacing:.22em;margin-top:30px}.vsc-progress-track{width:min(210px,27vw);height:1px;background:#ffffff60;position:relative}.vsc-progress-track b{height:2px;width:100%;position:absolute;left:0;top:0;background:#d6b781;transform:scaleX(var(--vsc-p,0));transform-origin:left}
+/* V4/01 · circular aperture */
+.vsc-aperture{height:250svh}.vsc-aperture-wrap>.vsc-media{position:absolute;inset:0;width:100%;height:100%}.vsc-aperture-ground{z-index:0;filter:brightness(.43)}.vsc-aperture-shield{position:absolute;inset:0;z-index:2;background:rgba(4,16,10,.35)}.vsc-aperture-clip{position:absolute;inset:0;clip-path:circle(calc(3% + var(--vsc-p,0)*118%) at 66% 50%);will-change:clip-path}.vsc-aperture-film{height:100%;filter:brightness(.72)}
+.vsc-aperture-type{position:absolute;inset:auto 0 12%;font:300 clamp(150px,22vw,390px)/.8 'Cormorant Garamond',serif;color:rgba(255,255,255,.10);letter-spacing:.17em;text-align:center;z-index:3;pointer-events:none}
+.vsc-aperture-copy{position:absolute;top:clamp(108px,16vh,175px);left:clamp(25px,6vw,100px);max-width:min(650px,85vw);z-index:5}.vsc-aperture-copy h2{margin-top:clamp(80px,14vh,135px)!important}.vsc-aperture-copy p{max-width:480px}
+/* V4/05 · pinned 4-beat video history */
+.vsc-legacy{height:310svh}.vsc-legacy-wrap>.vsc-legacy-visual{position:absolute;inset:0;width:100%;height:100%;opacity:0;transition:opacity .3s}.vsc-legacy-wrap>.vsc-legacy-image-a{opacity:1}.vsc-legacy-wrap>.vsc-legacy-visual.is-current{opacity:1}
+.vsc-legacy .vsc-shade{background:linear-gradient(90deg,rgba(2,10,7,.88),rgba(2,10,7,.38) 80%),linear-gradient(0deg,rgba(2,10,7,.55),transparent 60%)}
+.vsc-legacy-copy{position:absolute;z-index:6;top:clamp(115px,15vh,185px);left:clamp(25px,6vw,100px);max-width:650px}.vsc-legacy-copy h2{font-size:clamp(55px,6.7vw,115px)!important;margin-top:10vh!important}.vsc-legacy-copy>p{max-width:460px}
+.vsc-legacy-timeline{position:absolute;z-index:7;bottom:clamp(65px,9vh,110px);left:clamp(25px,6vw,100px);right:clamp(25px,5vw,85px);display:grid;grid-template-columns:repeat(4,1fr);gap:14px;border-top:1px solid rgba(214,183,129,.4)}
+.vsc-legacy-progress{position:absolute;top:-2px;left:0;height:3px;width:100%;transform:scaleX(var(--vsc-p,0));transform-origin:left;background:#D6B781}
+.vsc-legacy-step{padding:14px 6px 0 0;text-align:left;color:white;border:0;background:none;opacity:.52;display:flex;flex-direction:column;gap:5px;transition:opacity .2s}.vsc-legacy-step.on{opacity:1}.vsc-legacy-step small{color:#d6b781;letter-spacing:.17em}.vsc-legacy-step strong{font:300 clamp(17px,1.6vw,25px)/1.05 'Cormorant Garamond',serif}.vsc-legacy-step span{font:300 10px/1.45 'DM Sans',sans-serif}
+/* Lightbox is a true overlay, independent from all six scroll scenes */
+.vsc-lightbox{position:fixed;inset:0;z-index:2000;display:none;align-items:center;justify-content:center;padding:6vh 6vw;background:rgba(3,9,7,.95)}.vsc-lightbox.is-open{display:flex}.vsc-lightbox img{display:block;max-width:100%;max-height:84vh;object-fit:contain}.vsc-lightbox .vsc-close{position:absolute;top:25px;right:30px;color:#F7F4EB;background:none;border:1px solid #d6b781;padding:10px 14px}.vsc-lightbox p{position:absolute;bottom:12px;left:6vw;color:#d6b781;font-size:10px;letter-spacing:.2em}
+@media(max-width:780px){
+ .v-selected .vsc-topline{font-size:8px;letter-spacing:.1em}.v-selected h2{font-size:clamp(44px,12vw,78px)!important;margin-bottom:16px!important}.v-selected p{font-size:12px}
+ .vsc-editorial .vsc-split{grid-template-columns:1fr;grid-template-rows:49% 51%}.vsc-editorial .vsc-paper{padding:86px 25px 25px}.vsc-editorial h2{font-size:clamp(47px,11vw,77px)!important}.vsc-editorial .vsc-paper-copy{margin:auto 0}.vsc-editorial .vsc-paper-copy p:not(.vsc-eyebrow){font-size:11px;line-height:1.4}.vsc-editorial .vsc-footnote{font-size:8px}
+ .vsc-editorial .vsc-portrait-outline{inset:12% 23%}.vsc-editorial .vsc-caption{bottom:18px;right:12px;font-size:7px}
+ .vsc-heritage-wrap{grid-template-columns:1fr;grid-template-rows:47% 53%}.vsc-heritage .vsc-heritage-copy{padding:82px 25px 14px}.vsc-heritage .vsc-heritage-copy h2{font-size:clamp(52px,13vw,85px)!important}.vsc-heritage .vsc-heritage-quote{font-size:18px}.vsc-heritage-right{grid-template-rows:40% 60%}.vsc-heritage-steps{padding:5px 25px}.vsc-heritage-beat{padding:4px 0}.vsc-heritage-beat strong{font-size:21px}.vsc-heritage-beat span{font-size:9px}
+ .vsc-gallery-shell{padding:83px 20px 24px}.vsc-gallery-head{display:block;margin:18px 0}.vsc-gallery-head>p{font-size:11px;max-width:320px}.vsc-gallery .vsc-gallery-grid{grid-template-columns:1.1fr 1fr;grid-template-rows:1fr 1fr;height:50svh;gap:8px}.vsc-gallery .vsc-tile:first-child{grid-row:span 2}.vsc-gallery .vsc-tile span{font-size:8px;padding:25px 9px 8px}
+ .vsc-dissolve-copy,.vsc-aperture-copy,.vsc-legacy-copy{top:110px;left:25px}.vsc-dissolve-copy h2{margin-top:15vh!important}.vsc-aperture-copy h2{margin-top:16vh!important}.vsc-legacy-copy h2{margin-top:12vh!important}
+ .vsc-legacy-timeline{left:25px;right:25px;bottom:70px;grid-template-columns:1fr 1fr;gap:2px 12px}.vsc-legacy-step{padding:7px 0}.vsc-legacy-step strong{font-size:16px}.vsc-legacy-step span{font-size:9px}
+ .v-selected .vsc-tiny{font-size:7px;left:25px;bottom:22px}
+}
+@media(max-height:480px){.vsc-legacy-copy h2{margin-top:4vh!important}.vsc-legacy-timeline{bottom:25px}.vsc-gallery .vsc-gallery-grid{height:47svh}.vsc-heritage .vsc-heritage-copy{padding-top:66px}}
+@media(prefers-reduced-motion:reduce){.v-selected *{transition:none!important}.vsc-aperture-clip{clip-path:circle(125% at 66% 50%)!important}}
+</style>
+<section id="study-v1-02" class="editorial-section v-selected vsc-editorial" data-selected-source="V1-02"><div class="vsc-split vsc-sticky">
+ <div class="vsc-paper"><div class="vsc-topline"><span>V1 / 02 · EDITORIAL SPLIT</span><span>PROTOTYPE 01 / 06</span></div>
+   <div class="vsc-paper-copy"><p class="vsc-eyebrow">THE ART OF DOLCEVITA</p><h2>La forma<br><em>del desiderio.</em></h2><p>A private world shaped by Italian sensibility. Nothing ordinary, nothing unnecessary.</p></div>
+   <span class="vsc-footnote">L'ARTE DI DISTINGUERSI <b>↗</b></span></div>
+ <div class="vsc-split-film"><div class="vsc-media "><img class="" src="../assets/vario/quantum-hd-first-frame.jpg" alt="Quantum 999 original design film" loading="lazy" decoding="async"><video data-vsc-video data-src="../assets/vario/quantum-hd.mp4" poster="../assets/vario/quantum-hd-first-frame.jpg" loop muted playsinline preload="none" aria-label="Quantum 999 original design film"></video></div>
+  <span class="vsc-portrait-outline" aria-hidden="true"></span><span class="vsc-caption">QUANTUM 999 · ORIGINAL DESIGN STUDY</span></div></div></section><section id="study-v1-05" class="editorial-section v-selected vsc-heritage" data-selected-source="V1-05"><div class="vsc-sticky vsc-heritage-wrap">
+ <div class="vsc-heritage-copy"><div class="vsc-topline"><span>V1 / 05 · HERITAGE</span><span>PROTOTYPE 02 / 06</span></div>
+  <div><p class="vsc-eyebrow">IL LAGO, LA TRADIZIONE</p><h2>Un lago.<br><em>Un'eredità.</em></h2></div>
+  <p class="vsc-heritage-quote">La tradizione non è ripetere il passato. È saperne riconoscere l'eleganza.</p></div>
+ <div class="vsc-heritage-right"><div class="vsc-media "><img class="" src="../assets/lake-placeholders/como-poster.jpg" alt="Lake Como landscape placeholder film" loading="lazy" decoding="async"><video data-vsc-video data-src="../assets/lake-placeholders/como-mobile.mp4" poster="../assets/lake-placeholders/como-poster.jpg" loop muted playsinline preload="none" aria-label="Lake Como landscape placeholder film"></video></div>
+  <div class="vsc-heritage-steps">
+   <button class="vsc-heritage-beat is-current" data-vsc-year="0"><small>CAPITOLO I</small><strong>I maestri del Lario</strong><span>Il saper fare delle botteghe nautiche.</span></button>
+   <button class="vsc-heritage-beat" data-vsc-year="1"><small>CAPITOLO II</small><strong>L'età dei runabout</strong><span>Proporzioni, legno, ingegneria e stile.</span></button>
+   <button class="vsc-heritage-beat" data-vsc-year="2"><small>CAPITOLO III</small><strong>Una nuova visione</strong><span>Un progetto contemporaneo ispirato al lago.</span></button>
+  </div></div></div></section><section id="study-v1-08" class="editorial-section v-selected vsc-gallery" data-selected-source="V1-08"><div class="vsc-gallery-shell vsc-sticky"><div class="vsc-topline"><span>V1 / 08 · ART GALLERY</span><span>PROTOTYPE 03 / 06</span></div>
+ <div class="vsc-gallery-head"><div><p class="vsc-eyebrow">ART DIRECTION</p><h2>Forme <em>d'acqua.</em></h2></div><p>Original design studies, carefully framed. Una galleria dal linguaggio più vicino all'arte che a un catalogo.</p></div>
+ <div class="vsc-gallery-grid">
+  <button class="vsc-tile" data-vsc-photo="../assets/vario/mas56-cover.webp" data-vsc-label="MAS 52 · ORIGINAL DESIGN STUDY" aria-label="Espandi immagine MAS 52"><img class="" src="../assets/vario/mas56-cover.webp" alt="MAS 52 design study" loading="lazy" decoding="async"><span>01 / PROPORZIONE <b>↗</b></span></button>
+  <button class="vsc-tile" data-vsc-photo="../assets/vario/quantum-detail.webp" data-vsc-label="QUANTUM 999 · ORIGINAL DESIGN STUDY" aria-label="Espandi immagine Quantum"><img class="" src="../assets/vario/quantum-detail.webp" alt="Quantum 999 design study" loading="lazy" decoding="async"><span>02 / IDENTITÀ <b>↗</b></span></button>
+  <button class="vsc-tile" data-vsc-photo="../assets/vario/grantender-2.webp" data-vsc-label="GRANTENDER 72 · ORIGINAL DESIGN STUDY" aria-label="Espandi immagine GranTender"><img class="" src="../assets/vario/grantender-2.webp" alt="GranTender 72 design study" loading="lazy" decoding="async"><span>03 / MOVIMENTO <b>↗</b></span></button>
+ </div></div></section><section id="study-v3-01" class="editorial-section v-selected vsc-dissolve" data-selected-source="V3-01"><div class="vsc-sticky vsc-dissolve-wrap">
+ <div class="vsc-media vsc-blend-first"><img class="" src="../assets/vario/mas56-film-wide-first-frame.jpg" alt="MAS 52 original study film" loading="lazy" decoding="async"><video data-vsc-video data-src="../assets/vario/mas56-film-wide.mp4" poster="../assets/vario/mas56-film-wide-first-frame.jpg" loop muted playsinline preload="none" aria-label="MAS 52 original study film"></video></div>
+ <div class="vsc-media vsc-blend-second"><img class="" src="../assets/lake-placeholders/como-poster.jpg" alt="Lake Como landscape film" loading="lazy" decoding="async"><video data-vsc-video data-src="../assets/lake-placeholders/como-mobile.mp4" poster="../assets/lake-placeholders/como-poster.jpg" loop muted playsinline preload="none" aria-label="Lake Como landscape film"></video></div>
+ <div class="vsc-shade"></div><div class="vsc-dissolve-copy"><div class="vsc-topline"><span>V3 / 01 · FILM DISSOLVE</span><span>PROTOTYPE 04 / 06</span></div>
+ <h2>Two worlds.<br><em>One emotion.</em></h2><p>La linea del design incontra l’atmosfera del lago. La transizione non interrompe il film: lo trasforma.</p>
+ <div class="vsc-progress-caption"><span>DESIGN</span><i class="vsc-progress-track"><b></b></i><span>COMO</span></div></div>
+ <span class="vsc-tiny">SCROLL TO BLEND THE FILMS <b data-vsc-percent>00%</b></span></div></section><section id="study-v4-01" class="editorial-section v-selected vsc-aperture" data-selected-source="V4-01"><div class="vsc-sticky vsc-aperture-wrap">
+ <div class="vsc-media vsc-aperture-ground"><img class="" src="../assets/lake-placeholders/como-poster.jpg" alt="Lake Como original landscape placeholder film" loading="lazy" decoding="async"><video data-vsc-video data-src="../assets/lake-placeholders/como-mobile.mp4" poster="../assets/lake-placeholders/como-poster.jpg" loop muted playsinline preload="none" aria-label="Lake Como original landscape placeholder film"></video></div>
+ <div class="vsc-aperture-shield"><div class="vsc-aperture-clip"><div class="vsc-media vsc-aperture-film"><img class="" src="../assets/vario/mas56-film-wide-first-frame.jpg" alt="MAS 52 original film revealed in circle" loading="lazy" decoding="async"><video data-vsc-video data-src="../assets/vario/mas56-film-wide.mp4" poster="../assets/vario/mas56-film-wide-first-frame.jpg" loop muted playsinline preload="none" aria-label="MAS 52 original film revealed in circle"></video></div></div></div>
+ <div class="vsc-aperture-type">COMO</div><div class="vsc-aperture-copy"><div class="vsc-topline"><span>V4 / 01 · THE APERTURE</span><span>PROTOTYPE 05 / 06</span></div>
+  <h2>A window<br><em>into the lake.</em></h2><p>Il film emerge da una piccola apertura e conquista tutto lo schermo.</p></div>
+ <span class="vsc-tiny">SCROLL TO OPEN THE FILM · LAGO APERTURE</span></div></section><section id="study-v4-05" class="editorial-section v-selected vsc-legacy" data-selected-source="V4-05"><div class="vsc-sticky vsc-legacy-wrap">
+ <div class="vsc-media vsc-legacy-visual vsc-legacy-image-a"><img class="" src="../assets/lake-placeholders/como-poster.jpg" alt="Lake Como landscapes" loading="lazy" decoding="async"><video data-vsc-video data-src="../assets/lake-placeholders/como-mobile.mp4" poster="../assets/lake-placeholders/como-poster.jpg" loop muted playsinline preload="none" aria-label="Lake Como landscapes"></video></div>
+ <div class="vsc-media vsc-legacy-visual vsc-legacy-image-b"><img class="" src="../assets/vario/mas56-detail-1.webp" alt="MAS 52 original design detail" loading="lazy" decoding="async"></div>
+ <div class="vsc-media vsc-legacy-visual vsc-legacy-image-c"><img class="" src="../assets/vario/grantender-hd-first-frame.jpg" alt="GranTender original film" loading="lazy" decoding="async"><video data-vsc-video data-src="../assets/vario/grantender-hd.mp4" poster="../assets/vario/grantender-hd-first-frame.jpg" loop muted playsinline preload="none" aria-label="GranTender original film"></video></div>
+ <div class="vsc-media vsc-legacy-visual vsc-legacy-image-d"><img class="" src="../assets/vario/gran-marlin.webp" alt="Gran Marlin original film" loading="lazy" decoding="async"><video data-vsc-video data-src="../assets/vario/gran-marlin.mp4" poster="../assets/vario/gran-marlin.webp" loop muted playsinline preload="none" aria-label="Gran Marlin original film"></video></div>
+ <div class="vsc-shade"></div>
+ <div class="vsc-legacy-copy"><div class="vsc-topline"><span>V4 / 05 · THE LEGACY</span><span>PROTOTYPE 06 / 06</span></div><h2>A story written<br><em>on water.</em></h2><p>Fotografie e film che cambiano capitolo seguendo lo scroll.</p></div>
+ <div class="vsc-legacy-timeline"><i class="vsc-legacy-progress"></i>
+  <button class="vsc-legacy-step on" data-vsc-legacy-step="0"><small>01</small><strong>A tradition of arrival</strong><span>The lake shaped a unique way of travelling.</span></button>
+  <button class="vsc-legacy-step" data-vsc-legacy-step="1"><small>02</small><strong>Italian craftsmanship</strong><span>The beauty of proportion and detail.</span></button>
+  <button class="vsc-legacy-step" data-vsc-legacy-step="2"><small>03</small><strong>A new design language</strong><span>Classic elegance meets contemporary lines.</span></button>
+  <button class="vsc-legacy-step" data-vsc-legacy-step="3"><small>04</small><strong>A new perspective</strong><span>A contemporary Italian nautical design concept.</span></button>
+ </div><span class="vsc-tiny">VELLARIO · COMO / HERITAGE FILMBOOK</span></div></section>
+<script id="vellario-selected-behavior">
+(()=>{'use strict';
+const d=document,w=window;const studies=[...d.querySelectorAll('main>.v-selected')];if(studies.length!==6)return;
+const reduced=w.matchMedia?.('(prefers-reduced-motion:reduce)').matches||false;
+const videos=[...d.querySelectorAll('main>.v-selected video[data-vsc-video]')];
+let running=false;const clamp=(v,min=0,max=1)=>Math.min(max,Math.max(min,v));
+function getProgress(el){const rect=el.getBoundingClientRect();const travel=Math.max(1,rect.height-w.innerHeight);return clamp(-rect.top/travel)}
+function sync(){running=false;let active=false;for(const el of studies){const r=el.getBoundingClientRect();const near=r.bottom>0&&r.top<w.innerHeight; if(!near)continue;active=true;const p=reduced?1:getProgress(el);el.style.setProperty('--vsc-p',p.toFixed(4));el.classList.add('vsc-visible');
+ if(el.id==='study-v1-05'){const beats=[...el.querySelectorAll('.vsc-heritage-beat')];const n=Math.min(2,Math.floor(p*3));beats.forEach((b,i)=>b.classList.toggle('is-current',i===n))}
+ if(el.id==='study-v3-01'){const label=el.querySelector('[data-vsc-percent]');if(label)label.textContent=String(Math.round(p*100)).padStart(2,'0')+'%'}
+ if(el.id==='study-v4-05'){const n=Math.min(3,Math.floor(p*4));el.querySelectorAll('.vsc-legacy-visual').forEach((v,i)=>v.classList.toggle('is-current',i===n));el.querySelectorAll('.vsc-legacy-step').forEach((b,i)=>b.classList.toggle('on',i===n))}
+}d.documentElement.classList.toggle('vsc-native-scroll',active);}
+function schedule(){if(!running){running=true;w.requestAnimationFrame(sync)}}
+w.addEventListener('scroll',schedule,{passive:true});w.addEventListener('resize',schedule,{passive:true});sync();
+if('IntersectionObserver' in w){const observer=new IntersectionObserver(entries=>{for(const {target,isIntersecting} of entries){const v=target.querySelector('video[data-vsc-video]');if(!v)continue;if(isIntersecting&&!reduced&&!(navigator.connection&&navigator.connection.saveData)){if(!v.src){v.src=v.dataset.src;v.load()}const p=v.play();if(p?.catch)p.catch(()=>{})}else{v.pause()}}},{threshold:.16,rootMargin:'40px'});document.querySelectorAll('main>.v-selected .vsc-media').forEach(m=>observer.observe(m))}
+for(const v of videos){v.muted=true;v.playsInline=true;v.addEventListener('playing',()=>v.classList.add('is-playing'));v.addEventListener('pause',()=>v.classList.remove('is-playing'));v.addEventListener('error',()=>{v.style.display='none'})}
+for(const img of d.querySelectorAll('main>.v-selected img'))img.addEventListener('error',()=>{img.style.opacity='0'});
+const modal=d.createElement('div');modal.className='vsc-lightbox';modal.setAttribute('role','dialog');modal.setAttribute('aria-modal','true');modal.setAttribute('aria-label','Galleria VELLARIO');modal.innerHTML='<button class="vsc-close" type="button" aria-label="Chiudi immagine">CHIUDI ×</button><img alt=""><p></p>';d.body.appendChild(modal);
+const modalImg=modal.querySelector('img'),modalLabel=modal.querySelector('p');let lastFocus=null;
+function close(){modal.classList.remove('is-open');d.body.style.overflow='';lastFocus?.focus?.()}
+d.querySelectorAll('#study-v1-08 [data-vsc-photo]').forEach(btn=>btn.addEventListener('click',()=>{lastFocus=btn;modalImg.src=btn.dataset.vscPhoto;modalImg.alt=btn.dataset.vscLabel||'Design study';modalLabel.textContent=btn.dataset.vscLabel||'';modal.classList.add('is-open');d.body.style.overflow='hidden';modal.querySelector('button').focus()}));modal.querySelector('button').addEventListener('click',close);modal.addEventListener('click',e=>{if(e.target===modal)close()});d.addEventListener('keydown',e=>{if(e.key==='Escape'&&modal.classList.contains('is-open'))close()});
+for(const b of d.querySelectorAll('.vsc-heritage-beat,.vsc-legacy-step'))b.addEventListener('click',()=>{const el=b.closest('.v-selected');const idx=Number(b.dataset.vscYear??b.dataset.vscLegacyStep??0),total=el.id==='study-v1-05'?3:4;const dest=el.getBoundingClientRect().top+w.scrollY+idx/total*(el.clientHeight-w.innerHeight);w.scrollTo({top:dest,behavior:reduced?'instant':'smooth'})});
+w.addEventListener('pagehide',()=>videos.forEach(v=>v.pause()));
+})();
+</script>
