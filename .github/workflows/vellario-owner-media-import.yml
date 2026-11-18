@@ -105,7 +105,7 @@ jobs:
           catalog_path.write_text(json.dumps(catalog,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
           bpath=pathlib.Path("mobile/build_site.py")
           builder=bpath.read_text(encoding="utf-8")
-          hook="    out.append(\n        '<section class=\"gallery-chapter\" id=\"galleria\">'"
+          hook="    out.append(\n        '<section class=\"gallery-chapter\" id=\"galleria\">"
           if "Owner original model reels" not in builder:
               assert hook in builder, "Gallery insertion anchor missing"
               extra = '''
