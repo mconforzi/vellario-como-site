@@ -341,6 +341,8 @@ const main=d.querySelector('main');
 if(!main)return;
 const points=[...d.querySelectorAll('main > .cinema-hero,main > .editorial-section,main > .gallery-chapter,main > .collection-after,main > .next-chapter,body > .site-footer')];
 if(points.length<2)return;
+/* VELLARIO V38 · native wheel/touch scrolling only inside owner-selected studies. */
+const isSelectedZoneActive=()=>[...d.querySelectorAll('main > .v-selected')].some(el=>{const r=el.getBoundingClientRect();return r.top<=Math.min(10,w.innerHeight*.15)&&r.bottom>10;});
 const reduced=w.matchMedia&&w.matchMedia('(prefers-reduced-motion: reduce)').matches;
 let wheelLast=0,touch=null;
 const menu=()=>!!(d.body.classList.contains('menu-open')||d.querySelector('.site-menu[open]'));
@@ -362,7 +364,7 @@ function step(dir){
 }
 /* Preserve the original horizontal wheel journey until the first/last yacht. */
 d.addEventListener('wheel',e=>{
- if(menu()||e.ctrlKey||isControl(e.target)||!e.cancelable)return;
+ if(isSelectedZoneActive()||menu()||e.ctrlKey||isControl(e.target)||!e.cancelable)return;
  if(Math.abs(e.deltaX)>Math.abs(e.deltaY)*1.15)return;
  const dir=Math.sign(e.deltaY);
  if(!dir)return;
@@ -382,7 +384,7 @@ d.addEventListener('wheel',e=>{
    Do not cancel horizontal gestures, including yacht-card swipes. */
 d.addEventListener('touchstart',e=>{
  touch=null;
- if(menu()||e.touches.length!==1||isControl(e.target))return;
+ if(isSelectedZoneActive()||menu()||e.touches.length!==1||isControl(e.target))return;
  const f=e.touches[0];
  touch={x:f.clientX,y:f.clientY,axis:'',endX:f.clientX,endY:f.clientY};
 },{capture:true,passive:true});
@@ -403,7 +405,7 @@ d.addEventListener('touchend',e=>{
 },{capture:true,passive:true});
 d.addEventListener('touchcancel',()=>{touch=null},{capture:true,passive:true});
 d.addEventListener('keydown',e=>{
- if(menu()||e.altKey||e.ctrlKey||e.metaKey||isControl(e.target))return;
+ if(isSelectedZoneActive()||menu()||e.altKey||e.ctrlKey||e.metaKey||isControl(e.target))return;
  let dir=0;
  if(e.key==='ArrowDown'||e.key==='PageDown')dir=1;
  if(e.key==='ArrowUp'||e.key==='PageUp')dir=-1;
