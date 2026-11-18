@@ -36,7 +36,7 @@ jobs:
           assert manifest['count']==16, manifest['count']
           assert manifest['redirectCount']==13, manifest['redirectCount']
           home=(root/'index.html').read_text()
-          assert home.count('data-model-film')==6, home.count('data-model-film')
+          assert home.count('data-model-film')==7, home.count('data-model-film')
           for name in ['MAS 52','MAS 56','Lariocab','FY70']:
               assert name in home, name
           for r in manifest['routes']:
@@ -50,7 +50,7 @@ jobs:
           mas56=(root/'collezione'/'mas-56'/'index.html').read_text()
           assert 'mas56-film-wide.mp4' in mas52
           assert 'mas56-film-wide.mp4' not in mas56.split('<main id="main-content">',1)[1].split('</section>',1)[0]
-          assert 'archive-curation.svg' in mas56
+          assert 'owner-mas56-' in mas56
           print('PASS 16 routes / 8 cards / FY70 film / distinct MAS52+MAS56 / safe fallback')
           PY
           cp -a "$out/." mobile/
