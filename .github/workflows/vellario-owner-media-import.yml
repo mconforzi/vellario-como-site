@@ -117,7 +117,7 @@ jobs:
                       '<figcaption>' + esc(model['name']) + ' / VIDEO ARCHIVIO <span>' + str(j).zfill(2) + '</span></figcaption></figure>'
                   )
               '''
-              extra="\n".join(line[14:] if line.startswith("              ") else line for line in extra.splitlines())+"\n"
+              extra="\n".join(line[10:] if line.startswith("              ") else line for line in extra.splitlines())+"\n"
               builder=builder.replace(hook,extra+hook,1)
               bpath.write_text(builder,encoding="utf-8")
           wfpath=pathlib.Path(".github/workflows/vellario-build-pages.yml")
