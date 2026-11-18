@@ -25,12 +25,13 @@ jobs:
           set -euo pipefail
           test -f .github/import/dropbox-owner-manifest.json
           if ! command -v ffmpeg >/dev/null 2>&1 || ! command -v ffprobe >/dev/null 2>&1; then
-            echo 'Installing minimal FFmpeg (without optional Mesa drivers)'
-            if ! sudo timeout 85s env DEBIAN_FRONTEND=noninteractive apt-get -o Dpkg::Use-Pty=0 --no-install-recommends install -y -qq ffmpeg; then
-              echo 'Retry after bounded apt package-index refresh'
-              sudo timeout 85s apt-get update -qq
-              sudo timeout 75s env DEBIAN_FRONTEND=noninteractive apt-get -o Dpkg::Use-Pty=0 --no-install-recommends install -y -qq ffmpeg
-            fi
+            echo "Install independent FFmpeg static binaries from free GitHub Release"
+            mkdir -p "$RUNNER_TEMP/vellario-ffmpeg"
+            curl -fsSL --retry 2 --retry-delay 3 --connect-timeout 15 --max-time 160 \
+              "https://github.com/BtbN/FFmpeg-Builds/releases/download/latest/ffmpeg-master-latest-linux64-gpl.tar.xz" \
+              -o "$RUNNER_TEMP/vellario-ffmpeg.tar.xz"
+            tar -xJf "$RUNNER_TEMP/vellario-ffmpeg.tar.xz" -C "$RUNNER_TEMP/vellario-ffmpeg" --strip-components=1
+            export PATH="$RUNNER_TEMP/vellario-ffmpeg/bin:$PATH"
           fi
           command -v ffmpeg
           command -v ffprobe
