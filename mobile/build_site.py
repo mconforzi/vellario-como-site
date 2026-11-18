@@ -335,6 +335,13 @@ def generate(data,catalog,where):
         desc=(page['lead'] if page else data['modelCopy'][model['id']]['lead'])
         body=(editorial_page(page,depth,data,model_lookup,models)
               if page else model_page(model,data['modelCopy'][model['id']],depth,data,models))
+        # Owner-selected V1/V3/V4 prototypes follow all existing home chapters.
+        # Keep this fragment canonical so future static builds cannot drop it.
+        if pid == 'home':
+            selected = Path(__file__).with_name('selected-showcases.html')
+            if not selected.is_file():
+                raise FileNotFoundError('Selected VELLARIO sections missing: ' + str(selected))
+            body += selected.read_text(encoding='utf-8')
         source_css=root_file('site.css',depth)
         source_js=root_file('site.js',depth)
         html_doc=(
@@ -346,7 +353,7 @@ def generate(data,catalog,where):
           '<link rel="preconnect" href="https://fonts.googleapis.com">'
           '<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>'
           '<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">'
-          '<link rel="stylesheet" href="'+esc(source_css)+'?v=v37-fullscreen-films-footer"><script src="'+esc(source_js)+'?v=v37-fullscreen-films-footer" defer></script>'
+          '<link rel="stylesheet" href="'+esc(source_css)+'?v=v38-selected-showcases"><script src="'+esc(source_js)+'?v=v38-selected-showcases" defer></script>'
           '</head><body data-page="'+esc(pid)+'">'
           +header(pid,depth,data)+'<main id="main-content">'+body+'</main>'
           +footer(depth,data)+'</body></html>\n'
