@@ -302,6 +302,19 @@ def model_page(model, copy, depth, data, models):
             '" loading="lazy" decoding="async"><figcaption>' + esc(model['name']) +
             ' / ARCHIVIO PROGETTUALE <span>' + str(i+1).zfill(2) + '</span></figcaption></figure>'
         )
+
+    # Owner original model reels are placed inside the existing gallery without changing the page structure.
+    for j, reel in enumerate(model.get('extraVideos', []), 1):
+        media_url = asset(reel['video'], depth)
+        cover = asset(reel['poster'], depth)
+        photos.append(
+            '<figure class="gallery-image film-frame film-frame--yacht" data-media-frame>'
+            '<img class="media-poster" src="' + esc(cover) + '" alt="' + esc(model['name']) + ' film frame" loading="lazy" decoding="async">'
+            '<video data-film data-src="' + esc(media_url) + '" muted playsinline loop preload="none" poster="' + esc(cover) + '" aria-label="' + esc(model['name']) + ' original design film"></video>'
+            '<button type="button" class="play-film" aria-label="Avvia o ferma il filmato"><span class="play-icon">▶</span><span class="play-label">PLAY FILM</span></button>'
+            '<figcaption>' + esc(model['name']) + ' / VIDEO ARCHIVIO <span>' + str(j).zfill(2) + '</span></figcaption></figure>'
+        )
+    
     out.append(
         '<section class="gallery-chapter" id="galleria"><div class="gallery-title"><span>06 / 07 · LA COLLEZIONE</span>'
         '<h2>Galleria</h2><p>' + esc(copy.get('gallery','Original project imagery.')) +
