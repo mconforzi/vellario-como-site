@@ -14,6 +14,16 @@ let active=null;
 const states=new WeakMap();
 for(const frame of frames){
  const video=frame.querySelector('video[data-film]');if(!video)continue;
+ // V40: use a verified portrait nautical master on narrow devices without touching model-specific identities.
+ if(window.matchMedia('(max-width:750px)').matches && video.dataset.srcMobile){
+   video.dataset.src=video.dataset.srcMobile;
+   if(video.dataset.posterMobile){
+     video.poster=video.dataset.posterMobile;
+     const poster=frame.querySelector('img.media-poster');
+     if(poster)poster.src=video.dataset.posterMobile;
+   }
+   if(video.hasAttribute('data-opening'))video.dataset.segments=video.dataset.srcMobile;
+ }
  const button=frame.querySelector('.play-film');
  const parts=(video.dataset.segments||'').split('|').filter(Boolean);
  const state={pausedByUser:false,chapter:0,parts};states.set(frame,state);
