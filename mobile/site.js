@@ -21,6 +21,10 @@ for(const frame of frames){
      video.poster=video.dataset.posterMobile;
      const poster=frame.querySelector('img.media-poster');
      if(poster)poster.src=video.dataset.posterMobile;
+     if(video.dataset.mobileName){
+       const label=frame.querySelector('figcaption span:last-child');
+       if(label)label.textContent=video.dataset.mobileName+' · Portrait design study';
+     }
    }
    if(video.hasAttribute('data-opening'))video.dataset.segments=video.dataset.srcMobile;
  }
