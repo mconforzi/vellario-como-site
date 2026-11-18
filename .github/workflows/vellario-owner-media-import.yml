@@ -1,0 +1,167 @@
+name: VELLARIO import owner media from AI - MEDIA
+on:
+  push:
+    branches: [main]
+    paths:
+      - .github/import/dropbox-owner-manifest.json
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: vellario-owner-media-import
+  cancel-in-progress: false
+jobs:
+  import:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+          fetch-depth: 1
+      - name: Import exactly the selected VELLARIO owners media
+        shell: bash
+        run: |
+          set -euo pipefail
+          test -f .github/import/dropbox-owner-manifest.json
+          command -v ffmpeg
+          command -v ffprobe
+          python3 - <<'PY'
+          import json, pathlib, tempfile, concurrent.futures, urllib.request, shutil, subprocess, os
+          manifest = pathlib.Path(".github/import/dropbox-owner-manifest.json")
+          data = json.loads(manifest.read_text(encoding="utf-8"))
+          catalog_path = pathlib.Path("mobile/catalog.json")
+          catalog = json.loads(catalog_path.read_text(encoding="utf-8"))
+          models = {m["id"]: m for m in catalog["models"]}
+          assert len(models) == 8
+          records = data["assets"]
+          assert 1 <= len(records) <= 80
+          assert all(r["model"] in models and r["kind"] in ("image","video") and r["dest"].startswith("owner-") and "/" not in r["dest"] for r in records)
+          assert len(set(x["dest"] for x in records)) == len(records)
+          target = pathlib.Path("assets/vario")
+          target.mkdir(parents=True, exist_ok=True)
+          def execute(*args):
+              subprocess.run(args, stdout=subprocess.DEVNULL, stderr=subprocess.PIPE, check=True)
+          def inspect(src):
+              v = subprocess.check_output(["ffprobe","-v","error","-select_streams","v:0","-show_entries","stream=codec_name,width,height","-of","json",str(src)])
+              s = json.loads(v)["streams"][0]
+              assert s["width"] > 100 and s["height"] > 100
+              return s
+          with tempfile.TemporaryDirectory() as folder:
+              tmp = pathlib.Path(folder)
+              def fetch(item):
+                  i,r=item
+                  source=tmp/("media-"+str(i)+pathlib.Path(r["original"]).suffix.lower())
+                  request=urllib.request.Request(r["url"],headers={"User-Agent":"VellarioOwnerMediaImport/1.0"})
+                  with urllib.request.urlopen(request,timeout=120) as response, source.open("wb") as out:
+                      shutil.copyfileobj(response,out)
+                  assert 1000 < source.stat().st_size < 100_000_000, (r["dest"],source.stat().st_size)
+                  return i,source
+              with concurrent.futures.ThreadPoolExecutor(max_workers=10) as pool:
+                  downloaded=dict(pool.map(fetch,enumerate(records)))
+              for i,r in enumerate(records):
+                  m = models[r["model"]]
+                  src=downloaded[i]
+                  dest=target/r["dest"]
+                  video= r["kind"]=="video"
+                  if video:
+                      meta=inspect(src)
+                      if meta["codec_name"]=="h264" and src.suffix.lower()==".mp4":
+                          execute("ffmpeg","-hide_banner","-loglevel","error","-y","-i",str(src),"-map","0:v:0","-an","-c:v","copy","-movflags","+faststart",str(dest))
+                      else:
+                          execute("ffmpeg","-hide_banner","-loglevel","error","-y","-i",str(src),"-map","0:v:0","-an","-vf","scale=1920:1920:force_original_aspect_ratio=decrease","-c:v","libx264","-preset","veryfast","-crf","24","-pix_fmt","yuv420p","-movflags","+faststart",str(dest))
+                      poster_name=dest.stem+"-first-frame.jpg"
+                      execute("ffmpeg","-hide_banner","-loglevel","error","-y","-i",str(dest),"-frames:v","1","-vf","scale=1920:1920:force_original_aspect_ratio=decrease","-q:v","4",str(target/poster_name))
+                      newmeta=inspect(dest)
+                      assert dest.stat().st_size>1000
+                      if r.get("primary") or not m.get("video"):
+                          m["video"]=dest.name
+                          m["videoPoster"]=poster_name
+                          m["videoResolution"]=str(newmeta["width"])+"×"+str(newmeta["height"])
+                      else:
+                          m.setdefault("extraVideos",[])
+                          if not any(z.get("video")==dest.name for z in m["extraVideos"]):
+                              m["extraVideos"].append({"video":dest.name,"poster":poster_name,"resolution":str(newmeta["width"])+"×"+str(newmeta["height"])})
+                  else:
+                      inspect(src)
+                      execute("ffmpeg","-hide_banner","-loglevel","error","-y","-i",str(src),"-frames:v","1","-vf","scale=1920:1920:force_original_aspect_ratio=decrease","-c:v","libwebp","-quality","80",str(dest))
+                      assert dest.stat().st_size>1000
+                      if "archive-curation.svg" in m.get("images",[]):
+                          m["images"]=[x for x in m["images"] if x!="archive-curation.svg"]
+                      if dest.name not in m["images"]:
+                          m["images"].append(dest.name)
+                      if r.get("primary") or m["poster"]=="archive-curation.svg":
+                          m["poster"]=dest.name
+                  print("IMPORTED",r["model"],r["dest"],dest.stat().st_size)
+          catalog["release"]="v24-owner-dropbox-import"
+          catalog["status"]="preview-with-original-owner-media"
+          catalog["source"]="Owner-supplied AI - MEDIA archive; selected local copies in assets/vario"
+          catalog["disclaimers"]=[x for x in catalog.get("disclaimers",[]) if "MAS 56 and Lariocab original film/poster are not yet publicly published" not in x]
+          catalog["disclaimers"].append("Additional model-labelled Dropbox originals included as design studies; a folder label does not establish built-yacht status.")
+          catalog_path.write_text(json.dumps(catalog,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
+          bpath=pathlib.Path("mobile/build_site.py")
+          builder=bpath.read_text(encoding="utf-8")
+          hook="    out.append(\n        '<section class=\"gallery-chapter\" id=\"galleria\">'"
+          if "Owner original model reels" not in builder:
+              assert hook in builder, "Gallery insertion anchor missing"
+              extra = '''
+              # Owner original model reels are placed inside the existing gallery without changing the page structure.
+              for j, reel in enumerate(model.get('extraVideos', []), 1):
+                  media_url = asset(reel['video'], depth)
+                  cover = asset(reel['poster'], depth)
+                  photos.append(
+                      '<figure class="gallery-image film-frame film-frame--yacht" data-media-frame>'
+                      '<img class="media-poster" src="' + esc(cover) + '" alt="' + esc(model['name']) + ' film frame" loading="lazy" decoding="async">'
+                      '<video data-film data-src="' + esc(media_url) + '" muted playsinline loop preload="none" poster="' + esc(cover) + '" aria-label="' + esc(model['name']) + ' original design film"></video>'
+                      '<button type="button" class="play-film" aria-label="Avvia o ferma il filmato"><span class="play-icon">▶</span><span class="play-label">PLAY FILM</span></button>'
+                      '<figcaption>' + esc(model['name']) + ' / VIDEO ARCHIVIO <span>' + str(j).zfill(2) + '</span></figcaption></figure>'
+                  )
+              '''
+              extra="\n".join(line[14:] if line.startswith("              ") else line for line in extra.splitlines())+"\n"
+              builder=builder.replace(hook,extra+hook,1)
+              bpath.write_text(builder,encoding="utf-8")
+          wfpath=pathlib.Path(".github/workflows/vellario-build-pages.yml")
+          wf=wfpath.read_text(encoding="utf-8")
+          wf=wf.replace("home.count('data-model-film')==6","home.count('data-model-film')==7")
+          wf=wf.replace("assert 'archive-curation.svg' in mas56","assert 'owner-mas56-' in mas56")
+          wfpath.write_text(wf,encoding="utf-8")
+          PY
+      - name: Rebuild existing pages and verify eight model identities
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 -m py_compile mobile/build_site.py
+          out="$(mktemp -d)"
+          python3 mobile/build_site.py --out "$out" --site-data mobile/site-content.json --catalog mobile/catalog.json
+          python3 - "$out" <<'PY'
+          import json,pathlib,sys,re
+          out=pathlib.Path(sys.argv[1])
+          c=json.loads(pathlib.Path("mobile/catalog.json").read_text())
+          assert len(c["models"])==8
+          assert len(json.loads((out/"route-manifest.json").read_text())["routes"])==16
+          home=(out/"index.html").read_text()
+          assert home.count("data-model-film")==7
+          for m in c["models"]:
+              page=(out/"collezione"/m["id"]/"index.html").read_text()
+              assert m["name"] in page
+              for img in m["images"]:
+                  assert (pathlib.Path("assets/vario")/img).is_file(), (m["id"],img)
+              if m.get("video"):
+                  assert (pathlib.Path("assets/vario")/m["video"]).is_file(),m["id"]
+              assert (pathlib.Path("assets/vario")/m["poster"]).is_file(), m["id"]
+          assert "owner-mas56-" in (out/"collezione"/"mas-56"/"index.html").read_text()
+          assert "owner-lariocab-" in (out/"collezione"/"lariocab"/"index.html").read_text()
+          print("PASS eight real model directories / 16 generated pages / all files verified")
+          PY
+          cp -a "$out/." mobile/
+      - name: Commit import once and remove temporary access manifest
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "VELLARIO asset import bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add assets/vario mobile .github/workflows/vellario-build-pages.yml
+          git rm -f .github/import/dropbox-owner-manifest.json
+          git commit -m "feat(vellario): import model-matched owner yacht videos and renders [skip ci]"
+          git pull --rebase origin main
+          git push origin HEAD:main
