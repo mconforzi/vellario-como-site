@@ -342,6 +342,10 @@ def generate(data,catalog,where):
             if not selected.is_file():
                 raise FileNotFoundError('Selected VELLARIO sections missing: ' + str(selected))
             body += selected.read_text(encoding='utf-8')
+            benchmark = Path(__file__).with_name('benchmark-five-sections.html')
+            if not benchmark.is_file():
+                raise FileNotFoundError('Five VELLARIO benchmark experiences missing: ' + str(benchmark))
+            body += benchmark.read_text(encoding='utf-8')
         source_css=root_file('site.css',depth)
         source_js=root_file('site.js',depth)
         html_doc=(
@@ -353,7 +357,7 @@ def generate(data,catalog,where):
           '<link rel="preconnect" href="https://fonts.googleapis.com">'
           '<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>'
           '<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">'
-          '<link rel="stylesheet" href="'+esc(source_css)+'?v=v38-selected-showcases"><script src="'+esc(source_js)+'?v=v38-selected-showcases" defer></script>'
+          '<link rel="stylesheet" href="'+esc(source_css)+'?v=v39-five-benchmark-experiences"><script src="'+esc(source_js)+'?v=v39-five-benchmark-experiences" defer></script>'
           '</head><body data-page="'+esc(pid)+'">'
           +header(pid,depth,data)+'<main id="main-content">'+body+'</main>'
           +footer(depth,data)+'</body></html>\n'
