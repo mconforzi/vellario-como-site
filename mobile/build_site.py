@@ -40,7 +40,7 @@ def section_media(media, depth, model_lookup, lakes, caption='', hero=False, mob
             if mm.get('video'):
                 mobile_video = asset(mm['video'], depth)
                 mobile_poster = asset(mm.get('videoPoster') or mm['poster'], depth)
-                mobile_attr = f' data-src-mobile="{esc(mobile_video)}" data-poster-mobile="{esc(mobile_poster)}"'
+                mobile_attr = f' data-src-mobile="{esc(mobile_video)}" data-poster-mobile="{esc(mobile_poster)}" data-mobile-name="{esc(mm["name"])}"'
         film = (f'<video data-film data-src="{esc(video)}"{mobile_attr} muted playsinline loop preload="none" '
                 f'poster="{esc(poster)}" aria-label="Original study film for {esc(m["name"])}"></video>') if video else ''
         return (
