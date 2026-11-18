@@ -6,18 +6,15 @@
   "source": "Original design archive: Dropbox /[BOATS]/AI - MEDIA, assets already hosted on this GitHub Pages repository",
   "assetBase": "../assets/vario/",
   "opening": {
-    "name": "MAS 46 FULL",
-    "poster": "mas46-poster.webp",
+    "name": "VELLARIO Original Yacht Design Studies",
+    "poster": "mas56-film-wide-first-frame.jpg",
     "segments": [
-      "mas46-full.mp4",
-      "mas46-part-02.mp4",
-      "mas46-part-03.mp4",
-      "mas46-part-04.mp4",
-      "mas46-part-05.mp4",
-      "mas46-part-06.mp4"
+      "mas56-film-wide.mp4"
     ],
-    "sourceResolution": "848×480",
-    "note": "Entire original film, six optimized consecutive web segments."
+    "mobileVideo": "grantender-hd.mp4",
+    "mobilePoster": "grantender-hd-first-frame.jpg",
+    "sourceResolution": "1280×720 desktop / 720×1280 mobile",
+    "note": "Existing public nautical footage; widescreen MAS 52 study on desktop and portrait GranTender study on mobile. Previous low-resolution MAS 46 source retained in archive."
   },
   "models": [
     {
