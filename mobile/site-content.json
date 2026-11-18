@@ -114,20 +114,22 @@
           "title": "Dove Tutto Comincia",
           "body": "There are places whose character is inseparable from the way they are lived. Lake Como is one of them: architecture set against the mountains, gardens descending towards the water, and a distinctive tradition of arriving by boat. For VELLARIO, Como is not merely a location or a backdrop. It is the cultural inspiration for a new nautical point of view.",
           "link": "como",
-          "media": "como",
+          "media": "model:mas-52",
           "englishLine": "Where It All Begins",
           "shortIntro": "Como è il nostro punto di partenza: paesaggio, architettura e una tradizione di eleganza sull’acqua.",
-          "displaySubtitle": "Lake Como: architecture, landscape and a tradition of elegance on the water."
+          "displaySubtitle": "Lake Como: architecture, landscape and a tradition of elegance on the water.",
+          "mobileMedia": "model:quantum-999"
         },
         {
           "id": "life",
           "title": "La Dolce Vita sull'Acqua",
           "body": "An aperitivo at the water's edge. The golden light of late afternoon. A short passage across the lake, with no need to hurry. La Dolce Vita is not a style borrowed for a photograph; it is the pleasure of living beautifully, simply and without ostentation. This is the spirit we want VELLARIO to express.",
           "link": "dolce-vita",
-          "media": "bled",
+          "media": "model:gran-marlin",
           "englishLine": "The Good Life, the Italian Way",
           "shortIntro": "Un aperitivo sul lago, la luce del tramonto, il piacere di navigare senza fretta. Questa è la Dolce Vita.",
-          "displaySubtitle": "An aperitivo by the lake, golden light at sunset, and the pleasure of travelling without hurry."
+          "displaySubtitle": "An aperitivo by the lake, golden light at sunset, and the pleasure of travelling without hurry.",
+          "mobileMedia": "model:grantender-72"
         },
         {
           "id": "history",
@@ -135,7 +137,8 @@
           "body": "Long before the idea of VELLARIO, generations of boatbuilders, racers and craftsmen shaped the nautical culture of Lake Como. Their world was one of working boats and elegant runabouts, ingenuity and competition, skilled hands and bold ideas. It remains a source of inspiration for a new expression of Italian nautical elegance.",
           "link": "history-legacy",
           "displaySubtitle": "Generations of boatbuilders, racers and craftsmen shaped the nautical culture of Lake Como.",
-          "media": "como"
+          "media": "model:mas-52",
+          "mobileMedia": "model:quantum-999"
         },
         {
           "id": "craft",
@@ -145,7 +148,8 @@
           "media": "model:mas-52",
           "englishLine": "The Beauty of Every Detail",
           "shortIntro": "Proporzioni, materiali, linee e superfici: il saper fare italiano si riconosce nei dettagli.",
-          "displaySubtitle": "Proportion, materials and the beauty of every detail. The Italian art of saper fare."
+          "displaySubtitle": "Proportion, materials and the beauty of every detail. The Italian art of saper fare.",
+          "mobileMedia": "model:grantender-72"
         },
         {
           "id": "vision",
@@ -154,7 +158,8 @@
           "link": "maison",
           "englishLine": "A Distinctly Italian Point of View",
           "displaySubtitle": "A new Italian nautical design house, distinctive in character and discreet in expression.",
-          "media": "model:fy70"
+          "media": "model:fy70",
+          "mobileMedia": "model:quantum-999"
         },
         {
           "id": "dialogue",
@@ -163,7 +168,8 @@
           "link": "contact",
           "englishLine": "The Personal Touch",
           "displaySubtitle": "A personal relationship guided by taste, design and a shared appreciation of beauty.",
-          "media": "model:gran-marlin"
+          "media": "model:gran-marlin",
+          "mobileMedia": "model:grantender-72"
         }
       ],
       "englishTagline": "The Italian Art of Living"
@@ -174,7 +180,7 @@
       "title": "Como",
       "kicker": "01 / Como · Il Lario",
       "lead": "Il Lario. An enduring meeting of water, architecture and Italian elegance.",
-      "hero": "como",
+      "hero": "model:mas-52",
       "sections": [
         {
           "id": "lake",
@@ -216,7 +222,8 @@
           "body": "The past is not a template to reproduce. It is a standard to understand. Inspired by Como's landscape, architecture and boating culture, VELLARIO aims to develop a contemporary design identity that feels at ease beside what has endured: unmistakably new, yet sensitive to the spirit of the place."
         }
       ],
-      "englishTagline": "A Sense of Place"
+      "englishTagline": "A Sense of Place",
+      "heroMobile": "model:quantum-999"
     },
     {
       "id": "dolce-vita",
@@ -224,7 +231,7 @@
       "title": "La Dolce Vita",
       "kicker": "02 / La Dolce Vita · L'Arte di Vivere",
       "lead": "Il piacere di vivere. Unhurried days, extraordinary places and life on the water.",
-      "hero": "bled",
+      "hero": "model:gran-marlin",
       "sections": [
         {
           "id": "time",
@@ -258,7 +265,8 @@
           "englishLine": "The Pleasure of Discovery"
         }
       ],
-      "englishTagline": "Life, Beautifully Lived"
+      "englishTagline": "Life, Beautifully Lived",
+      "heroMobile": "model:grantender-72"
     },
     {
       "id": "collection",
@@ -301,7 +309,7 @@
       "title": "Storia & Tradizione",
       "kicker": "04 / Storia & Tradizione · Il Lario",
       "lead": "La tradizione del lago. A genuine culture of Italian boating and innovation.",
-      "hero": "como",
+      "hero": "model:mas-52",
       "sections": [
         {
           "id": "water",
@@ -351,7 +359,8 @@
           }
         }
       ],
-      "englishTagline": "Stories Written on Water"
+      "englishTagline": "Stories Written on Water",
+      "heroMobile": "model:quantum-999"
     },
     {
       "id": "design-craftsmanship",
@@ -400,7 +409,7 @@
       "title": "La Casa VELLARIO",
       "kicker": "06 / La Casa VELLARIO · La Visione",
       "lead": "La Casa VELLARIO. An Italian design house built around elegance, identity and individuality.",
-      "hero": "geneva",
+      "hero": "model:gran-marlin",
       "sections": [
         {
           "id": "why",
@@ -431,7 +440,8 @@
           "englishLine": "A Future Made with Intention"
         }
       ],
-      "englishTagline": "An Italian State of Mind"
+      "englishTagline": "An Italian State of Mind",
+      "heroMobile": "model:grantender-72"
     },
     {
       "id": "contact",
@@ -646,5 +656,14 @@
       "tagline": "THE ART OF DOLCEVITA",
       "location": "COMO"
     }
+  },
+  "_videoPolicy": {
+    "version": "boat-video-v40",
+    "scope": "public website",
+    "source": "catalogued original nautical design studies",
+    "desktop": "landscape-first 1280x720 where available",
+    "mobile": "portrait 720x1280 Quantum/GranTender where media is not model-specific",
+    "unverified": "No 4K or 1080x1920 public assets validated yet; Dropbox masters require separate curation and publishing",
+    "legacyLakeSources": "kept only for archival provenance, not used in active pages"
   }
 }
