@@ -26,10 +26,18 @@
       "images": [
         "quantum.webp",
         "quantum-detail.webp",
-        "owner-quantum-01.webp"
+        "owner-quantum-01.webp",
+        "owner-quantum-02.webp"
       ],
       "kind": "design-study",
-      "videoPoster": "quantum-hd-first-frame.jpg"
+      "videoPoster": "quantum-hd-first-frame.jpg",
+      "extraVideos": [
+        {
+          "video": "owner-quantum-01.mp4",
+          "poster": "owner-quantum-01-first-frame.jpg",
+          "resolution": "720×1280"
+        }
+      ]
     },
     {
       "id": "mas-36",
@@ -66,6 +74,11 @@
           "video": "owner-mas52-01.mp4",
           "poster": "owner-mas52-01-first-frame.jpg",
           "resolution": "1280×720"
+        },
+        {
+          "video": "owner-mas52-02.mp4",
+          "poster": "owner-mas52-02-first-frame.jpg",
+          "resolution": "1280×720"
         }
       ]
     },
@@ -77,12 +90,22 @@
       "videoResolution": "720×1280",
       "images": [
         "owner-mas56-01.webp",
-        "owner-mas56-02.webp"
+        "owner-mas56-02.webp",
+        "owner-mas56-03.webp",
+        "owner-mas56-04.webp",
+        "owner-mas56-05.webp"
       ],
       "kind": "design-study",
       "mediaStatus": "original media awaiting publication",
       "mediaSource": "Dropbox /[CEYD-Portfolio]/[BOATS]/AI - MEDIA/MAS56",
-      "videoPoster": "owner-mas56-01-first-frame.jpg"
+      "videoPoster": "owner-mas56-01-first-frame.jpg",
+      "extraVideos": [
+        {
+          "video": "owner-mas56-02.mp4",
+          "poster": "owner-mas56-02-first-frame.jpg",
+          "resolution": "1280×720"
+        }
+      ]
     },
     {
       "id": "lariocab",
@@ -105,7 +128,10 @@
       "videoResolution": null,
       "images": [
         "fy70.webp",
-        "owner-fy70-01.webp"
+        "owner-fy70-01.webp",
+        "owner-fy70-02.webp",
+        "owner-fy70-03.webp",
+        "owner-fy70-04.webp"
       ],
       "kind": "design-study",
       "mediaSource": "Dropbox /[CEYD-Portfolio]/[BOATS]/AI - MEDIA/FY70",
@@ -113,6 +139,11 @@
         {
           "video": "owner-fy70-01.mp4",
           "poster": "owner-fy70-01-first-frame.jpg",
+          "resolution": "720×1280"
+        },
+        {
+          "video": "owner-fy70-02.mp4",
+          "poster": "owner-fy70-02-first-frame.jpg",
           "resolution": "720×1280"
         }
       ]
@@ -128,7 +159,9 @@
         "grantender-2.webp",
         "grantender-3.webp",
         "grantender-4.webp",
-        "owner-grantender-01.webp"
+        "owner-grantender-01.webp",
+        "owner-grantender-02.webp",
+        "owner-grantender-03.webp"
       ],
       "kind": "design-study",
       "videoPoster": "grantender-hd-first-frame.jpg",
@@ -149,7 +182,10 @@
       "images": [
         "gran-marlin.webp",
         "gran-marlin-2.webp",
-        "owner-granmarlin-01.webp"
+        "owner-granmarlin-01.webp",
+        "owner-granmarlin-02.webp",
+        "owner-granmarlin-03.webp",
+        "owner-granmarlin-04.webp"
       ],
       "kind": "design-study",
       "videoPoster": "gran-marlin-first-frame.jpg",
