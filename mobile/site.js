@@ -254,10 +254,10 @@ function start(v){
 }
 function refresh(){
  if(blocked()){videos.forEach(stop);return}
- if(eagerHome){videos.forEach(start);return}
+ // Keep only visually present yacht films active, including the horizontal collection rail.
  for(const v of videos){
   const r=v.getBoundingClientRect();
-  if(r.bottom>50&&r.top<w.innerHeight-50)start(v);else stop(v);
+  if(r.bottom>50&&r.top<w.innerHeight-50&&r.right>10&&r.left<w.innerWidth-10)start(v);else stop(v);
  }
 }
 for(const v of videos){
@@ -270,7 +270,7 @@ if('IntersectionObserver' in w){
  const io=new IntersectionObserver(entries=>{
   for(const e of entries){
    if(e.isIntersecting&&e.intersectionRatio>.12)start(e.target);
-   else if(!eagerHome)stop(e.target);
+   else stop(e.target);
   }
  },{threshold:[0,.12,.32,.65]});
  videos.forEach(v=>io.observe(v));
