@@ -23,7 +23,7 @@ def site_path(slug, depth):
 def root_file(filename, depth):
     return ('../' * depth or './') + filename
 
-def section_media(media, depth, model_lookup, lakes, caption='', hero=False):
+def section_media(media, depth, model_lookup, lakes, caption='', hero=False, mobile_media=None):
     if not media:
         return ''
     eager = 'eager' if hero else 'lazy'
@@ -34,7 +34,14 @@ def section_media(media, depth, model_lookup, lakes, caption='', hero=False):
         poster = asset(m.get('videoPoster') or m['poster'], depth)
         video = asset(m['video'], depth) if m.get('video') else ''
         portrait = ' film-frame--portrait' if m.get('videoResolution') and m['videoResolution'].startswith('720×1280') else ''
-        film = (f'<video data-film data-src="{esc(video)}" muted playsinline loop preload="none" '
+        mobile_attr = ''
+        if mobile_media and mobile_media.startswith('model:'):
+            mm = model_lookup[mobile_media.split(':', 1)[1]]
+            if mm.get('video'):
+                mobile_video = asset(mm['video'], depth)
+                mobile_poster = asset(mm.get('videoPoster') or mm['poster'], depth)
+                mobile_attr = f' data-src-mobile="{esc(mobile_video)}" data-poster-mobile="{esc(mobile_poster)}"'
+        film = (f'<video data-film data-src="{esc(video)}"{mobile_attr} muted playsinline loop preload="none" '
                 f'poster="{esc(poster)}" aria-label="Original study film for {esc(m["name"])}"></video>') if video else ''
         return (
             f'<figure class="film-frame film-frame--yacht{portrait}" data-media-frame>'
@@ -126,18 +133,23 @@ def hero(page, depth, model_lookup, lakes, opening, content_model=None):
     if key == 'opening':
         poster = asset(opening['poster'], depth)
         parts = '|'.join(asset(segment, depth) for segment in opening['segments'])
+        mobile_attr = ''
+        if opening.get('mobileVideo'):
+            mv = asset(opening['mobileVideo'], depth)
+            mp = asset(opening.get('mobilePoster', opening['poster']), depth)
+            mobile_attr = f' data-src-mobile="{esc(mv)}" data-poster-mobile="{esc(mp)}"'
         media = (
             '<figure class="film-frame film-frame--opening" data-media-frame>'
-            f'<img class="media-poster" src="{esc(poster)}" alt="MAS 46 original nautical design film" loading="eager" decoding="async" fetchpriority="high">'
-            f'<video data-film data-opening data-segments="{esc(parts)}" data-src="{esc(asset(opening["segments"][0],depth))}" '
-            f'muted playsinline preload="none" poster="{esc(poster)}" aria-label="MAS 46 FULL cinematic original design archive film"></video>'
+            f'<img class="media-poster" src="{esc(poster)}" alt="Original VELLARIO yacht design film" loading="eager" decoding="async" fetchpriority="high">'
+            f'<video data-film data-opening data-segments="{esc(parts)}" data-src="{esc(asset(opening["segments"][0],depth))}"{mobile_attr} '
+            f'muted playsinline preload="none" poster="{esc(poster)}" aria-label="Cinematic original VELLARIO yacht design studies"></video>'
             '<button type="button" class="play-film" aria-label="Avvia o ferma il filmato">'
             '<span class="play-icon">▶</span><span class="play-label">PLAY FILM</span></button>'
             '<figcaption><span class="source-label">ORIGINAL DESIGN ARCHIVE</span>'
-            '<span>MAS 46 FULL · Opening film</span></figcaption></figure>'
+            '<span>Original yacht design studies · Opening film</span></figcaption></figure>'
         )
     elif key:
-        media = section_media(key, depth, model_lookup, lakes, hero=True)
+        media = section_media(key, depth, model_lookup, lakes, hero=True, mobile_media=page.get('heroMobile'))
     else:
         media = '<div class="hero-artwork"><span class="hero-artwork-ring"></span></div>'
     title = 'VELLARIO' if home else page['title']
@@ -237,7 +249,7 @@ def editorial_page(page, depth, data, model_lookup, models):
         out.append('</div></div>')
         if has_media:
             out.append('<div class="chapter-media">' +
-                       section_media(section['media'], depth, model_lookup, data['lakeSources']) + '</div>')
+                       section_media(section['media'], depth, model_lookup, data['lakeSources'], mobile_media=section.get('mobileMedia')) + '</div>')
         if is_collection:
             out.append('<div class="chapter-collection">' + model_cards(depth, models, data['modelCopy']) + '</div>')
         out.append('</section>')
@@ -357,7 +369,7 @@ def generate(data,catalog,where):
           '<link rel="preconnect" href="https://fonts.googleapis.com">'
           '<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>'
           '<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">'
-          '<link rel="stylesheet" href="'+esc(source_css)+'?v=v39-five-benchmark-experiences"><script src="'+esc(source_js)+'?v=v39-five-benchmark-experiences" defer></script>'
+          '<link rel="stylesheet" href="'+esc(source_css)+'?v=v40-boat-video-mobile"><script src="'+esc(source_js)+'?v=v39-five-benchmark-experiences" defer></script>'
           '</head><body data-page="'+esc(pid)+'">'
           +header(pid,depth,data)+'<main id="main-content">'+body+'</main>'
           +footer(depth,data)+'</body></html>\n'
