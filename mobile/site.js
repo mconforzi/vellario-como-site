@@ -356,7 +356,7 @@ if(!main)return;
 const points=[...d.querySelectorAll('main > .cinema-hero,main > .editorial-section,main > .gallery-chapter,main > .collection-after,main > .next-chapter,main > #vellario-five-experiences,body > .site-footer')];
 if(points.length<2)return;
 /* VELLARIO V38 · native wheel/touch scrolling only inside owner-selected studies. */
-const isSelectedZoneActive=()=>[...d.querySelectorAll('main > .v-selected,main > #vellario-five-experiences')].some(el=>{const r=el.getBoundingClientRect();return r.top<=Math.min(10,w.innerHeight*.15)&&r.bottom>10;});
+const isSelectedZoneActive=()=>[...d.querySelectorAll('main > .v-selected,main > .curated-chapter,main > #vellario-five-experiences')].some(el=>{const r=el.getBoundingClientRect();return r.top<=Math.min(10,w.innerHeight*.15)&&r.bottom>10;});
 const reduced=w.matchMedia&&w.matchMedia('(prefers-reduced-motion: reduce)').matches;
 let wheelLast=0,touch=null;
 const menu=()=>!!(d.body.classList.contains('menu-open')||d.querySelector('.site-menu[open]'));
