@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "release": "v25-curated-story-architecture",
+  "release": "v25.1-content-curated",
   "status": "editorial-curation-working-preview",
   "locale": "en",
   "date": "2026-11-20",
@@ -585,13 +585,13 @@
     "mas-52": {
       "kicker": "La Collezione / 03 · MAS 52",
       "tagline": "Eleganza in Movimento.",
-      "lead": "MAS 52 is the original yacht design study previously shown online under the incorrect MAS 56 label. Its archival film and images are now identified as MAS 52.",
-      "concept": "The film and renderings already on this website represent MAS 52, as confirmed by the project owner. The future VELLARIO edition awaits technical development.",
+      "lead": "MAS 52 explores elegance in motion. Its original design film and renderings introduce a confident nautical silhouette, interpreted through the measured language of Italian grand touring.",
+      "concept": "The MAS 52 study begins with a belief in proportion: that the relationship between major volumes, deck and waterline can communicate character before any decorative detail is considered. The original film gives this idea movement. The VELLARIO interpretation remains a design direction, not an approved production model.",
       "exterior": "The exterior story will draw on the balance of major surfaces, the continuity of the profile and the rhythm of the deck arrangement visible in the source renderings. The object should remain the centre of the presentation, without unrelated footage or invented performance statements. The objective is a presence that feels both assured and restrained.",
       "aboard": "A greater presence on the water should correspond to an equally considered experience for the people aboard. Circulation, moments of privacy and opportunities to gather together are priorities for the next design phase. The final arrangements and amenities will be described only when supported by a reviewed project layout.",
       "details": "The intended interpretation calls for disciplined treatment of finishes, connections and exterior detailing. Every surface should support the overall character of the yacht rather than compete with it. Materials, equipment and engineering choices remain matters for technical validation, not decorative assumptions.",
       "specifications": "MAS 52 is the corrected project identity. No VELLARIO production dimensions, performance or certification are currently verified.",
-      "gallery": "Original MAS 52 source imagery, previously incorrectly labelled as MAS 56 online.",
+      "gallery": "The original MAS 52 design film and renderings, presented separately from the MAS 56 archive.",
       "enquiries": "Details of the future personal introduction process will be published when the service is operational.",
       "englishTagline": "The Pleasure of Being in Motion"
     },
@@ -602,8 +602,8 @@
       "lead": "MAS 56 is a distinct original nautical design study, independent of MAS 52. Its own renders and a dedicated film from the design archive now offer a clearer view of its visual character.",
       "concept": "The MAS 56 archive reveals a separate design direction with its own surfaces and proportions. These authentic source materials provide a starting point for a possible VELLARIO interpretation, rather than evidence of a completed product.",
       "exterior": "The exterior study can now be examined through model-specific video and original images. The direction is to preserve its unique silhouette while reviewing deck arrangement, technical feasibility and integration with the broader collection.",
-      "aboard": "Space planning and life aboard remain subjects for future review of the original project.",
-      "details": "Materials and technical details have not yet been established for a VELLARIO edition.",
+      "aboard": "Life aboard is part of the MAS 56 design conversation, but the visual archive does not itself establish a final deck or cabin layout. The next study will explore circulation, social spaces and privacy, while retaining the exterior character evident in the model-specific media.",
+      "details": "The MAS 56 story calls for a restrained palette and considered treatment of junctions, trim and surface transitions. These are future design intentions; no finished materials, fabrication methods or production specifications are being claimed.",
       "specifications": "Dimensions, propulsion and equipment are not approved production specifications.",
       "gallery": "Original MAS 56 renderings and dedicated model footage selected from the owner’s AI - MEDIA archive.",
       "enquiries": "The personal introduction channel is being developed."
@@ -613,9 +613,9 @@
       "tagline": "L'Essenza del Lago.",
       "englishTagline": "An Italian Design Study",
       "lead": "Lariocab is a Lake Como-inspired design study with its own original project imagery, now included in the VELLARIO preview. The archive offers a clear visual reference without inventing a film or technical specification.",
-      "concept": "Lariocab draws on the atmosphere, proportion and cultural identity of Lake Como.",
-      "exterior": "The original exterior imagery will be presented with verified attribution; no film from another yacht will be substituted.",
-      "aboard": "Space planning and life aboard remain subjects for future review of the original project.",
+      "concept": "Lariocab is an invitation to interpret the Lario without imitating a historic runabout. Its design ambition is to carry the poise of the lake into a contemporary nautical object, where simplicity, proportion and an unmistakable sense of place matter more than ornament.",
+      "exterior": "The original Lariocab image provides the visual point of reference. Further exterior development would need to connect the profile, deck and detailing to the broader VELLARIO language, while respecting what makes this study individual. No unrelated yacht footage is presented as Lariocab.",
+      "aboard": "The desired experience is intimate and unhurried, inspired by the social rituals of the lake. Seating, access, weather protection and arrangement are questions for a future technical design phase, not established equipment.",
       "details": "Materials and technical details have not yet been established for a VELLARIO edition.",
       "specifications": "Dimensions, propulsion and equipment are not approved production specifications.",
       "gallery": "Original Lariocab design image from the owner’s archive. No model-specific original film has been verified in the selected folder.",
@@ -626,9 +626,9 @@
       "tagline": "Lo Stile Senza Compromessi.",
       "englishTagline": "An Italian Design Study",
       "lead": "FY70 enters the collection with its own original image and yacht video already hosted on the VELLARIO preview.",
-      "concept": "FY70 is an original contemporary motor-yacht study in the Fashion Yachts archive.",
-      "exterior": "The original exterior imagery will be presented with verified attribution; no film from another yacht will be substituted.",
-      "aboard": "Space planning and life aboard remain subjects for future review of the original project.",
+      "concept": "FY70 introduces another scale of expression within the collection of original nautical design studies. The visual archive suggests the possibility of a more architectural approach, where silhouette and the experience of time aboard must remain part of one cohesive design.",
+      "exterior": "Its original yacht film offers a view of the project's visual identity in motion. Future work would refine the relationship between hull profile, superstructure and usable open space, without assuming that a historic design proposal is already a VELLARIO production yacht.",
+      "aboard": "The opportunity is to think about life aboard as a sequence of experiences, from arrival and movement to quiet moments and shared time. Any final arrangement, amenities or accommodation figures require an approved technical plan.",
       "details": "Materials and technical details have not yet been established for a VELLARIO edition.",
       "specifications": "Dimensions, propulsion and equipment are not approved production specifications.",
       "gallery": "Original FY70 visual archive and matching film.",
@@ -670,7 +670,7 @@
     "positioning": "Como first · Italian Dolce Vita · collection · genuine heritage · design-led maison",
     "voice": "Italian signature words and headlines, polished international-English body copy, product-specific claims.",
     "nonNegotiables": [
-      "MAS 56 only",
+      "MAS 52 and MAS 56 are distinct original studies; never cross-attribute media",
       "The Maison autonomous",
       "Como first in mobile menu",
       "No fake VELLARIO heritage",
@@ -682,7 +682,7 @@
       "One story spine, no appended prototype galleries",
       "No false product specs or made-up contact forms"
     ],
-    "ownerCorrection": "User explicitly wants both Italian identity words and English language celebrating la bella vita italiana; avoid French maison; do not replace the existing Italian menu or approved 5-yacht names."
+    "ownerCorrection": "Owner-approved current preview architecture has eight distinct model studies. Italian titles and a refined English supporting voice remain mandatory; Como stays first in the mobile menu. The earlier five-model plan is superseded by the eight-model current catalog."
   },
   "footer": {
     "statement": "VELLARIO · COMO — THE ART OF DOLCEVITA. An Italian design house inspired by Lake Como.",
@@ -753,5 +753,5 @@
     "unverified": "No 4K or 1080x1920 public assets validated yet; Dropbox masters require separate curation and publishing",
     "legacyLakeSources": "kept only for archival provenance, not used in active pages"
   },
-  "buildRevision": "v25-story-integrated-2026-11-20-b"
+  "buildRevision": "v25-content-quality-2026-11-20"
 }
