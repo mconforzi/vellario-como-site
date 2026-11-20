@@ -212,6 +212,7 @@ def model_cards(depth, models, copy_lookup):
 
 def award_study(page_id, depth):
     """Owner-approved interactive chapters: static, visible without JS, scoped styles."""
+    # Rebuild serially after concurrent VELLARIO editorial generator commits (2026-11-20).
     supported = ('home', 'como', 'dolce-vita', 'collection', 'design-craftsmanship')
     if page_id not in supported:
         return ''
