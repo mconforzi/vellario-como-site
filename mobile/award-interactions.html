@@ -1,0 +1,171 @@
+<!-- VA:STYLE -->
+
+<style id="va-atelier-styles">
+.va-atelier{--va-cream:#f4f0e6;--va-ink:#07140e;--va-brass:#c8ad79;--va-grey:#bac4ba;color:#f4f0e6;background:#07140e;position:relative;isolation:isolate;scroll-snap-align:start;overflow:hidden;font-family:'DM Sans',Arial,sans-serif;font-weight:300}
+.va-atelier *{box-sizing:border-box}.va-atelier button{font-family:inherit;cursor:pointer}.va-atelier button:focus-visible,.va-atelier a:focus-visible{outline:2px solid #d6b77d;outline-offset:5px}
+.va-atelier h2,.va-atelier h3,.va-atelier p,.va-atelier figure{margin:0}.va-atelier h2{font:300 clamp(52px,8vw,128px)/.87 'Cormorant Garamond',Georgia,serif;letter-spacing:-.04em}
+.va-atelier h3{font:300 clamp(28px,3.5vw,54px)/1 'Cormorant Garamond',Georgia,serif}.va-atelier p{line-height:1.7}
+.va-kicker{font:500 10px/1.7 'DM Sans',Arial,sans-serif;letter-spacing:.25em;text-transform:uppercase;color:#d3b987}
+.va-atelier .va-intro{font:300 clamp(14px,1.5vw,20px)/1.7 'DM Sans',Arial,sans-serif;color:#d5ddcf;max-width:540px}
+.va-atelier img{display:block;width:100%;height:100%;object-fit:cover;background:linear-gradient(135deg,#2b4034,#09160f)}
+.va-top{display:flex;align-items:start;justify-content:space-between;gap:30px;padding:clamp(92px,10vw,145px) 6vw 40px}
+.va-num{font:500 10px 'DM Sans',Arial;letter-spacing:.2em;color:#c8ad79;white-space:nowrap}
+.va-atelier .va-ghost{background:transparent;border:1px solid #c8ad7970;color:#f5f1e7;padding:13px 18px;font:500 10px 'DM Sans',Arial;letter-spacing:.15em;transition:.3s}
+.va-atelier .va-ghost:hover{background:#c8ad7938}.va-atelier a{color:inherit;text-decoration:none}
+.va-atelier .va-quiet{color:#a9b6ac;font-size:12px;line-height:1.6}
+.va-como{min-height:100svh;display:grid;grid-template-columns:46% 54%;background:#f3eee4;color:#10241c}
+.va-como-left{padding:clamp(105px,11vh,150px) clamp(28px,6vw,98px) 7vh;display:flex;flex-direction:column;justify-content:space-between;gap:32px}
+.va-como .va-kicker{color:#806e4e}.va-como h2{font-size:clamp(65px,7.2vw,126px)}.va-como .va-intro{color:#475a50}.va-como-choices{display:grid;gap:0;border-top:1px solid #10241c40;max-width:560px}
+.va-como-choices button{background:transparent;color:#233c30;border:0;border-bottom:1px solid #10241c38;text-align:left;padding:16px 0;display:flex;align-items:center;justify-content:space-between;font:300 clamp(20px,2vw,31px) 'Cormorant Garamond',serif;transition:.3s}
+.va-como-choices button[aria-pressed=true]{color:#806a40;padding-left:14px}.va-como-choices button span{font:500 10px 'DM Sans',Arial;letter-spacing:.13em;color:#897b61}
+.va-como-photo{min-height:100svh;position:relative;overflow:hidden;background:#182b20}.va-como-photo img{position:absolute;inset:0;transition:opacity .28s,transform .75s;transform:scale(1.02)}
+.va-como-photo:after{content:'';position:absolute;inset:0;background:linear-gradient(to top,#03100899,transparent 50%);pointer-events:none}
+.va-como-caption{position:absolute;z-index:2;left:6%;bottom:6%;right:10%;color:white;display:grid;gap:12px}
+.va-como-caption strong{font:300 clamp(30px,3.4vw,52px) 'Cormorant Garamond',serif}
+.va-como-caption span{font:300 13px/1.65 'DM Sans',Arial;max-width:460px}
+.va-dolce{padding:0 0 8vh;min-height:100svh;background:#081610}.va-dolce .va-top{align-items:end}.va-dolce .va-top h2{margin-top:10px}
+.va-accordion{display:flex;min-height:62svh;height:clamp(410px,63svh,830px);padding:0 4vw;gap:10px}
+.va-accordion button{min-width:0;flex:1;background:#183328;border:0;padding:0;position:relative;overflow:hidden;color:white;text-align:left;transition:flex .7s cubic-bezier(.22,.7,.1,1)}
+.va-accordion button[aria-expanded=true]{flex:3.6}
+.va-accordion img{position:absolute;inset:0;filter:saturate(.84);transition:transform .8s;transform:scale(1.04)}
+.va-accordion button:hover img,.va-accordion button[aria-expanded=true] img{transform:scale(1.09)}
+.va-accordion button:after{content:'';position:absolute;inset:0;background:linear-gradient(0deg,#020804e0,#02080410 75%)}
+.va-accordion .va-ac-copy{position:absolute;z-index:2;left:clamp(14px,3vw,54px);right:12px;bottom:clamp(18px,4vw,52px);display:grid;gap:12px}
+.va-accordion strong{font:300 clamp(28px,3.6vw,60px)/.95 'Cormorant Garamond',serif;white-space:nowrap}
+.va-accordion .va-ac-copy small{font:300 clamp(12px,1.2vw,17px)/1.5 'DM Sans',Arial;max-width:450px;opacity:0;transition:opacity .2s}
+.va-accordion button[aria-expanded=true] small{opacity:1;transition-delay:.3s}
+.va-gallery{min-height:100svh;background:#07140e;padding-bottom:9vh}
+.va-gallery-top{padding:clamp(100px,11vh,150px) 6vw 34px;display:flex;gap:24px;justify-content:space-between;align-items:end}
+.va-gallery-top h2{margin:8px 0 18px}.va-gallery-top .va-intro{max-width:400px}
+.va-gallery-actions{display:flex;gap:7px}.va-gallery-actions button{border:1px solid #c8ad7973;background:transparent;color:white;font:300 27px 'Cormorant Garamond',serif;width:49px;height:49px;line-height:1}
+.va-gallery-rail{display:flex;gap:clamp(12px,1.6vw,25px);overflow-x:auto;overscroll-behavior-inline:contain;scroll-snap-type:x mandatory;scrollbar-width:none;padding:0 6vw 22px;cursor:grab;touch-action:pan-x pan-y}
+.va-gallery-rail::-webkit-scrollbar{display:none}.va-gallery-rail.is-dragging{cursor:grabbing;scroll-snap-type:none}
+.va-gallery-card{position:relative;flex:0 0 clamp(250px,39vw,660px);height:clamp(365px,60vh,730px);scroll-snap-align:center;overflow:hidden;background:#11271d;display:block}
+.va-gallery-card img{position:absolute;inset:0;filter:saturate(.87);transition:transform 1s;transform:scale(1.02)}
+.va-gallery-card:hover img{transform:scale(1.075)}
+.va-gallery-card:after{content:'';position:absolute;inset:0;background:linear-gradient(to top,#000d08ee,transparent 62%)}
+.va-gallery-card .va-card-foot{position:absolute;z-index:2;left:7%;bottom:7%;right:6%;display:flex;justify-content:space-between;align-items:end;gap:18px}
+.va-gallery-card strong{font:300 clamp(31px,3.7vw,61px)/1 'Cormorant Garamond',serif;display:block}
+.va-gallery-card small{font:500 9px/1.7 'DM Sans',Arial;letter-spacing:.2em;color:#d7c196}
+.va-gallery-card i{font-style:normal;font-size:23px}.va-gallery-foot{padding:20px 6vw;display:flex;align-items:center;gap:30px;font:500 10px 'DM Sans',Arial;letter-spacing:.14em;color:#dacdb7}
+.va-gallery-progress{width:100%;height:1px;background:#c8ad7940;position:relative;flex:1}.va-gallery-progress b{position:absolute;height:2px;background:#d4b886;left:0;top:0;width:12.5%;transition:transform .3s}
+.va-detail{background:#0a1b13;min-height:100svh;padding-bottom:8vh}
+.va-detail-grid{display:grid;grid-template-columns:1.35fr .65fr;gap:clamp(20px,4vw,65px);padding:0 6vw;min-height:58svh}
+.va-detail-stage{min-height:470px;position:relative;overflow:hidden;background:#1a2b20}
+.va-detail-stage img{position:absolute;inset:0;filter:saturate(.76)}
+.va-detail-stage:after{content:'';position:absolute;inset:0;background:linear-gradient(to top,#00130999,transparent 44%);pointer-events:none}
+.va-hotspot{position:absolute;z-index:2;left:var(--x);top:var(--y);width:37px;height:37px;border:1px solid white;border-radius:50%;background:#d7bd8a36;color:white;backdrop-filter:blur(5px);font:400 21px Georgia;display:grid;place-items:center;transition:.25s}
+.va-hotspot[aria-pressed=true]{background:#ebd8b3;color:#0b1b14;transform:scale(1.12)}
+.va-detail-info{display:flex;flex-direction:column;justify-content:space-between;gap:28px;padding:2vh 0}
+.va-detail-info h3{font-size:clamp(33px,4vw,64px);margin:13px 0}
+.va-detail-info p{color:#bec9bd;font:300 16px/1.8 'DM Sans',Arial}
+.va-detail-count{display:flex;gap:14px;align-items:center;border-top:1px solid #c8ad7950;padding-top:19px;font:500 10px 'DM Sans',Arial;letter-spacing:.2em}
+.va-su-misura{min-height:100svh;background:#f1ede2;color:#0a1b14;padding-bottom:8vh}
+.va-su-misura .va-kicker{color:#796640}.va-su-misura .va-top h2{margin-top:15px}
+.va-su-misura .va-intro{color:#516155}
+.va-mood-grid{display:grid;grid-template-columns:1.2fr .8fr;min-height:clamp(440px,60vh,770px);margin:0 6vw}
+.va-mood-image{position:relative;background:#1a2c20;overflow:hidden}.va-mood-image img{position:absolute;inset:0;filter:var(--va-filter,saturate(.82));transition:filter .5s,transform .5s;transform:scale(1.015)}
+.va-mood-image:after{content:'';position:absolute;inset:0;background:linear-gradient(to top,#07120b99,transparent 42%)}
+.va-mood-image>span{position:absolute;z-index:1;bottom:26px;left:30px;color:white;font:500 10px 'DM Sans',Arial;letter-spacing:.22em}
+.va-mood-editor{display:flex;flex-direction:column;justify-content:center;padding:clamp(25px,4vw,75px);background:#e6e1d5}
+.va-mood-editor h3{font-size:clamp(39px,4.3vw,65px);margin:0 0 13px}.va-mood-editor p{color:#405448;font-size:14px;line-height:1.8}
+.va-mood-options{display:grid;gap:10px;margin:35px 0 20px}
+.va-mood-options button{background:transparent;border:1px solid #89948677;padding:12px 14px;display:flex;align-items:center;gap:13px;text-align:left;color:#15251d;font:400 12px 'DM Sans',Arial;letter-spacing:.07em;transition:.25s}
+.va-mood-options button[aria-pressed=true]{border-color:#715f3f;background:#d0c7b1}
+.va-mood-options i{width:25px;height:25px;flex:0 0 25px;background:var(--swatch);border:1px solid #5e675a33}
+.va-mood-note{font:400 10px/1.5 'DM Sans',Arial!important;letter-spacing:.03em;color:#68695f!important}
+.va-home-index{background:#101e17;padding:100px 6vw 90px;min-height:56vh}
+.va-home-index h2{margin:12px 0 23px;font-size:clamp(52px,6.7vw,102px)}
+.va-home-index nav{border-top:1px solid #c8ad7960;display:grid;grid-template-columns:repeat(5,1fr)}
+.va-home-index nav a{padding:23px 14px;border-right:1px solid #c8ad7950;display:grid;gap:10px;transition:.3s}
+.va-home-index nav a:hover{background:#be9d6a18}.va-home-index nav a:last-child{border:0}
+.va-home-index nav small{font:500 10px 'DM Sans',Arial;letter-spacing:.15em;color:#c8ad79}
+.va-home-index nav strong{font:300 clamp(24px,2.4vw,39px)/1 'Cormorant Garamond',serif}
+.va-home-index nav span{font:300 11px/1.5 'DM Sans',Arial;color:#b6c7b8}
+@media(max-width:800px){
+.va-atelier h2{font-size:clamp(54px,12vw,85px)}.va-top{padding:94px 6vw 26px;display:grid}.va-como{display:flex;flex-direction:column}.va-como-left{padding:95px 6vw 38px}.va-como-photo{min-height:52svh}.va-como-choices{gap:0}.va-como-choices button{font-size:25px;padding:12px 0}
+.va-dolce .va-top{display:grid}.va-accordion{height:66svh;min-height:480px;padding:0 3vw;gap:4px}
+.va-accordion button[aria-expanded=true]{flex:4}.va-accordion .va-ac-copy{left:13px;bottom:22px}.va-accordion strong{font-size:clamp(24px,5vw,43px);white-space:normal}.va-accordion small{font-size:12px}
+.va-gallery-top{padding:92px 6vw 24px;display:grid}.va-gallery-card{flex-basis:76vw;height:54svh;min-height:365px}.va-gallery-actions{justify-content:flex-end}
+.va-detail-grid{grid-template-columns:1fr}.va-detail-stage{min-height:53svh}.va-detail-info{min-height:240px}
+.va-mood-grid{grid-template-columns:1fr;margin:0 4vw}.va-mood-image{min-height:53svh}.va-mood-editor{padding:35px 7%}
+.va-home-index nav{grid-template-columns:repeat(2,1fr)}.va-home-index nav a{border-bottom:1px solid #c8ad7950}.va-home-index nav strong{font-size:31px}
+}
+@media(prefers-reduced-motion:reduce){.va-atelier *{scroll-behavior:auto!important;transition:none!important;animation:none!important}}
+</style>
+<!-- VA:/STYLE -->
+
+<!-- VA:home -->
+<section class="va-atelier va-home-index" aria-label="Le esperienze VELLARIO">
+<span class="va-kicker">THE ART OF DOLCEVITA / INTERACTIVE EDITIONS</span><h2>Explore the <em>art of living.</em></h2>
+<nav aria-label="Esplora cinque esperienze interattive">
+<a href="@@SITE@@como/#va-como"><small>01 · CELLART</small><strong>Como</strong><span>Un racconto per capitoli</span></a>
+<a href="@@SITE@@dolce-vita/#va-dolce"><small>02 · NINE TO FIVE</small><strong>La Dolce Vita</strong><span>Un giorno, tre momenti</span></a>
+<a href="@@SITE@@collezione/#va-gallery"><small>03 · MERSI</small><strong>La Collezione</strong><span>Esplora i modelli</span></a>
+<a href="@@SITE@@design-saper-fare/#va-detail"><small>04 · BULGARI</small><strong>Il Dettaglio</strong><span>Il linguaggio delle forme</span></a>
+<a href="@@SITE@@design-saper-fare/#va-su-misura"><small>05 · CARTIER</small><strong>Su Misura</strong><span>Atmosfere da immaginare</span></a>
+</nav></section>
+<!-- VA:/home -->
+
+<!-- VA:como -->
+<section class="va-atelier va-como" id="va-como" aria-label="Como, racconto interattivo">
+<div class="va-como-left"><div><p class="va-kicker">VELLARIO · COMO / CELLART-INSPIRED EDITORIAL</p><h2>Un lago.<br><em>Un modo<br>di vivere.</em></h2><p class="va-intro" style="margin-top:28px">Como non è soltanto un luogo. È un'idea di bellezza, fatta di proporzioni, silenzio e incontri indimenticabili.</p></div>
+<div class="va-como-choices" role="group" aria-label="Scegli il capitolo">
+<button type="button" aria-pressed="true" data-va-como data-img="@@ASSETS@@lake-placeholders/como-poster.jpg" data-title="Il Lario" data-description="La luce cambia. Le rive restano. Ogni giornata diventa una storia da portare con sé."><span>01</span>Il Lario <span>↗</span></button>
+<button type="button" aria-pressed="false" data-va-como data-img="@@ASSETS@@vario/owner-lariocab-01.webp" data-title="L'arte dell'approdo" data-description="L'eleganza si riconosce nel modo in cui si arriva, prima ancora che nella destinazione."><span>02</span>L'arte dell'approdo <span>↗</span></button>
+<button type="button" aria-pressed="false" data-va-como data-img="@@ASSETS@@lake-placeholders/como-poster.jpg" data-title="La dolce attesa" data-description="Sul lago persino il tempo sembra scegliere un ritmo diverso."><span>03</span>La dolce attesa <span>↗</span></button>
+</div><span class="va-num">01 / 05 · HERITAGE & ATMOSPHERE</span></div>
+<div class="va-como-photo"><img data-va-como-img src="@@ASSETS@@lake-placeholders/como-poster.jpg" alt="Il Lago di Como, studio visivo" loading="lazy"><div class="va-como-caption"><strong data-va-como-title>Il Lario</strong><span data-va-como-description>La luce cambia. Le rive restano. Ogni giornata diventa una storia da portare con sé.</span></div></div>
+</section>
+<!-- VA:/como -->
+
+<!-- VA:dolce-vita -->
+<section class="va-atelier va-dolce" id="va-dolce" aria-label="La Dolce Vita: galleria di momenti">
+<div class="va-top"><div><span class="va-kicker">VELLARIO / NINE TO FIVE INSPIRED</span><h2>Una giornata.<br><em>Tre emozioni.</em></h2></div><p class="va-intro">Il lusso non è una destinazione. È il piacere di scegliere come vivere ogni momento.</p></div>
+<div class="va-accordion" role="group" aria-label="Scegli un momento della giornata">
+<button type="button" aria-expanded="true" data-va-accordion><img src="@@ASSETS@@vario/owner-grantender-02.webp" alt="Studio nautico VELLARIO, luce del mattino" loading="lazy"><span class="va-ac-copy"><span class="va-kicker">01 / IL MATTINO</span><strong>La prima luce.</strong><small>Una partenza senza fretta. Il lago è ancora tutto da scoprire.</small></span></button>
+<button type="button" aria-expanded="false" data-va-accordion><img src="@@ASSETS@@vario/owner-mas56-03.webp" alt="Studio nautico VELLARIO, navigazione" loading="lazy"><span class="va-ac-copy"><span class="va-kicker">02 / IL POMERIGGIO</span><strong>La libertà.</strong><small>Il movimento dell'acqua, il vento, la bellezza di non avere programmi.</small></span></button>
+<button type="button" aria-expanded="false" data-va-accordion><img src="@@ASSETS@@vario/owner-granmarlin-03.webp" alt="Studio nautico VELLARIO, atmosfera della sera" loading="lazy"><span class="va-ac-copy"><span class="va-kicker">03 / LA SERA</span><strong>Il momento perfetto.</strong><small>Quando la luce si abbassa, ogni dettaglio si fa memorabile.</small></span></button>
+</div><div style="padding:22px 6vw" class="va-num">02 / 05 · THE ART OF DOLCEVITA</div></section>
+<!-- VA:/dolce-vita -->
+
+<!-- VA:collection -->
+<section class="va-atelier va-gallery" id="va-gallery" aria-label="Galleria della Collezione VELLARIO">
+<div class="va-gallery-top"><div><span class="va-kicker">LA COLLEZIONE · MERSI INSPIRED GALLERY</span><h2>Eight ways<br>to <em>feel alive.</em></h2></div><div><p class="va-intro">Otto studi originali. Caratteri diversi, un'unica idea di vita sull'acqua.</p><div class="va-gallery-actions" role="group" aria-label="Naviga la galleria"><button data-va-prev aria-label="Modello precedente" type="button">←</button><button data-va-next aria-label="Modello successivo" type="button">→</button></div></div></div>
+<div class="va-gallery-rail" data-va-rail tabindex="0" aria-label="Trascina o scorri i modelli VELLARIO">
+<a class="va-gallery-card" href="@@SITE@@collezione/quantum-999/"><img src="@@ASSETS@@vario/owner-quantum-01.webp" loading="lazy" alt="Quantum 999 · rendering originale di archivio"><span class="va-card-foot"><span><small>01 / 08 · DESIGN STUDY</small><strong>Quantum 999</strong><span class="va-quiet">Una linea. Un carattere.</span></span><i aria-hidden="true">↗</i></span></a><a class="va-gallery-card" href="@@SITE@@collezione/mas-36/"><img src="@@ASSETS@@vario/owner-mas36-01.webp" loading="lazy" alt="MAS 36 · rendering originale di archivio"><span class="va-card-foot"><span><small>02 / 08 · DESIGN STUDY</small><strong>MAS 36</strong><span class="va-quiet">Lo spirito del Gran Turismo.</span></span><i aria-hidden="true">↗</i></span></a><a class="va-gallery-card" href="@@SITE@@collezione/mas-52/"><img src="@@ASSETS@@vario/owner-mas52-01.webp" loading="lazy" alt="MAS 52 · rendering originale di archivio"><span class="va-card-foot"><span><small>03 / 08 · DESIGN STUDY</small><strong>MAS 52</strong><span class="va-quiet">Eleganza in movimento.</span></span><i aria-hidden="true">↗</i></span></a><a class="va-gallery-card" href="@@SITE@@collezione/mas-56/"><img src="@@ASSETS@@vario/owner-mas56-03.webp" loading="lazy" alt="MAS 56 · rendering originale di archivio"><span class="va-card-foot"><span><small>04 / 08 · DESIGN STUDY</small><strong>MAS 56</strong><span class="va-quiet">La forza dell'equilibrio.</span></span><i aria-hidden="true">↗</i></span></a><a class="va-gallery-card" href="@@SITE@@collezione/lariocab/"><img src="@@ASSETS@@vario/owner-lariocab-01.webp" loading="lazy" alt="Lariocab · rendering originale di archivio"><span class="va-card-foot"><span><small>05 / 08 · DESIGN STUDY</small><strong>Lariocab</strong><span class="va-quiet">L'essenza del lago.</span></span><i aria-hidden="true">↗</i></span></a><a class="va-gallery-card" href="@@SITE@@collezione/fy70/"><img src="@@ASSETS@@vario/owner-fy70-03.webp" loading="lazy" alt="FY70 · rendering originale di archivio"><span class="va-card-foot"><span><small>06 / 08 · DESIGN STUDY</small><strong>FY70</strong><span class="va-quiet">Lo stile senza compromessi.</span></span><i aria-hidden="true">↗</i></span></a><a class="va-gallery-card" href="@@SITE@@collezione/grantender-72/"><img src="@@ASSETS@@vario/owner-grantender-02.webp" loading="lazy" alt="GranTender 72 · rendering originale di archivio"><span class="va-card-foot"><span><small>07 / 08 · DESIGN STUDY</small><strong>GranTender 72</strong><span class="va-quiet">Presenza. Movimento. Libertà.</span></span><i aria-hidden="true">↗</i></span></a><a class="va-gallery-card" href="@@SITE@@collezione/gran-marlin/"><img src="@@ASSETS@@vario/owner-granmarlin-02.webp" loading="lazy" alt="Gran Marlin · rendering originale di archivio"><span class="va-card-foot"><span><small>08 / 08 · DESIGN STUDY</small><strong>Gran Marlin</strong><span class="va-quiet">L'anima del mare aperto.</span></span><i aria-hidden="true">↗</i></span></a>
+</div><div class="va-gallery-foot"><span>SCORRI PER ESPLORARE</span><div class="va-gallery-progress"><b data-va-progress></b></div><span data-va-count>01 / 08</span></div></section>
+<!-- VA:/collection -->
+
+<!-- VA:design-craftsmanship -->
+<section class="va-atelier va-detail" id="va-detail" aria-label="Dettagli del progetto esplorabili">
+<div class="va-top"><div><span class="va-kicker">DESIGN & SAPER FARE / BULGARI INSPIRED</span><h2>L'arte del<br><em>dettaglio.</em></h2></div><p class="va-intro">Linee, equilibrio, proporzioni. Una visione nautica prende forma nelle scelte che rendono riconoscibile ogni progetto.</p></div>
+<div class="va-detail-grid"><div class="va-detail-stage"><img src="@@ASSETS@@vario/mas56-detail-1.webp" loading="lazy" alt="Dettaglio di uno studio di yacht VELLARIO">
+<button type="button" class="va-hotspot" style="--x:28%;--y:34%" data-va-hotspot aria-pressed="true" data-heading="La proporzione" data-body="È il dialogo tra volumi e superfici a definire il carattere di una linea.">+</button>
+<button type="button" class="va-hotspot" style="--x:64%;--y:52%" data-va-hotspot aria-pressed="false" data-heading="Il segno" data-body="Un dettaglio essenziale può diventare l'elemento più riconoscibile di un progetto.">+</button>
+<button type="button" class="va-hotspot" style="--x:78%;--y:23%" data-va-hotspot aria-pressed="false" data-heading="La luce" data-body="Riflessi e profondità trasformano il disegno durante il giorno.">+</button></div>
+<div class="va-detail-info"><div><span class="va-kicker">ARCHIVIO PROGETTUALE · DESIGN STUDIES</span><h3 data-va-hot-title>La proporzione</h3><p data-va-hot-copy>È il dialogo tra volumi e superfici a definire il carattere di una linea.</p></div><div class="va-detail-count"><span>TOCCA I PUNTI SULL'IMMAGINE</span><span data-va-hot-count>01 / 03</span></div></div></div>
+</section>
+<section class="va-atelier va-su-misura" id="va-su-misura" aria-label="Studio interattivo di atmosfere di personalizzazione">
+<div class="va-top"><div><span class="va-kicker">SU MISURA / CARTIER INSPIRED</span><h2>Il lusso<br><em>è personale.</em></h2></div><p class="va-intro">Ogni scelta racconta uno stile. Esplora alcune atmosfere per immaginare il carattere di un progetto.</p></div>
+<div class="va-mood-grid"><div class="va-mood-image"><img data-va-mood-image src="@@ASSETS@@vario/owner-quantum-02.webp" loading="lazy" alt="Studio originale Quantum 999, rappresentazione concettuale"><span>VISUAL MOOD STUDY · NON-CONTRACTUAL</span></div>
+<div class="va-mood-editor"><span class="va-kicker">ATELIER / 01</span><h3 data-va-mood-title>Verde Lario</h3><p data-va-mood-copy>Una palette profonda, ispirata all'acqua e alle ombre delle rive.</p>
+<div class="va-mood-options" role="group" aria-label="Scegli l'atmosfera">
+<button type="button" aria-pressed="true" data-va-mood data-title="Verde Lario" data-copy="Una palette profonda, ispirata all'acqua e alle ombre delle rive." data-filter="saturate(.82)" style="--swatch:#23392e"><i></i>Verde Lario</button>
+<button type="button" aria-pressed="false" data-va-mood data-title="Champagne" data-copy="La luce morbida, il piacere delle tonalità calde e discrete." data-filter="sepia(.30) saturate(.82) brightness(1.08)" style="--swatch:#c5ad80"><i></i>Champagne</button>
+<button type="button" aria-pressed="false" data-va-mood data-title="Notte Italiana" data-copy="Un'eleganza intensa, costruita su toni scuri e riflessi sottili." data-filter="saturate(.45) contrast(1.14) brightness(.74)" style="--swatch:#161d1b"><i></i>Notte Italiana</button>
+</div><p class="va-mood-note">Moodboard esplorativa, non configuratore di prodotti o materiali già disponibili.</p></div></div></section>
+<!-- VA:/design-craftsmanship -->
+
+<!-- VA:SCRIPT -->
+<script>
+(()=>{'use strict';const root=document.querySelectorAll('.va-atelier');if(!root.length)return;
+const all=s=>Array.from(document.querySelectorAll(s));
+all('[data-va-como]').forEach(b=>b.addEventListener('click',()=>{all('[data-va-como]').forEach(x=>x.setAttribute('aria-pressed',String(x===b)));const img=document.querySelector('[data-va-como-img]');if(img){img.src=b.dataset.img;img.alt=b.dataset.title+' · studio visivo VELLARIO'}document.querySelector('[data-va-como-title]').textContent=b.dataset.title;document.querySelector('[data-va-como-description]').textContent=b.dataset.description;}));
+all('[data-va-accordion]').forEach(b=>b.addEventListener('click',()=>all('[data-va-accordion]').forEach(x=>x.setAttribute('aria-expanded',String(x===b)))));
+all('[data-va-hotspot]').forEach((b,i)=>b.addEventListener('click',()=>{all('[data-va-hotspot]').forEach(x=>x.setAttribute('aria-pressed',String(x===b)));document.querySelector('[data-va-hot-title]').textContent=b.dataset.heading;document.querySelector('[data-va-hot-copy]').textContent=b.dataset.body;document.querySelector('[data-va-hot-count]').textContent=String(i+1).padStart(2,'0')+' / 03';}));
+all('[data-va-mood]').forEach(b=>b.addEventListener('click',()=>{all('[data-va-mood]').forEach(x=>x.setAttribute('aria-pressed',String(x===b)));document.querySelector('[data-va-mood-title]').textContent=b.dataset.title;document.querySelector('[data-va-mood-copy]').textContent=b.dataset.copy;document.querySelector('[data-va-mood-image]').style.setProperty('--va-filter',b.dataset.filter);}));
+const rail=document.querySelector('[data-va-rail]');if(rail){const cards=all('.va-gallery-card');const update=()=>{const w=cards[0].getBoundingClientRect().width+parseFloat(getComputedStyle(rail).gap||'0');const n=Math.max(0,Math.min(cards.length-1,Math.round(rail.scrollLeft/Math.max(w,1))));document.querySelector('[data-va-count]').textContent=String(n+1).padStart(2,'0')+' / '+String(cards.length).padStart(2,'0');document.querySelector('[data-va-progress]').style.transform='translateX('+n*100+'%)';};rail.addEventListener('scroll',update,{passive:true});const move=d=>rail.scrollBy({left:d*(cards[0].getBoundingClientRect().width+18),behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'});document.querySelector('[data-va-prev]').addEventListener('click',()=>move(-1));document.querySelector('[data-va-next]').addEventListener('click',()=>move(1));rail.addEventListener('keydown',e=>{if(e.key==='ArrowRight'){e.preventDefault();move(1)}if(e.key==='ArrowLeft'){e.preventDefault();move(-1)}});let dragging=false,start=0,scroll=0,moved=false;rail.addEventListener('pointerdown',e=>{if(e.pointerType==='touch'||e.button!==0)return;dragging=true;moved=false;start=e.clientX;scroll=rail.scrollLeft;rail.classList.add('is-dragging');});window.addEventListener('pointermove',e=>{if(!dragging)return;const diff=e.clientX-start;if(Math.abs(diff)>7)moved=true;rail.scrollLeft=scroll-diff;});window.addEventListener('pointerup',()=>{if(!dragging)return;dragging=false;rail.classList.remove('is-dragging');});rail.addEventListener('click',e=>{if(moved){e.preventDefault();e.stopPropagation();moved=false;}},true);update();}
+})();
+</script>
+<!-- VA:/SCRIPT -->
