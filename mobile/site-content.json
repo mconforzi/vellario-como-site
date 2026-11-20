@@ -752,5 +752,6 @@
     "mobile": "portrait 720x1280 Quantum/GranTender where media is not model-specific",
     "unverified": "No 4K or 1080x1920 public assets validated yet; Dropbox masters require separate curation and publishing",
     "legacyLakeSources": "kept only for archival provenance, not used in active pages"
-  }
+  },
+  "buildRevision": "v25-story-integrated-2026-11-20-b"
 }
