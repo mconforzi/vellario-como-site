@@ -231,9 +231,74 @@ def award_study(page_id, depth):
         '@@SITE@@', '../' * depth or './')
 
 
+
+def curated_chapter(page, section, index, depth, data, model_lookup):
+    """Render actual editorial content inside one chosen cinematic composition."""
+    layout = section['layout']
+    media_name = section.get('media')
+    media = section_media(media_name, depth, model_lookup, data['lakeSources'],
+                          mobile_media=section.get('mobileMedia')) if media_name else ''
+    secondary = ''
+    secondary_id = section.get('secondaryMedia')
+    if secondary_id:
+        if secondary_id.startswith('model:'):
+            secondary_model = model_lookup[secondary_id.split(':', 1)[1]]
+            secondary_image = asset(secondary_model.get('videoPoster') or secondary_model['poster'], depth)
+            secondary_alt = secondary_model['name'] + ' original design study'
+        else:
+            lake = data['lakeSources'][secondary_id]
+            secondary_image = asset(lake['poster'], depth, 'lake-placeholders')
+            secondary_alt = lake['place'] + ' location placeholder'
+        secondary = ('<div class="curated-secondary" aria-hidden="true"><img src="' +
+                     esc(secondary_image) + '" alt="' + esc(secondary_alt) +
+                     '" loading="lazy" decoding="async"></div>')
+    archive = ''
+    if layout == 'filmbook':
+        studies = [model_lookup[k] for k in ('mas-36', 'mas-52', 'quantum-999')]
+        figures = []
+        for item in studies:
+            poster = asset(item['images'][0] if item.get('images') else item['poster'], depth)
+            figures.append('<figure><img src="' + esc(poster) + '" alt="' +
+                           esc(item['name']) + ' original contemporary design study" loading="lazy">' +
+                           '<figcaption>' + esc(item['name']) +
+                           ' · PROGETTO CONTEMPORANEO</figcaption></figure>')
+        archive = ('<div class="curated-archive" aria-label="Contemporary original design archive, '
+                   'not historical vessel photographs">' + ''.join(figures) + '</div>')
+    link = ''
+    if section.get('link'):
+        target = next(n for n in data['nav'] if n['id'] == section['link'])
+        link = ('<a class="curated-link" href="' + esc(site_path(target['slug'], depth)) +
+                '">SCOPRI ' + esc(target['label']) + ' <span aria-hidden="true">↗</span></a>')
+    source = ''
+    if section.get('source'):
+        ref = section['source']
+        source = ('<a class="curated-source" target="_blank" rel="noopener noreferrer" href="' +
+                  esc(ref['url']) + '">FONTE STORICA · ' + esc(ref['label']) + '</a>')
+    kicker = section.get('storyKicker') or page['title']
+    statement = section.get('storyCaption') or section.get('englishLine') or ''
+    return (
+        '<section class="editorial-section curated-chapter curated--' + esc(layout) +
+        '" id="' + esc(section['id']) + '" aria-label="' + esc(section['title']) + '">'
+        '<div class="curated-stage">'
+        '<div class="curated-media">' + media + '</div>' + secondary +
+        '<div class="curated-mask" aria-hidden="true"></div>' + archive +
+        '<div class="curated-index">VELLARIO · COMO &nbsp; / &nbsp; ' +
+        str(index).zfill(2) + ' &nbsp; / &nbsp; ' + str(len(page['sections'])).zfill(2) +
+        '</div><div class="curated-copy"><p class="curated-kicker">' + esc(kicker) +
+        '</p><h2>' + esc(section['title']) + '</h2>' +
+        ('<p class="curated-statement">' + esc(statement) + '</p>' if statement else '') +
+        '<p class="curated-body">' + esc(section['body']) + '</p>' +
+        source + link +
+        '</div><span class="curated-scroll" aria-hidden="true">SCOPRI IL CAPITOLO · SCROLL</span>'
+        '</div></section>'
+    )
+
 def editorial_page(page, depth, data, model_lookup, models):
     out = [hero(page, depth, model_lookup, data['lakeSources'], data_opening(data, models))]
     for i, section in enumerate(page['sections'], 1):
+        if section.get('layout') and (page['id'] != 'home' or i > 2):
+            out.append(curated_chapter(page, section, i, depth, data, model_lookup))
+            continue
         has_media = bool(section.get('media'))
         is_collection = section.get('kind') == 'collection'
         classes = ['editorial-section', 'chapter', 'chapter--' + str(i % 3)]
@@ -310,13 +375,25 @@ def model_page(model, copy, depth, data, models):
         ('specifiche','Dati Tecnici',copy.get('specifications','Final technical specification under review.')),
     ]
     for i, (slug, label, paragraph) in enumerate(parts, 1):
-        out.append(
-            '<section class="editorial-section chapter chapter--' + str(i % 3) + '" id="' + slug + '">'
-            '<div class="chapter-shell"><div class="chapter-number"><span>' + str(i).zfill(2) + '</span><i></i><span>07</span></div>'
-            '<div class="chapter-content"><p class="chapter-eyebrow">LA COLLEZIONE / ' + esc(model['name']) +
-            '</p><h2>' + esc(label) + '</h2><p class="chapter-description">' + esc(paragraph) +
-            '</p></div></div></section>'
+        visual = i <= 4
+        block = (
+            '<section class="editorial-section chapter chapter--' + str(i % 3) +
+            (' model-story' if visual else '') + '" id="' + slug + '">'
+            '<div class="chapter-shell"><div class="chapter-number"><span>' +
+            str(i).zfill(2) + '</span><i></i><span>07</span></div>'
+            '<div class="chapter-content"><p class="chapter-eyebrow">LA COLLEZIONE / ' +
+            esc(model['name']) + '</p><h2>' + esc(label) + '</h2>' +
+            '<p class="chapter-description">' + esc(paragraph) + '</p></div></div>'
         )
+        if visual:
+            picture = model['images'][(i - 1) % len(model['images'])] if model.get('images') else model['poster']
+            block += (
+                '<figure class="model-story-frame"><img src="' + esc(asset(picture, depth)) +
+                '" alt="' + esc(model['name']) + ' · original design archive study" loading="lazy" decoding="async">' +
+                '<figcaption>' + esc(model['name']) +
+                ' / ARCHIVIO PROGETTUALE · NON PRODUZIONE VELLARIO</figcaption></figure>'
+            )
+        out.append(block + '</section>')
     photos = []
     for i, name in enumerate(model['images']):
         photos.append(
@@ -383,17 +460,8 @@ def generate(data,catalog,where):
         desc=(page['lead'] if page else data['modelCopy'][model['id']]['lead'])
         body=(editorial_page(page,depth,data,model_lookup,models)
               if page else model_page(model,data['modelCopy'][model['id']],depth,data,models))
-        # Owner-selected V1/V3/V4 prototypes follow all existing home chapters.
-        # Keep this fragment canonical so future static builds cannot drop it.
-        if pid == 'home':
-            selected = Path(__file__).with_name('selected-showcases.html')
-            if not selected.is_file():
-                raise FileNotFoundError('Selected VELLARIO sections missing: ' + str(selected))
-            body += selected.read_text(encoding='utf-8')
-            benchmark = Path(__file__).with_name('benchmark-five-sections.html')
-            if not benchmark.is_file():
-                raise FileNotFoundError('Five VELLARIO benchmark experiences missing: ' + str(benchmark))
-            body += benchmark.read_text(encoding='utf-8')
+        # V25: the six selected graphic studies are now integrated as actual
+        # editorial chapters. Keep archive files available but never append demos.
         source_css=root_file('site.css',depth)
         source_js=root_file('site.js',depth)
         html_doc=(
@@ -405,7 +473,9 @@ def generate(data,catalog,where):
           '<link rel="preconnect" href="https://fonts.googleapis.com">'
           '<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>'
           '<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">'
-          '<link rel="stylesheet" href="'+esc(source_css)+'?v=v40-boat-video-mobile"><script src="'+esc(source_js)+'?v=v39-five-benchmark-experiences" defer></script>'
+          '<link rel="stylesheet" href="'+esc(source_css)+'?v=v40-boat-video-mobile">'
+           '<link rel="stylesheet" href="'+esc(root_file('curated-site.css',depth))+'?v=v25-curated-story">'
+           '<script src="'+esc(source_js)+'?v=v25-curated-story" defer></script>'
           '</head><body data-page="'+esc(pid)+'">'
           +header(pid,depth,data)+'<main id="main-content">'+body+'</main>'
           +footer(depth,data)+'</body></html>\n'
