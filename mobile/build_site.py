@@ -210,6 +210,26 @@ def model_cards(depth, models, copy_lookup):
         '</div></div></section>'
     )
 
+def award_study(page_id, depth):
+    """Owner-approved interactive chapters: static, visible without JS, scoped styles."""
+    supported = ('home', 'como', 'dolce-vita', 'collection', 'design-craftsmanship')
+    if page_id not in supported:
+        return ''
+    fragment = Path(__file__).with_name('award-interactions.html')
+    if not fragment.is_file():
+        raise FileNotFoundError('Missing VELLARIO award experience fragment: ' + str(fragment))
+    content = fragment.read_text(encoding='utf-8')
+    def block(key):
+        start = '<!-- VA:' + key + ' -->'
+        finish = '<!-- VA:/' + key + ' -->'
+        if content.count(start) != 1 or content.count(finish) != 1:
+            raise ValueError('Invalid interactive chapter block: ' + key)
+        return content.split(start, 1)[1].split(finish, 1)[0]
+    result = block('STYLE') + block(page_id) + block('SCRIPT')
+    return result.replace('@@ASSETS@@', '../' * (depth + 1) + 'assets/').replace(
+        '@@SITE@@', '../' * depth or './')
+
+
 def editorial_page(page, depth, data, model_lookup, models):
     out = [hero(page, depth, model_lookup, data['lakeSources'], data_opening(data, models))]
     for i, section in enumerate(page['sections'], 1):
@@ -253,6 +273,8 @@ def editorial_page(page, depth, data, model_lookup, models):
         if is_collection:
             out.append('<div class="chapter-collection">' + model_cards(depth, models, data['modelCopy']) + '</div>')
         out.append('</section>')
+    if page['id'] in ('home', 'como', 'dolce-vita', 'collection', 'design-craftsmanship'):
+        out.append(award_study(page['id'], depth))
     if page['id'] not in ('home','contact'):
         nav = data['nav']
         pos = next(i for i, n in enumerate(nav) if n['id'] == page['id'])
