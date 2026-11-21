@@ -2,7 +2,7 @@
 """VELLARIO mobile content foundation: static HTML generator, zero dependencies.
 
 Usage: python mobile/build_site.py --out /tmp/vellario-out
-Reads mobile/site-content.json and mobile/catalog.json; creates 16 static pages
+Reads mobile/site-content.json and mobile/catalog.json; creates 15 canonical static pages
 with content rendered in HTML, not injected at runtime. No internet required.
 """
 import argparse
@@ -296,7 +296,7 @@ def curated_chapter(page, section, index, depth, data, model_lookup):
 def editorial_page(page, depth, data, model_lookup, models):
     out = [hero(page, depth, model_lookup, data['lakeSources'], data_opening(data, models))]
     for i, section in enumerate(page['sections'], 1):
-        if section.get('layout') and (page['id'] != 'home' or i > 2):
+        if section.get('layout'):
             out.append(curated_chapter(page, section, i, depth, data, model_lookup))
             continue
         has_media = bool(section.get('media'))
@@ -339,7 +339,7 @@ def editorial_page(page, depth, data, model_lookup, models):
         if is_collection:
             out.append('<div class="chapter-collection">' + model_cards(depth, models, data['modelCopy']) + '</div>')
         out.append('</section>')
-    if page['id'] in ('home', 'como', 'dolce-vita', 'collection', 'design-craftsmanship'):
+    if page['id'] in ('como', 'collection', 'design-craftsmanship'):
         out.append(award_study(page['id'], depth))
     if page['id'] not in ('home','contact'):
         nav = data['nav']
@@ -436,13 +436,13 @@ def model_page(model, copy, depth, data, models):
 
 def generate(data,catalog,where):
     models=catalog['models']
-    if len(data['nav'])!=7 or data['nav'][0]['id']!='como':
-        raise ValueError('Sitemap main navigation differs from approved Como-first contract')
+    if len(data['nav'])!=7 or [n['id'] for n in data['nav']]!=['home','collection','history-legacy','como','design-craftsmanship','maison','contact']:
+        raise ValueError('Sitemap differs from the owner-approved seven-section order')
     if len(models)!=8 or [x['name'] for x in models]!=[
         'Quantum 999','MAS 36','MAS 52','MAS 56','Lariocab','FY70','GranTender 72','Gran Marlin']:
         raise ValueError('Original model registry differs from approved collection')
-    if len(data['pages'])!=8 or len(data['modelCopy'])!=8:
-        raise ValueError('Expected home + seven pillars + five model pages')
+    if len(data['pages'])!=7 or len(data['modelCopy'])!=8:
+        raise ValueError('Expected seven main pages (home included) + eight model descriptions')
     if any(not x.get('poster') for x in models):
         raise ValueError('Every model needs a real poster or a neutral archive placeholder')
     data['_opening']=catalog['opening']
@@ -487,9 +487,13 @@ def generate(data,catalog,where):
         paths.append({'slug':slug,'path':str(dest.relative_to(root)),'name':title,'bytes':len(html_doc.encode('utf-8'))})
     # Preserve old English/French URLs so previously shared site links keep working.
     legacy_redirects = {
+        'como': 'como-dolcevita',
+        'dolce-vita': 'como-dolcevita',
+        'storia-tradizione': 'heritage',
+        'design-saper-fare': 'artisanship',
         'collection': 'collezione',
-        'history-legacy': 'storia-tradizione',
-        'design-craftsmanship': 'design-saper-fare',
+        'history-legacy': 'heritage',
+        'design-craftsmanship': 'artisanship',
         'maison': 'casa-vellario',
         'contact': 'contatti',
     }
@@ -517,8 +521,8 @@ def generate(data,catalog,where):
         'schemaVersion':2,'routes':paths,'count':len(paths),'redirects':legacy,'redirectCount':len(legacy),
         'note':'All HTML is server-readable with no JS dependency. Media are progressive enhancements.'
     },indent=2)+'\n',encoding='utf-8')
-    if len(paths)!=16 or len({x['slug'] for x in paths})!=16:
-        raise ValueError('Must generate 16 unique sitemap routes')
+    if len(paths)!=15 or len({x['slug'] for x in paths})!=15:
+        raise ValueError('Must generate 15 unique sitemap routes (seven sections + eight models)')
     return paths
 
 

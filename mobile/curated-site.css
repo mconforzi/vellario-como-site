@@ -146,3 +146,9 @@
  .curated--dissolve .curated-secondary{opacity:0}
  .curated--aperture .curated-media{clip-path:inset(0)}
 }
+
+/* V26 · Longer owner-approved editorial titles: legible on desktop and iPhone. */
+body[data-page="home"] #craft .curated-copy h2{font-size:clamp(44px,5.15vw,82px)!important;line-height:.94!important;overflow-wrap:break-word}
+body[data-page="design-craftsmanship"] .cinema-hero .cinema-copy h1{font-size:clamp(42px,5.9vw,100px)!important;line-height:.94!important;overflow-wrap:break-word}
+body[data-page="como"] .cinema-hero .cinema-copy h1{font-size:clamp(50px,7vw,122px)!important;line-height:.92!important;overflow-wrap:break-word}
+@media(max-width:850px){body[data-page="home"] #craft .curated-copy h2{font-size:clamp(35px,8.4vw,62px)!important;line-height:.95!important}body[data-page="design-craftsmanship"] .cinema-hero .cinema-copy h1{font-size:clamp(40px,9vw,67px)!important}}

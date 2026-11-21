@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "release": "v25.1-content-curated",
+  "release": "v26-seven-sections",
   "status": "editorial-curation-working-preview",
   "locale": "en",
   "date": "2026-11-20",
@@ -8,38 +8,38 @@
   "base": "/mobile/",
   "nav": [
     {
-      "id": "como",
-      "label": "Como",
-      "slug": "como"
-    },
-    {
-      "id": "dolce-vita",
-      "label": "La Dolce Vita",
-      "slug": "dolce-vita"
+      "id": "home",
+      "label": "VELLARIO",
+      "slug": ""
     },
     {
       "id": "collection",
-      "label": "La Collezione",
+      "label": "Collezione",
       "slug": "collezione"
     },
     {
       "id": "history-legacy",
-      "label": "Storia & Tradizione",
-      "slug": "storia-tradizione"
+      "label": "Heritage",
+      "slug": "heritage"
+    },
+    {
+      "id": "como",
+      "label": "Como e la Dolcevita",
+      "slug": "como-dolcevita"
     },
     {
       "id": "design-craftsmanship",
-      "label": "Design & Saper Fare",
-      "slug": "design-saper-fare"
+      "label": "Artisanship and Love for Details",
+      "slug": "artisanship"
     },
     {
       "id": "maison",
-      "label": "La Casa VELLARIO",
+      "label": "Casa VELLARIO",
       "slug": "casa-vellario"
     },
     {
       "id": "contact",
-      "label": "Contatti",
+      "label": "Contacts",
       "slug": "contatti"
     }
   ],
@@ -101,7 +101,7 @@
       "sections": [
         {
           "id": "models",
-          "title": "La Collezione",
+          "title": "Collezione",
           "body": "A collection should never feel like a row of interchangeable objects. Quantum 999, MAS 36, MAS 52, MAS 56, Lariocab, FY70, GranTender 72 and Gran Marlin explore different expressions of life on the water, from the spirit of the Italian sporting boat to the architectural ambition of a larger yacht. Each begins with its own design character.",
           "link": "collection",
           "kind": "collection",
@@ -110,46 +110,35 @@
           "displaySubtitle": "Eight boats, eight distinct characters. Different expressions of life on the water."
         },
         {
-          "id": "origin",
-          "title": "Dove Tutto Comincia",
-          "body": "There are places whose character is inseparable from the way they are lived. Lake Como is one of them: architecture set against the mountains, gardens descending towards the water, and a distinctive tradition of arriving by boat. For VELLARIO, Como is not merely a location or a backdrop. It is the cultural inspiration for a new nautical point of view.",
-          "link": "como",
-          "media": "model:mas-52",
-          "englishLine": "Where It All Begins",
-          "shortIntro": "Como è il nostro punto di partenza: paesaggio, architettura e una tradizione di eleganza sull’acqua.",
-          "displaySubtitle": "Lake Como: architecture, landscape and a tradition of elegance on the water.",
-          "mobileMedia": "model:quantum-999"
-        },
-        {
-          "id": "life",
-          "title": "La Dolce Vita sull'Acqua",
-          "body": "An aperitivo at the water's edge. The golden light of late afternoon. A short passage across the lake, with no need to hurry. La Dolce Vita is not a style borrowed for a photograph; it is the pleasure of living beautifully, simply and without ostentation. This is the spirit we want VELLARIO to express.",
-          "link": "dolce-vita",
-          "media": "model:gran-marlin",
-          "englishLine": "The Good Life, the Italian Way",
-          "shortIntro": "Un aperitivo sul lago, la luce del tramonto, il piacere di navigare senza fretta. Questa è la Dolce Vita.",
-          "displaySubtitle": "An aperitivo by the lake, golden light at sunset, and the pleasure of travelling without hurry.",
-          "mobileMedia": "model:grantender-72",
-          "layout": "dissolve",
-          "storyKicker": "Il piacere di vivere",
-          "storyCaption": "From an unhurried morning to the last light on the water.",
-          "secondaryMedia": "como"
-        },
-        {
           "id": "history",
-          "title": "Storia & Tradizione",
+          "title": "Heritage",
           "body": "Long before the idea of VELLARIO, generations of boatbuilders, racers and craftsmen shaped the nautical culture of Lake Como. Their world was one of working boats and elegant runabouts, ingenuity and competition, skilled hands and bold ideas. It remains a source of inspiration for a new expression of Italian nautical elegance.",
           "link": "history-legacy",
           "displaySubtitle": "Generations of boatbuilders, racers and craftsmen shaped the nautical culture of Lake Como.",
           "media": "model:mas-52",
           "mobileMedia": "model:quantum-999",
           "layout": "filmbook",
-          "storyKicker": "Il Lario, la memoria",
-          "storyCaption": "A genuine nautical culture; never a borrowed company history."
+          "storyKicker": "Il patrimonio del Lario",
+          "storyCaption": "The boating heritage of Lake Como. A tradition to honour, not a company history to claim."
+        },
+        {
+          "id": "como-dolcevita",
+          "title": "Como e la Dolcevita",
+          "body": "There are places whose character is inseparable from the way they are lived. Lake Como is one of them: architecture set against the mountains, gardens descending towards the water, and a distinctive tradition of arriving by boat. For VELLARIO, Como is not merely a location or a backdrop. It is the cultural inspiration for a new nautical point of view.\n\nAn aperitivo at the water's edge. The golden light of late afternoon. A short passage across the lake, with no need to hurry. La Dolce Vita is not a style borrowed for a photograph; it is the pleasure of living beautifully, simply and without ostentation. This is the spirit we want VELLARIO to express.",
+          "link": "como",
+          "media": "model:gran-marlin",
+          "englishLine": "The Good Life, the Italian Way",
+          "shortIntro": "Un aperitivo sul lago, la luce del tramonto, il piacere di navigare senza fretta. Questa è la Dolce Vita.",
+          "displaySubtitle": "An aperitivo by the lake, golden light at sunset, and the pleasure of travelling without hurry.",
+          "mobileMedia": "model:grantender-72",
+          "layout": "dissolve",
+          "storyKicker": "Como · L'arte di vivere",
+          "storyCaption": "The lake, its villas and the effortless pleasure of living beautifully.",
+          "secondaryMedia": "como"
         },
         {
           "id": "craft",
-          "title": "L'Arte del Dettaglio",
+          "title": "Artisanship and Love for Details",
           "body": "The Italian idea of saper fare is more than craftsmanship alone. It is the discipline of knowing why a detail matters. Proportion, materials, the line of a hull and the feeling of a surface should belong to one coherent whole. For VELLARIO, beauty starts with these decisions.",
           "link": "design-craftsmanship",
           "media": "model:mas-52",
@@ -158,12 +147,12 @@
           "displaySubtitle": "Proportion, materials and the beauty of every detail. The Italian art of saper fare.",
           "mobileMedia": "model:grantender-72",
           "layout": "editorial",
-          "storyKicker": "L'arte del dettaglio",
-          "storyCaption": "The discipline of proportion, line and material."
+          "storyKicker": "Il saper fare italiano",
+          "storyCaption": "Proportion, materials and that unmistakable love for every detail."
         },
         {
           "id": "vision",
-          "title": "La Casa VELLARIO",
+          "title": "Casa VELLARIO",
           "body": "La Casa VELLARIO is conceived as a new Italian nautical design house: distinctive in character, discreet in expression, personal in its approach. The ambition is to direct the design, identity and future client experience of a carefully considered collection—not to pursue volume or spectacle.",
           "link": "maison",
           "englishLine": "A Distinctly Italian Point of View",
@@ -176,7 +165,7 @@
         },
         {
           "id": "dialogue",
-          "title": "Un Invito Personale",
+          "title": "Contacts",
           "body": "A boat becomes personal through thoughtful choices, not endless options. Su Misura is the Italian expression of this attention to the individual. The future VELLARIO relationship with its owners is envisaged as a conversation guided by taste, design and a shared appreciation of beauty.",
           "link": "contact",
           "englishLine": "The Personal Touch",
@@ -191,128 +180,10 @@
       "englishTagline": "The Italian Art of Living"
     },
     {
-      "id": "como",
-      "slug": "como",
-      "title": "Como",
-      "kicker": "01 / Como · Il Lario",
-      "lead": "Il Lario. An enduring meeting of water, architecture and Italian elegance.",
-      "hero": "model:mas-52",
-      "sections": [
-        {
-          "id": "lake",
-          "title": "Il Lario",
-          "body": "Il Lario has its own rhythm. Mountains fall steeply towards the water, villages gather around little harbours, and the changing light transforms the landscape throughout the day. This is a place best understood slowly, sometimes from the shore and sometimes from the deck of a boat.",
-          "source": {
-            "label": "Regione Lombardia · Lake Como",
-            "url": "https://www.in-lombardia.it/en/tourism-in-lombardy/lake-como"
-          },
-          "layout": "cinematic",
-          "storyKicker": "Il Lario",
-          "storyCaption": "Where water, architecture and landscape meet.",
-          "media": "como"
-        },
-        {
-          "id": "architecture",
-          "title": "Le Ville",
-          "body": "The great villas of Como were designed to be experienced within their setting, not separated from it. At Villa del Balbianello, on the wooded Lavedo peninsula, architecture, terraces and gardens form an extraordinary composition above the lake. Its history belongs to those who created and preserved it; its sense of proportion offers a lasting lesson in elegance.",
-          "source": {
-            "label": "FAI · Villa del Balbianello",
-            "url": "https://fondoambiente.it/luoghi/villa-del-balbianello?lang=eng"
-          },
-          "englishLine": "Timeless Elegance",
-          "layout": "editorial",
-          "storyKicker": "Le Ville",
-          "storyCaption": "Architecture in harmony with its setting.",
-          "media": "como"
-        },
-        {
-          "id": "water",
-          "title": "L'Arte dell'Approdo",
-          "body": "There is a particular pleasure in the approach: a distant villa becomes a recognisable silhouette, a stone pontile appears, and a familiar shore reveals itself differently from the water. L'arte dell'approdo—the art of arriving—is part of the life and character of Como.",
-          "englishLine": "The Pleasure of Arriving",
-          "layout": "aperture",
-          "storyKicker": "L'arte dell'approdo",
-          "storyCaption": "The pleasure of arriving by water.",
-          "media": "model:mas-52"
-        },
-        {
-          "id": "nautical",
-          "title": "Tradizione Nautica",
-          "body": "Como's relationship with boats reaches far beyond leisure. Workboats, sailing craft, passenger vessels, racing machines and classic motorboats have all left their mark on its shores. The Museo Barca Lariana at Pianello del Lario preserves a remarkable record of this culture, making the lake's boating history tangible through vessels, engines, documents and stories.",
-          "source": {
-            "label": "Museo Barca Lariana",
-            "url": "https://www.museobarcalariana.it/il-museo/"
-          }
-        },
-        {
-          "id": "inspiration",
-          "title": "La Nostra Ispirazione",
-          "body": "The past is not a template to reproduce. It is a standard to understand. Inspired by Como's landscape, architecture and boating culture, VELLARIO aims to develop a contemporary design identity that feels at ease beside what has endured: unmistakably new, yet sensitive to the spirit of the place."
-        }
-      ],
-      "englishTagline": "A Sense of Place",
-      "heroMobile": "model:quantum-999"
-    },
-    {
-      "id": "dolce-vita",
-      "slug": "dolce-vita",
-      "title": "La Dolce Vita",
-      "kicker": "02 / La Dolce Vita · L'Arte di Vivere",
-      "lead": "Il piacere di vivere. Unhurried days, extraordinary places and life on the water.",
-      "hero": "model:gran-marlin",
-      "sections": [
-        {
-          "id": "time",
-          "title": "Il Tempo",
-          "body": "Il tempo is perhaps the greatest luxury. The freedom to follow the light, stay for one more conversation or choose the longer route home. In the Italian understanding of la dolce vita, time is not simply spent: it is enjoyed, generously and beautifully.",
-          "englishLine": "The Luxury of Time",
-          "layout": "cinematic",
-          "storyKicker": "Il Tempo",
-          "storyCaption": "The luxury of taking the longer way home.",
-          "media": "model:gran-marlin"
-        },
-        {
-          "id": "water",
-          "title": "Il Piacere di Navigare",
-          "body": "The pleasure of a passeggiata on the water has little to do with distance. It is the changing view, the sound of the lake and the quiet sense of being exactly where one wants to be. Il piacere di navigare belongs to the experience, not to a number on a specification sheet.",
-          "englishLine": "The Joy of the Journey"
-        },
-        {
-          "id": "elegance",
-          "title": "Eleganza Senza Ostentazione",
-          "body": "Eleganza senza ostentazione. True Italian elegance does not need to announce itself. It lives in proportion, hospitality, a confident gesture and the art of choosing just enough. A beautiful boat should share that same natural sprezzatura: a sense of ease made possible by careful thought.",
-          "englishLine": "Effortless Elegance",
-          "layout": "editorial",
-          "storyKicker": "Sprezzatura",
-          "storyCaption": "Effortless Italian elegance, never ostentation.",
-          "media": "model:mas-36"
-        },
-        {
-          "id": "aboard",
-          "title": "La Vita a Bordo",
-          "body": "La vita a bordo begins with the people who share it. A quiet corner in the sun, the pleasure of an aperitivo, space for conversation and the freedom to be alone when desired. These moments give direction to a design long before its final arrangements are defined.",
-          "englishLine": "Moments Worth Keeping",
-          "layout": "aperture",
-          "storyKicker": "La Vita a Bordo",
-          "storyCaption": "Moments worth keeping.",
-          "media": "model:grantender-72"
-        },
-        {
-          "id": "discover",
-          "title": "La Collezione",
-          "body": "A collection is an expression of character, not simply of size or category. The eight VELLARIO design studies are different invitations to experience the water. Discover the distinct intentions behind Quantum 999, MAS 36, MAS 52, MAS 56, Lariocab, FY70, GranTender 72 and Gran Marlin.",
-          "link": "collection",
-          "englishLine": "The Pleasure of Discovery"
-        }
-      ],
-      "englishTagline": "Life, Beautifully Lived",
-      "heroMobile": "model:grantender-72"
-    },
-    {
       "id": "collection",
       "slug": "collezione",
-      "title": "La Collezione",
-      "kicker": "03 / La Collezione · Otto Caratteri",
+      "title": "Collezione",
+      "kicker": "01 / Collezione",
       "lead": "Otto barche. Otto personalità. Eight original nautical design studies.",
       "hero": "model:mas-52",
       "sections": [
@@ -353,10 +224,10 @@
     },
     {
       "id": "history-legacy",
-      "slug": "storia-tradizione",
-      "title": "Storia & Tradizione",
-      "kicker": "04 / Storia & Tradizione · Il Lario",
-      "lead": "La tradizione del lago. A genuine culture of Italian boating and innovation.",
+      "slug": "heritage",
+      "title": "Heritage",
+      "kicker": "02 / Heritage · Il Lario",
+      "lead": "The heritage of Lake Como. A genuine culture of Italian boating, ingenuity and craftsmanship.",
       "hero": "model:mas-52",
       "sections": [
         {
@@ -419,11 +290,117 @@
       "heroMobile": "model:quantum-999"
     },
     {
+      "id": "como",
+      "slug": "como-dolcevita",
+      "title": "Como e la Dolcevita",
+      "kicker": "03 / Como e la Dolcevita",
+      "lead": "Il Lario e l'arte di vivere. Lake Como, its timeless villas and the pleasure of life beautifully lived on the water.",
+      "hero": "model:mas-52",
+      "sections": [
+        {
+          "id": "lake",
+          "title": "Il Lario",
+          "body": "Il Lario has its own rhythm. Mountains fall steeply towards the water, villages gather around little harbours, and the changing light transforms the landscape throughout the day. This is a place best understood slowly, sometimes from the shore and sometimes from the deck of a boat.",
+          "source": {
+            "label": "Regione Lombardia · Lake Como",
+            "url": "https://www.in-lombardia.it/en/tourism-in-lombardy/lake-como"
+          },
+          "layout": "cinematic",
+          "storyKicker": "Il Lario",
+          "storyCaption": "Where water, architecture and landscape meet.",
+          "media": "como"
+        },
+        {
+          "id": "architecture",
+          "title": "Le Ville",
+          "body": "The great villas of Como were designed to be experienced within their setting, not separated from it. At Villa del Balbianello, on the wooded Lavedo peninsula, architecture, terraces and gardens form an extraordinary composition above the lake. Its history belongs to those who created and preserved it; its sense of proportion offers a lasting lesson in elegance.",
+          "source": {
+            "label": "FAI · Villa del Balbianello",
+            "url": "https://fondoambiente.it/luoghi/villa-del-balbianello?lang=eng"
+          },
+          "englishLine": "Timeless Elegance",
+          "layout": "editorial",
+          "storyKicker": "Le Ville",
+          "storyCaption": "Architecture in harmony with its setting.",
+          "media": "como"
+        },
+        {
+          "id": "dolce-time",
+          "title": "Il Tempo",
+          "body": "Il tempo is perhaps the greatest luxury. The freedom to follow the light, stay for one more conversation or choose the longer route home. In the Italian understanding of la dolce vita, time is not simply spent: it is enjoyed, generously and beautifully.",
+          "englishLine": "The Luxury of Time",
+          "layout": "cinematic",
+          "storyKicker": "Il Tempo",
+          "storyCaption": "The luxury of taking the longer way home.",
+          "media": "model:gran-marlin"
+        },
+        {
+          "id": "water",
+          "title": "L'Arte dell'Approdo",
+          "body": "There is a particular pleasure in the approach: a distant villa becomes a recognisable silhouette, a stone pontile appears, and a familiar shore reveals itself differently from the water. L'arte dell'approdo—the art of arriving—is part of the life and character of Como.",
+          "englishLine": "The Pleasure of Arriving",
+          "layout": "aperture",
+          "storyKicker": "L'arte dell'approdo",
+          "storyCaption": "The pleasure of arriving by water.",
+          "media": "model:mas-52"
+        },
+        {
+          "id": "dolce-water",
+          "title": "Il Piacere di Navigare",
+          "body": "The pleasure of a passeggiata on the water has little to do with distance. It is the changing view, the sound of the lake and the quiet sense of being exactly where one wants to be. Il piacere di navigare belongs to the experience, not to a number on a specification sheet.",
+          "englishLine": "The Joy of the Journey"
+        },
+        {
+          "id": "dolce-elegance",
+          "title": "Eleganza Senza Ostentazione",
+          "body": "Eleganza senza ostentazione. True Italian elegance does not need to announce itself. It lives in proportion, hospitality, a confident gesture and the art of choosing just enough. A beautiful boat should share that same natural sprezzatura: a sense of ease made possible by careful thought.",
+          "englishLine": "Effortless Elegance",
+          "layout": "editorial",
+          "storyKicker": "Sprezzatura",
+          "storyCaption": "Effortless Italian elegance, never ostentation.",
+          "media": "model:mas-36"
+        },
+        {
+          "id": "dolce-aboard",
+          "title": "La Vita a Bordo",
+          "body": "La vita a bordo begins with the people who share it. A quiet corner in the sun, the pleasure of an aperitivo, space for conversation and the freedom to be alone when desired. These moments give direction to a design long before its final arrangements are defined.",
+          "englishLine": "Moments Worth Keeping",
+          "layout": "aperture",
+          "storyKicker": "La Vita a Bordo",
+          "storyCaption": "Moments worth keeping.",
+          "media": "model:grantender-72"
+        },
+        {
+          "id": "nautical",
+          "title": "Tradizione Nautica",
+          "body": "Como's relationship with boats reaches far beyond leisure. Workboats, sailing craft, passenger vessels, racing machines and classic motorboats have all left their mark on its shores. The Museo Barca Lariana at Pianello del Lario preserves a remarkable record of this culture, making the lake's boating history tangible through vessels, engines, documents and stories.",
+          "source": {
+            "label": "Museo Barca Lariana",
+            "url": "https://www.museobarcalariana.it/il-museo/"
+          }
+        },
+        {
+          "id": "inspiration",
+          "title": "La Nostra Ispirazione",
+          "body": "The past is not a template to reproduce. It is a standard to understand. Inspired by Como's landscape, architecture and boating culture, VELLARIO aims to develop a contemporary design identity that feels at ease beside what has endured: unmistakably new, yet sensitive to the spirit of the place."
+        },
+        {
+          "id": "dolce-discover",
+          "title": "La Collezione",
+          "body": "A collection is an expression of character, not simply of size or category. The eight VELLARIO design studies are different invitations to experience the water. Discover the distinct intentions behind Quantum 999, MAS 36, MAS 52, MAS 56, Lariocab, FY70, GranTender 72 and Gran Marlin.",
+          "link": "collection",
+          "englishLine": "The Pleasure of Discovery"
+        }
+      ],
+      "englishTagline": "The Italian Art of Living",
+      "heroMobile": "model:quantum-999"
+    },
+    {
       "id": "design-craftsmanship",
-      "slug": "design-saper-fare",
-      "title": "Design & Saper Fare",
-      "kicker": "05 / Design & Saper Fare · La Bellezza",
-      "lead": "L'Arte del Dettaglio. Character, proportion and the discipline behind beauty.",
+      "slug": "artisanship",
+      "title": "Artisanship and Love for Details",
+      "kicker": "04 / Artisanship · Amore per i Dettagli",
+      "lead": "L'arte del dettaglio. The Italian art of craftsmanship, design and meticulous attention to every detail.",
       "hero": "model:quantum-999",
       "sections": [
         {
@@ -474,8 +451,8 @@
     {
       "id": "maison",
       "slug": "casa-vellario",
-      "title": "La Casa VELLARIO",
-      "kicker": "06 / La Casa VELLARIO · La Visione",
+      "title": "Casa VELLARIO",
+      "kicker": "05 / Casa VELLARIO",
       "lead": "La Casa VELLARIO. An Italian design house built around elegance, identity and individuality.",
       "hero": "model:gran-marlin",
       "sections": [
@@ -526,8 +503,8 @@
     {
       "id": "contact",
       "slug": "contatti",
-      "title": "Contatti",
-      "kicker": "07 / Contatti · Un Invito Personale",
+      "title": "Contacts",
+      "kicker": "06 / Contacts",
       "lead": "Il piacere di conoscersi. Every lasting relationship begins with a conversation.",
       "hero": null,
       "sections": [

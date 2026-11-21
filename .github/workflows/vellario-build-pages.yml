@@ -22,7 +22,7 @@ jobs:
         with:
           fetch-depth: 1
           persist-credentials: true
-      - name: Build canonical 16 pages with Python standard library
+      - name: Build canonical 15 pages with Python standard library
         shell: bash
         run: |
           set -euo pipefail
@@ -34,8 +34,8 @@ jobs:
           import json, pathlib, sys
           root=pathlib.Path(sys.argv[1])
           manifest=json.loads((root/'route-manifest.json').read_text())
-          assert manifest['count']==16, manifest['count']
-          assert manifest['redirectCount']==13, manifest['redirectCount']
+          assert manifest['count']==15, manifest['count']
+          assert manifest['redirectCount']==17, manifest['redirectCount']
           home=(root/'index.html').read_text()
           assert home.count('data-model-film')==7, home.count('data-model-film')
           for name in ['MAS 52','MAS 56','Lariocab','FY70']:
@@ -52,16 +52,16 @@ jobs:
           assert 'mas56-film-wide.mp4' in mas52
           assert 'mas56-film-wide.mp4' not in mas56.split('<main id="main-content">',1)[1].split('</section>',1)[0]
           assert 'owner-mas56-' in mas56
-          print('PASS 16 routes / 8 cards / FY70 film / distinct MAS52+MAS56 / safe fallback')
+          print('PASS 15 routes / 8 cards / FY70 film / distinct MAS52+MAS56 / safe fallback')
           PY
           python3 - "$rootout" <<'PYROOT'
           import json, pathlib, sys
           root=pathlib.Path(sys.argv[1]); manifest=json.loads((root/'route-manifest.json').read_text())
-          assert manifest['count']==16 and manifest['redirectCount']==13
+          assert manifest['count']==15 and manifest['redirectCount']==17
           home=(root/'index.html').read_text()
           assert '<main' in home and '<h1' in home
           assert 'http-equiv="refresh"' not in home, 'Root must render directly, never redirect to /mobile/'
-          assert 'href="./como/"' in home and 'href="./collezione/"' in home
+          assert 'href="./heritage/"' in home and 'href="./como-dolcevita/"' in home and 'href="./artisanship/"' in home and 'href="./collezione/"' in home
           assert 'href="./mobile/site.css?v=v41-native-scroll"' in home
           assert 'src="./mobile/site.js?v=v41-native-scroll"' in home
           assert 'src="assets/brand/' in home
@@ -76,9 +76,9 @@ jobs:
           base='https://mconforzi.github.io/vellario-como-site/'
           expected=[base+(entry['slug']+'/' if entry['slug'] else '') for entry in manifest['routes']]
           assert actual==expected, 'Sitemap must list exactly 16 canonical routes in approved order'
-          assert len(set(actual))==16 and all('/mobile/' not in u for u in actual)
-          print('PASS sitemap.xml: XML valid / 16 canonical loc / zero redirects or mirrors')
-          print('PASS root 16 routes / 13 legacy redirects / working links / shared assets')
+          assert len(set(actual))==15 and all('/mobile/' not in u for u in actual)
+          print('PASS sitemap.xml: XML valid / 15 canonical loc / zero redirects or mirrors')
+          print('PASS root 15 routes / 17 legacy redirects / working links / shared assets')
           PYROOT
           cp -a "$out/." mobile/
           cp -a "$rootout/." .
@@ -88,11 +88,11 @@ jobs:
           set -euo pipefail
           git config user.name "VELLARIO build bot"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add mobile index.html route-manifest.json como dolce-vita collezione storia-tradizione design-saper-fare casa-vellario contatti collection history-legacy design-craftsmanship maison contact sitemap.xml
+          git add mobile index.html route-manifest.json heritage artisanship como-dolcevita como dolce-vita collezione storia-tradizione design-saper-fare casa-vellario contatti collection history-legacy design-craftsmanship maison contact sitemap.xml
           if git diff --cached --quiet; then
             echo "Static pages already up to date"
             exit 0
           fi
-          git commit -m "build(vellario): regenerate sixteen static pages from eight-model catalog [skip ci]"
+          git commit -m "build(vellario): regenerate seven pillars and eight models [skip ci]"
           git pull --rebase origin main
           git push origin HEAD:main
