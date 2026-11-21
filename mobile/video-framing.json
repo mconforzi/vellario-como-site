@@ -1,0 +1,665 @@
+{
+  "schemaVersion": 1,
+  "videos": {
+    "bled-mobile.mp4": {
+      "sha256": "1fb4213f34b505718e620aee205b325e322f8d4cc38f3db1859dccc191c4b3c5",
+      "poster": "bled-mobile-first-frame.jpg",
+      "zoom": 1.144,
+      "crop": [
+        2046,
+        952,
+        0,
+        64
+      ],
+      "resolution": "2046x1080"
+    },
+    "chillon-mobile.mp4": {
+      "sha256": "5e636d5b67c85411af4c2704afda8865bd3ab03289563af731f38f1881ae8ab0",
+      "poster": "chillon-mobile-first-frame.jpg",
+      "zoom": 1.0,
+      "crop": [
+        1920,
+        1080,
+        0,
+        0
+      ],
+      "resolution": "1920x1080"
+    },
+    "como-mobile.mp4": {
+      "sha256": "57242022b596c63ed08144472a1ae2c764fb20b2277d8317055dbcc87be8786e",
+      "poster": "como-mobile-first-frame.jpg",
+      "zoom": 1.389,
+      "crop": [
+        1840,
+        784,
+        80,
+        148
+      ],
+      "resolution": "1920x1080"
+    },
+    "fy70.mp4": {
+      "sha256": "8c4e16c9e3b9c43cf9f23452b04ec5fc22dd3d0b3c5074318b2f342439ca31fd",
+      "poster": "fy70-first-frame.jpg",
+      "zoom": 1.0,
+      "crop": [
+        720,
+        1280,
+        0,
+        0
+      ],
+      "resolution": "720x1280"
+    },
+    "geneva-mobile.mp4": {
+      "sha256": "c5b1689dd1ab376f8bfb0ba97e03645f0ad972b65685f617ccf24d1b2269eb45",
+      "poster": "geneva-mobile-first-frame.jpg",
+      "zoom": 1.0,
+      "crop": [
+        1920,
+        1080,
+        0,
+        0
+      ],
+      "resolution": "1920x1080"
+    },
+    "gran-marlin.mp4": {
+      "sha256": "26314ac95977e110aa98fe6d8a6fbd905f74e8d2f1506c325e012a3fb8ccf31b",
+      "poster": "gran-marlin-first-frame.jpg",
+      "zoom": 1.194,
+      "crop": [
+        1280,
+        608,
+        0,
+        56
+      ],
+      "resolution": "1280x720"
+    },
+    "grantender-hd.mp4": {
+      "sha256": "65655a45b9b5d7a903f0cd03f1a33f265fef45acc2fc4124dd9eaf9f65d748ae",
+      "poster": "grantender-hd-first-frame.jpg",
+      "zoom": 1.192,
+      "crop": [
+        720,
+        1082,
+        0,
+        100
+      ],
+      "resolution": "720x1280"
+    },
+    "mas36.mp4": {
+      "sha256": "f2c6fc84e3569a8bed2852af1de965d547f2c268a01e22827278fb3c47992713",
+      "poster": "mas36-first-frame.jpg",
+      "zoom": 1.207,
+      "crop": [
+        708,
+        480,
+        70,
+        0
+      ],
+      "resolution": "848x480"
+    },
+    "mas56-film-wide.mp4": {
+      "sha256": "55b3d5a6a8294a67e2547c1be28b34ce8fe502aeb81cbee7a210e028aba01fbf",
+      "poster": "mas56-film-wide-first-frame.jpg",
+      "zoom": 1.0,
+      "crop": [
+        1280,
+        716,
+        0,
+        2
+      ],
+      "resolution": "1280x720"
+    },
+    "owner-ai26-fy70-heroa-01.mp4": {
+      "sha256": "c380e61b5f1223892fe8b72e77695ae3467a5cab19ab4c1092637cdf2b78d0af",
+      "poster": "owner-ai26-fy70-heroa-01-first-frame.jpg",
+      "zoom": 1.0,
+      "crop": [
+        1390,
+        1920,
+        0,
+        0
+      ],
+      "resolution": "1390x1920"
+    },
+    "owner-ai26-fy70-heroa-02.mp4": {
+      "sha256": "0b3c2b162cdd832ff7f32882e51c3e7f6b6599f3fd89de4515dbb7645a0cc5ce",
+      "poster": "owner-ai26-fy70-heroa-02-first-frame.jpg",
+      "zoom": 1.201,
+      "crop": [
+        720,
+        1074,
+        0,
+        102
+      ],
+      "resolution": "720x1280"
+    },
+    "owner-ai26-fy70-herob-01.mp4": {
+      "sha256": "53250840d8814da1fdfbe2e4431207484c391ec26350f68561032d50a2969d06",
+      "poster": "owner-ai26-fy70-herob-01-first-frame.jpg",
+      "zoom": 1.0,
+      "crop": [
+        720,
+        1280,
+        0,
+        0
+      ],
+      "resolution": "720x1280"
+    },
+    "owner-ai26-fy70-herob-02.mp4": {
+      "sha256": "d1dd2a4067d94898124d521742e23d9fb9d5496d14ea76a960025ad11d130f50",
+      "poster": "owner-ai26-fy70-herob-02-first-frame.jpg",
+      "zoom": 1.195,
+      "crop": [
+        720,
+        1080,
+        0,
+        100
+      ],
+      "resolution": "720x1280"
+    },
+    "owner-ai26-fy70-unranked-01.mp4": {
+      "sha256": "1d8d0ab9336f12c4eedb429c82056116ed1ef52301f82c47752cbb91b68930b6",
+      "poster": "owner-ai26-fy70-unranked-01-first-frame.jpg",
+      "zoom": 1.0,
+      "crop": [
+        1080,
+        1736,
+        0,
+        154
+      ],
+      "resolution": "1080x1920"
+    },
+    "owner-ai26-fy70-unranked-02.mp4": {
+      "sha256": "b711932f4a9902df1e05af3910ca2cc7fab728407c8d7bfed400ad6157a69f84",
+      "poster": "owner-ai26-fy70-unranked-02-first-frame.jpg",
+      "zoom": 1.0,
+      "crop": [
+        720,
+        1280,
+        0,
+        0
+      ],
+      "resolution": "720x1280"
+    },
+    "owner-ai26-fy70-unranked-03.mp4": {
+      "sha256": "1939c4a44ffe97d0f87d732c534efe348440f81071d534cea58a0345dcf1156e",
+      "poster": "owner-ai26-fy70-unranked-03-first-frame.jpg",
+      "zoom": 1.0,
+      "crop": [
+        480,
+        640,
+        0,
+        0
+      ],
+      "resolution": "480x640"
+    },
+    "owner-ai26-fy70-unranked-04.mp4": {
+      "sha256": "73d2b9197380a788efb5e210c1cc8deaea0a93c108acfc92745f02f5a42a18c8",
+      "poster": "owner-ai26-fy70-unranked-04-first-frame.jpg",
+      "zoom": 1.195,
+      "crop": [
+        720,
+        1080,
+        0,
+        100
+      ],
+      "resolution": "720x1280"
+    },
+    "owner-ai26-fy70-unranked-05.mp4": {
+      "sha256": "64f055205c67d428b867a75a484acf3cf06ed6dfb6d63ae4494e605d205590b4",
+      "poster": "owner-ai26-fy70-unranked-05-first-frame.jpg",
+      "zoom": 1.202,
+      "crop": [
+        1080,
+        1610,
+        0,
+        154
+      ],
+      "resolution": "1080x1920"
+    },
+    "owner-ai26-fy70-unranked-06.mp4": {
+      "sha256": "fa3e0f7a317e8050a09938753acbca3e84223fbe58c3b7f74a06b988ed85d969",
+      "poster": "owner-ai26-fy70-unranked-06-first-frame.jpg",
+      "zoom": 1.0,
+      "crop": [
+        480,
+        760,
+        0,
+        68
+      ],
+      "resolution": "480x848"
+    },
+    "owner-ai26-gran-marlin-hero-01.mp4": {
+      "sha256": "2cd8fa3acfd257fe23e192872e6f7592c47e28354564c9e3cef74db9d7ccf52e",
+      "poster": "owner-ai26-gran-marlin-hero-01-first-frame.jpg",
+      "zoom": 1.21,
+      "crop": [
+        1280,
+        600,
+        0,
+        60
+      ],
+      "resolution": "1280x720"
+    },
+    "owner-ai26-gran-marlin-hero-02.mp4": {
+      "sha256": "d5be41c1ec049c1fca20733991ceb8b0c223a4cf5b7d2580fddaba5d29eb138d",
+      "poster": "owner-ai26-gran-marlin-hero-02-first-frame.jpg",
+      "zoom": 1.194,
+      "crop": [
+        1280,
+        608,
+        0,
+        56
+      ],
+      "resolution": "1280x720"
+    },
+    "owner-ai26-gran-marlin-heroa-01.mp4": {
+      "sha256": "4d45c94d5d50cae514f3e97860d540693da5fac36ec6ea39c4c8d4f52ea8a3b2",
+      "poster": "owner-ai26-gran-marlin-heroa-01-first-frame.jpg",
+      "zoom": 1.179,
+      "crop": [
+        1094,
+        720,
+        92,
+        0
+      ],
+      "resolution": "1280x720"
+    },
+    "owner-ai26-grantender-72-hero-01.mp4": {
+      "sha256": "0a71902b81466d81eb4cfcb7ad8a0f94678c4060b4d0511bc4c180e614b32315",
+      "poster": "owner-ai26-grantender-72-hero-01-first-frame.jpg",
+      "zoom": 1.195,
+      "crop": [
+        720,
+        1080,
+        0,
+        100
+      ],
+      "resolution": "720x1280"
+    },
+    "owner-ai26-grantender-72-unranked-01.mp4": {
+      "sha256": "48ae06878d5fa0f6ab1025ba67f419e1526af8c748046b94e2a5ec9fe57449c9",
+      "poster": "owner-ai26-grantender-72-unranked-01-first-frame.jpg",
+      "zoom": 1.19,
+      "crop": [
+        720,
+        1084,
+        0,
+        98
+      ],
+      "resolution": "720x1280"
+    },
+    "owner-ai26-grantender-72-unranked-02.mp4": {
+      "sha256": "78fc12f3d81a70a9326a659dbc833a47929d511dfeb6f0e5bfd919f4f84c380a",
+      "poster": "owner-ai26-grantender-72-unranked-02-first-frame.jpg",
+      "zoom": 1.191,
+      "crop": [
+        480,
+        718,
+        0,
+        66
+      ],
+      "resolution": "480x848"
+    },
+    "owner-ai26-lariocab-hero-01.mp4": {
+      "sha256": "9753f7a66df9a8fb60b2bc964bc509d4d507086ea0d63c14a13a304b38df0871",
+      "poster": "owner-ai26-lariocab-hero-01-first-frame.jpg",
+      "zoom": 1.0,
+      "crop": [
+        720,
+        1154,
+        0,
+        102
+      ],
+      "resolution": "720x1280"
+    },
+    "owner-ai26-mas-36-unranked-01.mp4": {
+      "sha256": "02ed99f8473c6c675d573108badd2834de11af90cd5481a7407cf9666f00f924",
+      "poster": "owner-ai26-mas-36-unranked-01-first-frame.jpg",
+      "zoom": 1.207,
+      "crop": [
+        708,
+        480,
+        70,
+        0
+      ],
+      "resolution": "848x480"
+    },
+    "owner-ai26-mas-52-unranked-01.mp4": {
+      "sha256": "2f8e9d03f7dd573dcf9e8d9c92e7f3c4c42ffed257e74349acf0266315b7708e",
+      "poster": "owner-ai26-mas-52-unranked-01-first-frame.jpg",
+      "zoom": 1.0,
+      "crop": [
+        1280,
+        718,
+        0,
+        2
+      ],
+      "resolution": "1280x720"
+    },
+    "owner-ai26-mas-52-unranked-02.mp4": {
+      "sha256": "d5ea1c129e8718c020df50232e3acadab63b679d2296630fe2cba087436e4c49",
+      "poster": "owner-ai26-mas-52-unranked-02-first-frame.jpg",
+      "zoom": 1.0,
+      "crop": [
+        1920,
+        1004,
+        0,
+        2
+      ],
+      "resolution": "1920x1006"
+    },
+    "owner-ai26-mas-52-unranked-03.mp4": {
+      "sha256": "31359e6904eba7b02aff96bc27b66dd4784c64964578c4ba82c25bb84bae9f19",
+      "poster": "owner-ai26-mas-52-unranked-03-first-frame.jpg",
+      "zoom": 1.0,
+      "crop": [
+        1280,
+        718,
+        0,
+        2
+      ],
+      "resolution": "1280x720"
+    },
+    "owner-ai26-mas-52-unranked-04.mp4": {
+      "sha256": "d6409ab99640876e09b2d4b9af5ae23d1b70af6b08e0370feac58510a052b869",
+      "poster": "owner-ai26-mas-52-unranked-04-first-frame.jpg",
+      "zoom": 1.0,
+      "crop": [
+        1280,
+        718,
+        0,
+        2
+      ],
+      "resolution": "1280x720"
+    },
+    "owner-ai26-mas-52-unranked-05.mp4": {
+      "sha256": "2aa1a0f7c1bf5ba15a7065472667944be78dd21aaf4a092b9bc6147fb92b25f0",
+      "poster": "owner-ai26-mas-52-unranked-05-first-frame.jpg",
+      "zoom": 1.0,
+      "crop": [
+        1280,
+        718,
+        0,
+        2
+      ],
+      "resolution": "1280x720"
+    },
+    "owner-ai26-mas-52-unranked-06.mp4": {
+      "sha256": "c3238c8d9e8e152c622b960bc02761009dfba4c852056188fd770df2d300ff47",
+      "poster": "owner-ai26-mas-52-unranked-06-first-frame.jpg",
+      "zoom": 1.204,
+      "crop": [
+        720,
+        1072,
+        0,
+        104
+      ],
+      "resolution": "720x1280"
+    },
+    "owner-ai26-mas-52-unranked-07.mp4": {
+      "sha256": "a44be6a68f0086a53af0dcef7648cb4d47b3945711171a4927f44276bf57cd83",
+      "poster": "owner-ai26-mas-52-unranked-07-first-frame.jpg",
+      "zoom": 1.0,
+      "crop": [
+        1280,
+        610,
+        0,
+        88
+      ],
+      "resolution": "1280x720"
+    },
+    "owner-ai26-mas-52-unranked-08.mp4": {
+      "sha256": "618e16d38f0be57f38b9e09640d6039142545b29dc06de3d95819c2918387bad",
+      "poster": "owner-ai26-mas-52-unranked-08-first-frame.jpg",
+      "zoom": 1.077,
+      "crop": [
+        1280,
+        674,
+        0,
+        24
+      ],
+      "resolution": "1280x720"
+    },
+    "owner-ai26-mas-52-unranked-09.mp4": {
+      "sha256": "1cab9020f7bb05f162ff6ec2a7afc89c89bc73cfc27cd0560babc73a11ba2e29",
+      "poster": "owner-ai26-mas-52-unranked-09-first-frame.jpg",
+      "zoom": 1.334,
+      "crop": [
+        1280,
+        544,
+        0,
+        88
+      ],
+      "resolution": "1280x720"
+    },
+    "owner-ai26-mas-52-unranked-10.mp4": {
+      "sha256": "cc19b9b06a1cb2fed2d8469cfedddda54fa94ded95031745ef63f9b473b7c70f",
+      "poster": "owner-ai26-mas-52-unranked-10-first-frame.jpg",
+      "zoom": 1.334,
+      "crop": [
+        1280,
+        544,
+        0,
+        88
+      ],
+      "resolution": "1280x720"
+    },
+    "owner-ai26-mas-52-unranked-11.mp4": {
+      "sha256": "b841dad620c11d27c8f84f98747a2400db17f99c8006b44c27ff7d9bd0737909",
+      "poster": "owner-ai26-mas-52-unranked-11-first-frame.jpg",
+      "zoom": 1.0,
+      "crop": [
+        1280,
+        720,
+        0,
+        0
+      ],
+      "resolution": "1280x720"
+    },
+    "owner-ai26-mas-56-hero-01.mp4": {
+      "sha256": "08354922aaa8aad6fa133ef98b8405096548d1afb3bd5ee9da6469b773bb80e8",
+      "poster": "owner-ai26-mas-56-hero-01-first-frame.jpg",
+      "zoom": 1.195,
+      "crop": [
+        720,
+        1080,
+        0,
+        100
+      ],
+      "resolution": "720x1280"
+    },
+    "owner-ai26-mas-56-heroa-01.mp4": {
+      "sha256": "fde83183d54fcb7bc3482db3b7dce7540f33ad5481218cd06f3c661b77d6fe16",
+      "poster": "owner-ai26-mas-56-heroa-01-first-frame.jpg",
+      "zoom": 1.0,
+      "crop": [
+        848,
+        480,
+        0,
+        0
+      ],
+      "resolution": "848x480"
+    },
+    "owner-ai26-mas-56-unranked-01.mp4": {
+      "sha256": "d71df69252cad5ed56290f2117735561f21e17de7722a6131b2992554e6361d2",
+      "poster": "owner-ai26-mas-56-unranked-01-first-frame.jpg",
+      "zoom": 1.0,
+      "crop": [
+        1280,
+        720,
+        0,
+        0
+      ],
+      "resolution": "1280x720"
+    },
+    "owner-ai26-mas-56-unranked-02.mp4": {
+      "sha256": "30d64fd3a5440191d54dfdf048af9f842c49b85047078b92561912414afb13c5",
+      "poster": "owner-ai26-mas-56-unranked-02-first-frame.jpg",
+      "zoom": 1.19,
+      "crop": [
+        720,
+        1084,
+        0,
+        98
+      ],
+      "resolution": "720x1280"
+    },
+    "owner-ai26-quantum-999-unranked-01.mp4": {
+      "sha256": "737f721187483863d004bcdbad40e1373c89c62aecce230aca89006d2ffef8e3",
+      "poster": "owner-ai26-quantum-999-unranked-01-first-frame.jpg",
+      "zoom": 1.293,
+      "crop": [
+        720,
+        998,
+        0,
+        140
+      ],
+      "resolution": "720x1280"
+    },
+    "owner-ai26-quantum-999-unranked-02.mp4": {
+      "sha256": "ee07bf546d284cd5b6070ce7514bbece9f522812a197ac15828a58e5dd5abe97",
+      "poster": "owner-ai26-quantum-999-unranked-02-first-frame.jpg",
+      "zoom": 1.293,
+      "crop": [
+        720,
+        998,
+        0,
+        140
+      ],
+      "resolution": "720x1280"
+    },
+    "owner-ai26-quantum-999-unranked-03.mp4": {
+      "sha256": "7eabb035713972761ad2ca8e588159c3e22d427ebbc8b1bb5bf221c729e15028",
+      "poster": "owner-ai26-quantum-999-unranked-03-first-frame.jpg",
+      "zoom": 1.291,
+      "crop": [
+        480,
+        662,
+        0,
+        92
+      ],
+      "resolution": "480x848"
+    },
+    "owner-fy70-01.mp4": {
+      "sha256": "42aa79e333c4e668a1a8cb1736fd7038eb56003c01ad5870fd1ceef53905c48d",
+      "poster": "owner-fy70-01-first-frame.jpg",
+      "zoom": 1.195,
+      "crop": [
+        720,
+        1080,
+        0,
+        100
+      ],
+      "resolution": "720x1280"
+    },
+    "owner-fy70-02.mp4": {
+      "sha256": "c4345ecd78d01d03a6f41513ba2c9636691bac26a3c3899bdfcdce8a65dd730e",
+      "poster": "owner-fy70-02-first-frame.jpg",
+      "zoom": 1.195,
+      "crop": [
+        720,
+        1080,
+        0,
+        100
+      ],
+      "resolution": "720x1280"
+    },
+    "owner-granmarlin-01.mp4": {
+      "sha256": "709190c2f443c60e65dd0ff9fa8314cbd936d69d5a2dc977cfbf5dcaff8ed28f",
+      "poster": "owner-granmarlin-01-first-frame.jpg",
+      "zoom": 1.194,
+      "crop": [
+        1280,
+        608,
+        0,
+        56
+      ],
+      "resolution": "1280x720"
+    },
+    "owner-grantender-01.mp4": {
+      "sha256": "2aeb4da1a2f08b7ca6e67fb2d07bddc2c02825454d27e1c2f8c789552d83ff13",
+      "poster": "owner-grantender-01-first-frame.jpg",
+      "zoom": 1.195,
+      "crop": [
+        720,
+        1080,
+        0,
+        100
+      ],
+      "resolution": "720x1280"
+    },
+    "owner-mas52-01.mp4": {
+      "sha256": "f1a710f2fbaf25fa25de5337d85ff218aee5e3f608e6b0a3b0592ac198b755e2",
+      "poster": "owner-mas52-01-first-frame.jpg",
+      "zoom": 1.0,
+      "crop": [
+        1280,
+        718,
+        0,
+        2
+      ],
+      "resolution": "1280x720"
+    },
+    "owner-mas52-02.mp4": {
+      "sha256": "4e027ad15266c4fc0a0c0fa5dc303dfd9fbf604b75cacb65daeb606996c4cd5f",
+      "poster": "owner-mas52-02-first-frame.jpg",
+      "zoom": 1.0,
+      "crop": [
+        1280,
+        718,
+        0,
+        2
+      ],
+      "resolution": "1280x720"
+    },
+    "owner-mas56-01.mp4": {
+      "sha256": "dacd8c255948df07b2fd0ba24a97fcbda1141a66fa91fb2710fb7e7ac0beaeb1",
+      "poster": "owner-mas56-01-first-frame.jpg",
+      "zoom": 1.195,
+      "crop": [
+        720,
+        1080,
+        0,
+        100
+      ],
+      "resolution": "720x1280"
+    },
+    "owner-mas56-02.mp4": {
+      "sha256": "fc1e55dafdfa1631ddff87242bc599a99acdc2ab6275a3da374ff0732a665851",
+      "poster": "owner-mas56-02-first-frame.jpg",
+      "zoom": 1.0,
+      "crop": [
+        1280,
+        720,
+        0,
+        0
+      ],
+      "resolution": "1280x720"
+    },
+    "owner-quantum-01.mp4": {
+      "sha256": "a78cd2596fe9c3e22b2d563b7912ffaf20daeb93e560b91244cdf11fe6a04b88",
+      "poster": "owner-quantum-01-first-frame.jpg",
+      "zoom": 1.293,
+      "crop": [
+        720,
+        998,
+        0,
+        140
+      ],
+      "resolution": "720x1280"
+    },
+    "quantum-hd.mp4": {
+      "sha256": "f1b197fd56177d9b60c3bbe60a2d3af07c52a5cf5716e03281ee370127e927ef",
+      "poster": "quantum-hd-first-frame.jpg",
+      "zoom": 1.293,
+      "crop": [
+        720,
+        998,
+        0,
+        140
+      ],
+      "resolution": "720x1280"
+    }
+  }
+}
