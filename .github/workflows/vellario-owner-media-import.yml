@@ -50,7 +50,10 @@ jobs:
           target = pathlib.Path("assets/vario")
           target.mkdir(parents=True, exist_ok=True)
           def execute(*args):
-              subprocess.run(args, stdout=subprocess.DEVNULL, stderr=subprocess.PIPE, check=True)
+              completed=subprocess.run(args, stdout=subprocess.DEVNULL, stderr=subprocess.PIPE)
+              if completed.returncode:
+                  details=completed.stderr.decode("utf-8",errors="replace")[-4500:]
+                  raise RuntimeError("FFmpeg failed on "+str(args[-1])+" (exit "+str(completed.returncode)+"): "+details)
           def inspect(src):
               v = subprocess.check_output(["ffprobe","-v","error","-select_streams","v:0","-show_entries","stream=codec_name,width,height","-of","json",str(src)])
               s = json.loads(v)["streams"][0]
@@ -78,7 +81,7 @@ jobs:
                       if meta["codec_name"]=="h264" and src.suffix.lower()==".mp4":
                           execute("ffmpeg","-hide_banner","-loglevel","error","-y","-i",str(src),"-map","0:v:0","-an","-c:v","copy","-movflags","+faststart",str(dest))
                       else:
-                          execute("ffmpeg","-hide_banner","-loglevel","error","-y","-i",str(src),"-map","0:v:0","-an","-vf","scale=1920:1920:force_original_aspect_ratio=decrease","-c:v","libx264","-preset","veryfast","-crf","24","-pix_fmt","yuv420p","-movflags","+faststart",str(dest))
+                          execute("ffmpeg","-hide_banner","-loglevel","error","-y","-i",str(src),"-map","0:v:0","-an","-vf","scale=1920:1920:force_original_aspect_ratio=decrease:force_divisible_by=2","-c:v","libx264","-preset","veryfast","-crf","24","-pix_fmt","yuv420p","-movflags","+faststart",str(dest))
                       poster_name=dest.stem+"-first-frame.jpg"
                       execute("ffmpeg","-hide_banner","-loglevel","error","-y","-i",str(dest),"-frames:v","1","-vf","scale=1920:1920:force_original_aspect_ratio=decrease","-q:v","4",str(target/poster_name))
                       newmeta=inspect(dest)
