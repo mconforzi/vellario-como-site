@@ -37,7 +37,9 @@ jobs:
           assert manifest['count']==15, manifest['count']
           assert manifest['redirectCount']==17, manifest['redirectCount']
           home=(root/'index.html').read_text()
-          assert home.count('data-model-film')==7, home.count('data-model-film')
+          catalog=json.loads(pathlib.Path('mobile/catalog.json').read_text())
+          expected_films=sum(bool(m.get('video')) for m in catalog['models'])
+          assert home.count('data-model-film')==expected_films, (home.count('data-model-film'),expected_films)
           for name in ['MAS 52','MAS 56','Lariocab','FY70']:
               assert name in home, name
           for r in manifest['routes']:

@@ -168,7 +168,8 @@ jobs:
           assert len(c["models"])==8
           assert len(json.loads((out/"route-manifest.json").read_text())["routes"])==15
           home=(out/"index.html").read_text()
-          assert home.count("data-model-film")==7
+          expected_films=sum(bool(m.get("video")) for m in c["models"])
+          assert home.count("data-model-film")==expected_films, (home.count("data-model-film"),expected_films)
           for m in c["models"]:
               page=(out/"collezione"/m["id"]/"index.html").read_text()
               assert m["name"] in page
