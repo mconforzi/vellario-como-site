@@ -405,6 +405,8 @@ const filename=url=>{
  catch{return String(url||'').split('/').pop().split('?')[0]}
 };
 function applyNativeZoom(video,record){
+ // Preserve the previously approved opening composition on desktop and mobile.
+ if(video.hasAttribute('data-opening'))return;
  const zoom=Number(record?.zoom)||1;
  const frame=video.closest('.film-frame,.model-card,.vellario-atlas-tile');
  if(!frame||zoom<1.035||zoom>1.53)return;
