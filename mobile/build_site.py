@@ -23,7 +23,24 @@ def site_path(slug, depth):
 def root_file(filename, depth):
     return ('../' * depth or './') + filename
 
-def section_media(media, depth, model_lookup, lakes, caption='', hero=False, mobile_media=None):
+def model_film_variant(model, variation=0):
+    """Choose a genuine file belonging to the requested model; deterministic rotation.
+
+    HERO is the main film; subsequent original films avoid repeated footage within
+    the same page. Never take a film from a different model's Dropbox folder.
+    """
+    if not model.get('video'):
+        return None
+    clips = [{'video':model['video'],'poster':model.get('videoPoster') or model.get('poster'),
+              'resolution':model.get('videoResolution') or ''}]
+    used = {model['video']}
+    for extra in model.get('extraVideos',[]):
+        if extra.get('video') and extra['video'] not in used:
+            clips.append(extra)
+            used.add(extra['video'])
+    return clips[max(0, variation) % len(clips)]
+
+def section_media(media, depth, model_lookup, lakes, caption='', hero=False, mobile_media=None, variation=0):
     if not media:
         return ''
     eager = 'eager' if hero else 'lazy'
@@ -31,15 +48,17 @@ def section_media(media, depth, model_lookup, lakes, caption='', hero=False, mob
     if media.startswith('model:'):
         mid = media.split(':', 1)[1]
         m = model_lookup[mid]
-        poster = asset(m.get('videoPoster') or m['poster'], depth)
-        video = asset(m['video'], depth) if m.get('video') else ''
-        portrait = ' film-frame--portrait' if m.get('videoResolution') and m['videoResolution'].startswith('720×1280') else ''
+        clip = model_film_variant(m, variation)
+        poster = asset((clip.get('poster') if clip else None) or m['poster'], depth)
+        video = asset(clip['video'], depth) if clip else ''
+        portrait = ' film-frame--portrait' if clip and (clip.get('resolution') or '').startswith('720×1280') else ''
         mobile_attr = ''
         if mobile_media and mobile_media.startswith('model:'):
             mm = model_lookup[mobile_media.split(':', 1)[1]]
-            if mm.get('video'):
-                mobile_video = asset(mm['video'], depth)
-                mobile_poster = asset(mm.get('videoPoster') or mm['poster'], depth)
+            mobile_clip = model_film_variant(mm, variation)
+            if mobile_clip:
+                mobile_video = asset(mobile_clip['video'], depth)
+                mobile_poster = asset(mobile_clip.get('poster') or mm['poster'], depth)
                 mobile_attr = f' data-src-mobile="{esc(mobile_video)}" data-poster-mobile="{esc(mobile_poster)}" data-mobile-name="{esc(mm["name"])}"'
         film = (f'<video data-film data-src="{esc(video)}"{mobile_attr} muted playsinline loop preload="none" '
                 f'poster="{esc(poster)}" aria-label="Original study film for {esc(m["name"])}"></video>') if video else ''
@@ -232,12 +251,12 @@ def award_study(page_id, depth):
 
 
 
-def curated_chapter(page, section, index, depth, data, model_lookup):
+def curated_chapter(page, section, index, depth, data, model_lookup, variation=0):
     """Render actual editorial content inside one chosen cinematic composition."""
     layout = section['layout']
     media_name = section.get('media')
     media = section_media(media_name, depth, model_lookup, data['lakeSources'],
-                          mobile_media=section.get('mobileMedia')) if media_name else ''
+                          mobile_media=section.get('mobileMedia'), variation=variation) if media_name else ''
     secondary = ''
     secondary_id = section.get('secondaryMedia')
     if secondary_id:
@@ -295,9 +314,16 @@ def curated_chapter(page, section, index, depth, data, model_lookup):
 
 def editorial_page(page, depth, data, model_lookup, models):
     out = [hero(page, depth, model_lookup, data['lakeSources'], data_opening(data, models))]
+    # Each hero uses film 0; repeating the same yacht within the page selects its
+    # next actual original film. The horizontal collection cards stay model-exact.
+    media_cursor = {page.get('hero'):1} if str(page.get('hero','')).startswith('model:') else {}
     for i, section in enumerate(page['sections'], 1):
+        media_name = section.get('media')
+        variation = media_cursor.get(media_name,0) if str(media_name or '').startswith('model:') else 0
+        if str(media_name or '').startswith('model:'):
+            media_cursor[media_name] = variation + 1
         if section.get('layout'):
-            out.append(curated_chapter(page, section, i, depth, data, model_lookup))
+            out.append(curated_chapter(page, section, i, depth, data, model_lookup, variation=variation))
             continue
         has_media = bool(section.get('media'))
         is_collection = section.get('kind') == 'collection'
@@ -335,7 +361,7 @@ def editorial_page(page, depth, data, model_lookup, models):
         out.append('</div></div>')
         if has_media:
             out.append('<div class="chapter-media">' +
-                       section_media(section['media'], depth, model_lookup, data['lakeSources'], mobile_media=section.get('mobileMedia')) + '</div>')
+                       section_media(section['media'], depth, model_lookup, data['lakeSources'], mobile_media=section.get('mobileMedia'), variation=variation) + '</div>')
         if is_collection:
             out.append('<div class="chapter-collection">' + model_cards(depth, models, data['modelCopy']) + '</div>')
         out.append('</section>')

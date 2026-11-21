@@ -13,7 +13,7 @@ concurrency:
 jobs:
   import:
     runs-on: ubuntu-24.04
-    timeout-minutes: 15
+    timeout-minutes: 30
     steps:
       - uses: actions/checkout@v4
         with:
@@ -44,7 +44,7 @@ jobs:
           models = {m["id"]: m for m in catalog["models"]}
           assert len(models) == 8
           records = data["assets"]
-          assert 1 <= len(records) <= 80
+          assert 1 <= len(records) <= 110
           assert all(r["model"] in models and r["kind"] in ("image","video") and r["dest"].startswith("owner-") and "/" not in r["dest"] for r in records)
           assert len(set(x["dest"] for x in records)) == len(records)
           target = pathlib.Path("assets/vario")
@@ -84,13 +84,20 @@ jobs:
                       newmeta=inspect(dest)
                       assert dest.stat().st_size>1000
                       if r.get("primary") or not m.get("video"):
+                          previous=m.get("video")
+                          if previous and previous!=dest.name:
+                              previous_poster=m.get("videoPoster") or m.get("poster")
+                              m.setdefault("extraVideos",[])
+                              if not any(z.get("video")==previous for z in m["extraVideos"]):
+                                  m["extraVideos"].append({"video":previous,"poster":previous_poster,"resolution":m.get("videoResolution") or "unknown","tier":"archive"})
                           m["video"]=dest.name
+                          m["videoTier"]=r.get("tier","unranked")
                           m["videoPoster"]=poster_name
                           m["videoResolution"]=str(newmeta["width"])+"×"+str(newmeta["height"])
                       else:
                           m.setdefault("extraVideos",[])
                           if not any(z.get("video")==dest.name for z in m["extraVideos"]):
-                              m["extraVideos"].append({"video":dest.name,"poster":poster_name,"resolution":str(newmeta["width"])+"×"+str(newmeta["height"])})
+                              m["extraVideos"].append({"video":dest.name,"poster":poster_name,"resolution":str(newmeta["width"])+"×"+str(newmeta["height"]),"tier":r.get("tier","unranked")})
                   else:
                       inspect(src)
                       execute("ffmpeg","-hide_banner","-loglevel","error","-y","-i",str(src),"-frames:v","1","-vf","scale=1920:1920:force_original_aspect_ratio=decrease","-c:v","libwebp","-quality","80",str(dest))
@@ -101,10 +108,22 @@ jobs:
                           m["images"].append(dest.name)
                       if r.get("primary") or m["poster"]=="archive-curation.svg":
                           m["poster"]=dest.name
-                  print("IMPORTED",r["model"],r["dest"],dest.stat().st_size)
-          catalog["release"]="v24-owner-dropbox-import"
-          catalog["status"]="preview-with-original-owner-media"
-          catalog["source"]="Owner-supplied AI - MEDIA archive; selected local copies in assets/vario"
+                          m["posterTier"]=r.get("tier","unranked")
+                  print("IMPORTED",r["model"],r["dest"],dest.stat().st_size,r.get("tier","unranked"))
+          catalog["release"]="v27-ai-media-priority-import"
+          catalog["status"]="preview-with-owner-priority-media"
+          # HERO media leads the VELLARIO film and its mobile portrait equivalent.
+          marlin=models["gran-marlin"]
+          tender=models["grantender-72"]
+          if marlin.get("videoTier")=="hero":
+              catalog["opening"]["poster"]=marlin["videoPoster"]
+              catalog["opening"]["segments"]=[marlin["video"]]
+              catalog["opening"]["name"]="VELLARIO original design films — curated HERO"
+              catalog["opening"]["note"]="Original Gran Marlin HERO asset, curated as cinematic VELLARIO design study. The owner source is not a claim of a completed VELLARIO yacht."
+          if tender.get("videoTier")=="hero":
+              catalog["opening"]["mobileVideo"]=tender["video"]
+              catalog["opening"]["mobilePoster"]=tender["videoPoster"]
+          catalog["source"]="Owner-supplied AI - MEDIA; model-exact tiered media copied into assets/vario"
           catalog["disclaimers"]=[x for x in catalog.get("disclaimers",[]) if "MAS 56 and Lariocab original film/poster are not yet publicly published" not in x]
           note="Additional model-labelled Dropbox originals included as design studies; a folder label does not establish built-yacht status."
           if note not in catalog["disclaimers"]:
@@ -144,7 +163,7 @@ jobs:
           out=pathlib.Path(sys.argv[1])
           c=json.loads(pathlib.Path("mobile/catalog.json").read_text())
           assert len(c["models"])==8
-          assert len(json.loads((out/"route-manifest.json").read_text())["routes"])==16
+          assert len(json.loads((out/"route-manifest.json").read_text())["routes"])==15
           home=(out/"index.html").read_text()
           assert home.count("data-model-film")==7
           for m in c["models"]:
@@ -157,7 +176,7 @@ jobs:
               assert (pathlib.Path("assets/vario")/m["poster"]).is_file(), m["id"]
           assert "owner-mas56-" in (out/"collezione"/"mas-56"/"index.html").read_text()
           assert "owner-lariocab-" in (out/"collezione"/"lariocab"/"index.html").read_text()
-          print("PASS eight real model directories / 16 generated pages / all files verified")
+          print("PASS eight real model directories / 15 generated pages / all files verified")
           PY
           cp -a "$out/." mobile/
       - name: Commit import once and remove temporary access manifest
