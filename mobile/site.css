@@ -135,27 +135,9 @@ body.menu-open{overflow:hidden}
 }
 
 
-/* VELLARIO V13 — strict section-by-section vertical scroll, desktop and iOS.
-   JavaScript enforces one section per gesture; CSS remains the accessible fallback. */
-html{
- scroll-snap-type:y mandatory!important;
- scroll-padding-top:0;
- overscroll-behavior-y:contain;
-}
-main > .cinema-hero,
-main > .editorial-section,
-main > .gallery-chapter,
-main > .collection-after,
-main > .next-chapter,
-body > .site-footer{
- scroll-snap-align:start;
- scroll-snap-stop:always;
- scroll-margin-top:0;
-}
-@media(prefers-reduced-motion:reduce){
- html{scroll-snap-type:y mandatory!important;scroll-behavior:auto!important}
-}
-
+/* VELLARIO V41 — Native vertical scrolling for all cinematic and curated chapters.
+   Horizontal yacht rail snap remains scoped to .yacht-rail-track. */
+html { scroll-snap-type:none!important; overscroll-behavior-y:auto; }
 
 /* VELLARIO V14 — full-height editorial frames, exact top title/bottom visual layout. */
 body[data-page="home"] main > .chapter--visual,
