@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "release": "v27-ai-media-priority-import",
+  "release": "v29-exact-frame-autopreload",
   "status": "preview-with-owner-priority-media",
   "title": "VELLARIO · COMO",
   "source": "Owner-supplied AI - MEDIA; model-exact tiered media copied into assets/vario",
@@ -306,7 +306,7 @@
         },
         {
           "video": "fy70.mp4",
-          "poster": "owner-ai26-fy70-hero-01.webp",
+          "poster": "fy70-first-frame.jpg",
           "resolution": "unknown",
           "tier": "archive"
         },

@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "release": "v26-seven-sections",
+  "release": "v29-exact-frame-autopreload",
   "status": "editorial-curation-working-preview",
   "locale": "en",
   "date": "2026-11-20",
@@ -48,7 +48,7 @@
     "como": {
       "place": "Lake Como, Italy",
       "video": "como-mobile.mp4",
-      "poster": "como-poster.jpg",
+      "poster": "como-mobile-first-frame.jpg",
       "source": "https://commons.wikimedia.org/wiki/File:Lake_Como_Drone_Views_-_DJI_Inspire_2_%26_Zenmuse_X5S.webm",
       "author": "Electric Life",
       "license": "CC BY 3.0",
@@ -59,7 +59,7 @@
     "bled": {
       "place": "Lake Bled, Slovenia — not Lake Como",
       "video": "bled-mobile.mp4",
-      "poster": "bled-poster.jpg",
+      "poster": "bled-mobile-first-frame.jpg",
       "source": "https://commons.wikimedia.org/wiki/File:Slovenia_-_Lake_Bled_-_4K_drone_video.webm",
       "author": "Danny Rest",
       "license": "CC BY 3.0",
@@ -70,7 +70,7 @@
     "geneva": {
       "place": "Lake Geneva, Switzerland — not Lake Como",
       "video": "geneva-mobile.mp4",
-      "poster": "geneva-poster.jpg",
+      "poster": "geneva-mobile-first-frame.jpg",
       "source": "https://commons.wikimedia.org/wiki/File:Above_Geneva_Lake_083656.webm",
       "author": "Quahadi",
       "license": "CC BY-SA 3.0",
@@ -81,7 +81,7 @@
     "chillon": {
       "place": "Chillon, Lake Geneva — not Lake Como",
       "video": "chillon-mobile.mp4",
-      "poster": "chillon-poster.jpg",
+      "poster": "chillon-mobile-first-frame.jpg",
       "source": "https://commons.wikimedia.org/wiki/File:Chillon_Castle.webm",
       "author": "SimonWaldherr",
       "license": "CC BY-SA 4.0",

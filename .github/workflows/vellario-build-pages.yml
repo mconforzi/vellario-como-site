@@ -16,12 +16,20 @@ concurrency:
 jobs:
   build-and-publish:
     runs-on: ubuntu-24.04
-    timeout-minutes: 5
+    timeout-minutes: 12
     steps:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 1
           persist-credentials: true
+      - name: Verify and generate first-frame media with native black border scan
+        shell: bash
+        run: |
+          set -euo pipefail
+          command -v ffmpeg
+          command -v ffprobe
+          python3 -m py_compile mobile/prepare_video_media.py
+          python3 mobile/prepare_video_media.py
       - name: Build canonical 15 pages with Python standard library
         shell: bash
         run: |
@@ -61,6 +69,12 @@ jobs:
           assert len(mobile)==len(set(mobile)), ('Repeated homepage portrait film',mobile)
           assert not(set(desktop)&set(mobile)), ('Homepage clips reused across formats',set(desktop)&set(mobile))
           assert 'portrait-still' in home and 'model-card--portrait' in home
+          framing=json.loads(pathlib.Path('mobile/video-framing.json').read_text())
+          assert len(framing['videos'])>=55
+          for name,meta in framing['videos'].items():
+              directory='assets/lake-placeholders' if name.endswith('-mobile.mp4') else 'assets/vario'
+              assert (pathlib.Path(directory)/meta['poster']).is_file(), name
+          print('PASS first-frame coverage: all 55+ source video posters')
           print('PASS V28 homepage unique films and aspect-aware media markup')
           print('PASS 15 routes / 8 cards / FY70 film / distinct MAS52+MAS56 / safe fallback')
           PY
@@ -72,12 +86,12 @@ jobs:
           assert '<main' in home and '<h1' in home
           assert 'http-equiv="refresh"' not in home, 'Root must render directly, never redirect to /mobile/'
           assert 'href="./heritage/"' in home and 'href="./como-dolcevita/"' in home and 'href="./artisanship/"' in home and 'href="./collezione/"' in home
-          assert 'href="./mobile/site.css?v=v28-aspect-unique"' in home
-          assert 'src="./mobile/site.js?v=v28-aspect-unique"' in home
+          assert 'href="./mobile/site.css?v=v29-film-ready"' in home
+          assert 'src="./mobile/site.js?v=v29-film-ready"' in home
           assert 'src="assets/brand/' in home
           for entry in manifest['routes']:
               page=(root/entry['path']).read_text()
-              assert '<main' in page and '/mobile/site.js?v=v28-aspect-unique' in page, entry['slug']
+              assert '<main' in page and '/mobile/site.js?v=v29-film-ready' in page, entry['slug']
               assert ('../'*(len(pathlib.Path(entry['path']).parts)-1)+'assets/') in page, entry['slug']
           from xml.etree import ElementTree as ET
           ns={'s':'http://www.sitemaps.org/schemas/sitemap/0.9'}
@@ -98,7 +112,7 @@ jobs:
           set -euo pipefail
           git config user.name "VELLARIO build bot"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add mobile index.html route-manifest.json heritage artisanship como-dolcevita como dolce-vita collezione storia-tradizione design-saper-fare casa-vellario contatti collection history-legacy design-craftsmanship maison contact sitemap.xml
+          git add mobile assets/vario/*-first-frame.jpg assets/lake-placeholders/*-first-frame.jpg index.html route-manifest.json heritage artisanship como-dolcevita como dolce-vita collezione storia-tradizione design-saper-fare casa-vellario contatti collection history-legacy design-craftsmanship maison contact sitemap.xml
           if git diff --cached --quiet; then
             echo "Static pages already up to date"
             exit 0
