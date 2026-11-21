@@ -86,7 +86,14 @@ jobs:
           print('PASS first-frame coverage: all 55+ source video posters')
           ui_script=pathlib.Path('mobile/site.js').read_text()
           assert "if(video.hasAttribute('data-opening'))return;" in ui_script
-          assert 'data-opening' in home and 'v30-home-opening-original' in home
+          assert 'data-opening' in home and 'v31-opening-safe-area' in home
+          assert home.count('class="opening-backdrop"')==1
+          assert 'data-src-mobile=' in home
+          css=pathlib.Path('mobile/site.css').read_text()
+          assert '.film-frame--opening > video[data-opening]' in css
+          assert 'clip-path:inset(8.333334% 0 8.333334% 0)' in css
+          assert 'aspect-ratio:9/16!important' in css
+          assert 'openingBackdrop.src=video.dataset.posterMobile' in ui_script
           print('PASS original opening-film framing restored; other clips retain black-bar crop')
           print('PASS V28 homepage unique films and aspect-aware media markup')
           print('PASS 15 routes / 8 cards / FY70 film / distinct MAS52+MAS56 / safe fallback')
@@ -99,12 +106,12 @@ jobs:
           assert '<main' in home and '<h1' in home
           assert 'http-equiv="refresh"' not in home, 'Root must render directly, never redirect to /mobile/'
           assert 'href="./heritage/"' in home and 'href="./como-dolcevita/"' in home and 'href="./artisanship/"' in home and 'href="./collezione/"' in home
-          assert 'href="./mobile/site.css?v=v30-home-opening-original"' in home
-          assert 'src="./mobile/site.js?v=v30-home-opening-original"' in home
+          assert 'href="./mobile/site.css?v=v31-opening-safe-area"' in home
+          assert 'src="./mobile/site.js?v=v31-opening-safe-area"' in home
           assert 'src="assets/brand/' in home
           for entry in manifest['routes']:
               page=(root/entry['path']).read_text()
-              assert '<main' in page and '/mobile/site.js?v=v30-home-opening-original' in page, entry['slug']
+              assert '<main' in page and '/mobile/site.js?v=v31-opening-safe-area' in page, entry['slug']
               assert ('../'*(len(pathlib.Path(entry['path']).parts)-1)+'assets/') in page, entry['slug']
           from xml.etree import ElementTree as ET
           ns={'s':'http://www.sitemaps.org/schemas/sitemap/0.9'}

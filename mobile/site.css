@@ -1247,3 +1247,38 @@ transform:none!important;filter:none!important}
   grid-row:auto;min-height:min(175vw,850px)!important;
  }
 }
+
+/* VELLARIO V31 · Opening film: complete bow in view, no black bars.
+   Only the first home hero uses a foreground uncropped video and a blurred backing frame. */
+.cinema-hero--home .film-frame--opening{
+ position:absolute;inset:0;isolation:isolate;overflow:hidden;background:#07140f
+}
+.cinema-hero--home .film-frame--opening > .opening-backdrop{
+ position:absolute;inset:-14%;width:128%;height:128%;
+ object-fit:cover;object-position:center;
+ transform:scale(1.14)!important;
+ filter:blur(28px) brightness(.53);z-index:0;pointer-events:none
+}
+.cinema-hero--home .film-frame--opening > .media-poster,
+.cinema-hero--home .film-frame--opening > video[data-opening]{
+ position:absolute!important;inset:auto!important;
+ top:50%!important;left:50%!important;
+ width:min(100%,177.77778svh)!important;
+ height:auto!important;aspect-ratio:16/9!important;
+ max-width:100%!important;max-height:100%!important;
+ object-fit:contain!important;object-position:center!important;
+ transform:translate(-50%,-50%)!important;
+ transform-origin:center center!important;
+ filter:none!important;will-change:auto!important;
+ /* Gran Marlin desktop source: 1280x720; native bars 60px top/bottom. */
+ clip-path:inset(8.333334% 0 8.333334% 0);
+}
+@media(max-width:750px){
+ .cinema-hero--home .film-frame--opening > .media-poster,
+ .cinema-hero--home .film-frame--opening > video[data-opening]{
+  width:min(100%,56.25svh)!important;
+  aspect-ratio:9/16!important;
+  /* GranTender mobile source: 720x1280; native bars 100px top/bottom. */
+  clip-path:inset(7.8125% 0 7.8125% 0)
+ }
+}

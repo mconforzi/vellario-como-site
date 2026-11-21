@@ -197,6 +197,7 @@ def hero(page, depth, model_lookup, lakes, opening, content_model=None, used=Non
             mobile_attr = f' data-src-mobile="{esc(mv)}" data-poster-mobile="{esc(mp)}"'
         media = (
             '<figure class="film-frame film-frame--opening" data-media-frame>'
+            f'<img class="opening-backdrop" src="{esc(poster)}" alt="" aria-hidden="true" loading="eager" decoding="async">'
             f'<img class="media-poster" src="{esc(poster)}" alt="Original VELLARIO yacht design film" loading="eager" decoding="async" fetchpriority="high">'
             f'<video data-film data-opening data-segments="{esc(parts)}" data-src="{esc(asset(opening["segments"][0],depth))}"{mobile_attr} '
             f'muted playsinline preload="none" poster="{esc(poster)}" aria-label="Cinematic original VELLARIO yacht design studies"></video>'
@@ -630,9 +631,9 @@ def generate(data,catalog,where):
           '<link rel="preconnect" href="https://fonts.googleapis.com">'
           '<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>'
           '<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">'
-          '<link rel="stylesheet" href="'+esc(source_css)+'?v=v30-home-opening-original">'
-           '<link rel="stylesheet" href="'+esc(root_file('curated-site.css',depth))+'?v=v30-home-opening-original">'
-           '<script src="'+esc(source_js)+'?v=v30-home-opening-original" defer></script>'
+          '<link rel="stylesheet" href="'+esc(source_css)+'?v=v31-opening-safe-area">'
+           '<link rel="stylesheet" href="'+esc(root_file('curated-site.css',depth))+'?v=v31-opening-safe-area">'
+           '<script src="'+esc(source_js)+'?v=v31-opening-safe-area" defer></script>'
           '</head><body data-page="'+esc(pid)+'">'
           +header(pid,depth,data)+'<main id="main-content">'+body+'</main>'
           +footer(depth,data)+'</body></html>\n'
@@ -712,7 +713,7 @@ def mirror_at_root(mobile_root, public_root):
                 if from_file not in html_doc:
                     raise ValueError('Canonical page missing a script or stylesheet: ' + str(rel) + ' / ' + filename)
                 html_doc = html_doc.replace(from_file, to_file)
-            if 'mobile/site.js?v=v30-home-opening-original' not in html_doc:
+            if 'mobile/site.js?v=v31-opening-safe-area' not in html_doc:
                 raise ValueError('Root page did not retain versioned script: ' + str(rel))
             if '<main' not in html_doc or '<h1' not in html_doc:
                 raise ValueError('Root page missing substantive HTML: ' + str(rel))

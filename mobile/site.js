@@ -21,6 +21,8 @@ for(const frame of frames){
      video.poster=video.dataset.posterMobile;
      const poster=frame.querySelector('img.media-poster');
      if(poster)poster.src=video.dataset.posterMobile;
+     const openingBackdrop=frame.querySelector('img.opening-backdrop');
+     if(openingBackdrop)openingBackdrop.src=video.dataset.posterMobile;
      const portraitStill=frame.querySelector('img.portrait-still');
      if(portraitStill)portraitStill.src=video.dataset.posterMobile;
      if(video.dataset.mobileName){
