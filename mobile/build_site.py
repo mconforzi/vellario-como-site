@@ -412,7 +412,8 @@ def editorial_media_atlas(page, depth, model_lookup, used=None, used_images=None
                 '<a class="vellario-atlas-tile vellario-atlas-tile--film' + (' vellario-atlas-tile--portrait' if film_orientation(clip)=='portrait' else ' vellario-atlas-tile--landscape') + '" href="'+destination+
                 '" aria-label="Esplora il video di '+name+'"><img src="'+poster+
                 '" alt="'+name+' · fotogramma del film originale" loading="lazy" decoding="async">'
-                '<video class="vellario-atlas-video" data-model-film data-src="'+film+
+                + ('<img class="atlas-portrait-still" src="'+poster+'" alt="" loading="lazy" decoding="async">' if film_orientation(clip)=='portrait' else '')
+                + '<video class="vellario-atlas-video" data-model-film data-src="'+film+
                 '" muted playsinline loop preload="none" poster="'+poster+
                 '" aria-label="'+name+' · film originale"></video>'
                 '<span class="vellario-atlas-caption"><strong>'+name+
@@ -564,7 +565,8 @@ def model_page(model, copy, depth, data, models):
         photos.append(
             '<figure class="gallery-image film-frame film-frame--yacht' + (' gallery-film--portrait' if film_orientation(reel)=='portrait' else ' gallery-film--landscape') + '" data-media-frame>'
             '<img class="media-poster" src="' + esc(cover) + '" alt="' + esc(model['name']) + ' film frame" loading="lazy" decoding="async">'
-            '<video data-film data-src="' + esc(media_url) + '" muted playsinline loop preload="none" poster="' + esc(cover) + '" aria-label="' + esc(model['name']) + ' original design film"></video>'
+            + ('<img class="portrait-still" src="' + esc(cover) + '" alt="" loading="lazy" decoding="async">' if film_orientation(reel)=='portrait' else '')
+            + '<video data-film data-src="' + esc(media_url) + '" muted playsinline loop preload="none" poster="' + esc(cover) + '" aria-label="' + esc(model['name']) + ' original design film"></video>'
             '<button type="button" class="play-film" aria-label="Avvia o ferma il filmato"><span class="play-icon">▶</span><span class="play-label">PLAY FILM</span></button>'
             '<figcaption>' + esc(model['name']) + ' / VIDEO ARCHIVIO <span>' + str(j).zfill(2) + '</span></figcaption></figure>'
         )

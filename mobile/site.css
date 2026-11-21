@@ -1214,3 +1214,9 @@ transform:none!important;filter:none!important}
 .cinema-backdrop .film-frame--portrait video{inset:0!important;width:100%!important;height:100%!important;object-fit:cover!important}
 .gallery-film--portrait{min-height:440px!important}
 }
+
+/* V28.1 — Display the portrait first frame sharply before video playback. */
+.gallery-film--portrait .portrait-still{
+ position:absolute;inset:0;width:100%;height:100%;
+ z-index:1;object-fit:contain;object-position:center;pointer-events:none
+}
