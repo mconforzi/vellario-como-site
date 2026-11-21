@@ -591,7 +591,7 @@ def generate(data,catalog,where):
           '<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>'
           '<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">'
           '<link rel="stylesheet" href="'+esc(source_css)+'?v=v41-native-scroll">'
-           '<link rel="stylesheet" href="'+esc(root_file('curated-site.css',depth))+'?v=v25-curated-story">'
+           '<link rel="stylesheet" href="'+esc(root_file('curated-site.css',depth))+'?v=v27-ai-media-atlas">'
            '<script src="'+esc(source_js)+'?v=v41-native-scroll" defer></script>'
           '</head><body data-page="'+esc(pid)+'">'
           +header(pid,depth,data)+'<main id="main-content">'+body+'</main>'
