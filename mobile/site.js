@@ -112,6 +112,9 @@ function introLetters(value, kind, start, stagger){
  const glyphs=[...value].map((ch,i)=>'<span class="vellario-v25-glyph" style="animation-delay:'+(start+i*stagger).toFixed(3)+'s">'+(ch===' '?'&nbsp;':ch)+'</span>').join('');
  return '<span class="vellario-v25-'+kind+'" aria-hidden="true">'+glyphs+'</span>';
 }
+// Asset URL relative to the shared script, not the current HTML route.
+const sourceScript=d.querySelector('script[src*="site.js"]');
+const emblemUrl=new URL('../assets/brand/approved-20261115/VELLARIO_V_cutout_TRANSPARENT.svg',sourceScript?.src||w.location.href).href;
 const curtain=d.createElement('div');
 curtain.className='vellario-intro vellario-intro--cinematic vellario-intro--loading';
 curtain.setAttribute('role','region');
@@ -123,7 +126,7 @@ curtain.innerHTML=
  '<div class="vellario-intro-top" aria-hidden="true"><span>COMO · ITALIA</span><span>DESIGN ITALIANO</span></div>'+
  '<div class="vellario-intro-center">'+
  '<div class="vellario-intro-mark"><div class="vellario-v25-lockup" role="img" aria-label="VELLARIO — THE ART OF DOLCEVITA — COMO">'+
- '<span class="vellario-v25-v" aria-hidden="true"><img src="../assets/brand/approved-20261115/VELLARIO_V_cutout_TRANSPARENT.svg" alt="" decoding="async"></span>'+
+ '<span class="vellario-v25-v" aria-hidden="true"><img src="'+emblemUrl+'" alt="" decoding="async"></span>'+
  introLetters('VELLARIO','name',.72,.088)+
  '<span class="vellario-v25-tagline" aria-hidden="true">THE ART OF DOLCEVITA</span>'+
  introLetters('COMO','como',1.94,.085)+

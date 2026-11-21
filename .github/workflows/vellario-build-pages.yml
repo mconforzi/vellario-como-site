@@ -28,7 +28,8 @@ jobs:
           set -euo pipefail
           python3 -m py_compile mobile/build_site.py
           out="$(mktemp -d)"
-          python3 mobile/build_site.py --out "$out" --site-data mobile/site-content.json --catalog mobile/catalog.json
+          rootout="$(mktemp -d)"
+          python3 mobile/build_site.py --out "$out" --root-out "$rootout" --site-data mobile/site-content.json --catalog mobile/catalog.json
           python3 - "$out" <<'PY'
           import json, pathlib, sys
           root=pathlib.Path(sys.argv[1])
@@ -53,14 +54,32 @@ jobs:
           assert 'owner-mas56-' in mas56
           print('PASS 16 routes / 8 cards / FY70 film / distinct MAS52+MAS56 / safe fallback')
           PY
+          python3 - "$rootout" <<'PYROOT'
+          import json, pathlib, sys
+          root=pathlib.Path(sys.argv[1]); manifest=json.loads((root/'route-manifest.json').read_text())
+          assert manifest['count']==16 and manifest['redirectCount']==13
+          home=(root/'index.html').read_text()
+          assert '<main' in home and '<h1' in home
+          assert 'http-equiv="refresh"' not in home, 'Root must render directly, never redirect to /mobile/'
+          assert 'href="./como/"' in home and 'href="./collezione/"' in home
+          assert 'href="./mobile/site.css?v=v41-native-scroll"' in home
+          assert 'src="./mobile/site.js?v=v41-native-scroll"' in home
+          assert 'src="./assets/brand/' in home
+          for entry in manifest['routes']:
+              page=(root/entry['path']).read_text()
+              assert '<main' in page and '/mobile/site.js?v=v41-native-scroll' in page, entry['slug']
+              assert ('../'*(len(pathlib.Path(entry['path']).parts)-1)+'assets/') in page, entry['slug']
+          print('PASS root 16 routes / 13 legacy redirects / working links / shared assets')
+          PYROOT
           cp -a "$out/." mobile/
+          cp -a "$rootout/." .
       - name: Publish generated routes without changing source assets
         shell: bash
         run: |
           set -euo pipefail
           git config user.name "VELLARIO build bot"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add mobile
+          git add mobile index.html route-manifest.json como dolce-vita collezione storia-tradizione design-saper-fare casa-vellario contatti collection history-legacy design-craftsmanship maison contact
           if git diff --cached --quiet; then
             echo "Static pages already up to date"
             exit 0

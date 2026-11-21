@@ -521,13 +521,59 @@ def generate(data,catalog,where):
         raise ValueError('Must generate 16 unique sitemap routes')
     return paths
 
+
+def mirror_at_root(mobile_root, public_root):
+    """Publish the same generated pages at the project URL root.
+
+    Keep /mobile/ working for old links; static CSS/JS remain in mobile/,
+    while all branded images and films remain in root assets/. No copied
+    source logic, duplicate media or external build dependencies.
+    """
+    mobile_root = Path(mobile_root)
+    public_root = Path(public_root)
+    manifest = json.loads((mobile_root / 'route-manifest.json').read_text(encoding='utf-8'))
+    paths = manifest['routes'] + manifest['redirects']
+    copied = []
+    for entry in paths:
+        rel = Path(entry['path'])
+        depth = len(rel.parts) - 1
+        source_html = (mobile_root / rel).read_text(encoding='utf-8')
+        html_doc = source_html
+        if entry in manifest['routes']:
+            from_assets = '../' * (depth + 1) + 'assets/'
+            to_assets = '../' * depth + 'assets/'
+            if from_assets not in html_doc:
+                raise ValueError('Canonical page missing an expected media asset: ' + str(rel))
+            html_doc = html_doc.replace(from_assets, to_assets)
+            for filename in ('site.css', 'curated-site.css', 'site.js'):
+                from_file = ('../' * depth or './') + filename
+                to_file = ('../' * depth or './') + 'mobile/' + filename
+                if from_file not in html_doc:
+                    raise ValueError('Canonical page missing a script or stylesheet: ' + str(rel) + ' / ' + filename)
+                html_doc = html_doc.replace(from_file, to_file)
+            if 'mobile/site.js?v=v41-native-scroll' not in html_doc:
+                raise ValueError('Root page did not retain versioned script: ' + str(rel))
+            if '<main' not in html_doc or '<h1' not in html_doc:
+                raise ValueError('Root page missing substantive HTML: ' + str(rel))
+        target = public_root / rel
+        target.parent.mkdir(parents=True, exist_ok=True)
+        target.write_text(html_doc, encoding='utf-8')
+        copied.append(str(rel))
+    root_manifest = dict(manifest)
+    root_manifest['note'] = 'Public 16-page canonical root. Assets: /assets. Shared CSS/JS: /mobile. Legacy /mobile URLs remain valid.'
+    (public_root / 'route-manifest.json').write_text(
+        json.dumps(root_manifest, indent=2) + '\n', encoding='utf-8')
+    return copied
+
 if __name__=='__main__':
     parser=argparse.ArgumentParser()
     parser.add_argument('--out',required=True)
+    parser.add_argument('--root-out',default=None,help='Mirror all routes into the public site root with shared mobile/ assets')
     parser.add_argument('--site-data',default='mobile/site-content.json')
     parser.add_argument('--catalog',default='mobile/catalog.json')
     args=parser.parse_args()
     d=json.loads(Path(args.site_data).read_text(encoding='utf-8'))
     m=json.loads(Path(args.catalog).read_text(encoding='utf-8'))
     made=generate(d,m,args.out)
-    print(json.dumps({'generated':len(made),'routes':made},indent=2))
+    mirrored=mirror_at_root(args.out,args.root_out) if args.root_out else []
+    print(json.dumps({'generated':len(made),'root_pages':len(mirrored),'routes':made},indent=2))
