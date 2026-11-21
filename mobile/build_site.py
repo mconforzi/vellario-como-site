@@ -710,7 +710,7 @@ def mirror_at_root(mobile_root, public_root):
                 if from_file not in html_doc:
                     raise ValueError('Canonical page missing a script or stylesheet: ' + str(rel) + ' / ' + filename)
                 html_doc = html_doc.replace(from_file, to_file)
-            if 'mobile/site.js?v=v41-native-scroll' not in html_doc:
+            if 'mobile/site.js?v=v28-aspect-unique' not in html_doc:
                 raise ValueError('Root page did not retain versioned script: ' + str(rel))
             if '<main' not in html_doc or '<h1' not in html_doc:
                 raise ValueError('Root page missing substantive HTML: ' + str(rel))
