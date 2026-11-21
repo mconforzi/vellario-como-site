@@ -5,101 +5,115 @@
       "slug": "",
       "path": "index.html",
       "name": "VELLARIO \u00b7 COMO",
-      "bytes": 46871
-    },
-    {
-      "slug": "como",
-      "path": "como/index.html",
-      "name": "Como",
-      "bytes": 32530
-    },
-    {
-      "slug": "dolce-vita",
-      "path": "dolce-vita/index.html",
-      "name": "La Dolce Vita",
-      "bytes": 31365
+      "bytes": 29371
     },
     {
       "slug": "collezione",
       "path": "collezione/index.html",
-      "name": "La Collezione",
-      "bytes": 40649
+      "name": "Collezione",
+      "bytes": 40574
     },
     {
-      "slug": "storia-tradizione",
-      "path": "storia-tradizione/index.html",
-      "name": "Storia & Tradizione",
-      "bytes": 16943
+      "slug": "heritage",
+      "path": "heritage/index.html",
+      "name": "Heritage",
+      "bytes": 16862
     },
     {
-      "slug": "design-saper-fare",
-      "path": "design-saper-fare/index.html",
-      "name": "Design & Saper Fare",
-      "bytes": 33833
+      "slug": "como-dolcevita",
+      "path": "como-dolcevita/index.html",
+      "name": "Como e la Dolcevita",
+      "bytes": 39286
+    },
+    {
+      "slug": "artisanship",
+      "path": "artisanship/index.html",
+      "name": "Artisanship and Love for Details",
+      "bytes": 33899
     },
     {
       "slug": "casa-vellario",
       "path": "casa-vellario/index.html",
-      "name": "La Casa VELLARIO",
-      "bytes": 14988
+      "name": "Casa VELLARIO",
+      "bytes": 14941
     },
     {
       "slug": "contatti",
       "path": "contatti/index.html",
-      "name": "Contatti",
-      "bytes": 10254
+      "name": "Contacts",
+      "bytes": 10213
     },
     {
       "slug": "collezione/quantum-999",
       "path": "collezione/quantum-999/index.html",
       "name": "Quantum 999",
-      "bytes": 24491
+      "bytes": 24473
     },
     {
       "slug": "collezione/mas-36",
       "path": "collezione/mas-36/index.html",
       "name": "MAS 36",
-      "bytes": 23304
+      "bytes": 23286
     },
     {
       "slug": "collezione/mas-52",
       "path": "collezione/mas-52/index.html",
       "name": "MAS 52",
-      "bytes": 25238
+      "bytes": 25220
     },
     {
       "slug": "collezione/mas-56",
       "path": "collezione/mas-56/index.html",
       "name": "MAS 56",
-      "bytes": 23951
+      "bytes": 23933
     },
     {
       "slug": "collezione/lariocab",
       "path": "collezione/lariocab/index.html",
       "name": "Lariocab",
-      "bytes": 21903
+      "bytes": 21885
     },
     {
       "slug": "collezione/fy70",
       "path": "collezione/fy70/index.html",
       "name": "FY70",
-      "bytes": 24102
+      "bytes": 24084
     },
     {
       "slug": "collezione/grantender-72",
       "path": "collezione/grantender-72/index.html",
       "name": "GranTender 72",
-      "bytes": 25322
+      "bytes": 25304
     },
     {
       "slug": "collezione/gran-marlin",
       "path": "collezione/gran-marlin/index.html",
       "name": "Gran Marlin",
-      "bytes": 25042
+      "bytes": 25024
     }
   ],
-  "count": 16,
+  "count": 15,
   "redirects": [
+    {
+      "old": "como",
+      "new": "como-dolcevita",
+      "path": "como/index.html"
+    },
+    {
+      "old": "dolce-vita",
+      "new": "como-dolcevita",
+      "path": "dolce-vita/index.html"
+    },
+    {
+      "old": "storia-tradizione",
+      "new": "heritage",
+      "path": "storia-tradizione/index.html"
+    },
+    {
+      "old": "design-saper-fare",
+      "new": "artisanship",
+      "path": "design-saper-fare/index.html"
+    },
     {
       "old": "collection",
       "new": "collezione",
@@ -107,12 +121,12 @@
     },
     {
       "old": "history-legacy",
-      "new": "storia-tradizione",
+      "new": "heritage",
       "path": "history-legacy/index.html"
     },
     {
       "old": "design-craftsmanship",
-      "new": "design-saper-fare",
+      "new": "artisanship",
       "path": "design-craftsmanship/index.html"
     },
     {
@@ -166,6 +180,6 @@
       "path": "collection/gran-marlin/index.html"
     }
   ],
-  "redirectCount": 13,
+  "redirectCount": 17,
   "note": "All HTML is server-readable with no JS dependency. Media are progressive enhancements."
 }
