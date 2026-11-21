@@ -64,7 +64,7 @@ jobs:
           assert 'href="./como/"' in home and 'href="./collezione/"' in home
           assert 'href="./mobile/site.css?v=v41-native-scroll"' in home
           assert 'src="./mobile/site.js?v=v41-native-scroll"' in home
-          assert 'src="./assets/brand/' in home
+          assert 'src="assets/brand/' in home
           for entry in manifest['routes']:
               page=(root/entry['path']).read_text()
               assert '<main' in page and '/mobile/site.js?v=v41-native-scroll' in page, entry['slug']
