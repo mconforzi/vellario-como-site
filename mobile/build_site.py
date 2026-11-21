@@ -563,6 +563,22 @@ def mirror_at_root(mobile_root, public_root):
     root_manifest['note'] = 'Public 16-page canonical root. Assets: /assets. Shared CSS/JS: /mobile. Legacy /mobile URLs remain valid.'
     (public_root / 'route-manifest.json').write_text(
         json.dumps(root_manifest, indent=2) + '\n', encoding='utf-8')
+
+    # A single machine-readable sitemap, derived only from real canonical routes.
+    # It intentionally excludes /mobile/ mirrors and all legacy redirects.
+    from xml.etree import ElementTree as ET
+    ns = 'http://www.sitemaps.org/schemas/sitemap/0.9'
+    ET.register_namespace('', ns)
+    urlset = ET.Element('{'+ns+'}urlset')
+    origin = 'https://mconforzi.github.io/vellario-como-site/'
+    for entry in manifest['routes']:
+        route = entry['slug'].strip('/')
+        loc = origin + (quote(route, safe='/-')+'/' if route else '')
+        ET.SubElement(ET.SubElement(urlset, '{'+ns+'}url'), '{'+ns+'}loc').text = loc
+    if len(urlset) != manifest['count']:
+        raise ValueError('Sitemap route count does not match canonical pages')
+    ET.indent(urlset, space='  ')
+    ET.ElementTree(urlset).write(public_root/'sitemap.xml', encoding='utf-8', xml_declaration=True)
     return copied
 
 if __name__=='__main__':

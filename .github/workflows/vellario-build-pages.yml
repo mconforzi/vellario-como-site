@@ -69,6 +69,15 @@ jobs:
               page=(root/entry['path']).read_text()
               assert '<main' in page and '/mobile/site.js?v=v41-native-scroll' in page, entry['slug']
               assert ('../'*(len(pathlib.Path(entry['path']).parts)-1)+'assets/') in page, entry['slug']
+          from xml.etree import ElementTree as ET
+          ns={'s':'http://www.sitemaps.org/schemas/sitemap/0.9'}
+          entries=ET.parse(root/'sitemap.xml').findall('s:url/s:loc',ns)
+          actual=[el.text for el in entries]
+          base='https://mconforzi.github.io/vellario-como-site/'
+          expected=[base+(entry['slug']+'/' if entry['slug'] else '') for entry in manifest['routes']]
+          assert actual==expected, 'Sitemap must list exactly 16 canonical routes in approved order'
+          assert len(set(actual))==16 and all('/mobile/' not in u for u in actual)
+          print('PASS sitemap.xml: XML valid / 16 canonical loc / zero redirects or mirrors')
           print('PASS root 16 routes / 13 legacy redirects / working links / shared assets')
           PYROOT
           cp -a "$out/." mobile/
@@ -79,7 +88,7 @@ jobs:
           set -euo pipefail
           git config user.name "VELLARIO build bot"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add mobile index.html route-manifest.json como dolce-vita collezione storia-tradizione design-saper-fare casa-vellario contatti collection history-legacy design-craftsmanship maison contact
+          git add mobile index.html route-manifest.json como dolce-vita collezione storia-tradizione design-saper-fare casa-vellario contatti collection history-legacy design-craftsmanship maison contact sitemap.xml
           if git diff --cached --quiet; then
             echo "Static pages already up to date"
             exit 0
