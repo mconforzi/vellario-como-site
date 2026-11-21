@@ -23,6 +23,20 @@ def site_path(slug, depth):
 def root_file(filename, depth):
     return ('../' * depth or './') + filename
 
+def media_priority(entry):
+    """Rank owner-selected assets without confusing filenames with model identity."""
+    label = entry.get('tier','') if isinstance(entry,dict) else ''
+    name = entry.get('video','') if isinstance(entry,dict) else str(entry)
+    low = name.lower()
+    if not label:
+        label = next((tier for tier in ('hero','heroa','herob') if ('-'+tier+'-') in low), 'archive')
+    return {'hero':0,'heroa':1,'herob':2,'unranked':3,'archive':4}.get(label,4)
+
+
+def ranked_images(model):
+    return sorted(model.get('images',[]),key=media_priority)
+
+
 def model_film_variant(model, variation=0):
     """Choose a genuine file belonging to the requested model; deterministic rotation.
 
@@ -34,7 +48,7 @@ def model_film_variant(model, variation=0):
     clips = [{'video':model['video'],'poster':model.get('videoPoster') or model.get('poster'),
               'resolution':model.get('videoResolution') or ''}]
     used = {model['video']}
-    for extra in model.get('extraVideos',[]):
+    for extra in sorted(model.get('extraVideos',[]), key=media_priority):
         if extra.get('video') and extra['video'] not in used:
             clips.append(extra)
             used.add(extra['video'])
@@ -312,11 +326,85 @@ def curated_chapter(page, section, index, depth, data, model_lookup, variation=0
         '</div></section>'
     )
 
+def editorial_media_atlas(page, depth, model_lookup):
+    """Immersive owner-media mosaic; every tile is a verified model-specific asset.
+
+    This gallery supplements editorial chapters without changing the seven
+    approved homepage sections. Historical context is never misrepresented
+    as a photograph of an old VELLARIO boat.
+    """
+    programs = {
+        'collection': ('La Collezione, in movimento',
+                       ['quantum-999','mas-36','mas-52','mas-56','lariocab',
+                        'fy70','grantender-72','gran-marlin']),
+        'history-legacy': ('Visioni contemporanee',
+                           ['mas-52','mas-36','quantum-999','lariocab']),
+        'como': ('Incontri sull’acqua',
+                 ['gran-marlin','grantender-72','mas-52','fy70','mas-36']),
+        'design-craftsmanship': ('La bellezza è nei dettagli',
+                                 ['mas-56','fy70','quantum-999','mas-52','grantender-72']),
+        'maison': ('Un mondo di possibilità',
+                   ['gran-marlin','fy70','quantum-999','grantender-72']),
+        'contact': ('Il piacere di incontrarsi',
+                    ['gran-marlin','grantender-72'])
+    }
+    if page['id'] not in programs:
+        return ''
+    title, model_ids = programs[page['id']]
+    pieces = []
+    salt = sum(ord(ch) for ch in page['id'])
+    for i, model_id in enumerate(model_ids):
+        model = model_lookup[model_id]
+        destination = esc(site_path('collezione/'+model_id,depth))
+        name = esc(model['name'])
+        images = ranked_images(model)
+        if images:
+            picture = images[(i+salt) % len(images)]
+            src = esc(asset(picture,depth))
+            pieces.append(
+                '<a class="vellario-atlas-tile vellario-atlas-tile--still" href="'+destination+
+                '" aria-label="Esplora '+name+'"><img src="'+src+'" alt="'+name+
+                ' · originale progetto nautico" loading="lazy" decoding="async">'
+                '<span class="vellario-atlas-caption"><strong>'+name+
+                '</strong><small>DESIGN STUDY · ORIGINAL ARCHIVE</small></span></a>'
+            )
+        clip = model_film_variant(model, 1)
+        if clip:
+            poster = esc(asset(clip.get('poster') or model['poster'],depth))
+            film = esc(asset(clip['video'],depth))
+            pieces.append(
+                '<a class="vellario-atlas-tile vellario-atlas-tile--film" href="'+destination+
+                '" aria-label="Esplora il video di '+name+'"><img src="'+poster+
+                '" alt="'+name+' · fotogramma del film originale" loading="lazy" decoding="async">'
+                '<video class="vellario-atlas-video" data-model-film data-src="'+film+
+                '" muted playsinline loop preload="none" poster="'+poster+
+                '" aria-label="'+name+' · film originale"></video>'
+                '<span class="vellario-atlas-caption"><strong>'+name+
+                '</strong><small>IL FILM · DESIGN STUDY</small></span></a>'
+            )
+    if not pieces:
+        return ''
+    return (
+        '<section class="vellario-media-atlas" aria-label="'+esc(title)+'">'
+        '<div class="vellario-atlas-heading"><p>VELLARIO / ARCHIVIO VISIVO</p>'
+        '<h2>'+esc(title)+'</h2><span>ORIGINAL DESIGN STUDIES · '
+        'NON PRODUZIONE VELLARIO</span></div>'
+        '<div class="vellario-atlas-grid">'+''.join(pieces)+'</div></section>'
+    )
+
+
 def editorial_page(page, depth, data, model_lookup, models):
     out = [hero(page, depth, model_lookup, data['lakeSources'], data_opening(data, models))]
     # Each hero uses film 0; repeating the same yacht within the page selects its
     # next actual original film. The horizontal collection cards stay model-exact.
     media_cursor = {page.get('hero'):1} if str(page.get('hero','')).startswith('model:') else {}
+    if page['id']=='home':
+        # The main opening film comes from a real model HERO. Avoid repeating it
+        # in the later Como / Contacts chapters of the same long homepage.
+        opening_films = set(data_opening(data,models).get('segments',[]))
+        for model in models:
+            if model.get('video') in opening_films:
+                media_cursor['model:'+model['id']]=1
     for i, section in enumerate(page['sections'], 1):
         media_name = section.get('media')
         variation = media_cursor.get(media_name,0) if str(media_name or '').startswith('model:') else 0
@@ -367,6 +455,8 @@ def editorial_page(page, depth, data, model_lookup, models):
         out.append('</section>')
     if page['id'] in ('como', 'collection', 'design-craftsmanship'):
         out.append(award_study(page['id'], depth))
+    # Dedicated model-accurate images and films from the owner archive.
+    out.append(editorial_media_atlas(page,depth,model_lookup))
     if page['id'] not in ('home','contact'):
         nav = data['nav']
         pos = next(i for i, n in enumerate(nav) if n['id'] == page['id'])
@@ -400,6 +490,7 @@ def model_page(model, copy, depth, data, models):
         ('dettagli','Dettagli & Materiali',copy['details']),
         ('specifiche','Dati Tecnici',copy.get('specifications','Final technical specification under review.')),
     ]
+    sorted_images = ranked_images(model)
     for i, (slug, label, paragraph) in enumerate(parts, 1):
         visual = i <= 4
         block = (
@@ -412,7 +503,7 @@ def model_page(model, copy, depth, data, models):
             '<p class="chapter-description">' + esc(paragraph) + '</p></div></div>'
         )
         if visual:
-            picture = model['images'][(i - 1) % len(model['images'])] if model.get('images') else model['poster']
+            picture = sorted_images[(i - 1) % len(sorted_images)] if sorted_images else model['poster']
             block += (
                 '<figure class="model-story-frame"><img src="' + esc(asset(picture, depth)) +
                 '" alt="' + esc(model['name']) + ' · original design archive study" loading="lazy" decoding="async">' +
@@ -421,7 +512,7 @@ def model_page(model, copy, depth, data, models):
             )
         out.append(block + '</section>')
     photos = []
-    for i, name in enumerate(model['images']):
+    for i, name in enumerate(sorted_images):
         photos.append(
             '<figure class="gallery-image gallery-image--' + str(i%3) + '"><img src="' +
             esc(asset(name, depth)) + '" alt="' + esc(model['name']) + ' archival rendering ' + str(i+1) +
@@ -430,7 +521,7 @@ def model_page(model, copy, depth, data, models):
         )
 
     # Owner original model reels are placed inside the existing gallery without changing the page structure.
-    for j, reel in enumerate(model.get('extraVideos', []), 1):
+    for j, reel in enumerate(sorted(model.get('extraVideos', []),key=media_priority), 1):
         media_url = asset(reel['video'], depth)
         cover = asset(reel['poster'], depth)
         photos.append(

@@ -152,3 +152,30 @@ body[data-page="home"] #craft .curated-copy h2{font-size:clamp(44px,5.15vw,82px)
 body[data-page="design-craftsmanship"] .cinema-hero .cinema-copy h1{font-size:clamp(42px,5.9vw,100px)!important;line-height:.94!important;overflow-wrap:break-word}
 body[data-page="como"] .cinema-hero .cinema-copy h1{font-size:clamp(50px,7vw,122px)!important;line-height:.92!important;overflow-wrap:break-word}
 @media(max-width:850px){body[data-page="home"] #craft .curated-copy h2{font-size:clamp(35px,8.4vw,62px)!important;line-height:.95!important}body[data-page="design-craftsmanship"] .cinema-hero .cinema-copy h1{font-size:clamp(40px,9vw,67px)!important}}
+
+/* VELLARIO V27 · Model-accurate owner media atlas for editorial subpages. */
+.vellario-media-atlas{background:#07130e;color:#f3eee4;padding:clamp(72px,10svh,130px) clamp(16px,4.3vw,82px)}
+.vellario-atlas-heading{max-width:1370px;margin:0 auto clamp(35px,5vw,75px);display:flex;flex-direction:column;align-items:flex-start;gap:13px}
+.vellario-atlas-heading p{font:500 10px/1.4 'DM Sans',Arial,sans-serif;letter-spacing:.24em;color:#cbaa72;margin:0}
+.vellario-atlas-heading h2{font:300 clamp(50px,6.5vw,111px)/.92 'Cormorant Garamond',Georgia,serif;letter-spacing:-.04em;margin:0;max-width:940px;text-wrap:balance}
+.vellario-atlas-heading>span{font:400 9px/1.6 'DM Sans',Arial,sans-serif;letter-spacing:.1em;color:#aeb8a9}
+.vellario-atlas-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));grid-auto-flow:dense;grid-auto-rows:clamp(260px,30vw,510px);gap:clamp(7px,1.2vw,20px);max-width:1570px;margin:0 auto}
+.vellario-atlas-tile{display:block;position:relative;isolation:isolate;overflow:hidden;background:#163023;min-width:0;min-height:0}
+.vellario-atlas-tile:nth-child(9n + 1),.vellario-atlas-tile:nth-child(9n + 6){grid-column:span 2}
+.vellario-atlas-tile img,.vellario-atlas-tile video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform 1.2s cubic-bezier(.18,.65,.2,1),opacity .55s ease}
+.vellario-atlas-tile img{z-index:1}.vellario-atlas-tile video{z-index:2;opacity:0;pointer-events:none}
+.vellario-atlas-tile video.is-playing{opacity:1}
+.vellario-atlas-tile:after{content:'';position:absolute;inset:0;z-index:3;pointer-events:none;background:linear-gradient(0deg,#03110ce8,transparent 49%)}
+.vellario-atlas-tile:hover img{transform:scale(1.05)}
+.vellario-atlas-caption{position:absolute;z-index:4;left:clamp(16px,2.5vw,38px);right:14px;bottom:clamp(18px,2.3vw,34px);display:flex;flex-direction:column;gap:7px}
+.vellario-atlas-caption strong{font:300 clamp(29px,3.1vw,56px)/.9 'Cormorant Garamond',Georgia,serif;letter-spacing:-.015em;color:#fff}
+.vellario-atlas-caption small{font:500 8px/1.3 'DM Sans',Arial,sans-serif;letter-spacing:.13em;color:#e9d4aa}
+.vellario-atlas-tile:focus-visible{outline:2px solid #e2be85;outline-offset:4px}
+@media(max-width:900px){.vellario-atlas-grid{grid-template-columns:repeat(2,minmax(0,1fr));grid-auto-rows:clamp(220px,45vw,440px)}
+.vellario-atlas-tile:nth-child(9n + 1),.vellario-atlas-tile:nth-child(9n + 6){grid-column:span 1}
+.vellario-atlas-tile:nth-child(7n + 1){grid-column:span 2}
+.vellario-atlas-heading h2{font-size:clamp(49px,11vw,80px)}}
+@media(max-width:530px){.vellario-media-atlas{padding:70px 15px}.vellario-atlas-grid{grid-auto-rows:clamp(185px,57vw,280px);gap:8px}
+.vellario-atlas-caption{left:16px;right:11px;bottom:15px}.vellario-atlas-caption strong{font-size:clamp(24px,7vw,42px)}.vellario-atlas-caption small{font-size:7px}
+.vellario-atlas-tile:nth-child(7n + 1){grid-column:span 2}}
+@media(prefers-reduced-motion:reduce){.vellario-atlas-tile img,.vellario-atlas-tile video{transition:none!important}}
