@@ -387,3 +387,68 @@ for(const video of videos){
  d.addEventListener('visibilitychange',()=>{if(d.hidden)clear()});
 }
 })();
+
+
+/* VELLARIO V29 · Start preparing every film at page entry, before scroll.
+   Browser scheduling and Save-Data are respected; playback remains visibility-scoped.
+   A free small static manifest supplies a conservative zoom for real baked-in black bars. */
+(()=>{'use strict';
+const d=document,w=window;
+const clips=[...d.querySelectorAll('video[data-film],video[data-model-film]')];
+if(!clips.length)return;
+const reduced=!!w.matchMedia&&w.matchMedia('(prefers-reduced-motion: reduce)').matches;
+const save=!!navigator.connection?.saveData;
+const script=d.querySelector('script[src*="site.js"]');
+const manifestUrl=new URL('video-framing.json',script?.src||w.location.href);
+const filename=url=>{
+ try{return decodeURIComponent(new URL(url,w.location.href).pathname.split('/').pop()||'')}
+ catch{return String(url||'').split('/').pop().split('?')[0]}
+};
+function applyNativeZoom(video,record){
+ const zoom=Number(record?.zoom)||1;
+ const frame=video.closest('.film-frame,.model-card,.vellario-atlas-tile');
+ if(!frame||zoom<1.035||zoom>1.53)return;
+ frame.style.setProperty('--v-native-zoom',String(zoom));
+ frame.classList.add('has-native-letterbox');
+ frame.dataset.nativeZoom=String(zoom);
+}
+fetch(manifestUrl,{cache:'force-cache'}).then(r=>r.ok?r.json():null).then(index=>{
+ if(!index?.videos)return;
+ for(const video of clips){
+   const source=video.dataset.src||video.getAttribute('src');
+   if(source)applyNativeZoom(video,index.videos[filename(source)]);
+ }
+}).catch(()=>{ /* Poster and ordinary cover framing remain functional offline. */ });
+// Prepare matching zero-time stills up front. The still stays visible until
+// video 'playing', including while the browser downloads or buffers its bytes.
+for(const img of d.querySelectorAll('.film-frame img.media-poster,.film-frame img.portrait-still,.model-card > img,.vellario-atlas-tile--film > img')){
+ img.loading='eager';
+ img.decoding='async';
+}
+const ordered=clips.slice().sort((a,b)=>{
+ const rank=v=>v.hasAttribute('data-opening')?0:
+   v.closest('.cinema-hero')?1:v.closest('.yacht-rail')?2:3;
+ return rank(a)-rank(b);
+});
+function prepare(video){
+ if(!video||video.hidden)return;
+ if(video.getAttribute('src'))return; // Intro or another controller already primed it.
+ if(!video.dataset.src)return;
+ video.preload=save?'metadata':'auto';
+ video.src=video.dataset.src;
+ video.load();
+}
+let cursor=0;
+function startEarlyQueue(){
+ const amount=cursor===0?5:4;
+ for(let i=0;i<amount && cursor<ordered.length;i++,cursor++){
+   prepare(ordered[cursor]);
+ }
+ if(cursor<ordered.length){
+   // Start all remaining downloads without waiting for the page to scroll.
+   // Small spacing prevents a low-priority gallery clip starving the hero.
+   w.setTimeout(startEarlyQueue,save?260:90);
+ }
+}
+startEarlyQueue();
+})();

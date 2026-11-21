@@ -217,3 +217,25 @@ inset:0!important;width:100%!important;height:100%!important;object-fit:cover!im
  .curated--editorial .curated-media .film-frame--portrait .portrait-still,
  .curated--editorial .curated-media .film-frame--portrait video{object-fit:cover!important}
 }
+
+
+/* VELLARIO V29: For native black bands, the video and first-frame still
+   receive the same conservative crop, including in sticky editorial chapters. */
+.curated-media .film-frame.has-native-letterbox > video,
+.curated-media .film-frame.has-native-letterbox > img.media-poster,
+.curated-media .film-frame.has-native-letterbox > img.portrait-still,
+.vellario-atlas-tile.has-native-letterbox > video,
+.vellario-atlas-tile.has-native-letterbox > img,
+.vellario-atlas-tile.has-native-letterbox > img.atlas-portrait-still{
+ transform:scale(var(--v-native-zoom,1))!important;
+ transform-origin:center center!important;
+}
+.vellario-atlas-grid .vellario-atlas-tile--portrait > video,
+.vellario-atlas-grid .vellario-atlas-tile--portrait > img.atlas-portrait-still{
+ object-fit:cover!important;
+}
+/* Keep wide videos within wide compositions; no artificial pillarboxing. */
+.curated-media .film-frame:not(.film-frame--portrait) > video,
+.vellario-atlas-grid .vellario-atlas-tile--landscape > video{
+ object-fit:cover!important;
+}

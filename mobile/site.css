@@ -1220,3 +1220,30 @@ transform:none!important;filter:none!important}
  position:absolute;inset:0;width:100%;height:100%;
  z-index:1;object-fit:contain;object-position:center;pointer-events:none
 }
+
+
+/* VELLARIO V29: Crop real black bars embedded inside source videos.
+   The zoom value comes from FFmpeg cropdetect, not an arbitrary global enlargement. */
+.film-frame.has-native-letterbox > video,
+.film-frame.has-native-letterbox > img.media-poster,
+.film-frame.has-native-letterbox > img.portrait-still,
+.model-card.has-native-letterbox > video,
+.model-card.has-native-letterbox > img,
+.vellario-atlas-tile.has-native-letterbox > video,
+.vellario-atlas-tile.has-native-letterbox > img{
+ transform:scale(var(--v-native-zoom,1))!important;
+ transform-origin:50% 50%!important;
+}
+/* Portrait reels live in a portrait-shaped gallery frame and fill it fully. */
+.image-gallery .gallery-film--portrait{
+ grid-row:span 2;min-height:clamp(710px,110vh,1150px)!important;
+}
+.image-gallery .gallery-film--portrait > video,
+.image-gallery .gallery-film--portrait > img.portrait-still{
+ object-fit:cover!important;object-position:50% 50%!important;
+}
+@media(max-width:650px){
+ .image-gallery .gallery-film--portrait{
+  grid-row:auto;min-height:min(175vw,850px)!important;
+ }
+}
