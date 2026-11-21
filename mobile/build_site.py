@@ -37,24 +37,47 @@ def ranked_images(model):
     return sorted(model.get('images',[]),key=media_priority)
 
 
-def model_film_variant(model, variation=0):
-    """Choose a genuine file belonging to the requested model; deterministic rotation.
+def film_orientation(clip):
+    """Determine the actual aspect ratio from ffprobe metadata."""
+    if not clip:
+        return 'unknown'
+    raw = str(clip.get('resolution') or '').lower().replace('x','×')
+    try:
+        width,height = (int(part) for part in raw.split('×')[:2])
+        return 'portrait' if height > width else 'landscape'
+    except (ValueError,TypeError):
+        return 'unknown'
 
-    HERO is the main film; subsequent original films avoid repeated footage within
-    the same page. Never take a film from a different model's Dropbox folder.
-    """
+
+def model_film_variant(model, variation=0, used=None, prefer=None, allow_reuse=True):
+    """Prefer fresh, model-exact videos, respecting aspect and HERO priority."""
     if not model.get('video'):
         return None
-    clips = [{'video':model['video'],'poster':model.get('videoPoster') or model.get('poster'),
-              'resolution':model.get('videoResolution') or ''}]
-    used = {model['video']}
+    clips = [{'video':model['video'],'poster':model.get('videoPoster') or model['poster'],
+              'resolution':model.get('videoResolution') or '', 'tier':model.get('videoTier') or ''}]
+    seen_names = {model['video']}
     for extra in sorted(model.get('extraVideos',[]), key=media_priority):
-        if extra.get('video') and extra['video'] not in used:
+        if extra.get('video') and extra['video'] not in seen_names:
             clips.append(extra)
-            used.add(extra['video'])
-    return clips[max(0, variation) % len(clips)]
+            seen_names.add(extra['video'])
+    if used is None and prefer is None:
+        return clips[max(0,variation)%len(clips)]
+    available = [(i,c) for i,c in enumerate(clips) if used is None or c['video'] not in used]
+    if not available:
+        if not allow_reuse:
+            return None
+        available = list(enumerate(clips))
+    if prefer:
+        idx,selected = min(available,key=lambda pair:(
+            film_orientation(pair[1])!=prefer,media_priority(pair[1]),pair[0]))
+    else:
+        idx,selected = min(available,key=lambda pair:(media_priority(pair[1]),pair[0]))
+    if used is not None:
+        used.add(selected['video'])
+    return selected
 
-def section_media(media, depth, model_lookup, lakes, caption='', hero=False, mobile_media=None, variation=0):
+
+def section_media(media, depth, model_lookup, lakes, caption='', hero=False, mobile_media=None, variation=0, used=None):
     if not media:
         return ''
     eager = 'eager' if hero else 'lazy'
@@ -62,14 +85,14 @@ def section_media(media, depth, model_lookup, lakes, caption='', hero=False, mob
     if media.startswith('model:'):
         mid = media.split(':', 1)[1]
         m = model_lookup[mid]
-        clip = model_film_variant(m, variation)
+        clip = model_film_variant(m, variation, used=used, prefer='landscape' if used is not None else None)
         poster = asset((clip.get('poster') if clip else None) or m['poster'], depth)
         video = asset(clip['video'], depth) if clip else ''
-        portrait = ' film-frame--portrait' if clip and (clip.get('resolution') or '').startswith('720×1280') else ''
+        portrait = ' film-frame--portrait' if film_orientation(clip)=='portrait' else ''
         mobile_attr = ''
         if mobile_media and mobile_media.startswith('model:'):
             mm = model_lookup[mobile_media.split(':', 1)[1]]
-            mobile_clip = model_film_variant(mm, variation)
+            mobile_clip = model_film_variant(mm, variation, used=used, prefer='portrait' if used is not None else None)
             if mobile_clip:
                 mobile_video = asset(mobile_clip['video'], depth)
                 mobile_poster = asset(mobile_clip.get('poster') or mm['poster'], depth)
@@ -160,7 +183,7 @@ def footer(depth, data):
         '</footer>'
     )
 
-def hero(page, depth, model_lookup, lakes, opening, content_model=None):
+def hero(page, depth, model_lookup, lakes, opening, content_model=None, used=None):
     key = page.get('hero')
     home = page['id'] == 'home'
     if key == 'opening':
@@ -182,7 +205,7 @@ def hero(page, depth, model_lookup, lakes, opening, content_model=None):
             '<span>Original yacht design studies · Opening film</span></figcaption></figure>'
         )
     elif key:
-        media = section_media(key, depth, model_lookup, lakes, hero=True, mobile_media=page.get('heroMobile'))
+        media = section_media(key, depth, model_lookup, lakes, hero=True, mobile_media=page.get('heroMobile'), used=used)
     else:
         media = '<div class="hero-artwork"><span class="hero-artwork-ring"></span></div>'
     title = 'VELLARIO' if home else page['title']
@@ -207,19 +230,22 @@ def hero(page, depth, model_lookup, lakes, opening, content_model=None):
         + hint + '<div class="hero-counter">VELLARIO / COMO <span>✳</span> ITALIA</div></section>'
     )
 
-def model_cards(depth, models, copy_lookup):
+def model_cards(depth, models, copy_lookup, used=None):
     cards = []
     for i, m in enumerate(models, 1):
         href = site_path('collezione/' + m['id'], depth)
-        image = asset(m.get('videoPoster') or m['poster'], depth)
+        reference = model_film_variant(m)
+        preference = film_orientation(reference)
+        clip = model_film_variant(m, used=used, prefer=preference if preference!='unknown' else 'landscape')
+        image = asset((clip or {}).get('poster') or m['poster'], depth)
         film_markup = (
-            '<video class="model-card-film" data-model-film data-src="' + esc(asset(m['video'], depth)) +
+            '<video class="model-card-film" data-model-film data-src="' + esc(asset(clip['video'], depth)) +
             '" muted playsinline autoplay loop preload="none" poster="' + esc(image) +
             '" aria-label="Video del modello ' + esc(m['name']) + '"></video>'
-        ) if m.get('video') else ''
+        ) if clip else ''
         tag = copy_lookup[m['id']]['tagline']
         cards.append(
-            '<a class="model-card' + (' model-card--featured' if i == 1 else '') + (' model-card--portrait' if (m.get('videoResolution') or '').startswith('720×1280') else '') + '" href="' + esc(href) + '">'
+            '<a class="model-card' + (' model-card--featured' if i == 1 else '') + (' model-card--portrait' if film_orientation(clip)=='portrait' else ' model-card--landscape') + '" href="' + esc(href) + '">'
             '<img src="' + esc(image) + '" alt="' + esc(m['name']) + ' original study image or media placeholder" loading="lazy" decoding="async">'
             + film_markup +
             '<span class="model-card-overlay"></span>'
@@ -265,12 +291,12 @@ def award_study(page_id, depth):
 
 
 
-def curated_chapter(page, section, index, depth, data, model_lookup, variation=0):
+def curated_chapter(page, section, index, depth, data, model_lookup, variation=0, used=None, used_images=None):
     """Render actual editorial content inside one chosen cinematic composition."""
     layout = section['layout']
     media_name = section.get('media')
     media = section_media(media_name, depth, model_lookup, data['lakeSources'],
-                          mobile_media=section.get('mobileMedia'), variation=variation) if media_name else ''
+                          mobile_media=section.get('mobileMedia'), variation=variation, used=used) if media_name else ''
     secondary = ''
     secondary_id = section.get('secondaryMedia')
     if secondary_id:
@@ -290,7 +316,11 @@ def curated_chapter(page, section, index, depth, data, model_lookup, variation=0
         studies = [model_lookup[k] for k in ('mas-36', 'mas-52', 'quantum-999')]
         figures = []
         for item in studies:
-            poster = asset(item['images'][0] if item.get('images') else item['poster'], depth)
+            images = ranked_images(item)
+            fresh = [x for x in images if used_images is None or x not in used_images]
+            picture = fresh[0] if fresh else (images[0] if images else item['poster'])
+            if used_images is not None: used_images.add(picture)
+            poster = asset(picture, depth)
             figures.append('<figure><img src="' + esc(poster) + '" alt="' +
                            esc(item['name']) + ' original contemporary design study" loading="lazy">' +
                            '<figcaption>' + esc(item['name']) +
@@ -326,7 +356,7 @@ def curated_chapter(page, section, index, depth, data, model_lookup, variation=0
         '</div></section>'
     )
 
-def editorial_media_atlas(page, depth, model_lookup):
+def editorial_media_atlas(page, depth, model_lookup, used=None, used_images=None):
     """Immersive owner-media mosaic; every tile is a verified model-specific asset.
 
     This gallery supplements editorial chapters without changing the seven
@@ -359,7 +389,10 @@ def editorial_media_atlas(page, depth, model_lookup):
         name = esc(model['name'])
         images = ranked_images(model)
         if images:
-            picture = images[(i+salt) % len(images)]
+            pictures = images[(i+salt) % len(images):]+images[:(i+salt) % len(images)]
+            fresh = [x for x in pictures if used_images is None or x not in used_images]
+            picture = fresh[0] if fresh else pictures[0]
+            if used_images is not None: used_images.add(picture)
             src = esc(asset(picture,depth))
             pieces.append(
                 '<a class="vellario-atlas-tile vellario-atlas-tile--still" href="'+destination+
@@ -368,12 +401,14 @@ def editorial_media_atlas(page, depth, model_lookup):
                 '<span class="vellario-atlas-caption"><strong>'+name+
                 '</strong><small>DESIGN STUDY · ORIGINAL ARCHIVE</small></span></a>'
             )
-        clip = model_film_variant(model, 1)
+        reference = model_film_variant(model)
+        prefer = film_orientation(reference)
+        clip = model_film_variant(model, 1, used=used, prefer=prefer if prefer!='unknown' else 'landscape', allow_reuse=False)
         if clip:
             poster = esc(asset(clip.get('poster') or model['poster'],depth))
             film = esc(asset(clip['video'],depth))
             pieces.append(
-                '<a class="vellario-atlas-tile vellario-atlas-tile--film" href="'+destination+
+                '<a class="vellario-atlas-tile vellario-atlas-tile--film' + (' vellario-atlas-tile--portrait' if film_orientation(clip)=='portrait' else ' vellario-atlas-tile--landscape') + '" href="'+destination+
                 '" aria-label="Esplora il video di '+name+'"><img src="'+poster+
                 '" alt="'+name+' · fotogramma del film originale" loading="lazy" decoding="async">'
                 '<video class="vellario-atlas-video" data-model-film data-src="'+film+
@@ -394,24 +429,18 @@ def editorial_media_atlas(page, depth, model_lookup):
 
 
 def editorial_page(page, depth, data, model_lookup, models):
-    out = [hero(page, depth, model_lookup, data['lakeSources'], data_opening(data, models))]
-    # Each hero uses film 0; repeating the same yacht within the page selects its
-    # next actual original film. The horizontal collection cards stay model-exact.
-    media_cursor = {page.get('hero'):1} if str(page.get('hero','')).startswith('model:') else {}
-    if page['id']=='home':
-        # The main opening film comes from a real model HERO. Avoid repeating it
-        # in the later Como / Contacts chapters of the same long homepage.
-        opening_films = set(data_opening(data,models).get('segments',[]))
-        for model in models:
-            if model.get('video') in opening_films:
-                media_cursor['model:'+model['id']]=1
+    used_videos=set()
+    used_images=set()
+    opening=data_opening(data,models)
+    if page.get('hero')=='opening':
+        used_videos.update(opening.get('segments',[]))
+        if opening.get('mobileVideo'): used_videos.add(opening['mobileVideo'])
+    out = [hero(page, depth, model_lookup, data['lakeSources'], opening, used=used_videos)]
     for i, section in enumerate(page['sections'], 1):
         media_name = section.get('media')
-        variation = media_cursor.get(media_name,0) if str(media_name or '').startswith('model:') else 0
-        if str(media_name or '').startswith('model:'):
-            media_cursor[media_name] = variation + 1
+        variation=0
         if section.get('layout'):
-            out.append(curated_chapter(page, section, i, depth, data, model_lookup, variation=variation))
+            out.append(curated_chapter(page, section, i, depth, data, model_lookup, variation=variation, used=used_videos, used_images=used_images))
             continue
         has_media = bool(section.get('media'))
         is_collection = section.get('kind') == 'collection'
@@ -449,14 +478,14 @@ def editorial_page(page, depth, data, model_lookup, models):
         out.append('</div></div>')
         if has_media:
             out.append('<div class="chapter-media">' +
-                       section_media(section['media'], depth, model_lookup, data['lakeSources'], mobile_media=section.get('mobileMedia'), variation=variation) + '</div>')
+                       section_media(section['media'], depth, model_lookup, data['lakeSources'], mobile_media=section.get('mobileMedia'), variation=variation, used=used_videos) + '</div>')
         if is_collection:
-            out.append('<div class="chapter-collection">' + model_cards(depth, models, data['modelCopy']) + '</div>')
+            out.append('<div class="chapter-collection">' + model_cards(depth, models, data['modelCopy'], used=used_videos) + '</div>')
         out.append('</section>')
     if page['id'] in ('como', 'collection', 'design-craftsmanship'):
         out.append(award_study(page['id'], depth))
     # Dedicated model-accurate images and films from the owner archive.
-    out.append(editorial_media_atlas(page,depth,model_lookup))
+    out.append(editorial_media_atlas(page,depth,model_lookup,used=used_videos,used_images=used_images))
     if page['id'] not in ('home','contact'):
         nav = data['nav']
         pos = next(i for i, n in enumerate(nav) if n['id'] == page['id'])
