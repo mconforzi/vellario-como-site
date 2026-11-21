@@ -1194,3 +1194,23 @@ body[data-page="home"] main > #models .chapter-content{width:100%;max-width:850p
 @media(prefers-reduced-motion:reduce){
  body[data-page="home"] main > section.editorial-section.chapter--cinematic .film-frame video{opacity:0!important}
 }
+
+
+/* VELLARIO V28 — portrait films are presented vertically, never stretched into widescreen. */
+.cinema-backdrop .film-frame--portrait .media-poster{object-fit:cover;filter:blur(24px) brightness(.46);transform:scale(1.08)!important}
+.cinema-backdrop .film-frame--portrait .portrait-still,
+.cinema-backdrop .film-frame--portrait video{
+position:absolute!important;inset:0 3vw 0 auto!important;width:min(44vw,560px)!important;
+height:100%!important;object-fit:contain!important;object-position:center!important;
+transform:none!important;filter:none!important}
+.film-frame--portrait .portrait-still{position:absolute;z-index:1;pointer-events:none}
+.gallery-film--portrait{min-height:620px!important}
+.gallery-film--portrait .media-poster{filter:blur(20px) brightness(.48);transform:scale(1.06)}
+.gallery-film--portrait video{object-fit:contain!important;z-index:2}
+.gallery-film--landscape video{object-fit:cover!important}
+@media(max-width:750px){
+.cinema-backdrop .film-frame--portrait .media-poster{filter:none;transform:none!important}
+.cinema-backdrop .film-frame--portrait .portrait-still,
+.cinema-backdrop .film-frame--portrait video{inset:0!important;width:100%!important;height:100%!important;object-fit:cover!important}
+.gallery-film--portrait{min-height:440px!important}
+}

@@ -103,6 +103,7 @@ def section_media(media, depth, model_lookup, lakes, caption='', hero=False, mob
             f'<figure class="film-frame film-frame--yacht{portrait}" data-media-frame>'
             f'<img class="media-poster" src="{esc(poster)}" alt="{esc(m["name"])} original design image or archive placeholder" '
             f'loading="{eager}" decoding="async"{priority}>'
+            + (f'<img class="portrait-still" src="{esc(poster)}" alt="" loading="{eager}" decoding="async">' if portrait else '')
             + film +
             ('<button type="button" class="play-film" aria-label="Avvia o ferma il filmato"><span class="play-icon">▶</span><span class="play-label">PLAY FILM</span></button>' if film else '')
             + f'<figcaption><span class="source-label">ARCHIVIO PROGETTUALE</span><span>{esc(m["name"])} · Original design study</span></figcaption></figure>'
@@ -520,8 +521,15 @@ def model_page(model, copy, depth, data, models):
         ('specifiche','Dati Tecnici',copy.get('specifications','Final technical specification under review.')),
     ]
     sorted_images = ranked_images(model)
+    scene_images=list(sorted_images)
+    for clip in [model_film_variant(model)]+list(model.get('extraVideos',[])):
+        if clip and clip.get('poster') and clip['poster'] not in scene_images:
+            scene_images.append(clip['poster'])
+    used_story_images=set()
     for i, (slug, label, paragraph) in enumerate(parts, 1):
-        visual = i <= 4
+        picture=scene_images[i-1] if i<=4 and len(scene_images)>=i else None
+        visual=bool(picture)
+        if picture: used_story_images.add(picture)
         block = (
             '<section class="editorial-section chapter chapter--' + str(i % 3) +
             (' model-story' if visual else '') + '" id="' + slug + '">'
@@ -532,7 +540,6 @@ def model_page(model, copy, depth, data, models):
             '<p class="chapter-description">' + esc(paragraph) + '</p></div></div>'
         )
         if visual:
-            picture = sorted_images[(i - 1) % len(sorted_images)] if sorted_images else model['poster']
             block += (
                 '<figure class="model-story-frame"><img src="' + esc(asset(picture, depth)) +
                 '" alt="' + esc(model['name']) + ' · original design archive study" loading="lazy" decoding="async">' +
@@ -541,7 +548,8 @@ def model_page(model, copy, depth, data, models):
             )
         out.append(block + '</section>')
     photos = []
-    for i, name in enumerate(sorted_images):
+    gallery_photos=[name for name in sorted_images if name not in used_story_images]
+    for i, name in enumerate(gallery_photos):
         photos.append(
             '<figure class="gallery-image gallery-image--' + str(i%3) + '"><img src="' +
             esc(asset(name, depth)) + '" alt="' + esc(model['name']) + ' archival rendering ' + str(i+1) +
@@ -554,14 +562,15 @@ def model_page(model, copy, depth, data, models):
         media_url = asset(reel['video'], depth)
         cover = asset(reel['poster'], depth)
         photos.append(
-            '<figure class="gallery-image film-frame film-frame--yacht" data-media-frame>'
+            '<figure class="gallery-image film-frame film-frame--yacht' + (' gallery-film--portrait' if film_orientation(reel)=='portrait' else ' gallery-film--landscape') + '" data-media-frame>'
             '<img class="media-poster" src="' + esc(cover) + '" alt="' + esc(model['name']) + ' film frame" loading="lazy" decoding="async">'
             '<video data-film data-src="' + esc(media_url) + '" muted playsinline loop preload="none" poster="' + esc(cover) + '" aria-label="' + esc(model['name']) + ' original design film"></video>'
             '<button type="button" class="play-film" aria-label="Avvia o ferma il filmato"><span class="play-icon">▶</span><span class="play-label">PLAY FILM</span></button>'
             '<figcaption>' + esc(model['name']) + ' / VIDEO ARCHIVIO <span>' + str(j).zfill(2) + '</span></figcaption></figure>'
         )
     
-    out.append(
+    if photos:
+        out.append(
         '<section class="gallery-chapter" id="galleria"><div class="gallery-title"><span>06 / 07 · LA COLLEZIONE</span>'
         '<h2>Galleria</h2><p>' + esc(copy.get('gallery','Original project imagery.')) +
         '</p></div><div class="image-gallery">' + ''.join(photos) + '</div></section>'
@@ -619,9 +628,9 @@ def generate(data,catalog,where):
           '<link rel="preconnect" href="https://fonts.googleapis.com">'
           '<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>'
           '<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">'
-          '<link rel="stylesheet" href="'+esc(source_css)+'?v=v41-native-scroll">'
-           '<link rel="stylesheet" href="'+esc(root_file('curated-site.css',depth))+'?v=v27-ai-media-atlas">'
-           '<script src="'+esc(source_js)+'?v=v41-native-scroll" defer></script>'
+          '<link rel="stylesheet" href="'+esc(source_css)+'?v=v28-aspect-unique">'
+           '<link rel="stylesheet" href="'+esc(root_file('curated-site.css',depth))+'?v=v28-aspect-unique">'
+           '<script src="'+esc(source_js)+'?v=v28-aspect-unique" defer></script>'
           '</head><body data-page="'+esc(pid)+'">'
           +header(pid,depth,data)+'<main id="main-content">'+body+'</main>'
           +footer(depth,data)+'</body></html>\n'

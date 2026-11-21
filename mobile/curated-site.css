@@ -179,3 +179,26 @@ body[data-page="como"] .cinema-hero .cinema-copy h1{font-size:clamp(50px,7vw,122
 .vellario-atlas-caption{left:16px;right:11px;bottom:15px}.vellario-atlas-caption strong{font-size:clamp(24px,7vw,42px)}.vellario-atlas-caption small{font-size:7px}
 .vellario-atlas-tile:nth-child(7n + 1){grid-column:span 2}}
 @media(prefers-reduced-motion:reduce){.vellario-atlas-tile img,.vellario-atlas-tile video{transition:none!important}}
+
+
+/* VELLARIO V28 — wide films in panoramas, portrait films in vertical windows. */
+.curated-media .film-frame--portrait .media-poster{filter:blur(22px) brightness(.43);transform:scale(1.08)!important}
+.curated-chapter:not(.curated--editorial) .curated-media .film-frame--portrait .portrait-still,
+.curated-chapter:not(.curated--editorial) .curated-media .film-frame--portrait video{
+position:absolute!important;inset:0 3vw 0 auto!important;width:min(42vw,540px)!important;
+height:100%!important;object-fit:contain!important;object-position:center!important;transform:none!important;filter:none!important}
+.curated-media .film-frame--portrait .portrait-still{z-index:1}
+.curated--editorial .curated-media .film-frame--portrait .portrait-still,
+.curated--editorial .curated-media .film-frame--portrait video{object-fit:contain!important;transform:none!important}
+.vellario-atlas-grid .vellario-atlas-tile--portrait{grid-row:span 2}
+.vellario-atlas-tile--portrait>img{filter:blur(15px) brightness(.62);transform:scale(1.08)}
+.vellario-atlas-tile--portrait>video{object-fit:contain!important;object-position:center!important}
+.vellario-atlas-tile--landscape>video{object-fit:cover!important}
+@media(max-width:850px){
+.curated-media .film-frame--portrait .media-poster{filter:none;transform:none!important}
+.curated-chapter:not(.curated--editorial) .curated-media .film-frame--portrait .portrait-still,
+.curated-chapter:not(.curated--editorial) .curated-media .film-frame--portrait video{
+inset:0!important;width:100%!important;height:100%!important;object-fit:cover!important}
+.curated--editorial .curated-media .film-frame--portrait .portrait-still,
+.curated--editorial .curated-media .film-frame--portrait video{object-fit:cover!important}
+}

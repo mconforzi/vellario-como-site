@@ -54,6 +54,14 @@ jobs:
           assert 'mas56-film-wide.mp4' in mas52
           assert 'mas56-film-wide.mp4' not in mas56.split('<main id="main-content">',1)[1].split('</section>',1)[0]
           assert 'owner-mas56-' in mas56
+          import re
+          desktop=re.findall(r'<video[^>]*\bdata-src="([^"]+)"',home)
+          mobile=re.findall(r'\bdata-src-mobile="([^"]+)"',home)
+          assert len(desktop)==len(set(desktop)), ('Repeated homepage desktop film',desktop)
+          assert len(mobile)==len(set(mobile)), ('Repeated homepage portrait film',mobile)
+          assert not(set(desktop)&set(mobile)), ('Homepage clips reused across formats',set(desktop)&set(mobile))
+          assert 'portrait-still' in home and 'model-card--portrait' in home
+          print('PASS V28 homepage unique films and aspect-aware media markup')
           print('PASS 15 routes / 8 cards / FY70 film / distinct MAS52+MAS56 / safe fallback')
           PY
           python3 - "$rootout" <<'PYROOT'
@@ -64,12 +72,12 @@ jobs:
           assert '<main' in home and '<h1' in home
           assert 'http-equiv="refresh"' not in home, 'Root must render directly, never redirect to /mobile/'
           assert 'href="./heritage/"' in home and 'href="./como-dolcevita/"' in home and 'href="./artisanship/"' in home and 'href="./collezione/"' in home
-          assert 'href="./mobile/site.css?v=v41-native-scroll"' in home
-          assert 'src="./mobile/site.js?v=v41-native-scroll"' in home
+          assert 'href="./mobile/site.css?v=v28-aspect-unique"' in home
+          assert 'src="./mobile/site.js?v=v28-aspect-unique"' in home
           assert 'src="assets/brand/' in home
           for entry in manifest['routes']:
               page=(root/entry['path']).read_text()
-              assert '<main' in page and '/mobile/site.js?v=v41-native-scroll' in page, entry['slug']
+              assert '<main' in page and '/mobile/site.js?v=v28-aspect-unique' in page, entry['slug']
               assert ('../'*(len(pathlib.Path(entry['path']).parts)-1)+'assets/') in page, entry['slug']
           from xml.etree import ElementTree as ET
           ns={'s':'http://www.sitemaps.org/schemas/sitemap/0.9'}
