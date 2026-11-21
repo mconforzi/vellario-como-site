@@ -1,20 +1,20 @@
 {
   "schemaVersion": 1,
-  "release": "v24-owner-dropbox-import",
-  "status": "preview-with-original-owner-media",
+  "release": "v27-ai-media-priority-import",
+  "status": "preview-with-owner-priority-media",
   "title": "VELLARIO · COMO",
-  "source": "Owner-supplied AI - MEDIA archive; selected local copies in assets/vario",
+  "source": "Owner-supplied AI - MEDIA; model-exact tiered media copied into assets/vario",
   "assetBase": "../assets/vario/",
   "opening": {
-    "name": "VELLARIO Original Yacht Design Studies",
-    "poster": "mas56-film-wide-first-frame.jpg",
+    "name": "VELLARIO original design films — curated HERO",
+    "poster": "owner-ai26-gran-marlin-hero-01-first-frame.jpg",
     "segments": [
-      "mas56-film-wide.mp4"
+      "owner-ai26-gran-marlin-hero-01.mp4"
     ],
-    "mobileVideo": "grantender-hd.mp4",
-    "mobilePoster": "grantender-hd-first-frame.jpg",
+    "mobileVideo": "owner-ai26-grantender-72-hero-01.mp4",
+    "mobilePoster": "owner-ai26-grantender-72-hero-01-first-frame.jpg",
     "sourceResolution": "1280×720 desktop / 720×1280 mobile",
-    "note": "Existing public nautical footage; widescreen MAS 52 study on desktop and portrait GranTender study on mobile. Previous low-resolution MAS 46 source retained in archive."
+    "note": "Original Gran Marlin HERO asset, curated as cinematic VELLARIO design study. The owner source is not a claim of a completed VELLARIO yacht."
   },
   "models": [
     {
@@ -27,7 +27,10 @@
         "quantum.webp",
         "quantum-detail.webp",
         "owner-quantum-01.webp",
-        "owner-quantum-02.webp"
+        "owner-quantum-02.webp",
+        "owner-ai26-quantum-999-unranked-01.webp",
+        "owner-ai26-quantum-999-unranked-02.webp",
+        "owner-ai26-quantum-999-unranked-03.webp"
       ],
       "kind": "design-study",
       "videoPoster": "quantum-hd-first-frame.jpg",
@@ -36,6 +39,24 @@
           "video": "owner-quantum-01.mp4",
           "poster": "owner-quantum-01-first-frame.jpg",
           "resolution": "720×1280"
+        },
+        {
+          "video": "owner-ai26-quantum-999-unranked-01.mp4",
+          "poster": "owner-ai26-quantum-999-unranked-01-first-frame.jpg",
+          "resolution": "720×1280",
+          "tier": "unranked"
+        },
+        {
+          "video": "owner-ai26-quantum-999-unranked-02.mp4",
+          "poster": "owner-ai26-quantum-999-unranked-02-first-frame.jpg",
+          "resolution": "720×1280",
+          "tier": "unranked"
+        },
+        {
+          "video": "owner-ai26-quantum-999-unranked-03.mp4",
+          "poster": "owner-ai26-quantum-999-unranked-03-first-frame.jpg",
+          "resolution": "480×848",
+          "tier": "unranked"
         }
       ]
     },
@@ -47,10 +68,19 @@
       "videoResolution": null,
       "images": [
         "mas36.webp",
-        "owner-mas36-01.webp"
+        "owner-mas36-01.webp",
+        "owner-ai26-mas-36-unranked-01.webp"
       ],
       "kind": "design-study",
-      "videoPoster": "mas36-first-frame.jpg"
+      "videoPoster": "mas36-first-frame.jpg",
+      "extraVideos": [
+        {
+          "video": "owner-ai26-mas-36-unranked-01.mp4",
+          "poster": "owner-ai26-mas-36-unranked-01-first-frame.jpg",
+          "resolution": "848×480",
+          "tier": "unranked"
+        }
+      ]
     },
     {
       "id": "mas-52",
@@ -64,7 +94,8 @@
         "mas56-detail-1.webp",
         "mas56-detail-2.webp",
         "mas56-detail-3.webp",
-        "owner-mas52-01.webp"
+        "owner-mas52-01.webp",
+        "owner-ai26-mas-52-unranked-01.webp"
       ],
       "kind": "design-study",
       "videoPoster": "mas56-film-wide-first-frame.jpg",
@@ -79,59 +110,186 @@
           "video": "owner-mas52-02.mp4",
           "poster": "owner-mas52-02-first-frame.jpg",
           "resolution": "1280×720"
+        },
+        {
+          "video": "owner-ai26-mas-52-unranked-01.mp4",
+          "poster": "owner-ai26-mas-52-unranked-01-first-frame.jpg",
+          "resolution": "1280×720",
+          "tier": "unranked"
+        },
+        {
+          "video": "owner-ai26-mas-52-unranked-02.mp4",
+          "poster": "owner-ai26-mas-52-unranked-02-first-frame.jpg",
+          "resolution": "1920×1006",
+          "tier": "unranked"
+        },
+        {
+          "video": "owner-ai26-mas-52-unranked-03.mp4",
+          "poster": "owner-ai26-mas-52-unranked-03-first-frame.jpg",
+          "resolution": "1280×720",
+          "tier": "unranked"
+        },
+        {
+          "video": "owner-ai26-mas-52-unranked-04.mp4",
+          "poster": "owner-ai26-mas-52-unranked-04-first-frame.jpg",
+          "resolution": "1280×720",
+          "tier": "unranked"
+        },
+        {
+          "video": "owner-ai26-mas-52-unranked-05.mp4",
+          "poster": "owner-ai26-mas-52-unranked-05-first-frame.jpg",
+          "resolution": "1280×720",
+          "tier": "unranked"
+        },
+        {
+          "video": "owner-ai26-mas-52-unranked-06.mp4",
+          "poster": "owner-ai26-mas-52-unranked-06-first-frame.jpg",
+          "resolution": "720×1280",
+          "tier": "unranked"
+        },
+        {
+          "video": "owner-ai26-mas-52-unranked-07.mp4",
+          "poster": "owner-ai26-mas-52-unranked-07-first-frame.jpg",
+          "resolution": "1280×720",
+          "tier": "unranked"
+        },
+        {
+          "video": "owner-ai26-mas-52-unranked-08.mp4",
+          "poster": "owner-ai26-mas-52-unranked-08-first-frame.jpg",
+          "resolution": "1280×720",
+          "tier": "unranked"
+        },
+        {
+          "video": "owner-ai26-mas-52-unranked-09.mp4",
+          "poster": "owner-ai26-mas-52-unranked-09-first-frame.jpg",
+          "resolution": "1280×720",
+          "tier": "unranked"
+        },
+        {
+          "video": "owner-ai26-mas-52-unranked-10.mp4",
+          "poster": "owner-ai26-mas-52-unranked-10-first-frame.jpg",
+          "resolution": "1280×720",
+          "tier": "unranked"
+        },
+        {
+          "video": "owner-ai26-mas-52-unranked-11.mp4",
+          "poster": "owner-ai26-mas-52-unranked-11-first-frame.jpg",
+          "resolution": "1280×720",
+          "tier": "unranked"
         }
       ]
     },
     {
       "id": "mas-56",
       "name": "MAS 56",
-      "poster": "owner-mas56-01.webp",
-      "video": "owner-mas56-01.mp4",
+      "poster": "owner-ai26-mas-56-heroa-01.webp",
+      "video": "owner-ai26-mas-56-hero-01.mp4",
       "videoResolution": "720×1280",
       "images": [
         "owner-mas56-01.webp",
         "owner-mas56-02.webp",
         "owner-mas56-03.webp",
         "owner-mas56-04.webp",
-        "owner-mas56-05.webp"
+        "owner-mas56-05.webp",
+        "owner-ai26-mas-56-heroa-01.webp",
+        "owner-ai26-mas-56-unranked-01.webp",
+        "owner-ai26-mas-56-unranked-02.webp",
+        "owner-ai26-mas-56-unranked-03.webp",
+        "owner-ai26-mas-56-unranked-04.webp",
+        "owner-ai26-mas-56-unranked-05.webp",
+        "owner-ai26-mas-56-unranked-06.webp",
+        "owner-ai26-mas-56-unranked-07.webp",
+        "owner-ai26-mas-56-unranked-08.webp",
+        "owner-ai26-mas-56-unranked-09.webp",
+        "owner-ai26-mas-56-unranked-10.webp",
+        "owner-ai26-mas-56-unranked-11.webp",
+        "owner-ai26-mas-56-unranked-12.webp",
+        "owner-ai26-mas-56-unranked-13.webp",
+        "owner-ai26-mas-56-unranked-14.webp"
       ],
       "kind": "design-study",
       "mediaStatus": "original media awaiting publication",
       "mediaSource": "Dropbox /[CEYD-Portfolio]/[BOATS]/AI - MEDIA/MAS56",
-      "videoPoster": "owner-mas56-01-first-frame.jpg",
+      "videoPoster": "owner-ai26-mas-56-hero-01-first-frame.jpg",
       "extraVideos": [
         {
           "video": "owner-mas56-02.mp4",
           "poster": "owner-mas56-02-first-frame.jpg",
           "resolution": "1280×720"
+        },
+        {
+          "video": "owner-mas56-01.mp4",
+          "poster": "owner-mas56-01-first-frame.jpg",
+          "resolution": "720×1280",
+          "tier": "archive"
+        },
+        {
+          "video": "owner-ai26-mas-56-heroa-01.mp4",
+          "poster": "owner-ai26-mas-56-heroa-01-first-frame.jpg",
+          "resolution": "848×480",
+          "tier": "heroa"
+        },
+        {
+          "video": "owner-ai26-mas-56-unranked-01.mp4",
+          "poster": "owner-ai26-mas-56-unranked-01-first-frame.jpg",
+          "resolution": "1280×720",
+          "tier": "unranked"
+        },
+        {
+          "video": "owner-ai26-mas-56-unranked-02.mp4",
+          "poster": "owner-ai26-mas-56-unranked-02-first-frame.jpg",
+          "resolution": "720×1280",
+          "tier": "unranked"
         }
-      ]
+      ],
+      "videoTier": "hero",
+      "posterTier": "heroa"
     },
     {
       "id": "lariocab",
       "name": "Lariocab",
       "poster": "owner-lariocab-01.webp",
-      "video": null,
-      "videoResolution": null,
+      "video": "owner-ai26-lariocab-hero-01.mp4",
+      "videoResolution": "720×1280",
       "images": [
-        "owner-lariocab-01.webp"
+        "owner-lariocab-01.webp",
+        "owner-ai26-lariocab-unranked-01.webp"
       ],
       "kind": "design-study",
       "mediaStatus": "original media awaiting publication",
-      "mediaSource": "Dropbox /[CEYD-Portfolio]/[BOATS]/10 - LARIOCAB; AI - MEDIA/LARIOCAB"
+      "mediaSource": "Dropbox /[CEYD-Portfolio]/[BOATS]/10 - LARIOCAB; AI - MEDIA/LARIOCAB",
+      "videoTier": "hero",
+      "videoPoster": "owner-ai26-lariocab-hero-01-first-frame.jpg"
     },
     {
       "id": "fy70",
       "name": "FY70",
-      "poster": "fy70.webp",
-      "video": "fy70.mp4",
-      "videoResolution": null,
+      "poster": "owner-ai26-fy70-hero-01.webp",
+      "video": "owner-ai26-fy70-heroa-01.mp4",
+      "videoResolution": "1390×1920",
       "images": [
         "fy70.webp",
         "owner-fy70-01.webp",
         "owner-fy70-02.webp",
         "owner-fy70-03.webp",
-        "owner-fy70-04.webp"
+        "owner-fy70-04.webp",
+        "owner-ai26-fy70-hero-01.webp",
+        "owner-ai26-fy70-hero-02.webp",
+        "owner-ai26-fy70-heroa-01.webp",
+        "owner-ai26-fy70-herob-01.webp",
+        "owner-ai26-fy70-herob-02.webp",
+        "owner-ai26-fy70-herob-03.webp",
+        "owner-ai26-fy70-unranked-01.webp",
+        "owner-ai26-fy70-unranked-02.webp",
+        "owner-ai26-fy70-unranked-03.webp",
+        "owner-ai26-fy70-unranked-04.webp",
+        "owner-ai26-fy70-unranked-05.webp",
+        "owner-ai26-fy70-unranked-06.webp",
+        "owner-ai26-fy70-unranked-07.webp",
+        "owner-ai26-fy70-unranked-08.webp",
+        "owner-ai26-fy70-unranked-09.webp",
+        "owner-ai26-fy70-unranked-10.webp",
+        "owner-ai26-fy70-unranked-11.webp"
       ],
       "kind": "design-study",
       "mediaSource": "Dropbox /[CEYD-Portfolio]/[BOATS]/AI - MEDIA/FY70",
@@ -145,14 +303,77 @@
           "video": "owner-fy70-02.mp4",
           "poster": "owner-fy70-02-first-frame.jpg",
           "resolution": "720×1280"
+        },
+        {
+          "video": "fy70.mp4",
+          "poster": "owner-ai26-fy70-hero-01.webp",
+          "resolution": "unknown",
+          "tier": "archive"
+        },
+        {
+          "video": "owner-ai26-fy70-heroa-02.mp4",
+          "poster": "owner-ai26-fy70-heroa-02-first-frame.jpg",
+          "resolution": "720×1280",
+          "tier": "heroa"
+        },
+        {
+          "video": "owner-ai26-fy70-herob-01.mp4",
+          "poster": "owner-ai26-fy70-herob-01-first-frame.jpg",
+          "resolution": "720×1280",
+          "tier": "herob"
+        },
+        {
+          "video": "owner-ai26-fy70-herob-02.mp4",
+          "poster": "owner-ai26-fy70-herob-02-first-frame.jpg",
+          "resolution": "720×1280",
+          "tier": "herob"
+        },
+        {
+          "video": "owner-ai26-fy70-unranked-01.mp4",
+          "poster": "owner-ai26-fy70-unranked-01-first-frame.jpg",
+          "resolution": "1080×1920",
+          "tier": "unranked"
+        },
+        {
+          "video": "owner-ai26-fy70-unranked-02.mp4",
+          "poster": "owner-ai26-fy70-unranked-02-first-frame.jpg",
+          "resolution": "720×1280",
+          "tier": "unranked"
+        },
+        {
+          "video": "owner-ai26-fy70-unranked-03.mp4",
+          "poster": "owner-ai26-fy70-unranked-03-first-frame.jpg",
+          "resolution": "480×640",
+          "tier": "unranked"
+        },
+        {
+          "video": "owner-ai26-fy70-unranked-04.mp4",
+          "poster": "owner-ai26-fy70-unranked-04-first-frame.jpg",
+          "resolution": "720×1280",
+          "tier": "unranked"
+        },
+        {
+          "video": "owner-ai26-fy70-unranked-05.mp4",
+          "poster": "owner-ai26-fy70-unranked-05-first-frame.jpg",
+          "resolution": "1080×1920",
+          "tier": "unranked"
+        },
+        {
+          "video": "owner-ai26-fy70-unranked-06.mp4",
+          "poster": "owner-ai26-fy70-unranked-06-first-frame.jpg",
+          "resolution": "480×848",
+          "tier": "unranked"
         }
-      ]
+      ],
+      "posterTier": "hero",
+      "videoTier": "heroa",
+      "videoPoster": "owner-ai26-fy70-heroa-01-first-frame.jpg"
     },
     {
       "id": "grantender-72",
       "name": "GranTender 72",
       "poster": "grantender.webp",
-      "video": "grantender-hd.mp4",
+      "video": "owner-ai26-grantender-72-hero-01.mp4",
       "videoResolution": "720×1280",
       "images": [
         "grantender.webp",
@@ -161,23 +382,51 @@
         "grantender-4.webp",
         "owner-grantender-01.webp",
         "owner-grantender-02.webp",
-        "owner-grantender-03.webp"
+        "owner-grantender-03.webp",
+        "owner-ai26-grantender-72-unranked-01.webp",
+        "owner-ai26-grantender-72-unranked-02.webp",
+        "owner-ai26-grantender-72-unranked-03.webp",
+        "owner-ai26-grantender-72-unranked-04.webp",
+        "owner-ai26-grantender-72-unranked-05.webp",
+        "owner-ai26-grantender-72-unranked-06.webp",
+        "owner-ai26-grantender-72-unranked-07.webp",
+        "owner-ai26-grantender-72-unranked-08.webp",
+        "owner-ai26-grantender-72-unranked-09.webp"
       ],
       "kind": "design-study",
-      "videoPoster": "grantender-hd-first-frame.jpg",
+      "videoPoster": "owner-ai26-grantender-72-hero-01-first-frame.jpg",
       "extraVideos": [
         {
           "video": "owner-grantender-01.mp4",
           "poster": "owner-grantender-01-first-frame.jpg",
           "resolution": "720×1280"
+        },
+        {
+          "video": "grantender-hd.mp4",
+          "poster": "grantender-hd-first-frame.jpg",
+          "resolution": "720×1280",
+          "tier": "archive"
+        },
+        {
+          "video": "owner-ai26-grantender-72-unranked-01.mp4",
+          "poster": "owner-ai26-grantender-72-unranked-01-first-frame.jpg",
+          "resolution": "720×1280",
+          "tier": "unranked"
+        },
+        {
+          "video": "owner-ai26-grantender-72-unranked-02.mp4",
+          "poster": "owner-ai26-grantender-72-unranked-02-first-frame.jpg",
+          "resolution": "480×848",
+          "tier": "unranked"
         }
-      ]
+      ],
+      "videoTier": "hero"
     },
     {
       "id": "gran-marlin",
       "name": "Gran Marlin",
       "poster": "gran-marlin.webp",
-      "video": "gran-marlin.mp4",
+      "video": "owner-ai26-gran-marlin-hero-01.mp4",
       "videoResolution": "1280×720",
       "images": [
         "gran-marlin.webp",
@@ -185,17 +434,45 @@
         "owner-granmarlin-01.webp",
         "owner-granmarlin-02.webp",
         "owner-granmarlin-03.webp",
-        "owner-granmarlin-04.webp"
+        "owner-granmarlin-04.webp",
+        "owner-ai26-gran-marlin-unranked-01.webp",
+        "owner-ai26-gran-marlin-unranked-02.webp",
+        "owner-ai26-gran-marlin-unranked-03.webp",
+        "owner-ai26-gran-marlin-unranked-04.webp",
+        "owner-ai26-gran-marlin-unranked-05.webp",
+        "owner-ai26-gran-marlin-unranked-06.webp",
+        "owner-ai26-gran-marlin-unranked-07.webp",
+        "owner-ai26-gran-marlin-unranked-08.webp",
+        "owner-ai26-gran-marlin-unranked-09.webp"
       ],
       "kind": "design-study",
-      "videoPoster": "gran-marlin-first-frame.jpg",
+      "videoPoster": "owner-ai26-gran-marlin-hero-01-first-frame.jpg",
       "extraVideos": [
         {
           "video": "owner-granmarlin-01.mp4",
           "poster": "owner-granmarlin-01-first-frame.jpg",
           "resolution": "1280×720"
+        },
+        {
+          "video": "gran-marlin.mp4",
+          "poster": "gran-marlin-first-frame.jpg",
+          "resolution": "1280×720",
+          "tier": "archive"
+        },
+        {
+          "video": "owner-ai26-gran-marlin-hero-02.mp4",
+          "poster": "owner-ai26-gran-marlin-hero-02-first-frame.jpg",
+          "resolution": "1280×720",
+          "tier": "hero"
+        },
+        {
+          "video": "owner-ai26-gran-marlin-heroa-01.mp4",
+          "poster": "owner-ai26-gran-marlin-heroa-01-first-frame.jpg",
+          "resolution": "1280×720",
+          "tier": "heroa"
         }
-      ]
+      ],
+      "videoTier": "hero"
     }
   ],
   "disclaimers": [
