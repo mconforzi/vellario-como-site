@@ -135,9 +135,25 @@ body.menu-open{overflow:hidden}
 }
 
 
-/* VELLARIO V41 — Native vertical scrolling for all cinematic and curated chapters.
-   Horizontal yacht rail snap remains scoped to .yacht-rail-track. */
-html { scroll-snap-type:none!important; overscroll-behavior-y:auto; }
+/* VELLARIO V32 — Fullpage vertical snap restored for the seven homepage scenes.
+   Editorial subpages use proximity. Yacht rail keeps independent x-axis snap. */
+html{scroll-snap-type:y proximity!important;overscroll-behavior-y:auto;scroll-padding-top:0}
+html:has(body[data-page="home"]){scroll-snap-type:y mandatory!important}
+body[data-page="home"] main > .cinema-hero,
+body[data-page="home"] main > .editorial-section{
+ scroll-snap-align:start!important;scroll-snap-stop:always;scroll-margin-top:0
+}
+body:not([data-page="home"]) main > .cinema-hero,
+body:not([data-page="home"]) main > .editorial-section,
+body:not([data-page="home"]) main > .gallery-chapter,
+body:not([data-page="home"]) main > .collection-after,
+body:not([data-page="home"]) main > .next-chapter,
+.site-footer{
+ scroll-snap-align:start;scroll-snap-stop:normal
+}
+@media(prefers-reduced-motion:reduce){
+ html:has(body[data-page="home"]){scroll-snap-type:y proximity!important;scroll-behavior:auto!important}
+}
 
 /* VELLARIO V14 — full-height editorial frames, exact top title/bottom visual layout. */
 body[data-page="home"] main > .chapter--visual,

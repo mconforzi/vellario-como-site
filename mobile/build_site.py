@@ -315,7 +315,12 @@ def curated_chapter(page, section, index, depth, data, model_lookup, variation=0
                      '" loading="lazy" decoding="async"></div>')
     archive = ''
     if layout == 'filmbook':
-        studies = [model_lookup[k] for k in ('mas-36', 'mas-52', 'quantum-999')]
+        # One model per homepage chapter, including all three archival stills.
+        if page['id']=='home':
+            model_id=media_name.split(':',1)[1] if str(media_name or '').startswith('model:') else 'mas-52'
+            studies=[model_lookup[model_id]]*3
+        else:
+            studies=[model_lookup[k] for k in ('mas-36','mas-52','quantum-999')]
         figures = []
         for item in studies:
             images = ranked_images(item)
@@ -352,7 +357,7 @@ def curated_chapter(page, section, index, depth, data, model_lookup, variation=0
         '</div><div class="curated-copy"><p class="curated-kicker">' + esc(kicker) +
         '</p><h2>' + esc(section['title']) + '</h2>' +
         ('<p class="curated-statement">' + esc(statement) + '</p>' if statement else '') +
-        '<p class="curated-body">' + esc(section['body']) + '</p>' +
+        '<p class="curated-body">' + esc(section.get('shortIntro',section['body']) if page['id']=='home' else section['body']) + '</p>' +
         source + link +
         '</div><span class="curated-scroll" aria-hidden="true">SCOPRI IL CAPITOLO · SCROLL</span>'
         '</div></section>'
@@ -631,9 +636,9 @@ def generate(data,catalog,where):
           '<link rel="preconnect" href="https://fonts.googleapis.com">'
           '<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>'
           '<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">'
-          '<link rel="stylesheet" href="'+esc(source_css)+'?v=v31-opening-safe-area">'
-           '<link rel="stylesheet" href="'+esc(root_file('curated-site.css',depth))+'?v=v31-opening-safe-area">'
-           '<script src="'+esc(source_js)+'?v=v31-opening-safe-area" defer></script>'
+          '<link rel="stylesheet" href="'+esc(source_css)+'?v=v32-home-snap-unique-yacht">'
+           '<link rel="stylesheet" href="'+esc(root_file('curated-site.css',depth))+'?v=v32-home-snap-unique-yacht">'
+           '<script src="'+esc(source_js)+'?v=v32-home-snap-unique-yacht" defer></script>'
           '</head><body data-page="'+esc(pid)+'">'
           +header(pid,depth,data)+'<main id="main-content">'+body+'</main>'
           +footer(depth,data)+'</body></html>\n'
@@ -713,7 +718,7 @@ def mirror_at_root(mobile_root, public_root):
                 if from_file not in html_doc:
                     raise ValueError('Canonical page missing a script or stylesheet: ' + str(rel) + ' / ' + filename)
                 html_doc = html_doc.replace(from_file, to_file)
-            if 'mobile/site.js?v=v31-opening-safe-area' not in html_doc:
+            if 'mobile/site.js?v=v32-home-snap-unique-yacht' not in html_doc:
                 raise ValueError('Root page did not retain versioned script: ' + str(rel))
             if '<main' not in html_doc or '<h1' not in html_doc:
                 raise ValueError('Root page missing substantive HTML: ' + str(rel))

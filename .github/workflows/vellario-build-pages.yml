@@ -86,7 +86,7 @@ jobs:
           print('PASS first-frame coverage: all 55+ source video posters')
           ui_script=pathlib.Path('mobile/site.js').read_text()
           assert "if(video.hasAttribute('data-opening'))return;" in ui_script
-          assert 'data-opening' in home and 'v31-opening-safe-area' in home
+          assert 'data-opening' in home and 'v32-home-snap-unique-yacht' in home
           assert home.count('class="opening-backdrop"')==1
           assert 'data-src-mobile=' in home
           css=pathlib.Path('mobile/site.css').read_text()
@@ -95,6 +95,23 @@ jobs:
           assert 'aspect-ratio:9/16!important' in css
           assert 'openingBackdrop.src=video.dataset.posterMobile' in ui_script
           print('PASS original opening-film framing restored; other clips retain black-bar crop')
+          # V32: five distinct yacht models, with no model repeated across home chapters.
+          spec=json.loads(pathlib.Path('mobile/site-content.json').read_text())
+          page=next(p for p in spec['pages'] if p['id']=='home')
+          scenes=[s for s in page['sections'] if s.get('layout')]
+          boats=[s['media'].split(':',1)[1] for s in scenes]
+          assert boats==['mas-52','mas-36','mas-56','fy70','quantum-999'],boats
+          assert len(boats)==len(set(boats))
+          assert set(boats).isdisjoint({'gran-marlin','grantender-72'})
+          assert all(not s.get('mobileMedia') or s['mobileMedia']==s['media'] for s in scenes)
+          css=pathlib.Path('mobile/site.css').read_text()
+          curated=pathlib.Path('mobile/curated-site.css').read_text()
+          assert 'html:has(body[data-page="home"]){scroll-snap-type:y mandatory!important}' in css
+          assert 'scroll-snap-type:x mandatory' in css
+          assert 'body[data-page="home"] main > .curated-chapter' in curated
+          assert 'height:100svh!important;min-height:100svh!important' in curated
+          assert home.count('class="editorial-section curated-chapter')==5
+          print('PASS V32 full-height home snap and five unique yachts')
           print('PASS V28 homepage unique films and aspect-aware media markup')
           print('PASS 15 routes / 8 cards / FY70 film / distinct MAS52+MAS56 / safe fallback')
           PY
@@ -106,12 +123,12 @@ jobs:
           assert '<main' in home and '<h1' in home
           assert 'http-equiv="refresh"' not in home, 'Root must render directly, never redirect to /mobile/'
           assert 'href="./heritage/"' in home and 'href="./como-dolcevita/"' in home and 'href="./artisanship/"' in home and 'href="./collezione/"' in home
-          assert 'href="./mobile/site.css?v=v31-opening-safe-area"' in home
-          assert 'src="./mobile/site.js?v=v31-opening-safe-area"' in home
+          assert 'href="./mobile/site.css?v=v32-home-snap-unique-yacht"' in home
+          assert 'src="./mobile/site.js?v=v32-home-snap-unique-yacht"' in home
           assert 'src="assets/brand/' in home
           for entry in manifest['routes']:
               page=(root/entry['path']).read_text()
-              assert '<main' in page and '/mobile/site.js?v=v31-opening-safe-area' in page, entry['slug']
+              assert '<main' in page and '/mobile/site.js?v=v32-home-snap-unique-yacht' in page, entry['slug']
               assert ('../'*(len(pathlib.Path(entry['path']).parts)-1)+'assets/') in page, entry['slug']
           from xml.etree import ElementTree as ET
           ns={'s':'http://www.sitemaps.org/schemas/sitemap/0.9'}

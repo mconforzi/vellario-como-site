@@ -239,3 +239,23 @@ inset:0!important;width:100%!important;height:100%!important;object-fit:cover!im
 .vellario-atlas-grid .vellario-atlas-tile--landscape > video{
  object-fit:cover!important;
 }
+
+/* VELLARIO V32 — One actual full-screen editorial chapter per snap stop.
+   Does not change the long-form curated chapters in other pages. */
+body[data-page="home"] main > .curated-chapter{
+ height:100svh!important;min-height:100svh!important;
+ max-height:100svh!important;overflow:hidden!important;
+ scroll-snap-align:start!important;scroll-snap-stop:always
+}
+body[data-page="home"] main > .curated-chapter > .curated-stage{
+ height:100svh!important;min-height:100svh!important;
+ position:relative!important;top:auto!important
+}
+body[data-page="home"] main > .curated-chapter .curated-copy{
+ max-height:calc(100svh - 110px);overflow-y:auto;overscroll-behavior:contain
+}
+@media(max-width:850px){
+ body[data-page="home"] main > .curated-chapter .curated-copy{
+ max-height:calc(100svh - 130px)
+ }
+}

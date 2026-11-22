@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "release": "v29-exact-frame-autopreload",
+  "release": "v32-home-snap-unique-yacht",
   "status": "editorial-curation-working-preview",
   "locale": "en",
   "date": "2026-11-20",
@@ -116,21 +116,21 @@
           "link": "history-legacy",
           "displaySubtitle": "Generations of boatbuilders, racers and craftsmen shaped the nautical culture of Lake Como.",
           "media": "model:mas-52",
-          "mobileMedia": "model:quantum-999",
+          "mobileMedia": "model:mas-52",
           "layout": "filmbook",
           "storyKicker": "Il patrimonio del Lario",
-          "storyCaption": "The boating heritage of Lake Como. A tradition to honour, not a company history to claim."
+          "storyCaption": "The boating heritage of Lake Como. A tradition to honour, not a company history to claim.",
+          "shortIntro": "Le barche e i maestri del Lago di Como ispirano una nuova espressione dell’eleganza nautica italiana."
         },
         {
           "id": "como-dolcevita",
           "title": "Como e la Dolcevita",
           "body": "There are places whose character is inseparable from the way they are lived. Lake Como is one of them: architecture set against the mountains, gardens descending towards the water, and a distinctive tradition of arriving by boat. For VELLARIO, Como is not merely a location or a backdrop. It is the cultural inspiration for a new nautical point of view.\n\nAn aperitivo at the water's edge. The golden light of late afternoon. A short passage across the lake, with no need to hurry. La Dolce Vita is not a style borrowed for a photograph; it is the pleasure of living beautifully, simply and without ostentation. This is the spirit we want VELLARIO to express.",
           "link": "como",
-          "media": "model:gran-marlin",
+          "media": "model:mas-36",
           "englishLine": "The Good Life, the Italian Way",
           "shortIntro": "Un aperitivo sul lago, la luce del tramonto, il piacere di navigare senza fretta. Questa è la Dolce Vita.",
           "displaySubtitle": "An aperitivo by the lake, golden light at sunset, and the pleasure of travelling without hurry.",
-          "mobileMedia": "model:grantender-72",
           "layout": "dissolve",
           "storyKicker": "Como · L'arte di vivere",
           "storyCaption": "The lake, its villas and the effortless pleasure of living beautifully.",
@@ -141,11 +141,11 @@
           "title": "Artisanship and Love for Details",
           "body": "The Italian idea of saper fare is more than craftsmanship alone. It is the discipline of knowing why a detail matters. Proportion, materials, the line of a hull and the feeling of a surface should belong to one coherent whole. For VELLARIO, beauty starts with these decisions.",
           "link": "design-craftsmanship",
-          "media": "model:mas-52",
+          "media": "model:mas-56",
           "englishLine": "The Beauty of Every Detail",
           "shortIntro": "Proporzioni, materiali, linee e superfici: il saper fare italiano si riconosce nei dettagli.",
           "displaySubtitle": "Proportion, materials and the beauty of every detail. The Italian art of saper fare.",
-          "mobileMedia": "model:grantender-72",
+          "mobileMedia": "model:mas-56",
           "layout": "editorial",
           "storyKicker": "Il saper fare italiano",
           "storyCaption": "Proportion, materials and that unmistakable love for every detail."
@@ -158,10 +158,11 @@
           "englishLine": "A Distinctly Italian Point of View",
           "displaySubtitle": "A new Italian nautical design house, distinctive in character and discreet in expression.",
           "media": "model:fy70",
-          "mobileMedia": "model:quantum-999",
+          "mobileMedia": "model:fy70",
           "layout": "aperture",
           "storyKicker": "Una nuova idea di nautica italiana",
-          "storyCaption": "A design-led vision, from Lake Como to the world."
+          "storyCaption": "A design-led vision, from Lake Como to the world.",
+          "shortIntro": "Una nuova casa del design nautico italiano, con uno stile riconoscibile e un’esperienza profondamente personale."
         },
         {
           "id": "dialogue",
@@ -170,11 +171,12 @@
           "link": "contact",
           "englishLine": "The Personal Touch",
           "displaySubtitle": "A personal relationship guided by taste, design and a shared appreciation of beauty.",
-          "media": "model:gran-marlin",
-          "mobileMedia": "model:grantender-72",
+          "media": "model:quantum-999",
+          "mobileMedia": "model:quantum-999",
           "layout": "invitation",
           "storyKicker": "Il piacere di conoscersi",
-          "storyCaption": "A discreet introduction to the world of VELLARIO."
+          "storyCaption": "A discreet introduction to the world of VELLARIO.",
+          "shortIntro": "Il piacere di conoscersi e di progettare insieme una barca davvero personale, in pieno stile italiano."
         }
       ],
       "englishTagline": "The Italian Art of Living"
