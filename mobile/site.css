@@ -1298,3 +1298,17 @@ transform:none!important;filter:none!important}
   clip-path:inset(7.8125% 0 7.8125% 0)
  }
 }
+
+/* V33 · Home collection opening: centered title and caption on every screen. */
+body[data-page="home"] main > #models > .chapter-shell .chapter-content{
+ width:100%!important;max-width:min(920px,100%)!important;
+ margin-inline:auto!important;text-align:center!important
+}
+body[data-page="home"] main > #models .chapter-content > h2,
+body[data-page="home"] main > #models .chapter-content > .chapter-eyebrow,
+body[data-page="home"] main > #models .chapter-content > .chapter-display-subtitle{
+ text-align:center!important;margin-left:auto!important;margin-right:auto!important
+}
+body[data-page="home"] main > #models .chapter-content > .chapter-display-subtitle{
+ max-width:min(680px,100%)!important
+}

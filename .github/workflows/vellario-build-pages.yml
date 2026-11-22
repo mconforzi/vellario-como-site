@@ -86,7 +86,7 @@ jobs:
           print('PASS first-frame coverage: all 55+ source video posters')
           ui_script=pathlib.Path('mobile/site.js').read_text()
           assert "if(video.hasAttribute('data-opening'))return;" in ui_script
-          assert 'data-opening' in home and 'v32-home-snap-unique-yacht' in home
+          assert 'data-opening' in home and 'v33-collection-centered' in home
           assert home.count('class="opening-backdrop"')==1
           assert 'data-src-mobile=' in home
           css=pathlib.Path('mobile/site.css').read_text()
@@ -111,6 +111,13 @@ jobs:
           assert 'body[data-page="home"] main > .curated-chapter' in curated
           assert 'height:100svh!important;min-height:100svh!important' in curated
           assert home.count('class="editorial-section curated-chapter')==5
+          assert 'v33-collection-centered' in home
+          css=pathlib.Path('mobile/site.css').read_text()
+          assert 'body[data-page="home"] main > #models .chapter-content > h2' in css
+          assert 'body[data-page="home"] main > #models .chapter-content > .chapter-display-subtitle' in css
+          assert 'margin-inline:auto!important;text-align:center!important' in css
+          assert '<h2>Collezione</h2>' in home
+          print('PASS V33 centered collection heading and caption on home')
           print('PASS V32 full-height home snap and five unique yachts')
           print('PASS V28 homepage unique films and aspect-aware media markup')
           print('PASS 15 routes / 8 cards / FY70 film / distinct MAS52+MAS56 / safe fallback')
@@ -123,12 +130,12 @@ jobs:
           assert '<main' in home and '<h1' in home
           assert 'http-equiv="refresh"' not in home, 'Root must render directly, never redirect to /mobile/'
           assert 'href="./heritage/"' in home and 'href="./como-dolcevita/"' in home and 'href="./artisanship/"' in home and 'href="./collezione/"' in home
-          assert 'href="./mobile/site.css?v=v32-home-snap-unique-yacht"' in home
-          assert 'src="./mobile/site.js?v=v32-home-snap-unique-yacht"' in home
+          assert 'href="./mobile/site.css?v=v33-collection-centered"' in home
+          assert 'src="./mobile/site.js?v=v33-collection-centered"' in home
           assert 'src="assets/brand/' in home
           for entry in manifest['routes']:
               page=(root/entry['path']).read_text()
-              assert '<main' in page and '/mobile/site.js?v=v32-home-snap-unique-yacht' in page, entry['slug']
+              assert '<main' in page and '/mobile/site.js?v=v33-collection-centered' in page, entry['slug']
               assert ('../'*(len(pathlib.Path(entry['path']).parts)-1)+'assets/') in page, entry['slug']
           from xml.etree import ElementTree as ET
           ns={'s':'http://www.sitemaps.org/schemas/sitemap/0.9'}
